@@ -12,10 +12,9 @@
 #define ENABLE_SECAM 0            /* 88 bytes */
 #define ENABLE_60MHZ_AUTODETECT 0 /* 16 bytes */
 #define ENABLE_ANIMATING_MAN 1    /* 244 bytes but man disappears */
-#define ENABLE_TIMESHORT 0        /* 40 bytes - pulse player when time < 10s */
 #define ENABLE_SWIPE 1            /* 1108 bytes */
-#define ENABLE_SERIAL_NUMBER 1    /* 80 bytes (a) */
-#define ENABLE_FIREWORKS 0        /* a pixel-draw used for a fireworks starburst */
+#define ENABLE_SERIAL_NUMBER 1    /* 232 bytes(with 'halfsize' routine) */
+#define ENABLE_FIREWORKS 0        /* 244 bytes - a pixel-draw used for a fireworks starburst */
 
 #define ENABLE_PLAYERCELL 1
 

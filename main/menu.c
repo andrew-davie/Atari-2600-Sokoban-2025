@@ -24,9 +24,9 @@
 #include "rooms.h"
 
 
-// int inc = 0;
-
+#if ENABLE_SERIAL_NUMBER
 int halfSize(int x, int y, int letter, bool render);
+#endif
 
 #define LUMINANCE_TITLE 0x4
 
@@ -369,24 +369,6 @@ const unsigned char andrewDavie[] = {
 
 #endif
 
-
-const unsigned char andrewDavie[2][36] = {
-{   _____XXX, ________, ________, ________, ________, ________,
-    ___XX___, X_______, ________, ________, ________, ________,
-    __X_____, ________, ________, ________, ______XX, XXX_____,
-    _X______, ________, ________, ________, ____XX__, ___X____,
-    _X______, ________, __X_____, ________, ____X___, ____X___,
-    X_______, __X_____, __X_____, ________, ____X___, ____X___,
-},{
-    X_______, __X_____, __X___X_, _X__X___, _X__X___, ____X___,
-    X_______, _XX_XX__, _XX__X__, X_X_X_X_, _X__X___, ____X___,
-    X_______, _XX_X_X_, X_X_X___, XX__XXX_, X___X___, ___X____,
-    X_______, X_XXX_XX, X_XXX___, _XX__X_X, ____X___, __X_____,
-    _X____XX, ___X____, _XX_____, ________, ________, XX______,
-    __XXXX__, ________, ________, ________, ________, ________,
-},
-};
-
 // clang-format on
 
 void drawPalette(const unsigned char *palette) {
@@ -542,9 +524,6 @@ void handleMenuScreen() {
 		    sline == menuLine ? (gameFrame & 4) ? 0x8 : ((++sin << 4) & 0xF0) | 0x18 : 0xB8;
 		drawString(0, y + 8, dLine, colour);
 	}
-
-	drawSmallString(170, andrewDavie[0], 0xC);
-	drawSmallString(176, andrewDavie[1], 0xC);
 
 #if ENABLE_SERIAL_NUMBER
 
@@ -883,6 +862,7 @@ void doubleSize(int x, int y, int letter, unsigned char colour) {
 	}
 }
 
+#if ENABLE_SERIAL_NUMBER
 int halfSize(int x, int y, int letter, bool render) {
 
 	int col = x >> 3;
@@ -932,5 +912,6 @@ int halfSize(int x, int y, int letter, bool render) {
 
 	return width;
 }
+#endif
 
 // EOF

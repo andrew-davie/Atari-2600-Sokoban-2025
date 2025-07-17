@@ -113,14 +113,11 @@ void setBackgroundPalette(const unsigned char *c) {
 		}
 	}
 
-	fgPalette[0] = convertColour(c[0]); // convertColour(c[0]);
-	fgPalette[1] = convertColour(c[1]); // convertColour(c[1]);
+	fgPalette[0] = convertColour(c[0]);
+	fgPalette[1] = convertColour(c[1]);
 }
 
-void setPalette() { // 4148 ?!  2176! 2450 (3337)
-
-	// static const unsigned char shiftMode[] = {16, 17, 31};
-	// static const unsigned char rowSize[] = {21, 15, 9};
+void setPalette() {
 
 	interleaveColour();
 
@@ -154,16 +151,9 @@ void setPalette() { // 4148 ?!  2176! 2450 (3337)
 
 	int roll = roller;
 
-	//    if (displayMode != DISPLAY_HALF)
-
-	// if (enableICC && --roll < 0)
-	//     roll = 2;
-
 	if (displayMode != DISPLAY_OVERVIEW) {
 
 		int rollx = roll;
-		// static const unsigned char scoreColour[] = {0x46, 0x98, 0xD8, 0x46, 0x98, 0x28, 0x28,
-		// 0x28};
 
 		if (!enableICC)
 			rollx = 5;
@@ -203,26 +193,6 @@ void setPalette() { // 4148 ?!  2176! 2450 (3337)
 		i += 3;
 	}
 }
-
-// void loadPalette() {
-
-//     const unsigned char *c = EXTERNAL(__COLOUR_POOL);
-//     c += currentPalette; // & 60;
-//     setBackgroundPalette(c);
-
-//     // ICC Colour Usage / Palette by line in char definition
-
-//     // 0        the soil - varies in colour down the screen ("background")
-//     // 1        ()
-//     // 2        the brickwork "mortar"
-
-//     //--------------
-//     // format...
-//     // charline colour line 1
-//     // charline colour line 2
-//     // charline colour line 0 (bg, 2 definitions)
-
-// }
 
 void chooseColourScheme() {
 

@@ -47,28 +47,6 @@ bool manObscured() {
 	//         Animate[TYPE_MAN] - AnimateBase[TYPE_MAN] >= 5);
 }
 
-#if ENABLE_TIMESHORT
-void pulseShortTimer(unsigned char *p0Colour, unsigned char *p1Colour, int depth) {
-
-	if (
-#if ENABLE_SECAM
-	    mm_tv_type != SECAM &&
-#endif
-	    !manDead && time60ths < 0xB00) {
-		setScoreCycle(SCORELINE_TIME);
-
-		int sin = EXTERNAL(__sinoid)[(frame >> 1) & 15];
-		for (int line = 0; line < depth; line++) {
-
-			int intensity = (p0Colour[line] & 0xF) + 2 - sin;
-			if (intensity < 0)
-				intensity = 0;
-			p0Colour[line] = p1Colour[line] = (p0Colour[line] & 0xF0) | intensity;
-		}
-	}
-}
-#endif
-
 void clipPosition() {
 	if (P0_X < 4)
 		P0_X = 4;
@@ -160,10 +138,6 @@ void drawPlayerSprite() { // --> 1976 cycles
 
 			spr += 3;
 		}
-
-#if ENABLE_TIMESHORT
-		pulseShortTimer(p0Colour, p1Colour, SPRITE_DEPTH);
-#endif
 	}
 }
 
@@ -241,10 +215,6 @@ void drawHalfSprite() { // --> 2273 cycles
 		p0[line] = (manFaceDirection == FACE_RIGHT) ? newSp : BitRev[newSp];
 		p0Colour[line] = convertedPlayerColour[(spr[2] & 0xF)];
 	}
-
-#if ENABLE_TIMESHORT
-	pulseShortTimer(p0Colour, p0Colour, CHAR_HEIGHT_HALF);
-#endif
 }
 
 void drawPlayerSmallSprite() { // --> 1149 cycles
@@ -257,14 +227,6 @@ void drawPlayerSmallSprite() { // --> 1149 cycles
 	int frameYOffset = *spr++ >> 1;
 
 	playerSmallSpriteY = manY * 9 + frameYOffset - ((frameAdjustY * (0x300 / 9) >> 8));
-
-	// unsigned char *p = RAM + _BUF_GRP0A;
-	// unsigned char *q = RAM + _BUF_COLUP0;
-	// r = getRandom32();
-	// for (int i = 0; i < _ARENA_SCANLINES; i++) {
-	//     p[i] = r;
-	//     q[i] = r;
-	// }
 
 	if (playerSmallSpriteY < 0 || playerSmallSpriteY >= _ARENA_SCANLINES - 10) // SPRITE_DEPTH / 2)
 		return;
@@ -308,10 +270,6 @@ void drawPlayerSmallSprite() { // --> 1149 cycles
 		p0Colour[line] = convertedPlayerColour[spr[2] >> 4];
 
 		frac += step;
-
-#if ENABLE_TIMESHORT
-		pulseShortTimer(p0Colour, p0Colour, SPRITE_DEPTH / 2);
-#endif
 	}
 }
 
