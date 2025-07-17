@@ -314,12 +314,37 @@ void drawWord(const char *string, int y, int colour) {
 	}
 }
 
-void checkExitWarning() {
-#define EXIT_BOUNDARY (DEAD_RESTART - 100)
+#define BUTTONTIME_UNDO_MODE 30
+#define BUTTONTIME_EXIT_BOUNDARY 100
 
-	if ((triggerPressCounter > EXIT_BOUNDARY) && (triggerPressCounter & 24)) {
-		drawWord("EXIT", 50, 3);
-		drawWord("ROOM", 75, 3);
+void checkExitWarning() {
+
+	if ((triggerPressCounter > BUTTONTIME_EXIT_BOUNDARY)) {
+		if (triggerPressCounter & 24) {
+			drawWord("EXIT", 50, 3);
+			//			drawWord("ROOM", 75, 3);
+		}
+	}
+
+	else if (triggerPressCounter > BUTTONTIME_UNDO_MODE) {
+
+		if (!waitRelease) {
+
+			if (scoreCycle != SCORELINE_UNDO) {
+				scoreCycle = SCORELINE_UNDO;
+				displayMode = DISPLAY_NORMAL;
+				FLASH(0x44, 6);
+				waitRelease = true;
+			}
+
+			else {
+
+				scoreCycle = SCORELINE_TIME;
+				FLASH(0xD2, 12);
+				triggerPressCounter = 0;
+				waitRelease = true;
+			}
+		}
 	}
 }
 
@@ -637,8 +662,8 @@ void triggerStuff() {
 
 		if (!triggerNextLife) {
 
-			if (!exitMode && triggerOffCounter && triggerOffCounter < DOUBLE_TAP &&
-			    triggerPressCounter < TOOLONG) {
+			if (scoreCycle != SCORELINE_UNDO && !exitMode && triggerOffCounter &&
+			    triggerOffCounter < DOUBLE_TAP && triggerPressCounter < TOOLONG) {
 
 				// Handle double-click view mode switching
 
@@ -683,19 +708,26 @@ void triggerStuff() {
 
 	} else {
 
-		if (!triggerNextLife && !exitMode && triggerPressCounter &&
-		    triggerOffCounter >= DOUBLE_TAP) {
+		if (triggerOffCounter >= DOUBLE_TAP && triggerPressCounter) {
+			if (scoreCycle != SCORELINE_UNDO) {
+				if (!triggerNextLife && !exitMode) {
 
-			if (triggerPressCounter < TOOLONG) {
-				if (displayMode == DISPLAY_NORMAL)
-					displayMode = DISPLAY_HALF;
-				else
-					displayMode = DISPLAY_NORMAL;
+					if (triggerPressCounter < TOOLONG) {
+						if (displayMode == DISPLAY_NORMAL)
+							displayMode = DISPLAY_HALF;
+						else
+							displayMode = DISPLAY_NORMAL;
+					}
+				}
+
+			} else {
+				FLASH(0x92, 2);
+
+				// TODO: here, we do an undo-move
 			}
 			triggerPressCounter = 0;
 			triggerOffCounter = 0;
 		}
-
 		triggerOffCounter++;
 	}
 }

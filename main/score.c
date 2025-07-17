@@ -204,10 +204,10 @@ void drawTime() {
 
 void drawLives() {
 
-	scoreLineNew[1] = LETTER('L');
-	scoreLineColour[1] = RGB_BLUE;
+	// scoreLineNew[1] = LETTER('L');
+	// scoreLineColour[1] = RGB_BLUE;
 
-	drawDecimal2(scoreLineNew + 2, scoreLineColour + 2, RGB_YELLOW, lives & 0x7F);
+	// drawDecimal2(scoreLineNew + 2, scoreLineColour + 2, RGB_YELLOW, lives & 0x7F);
 }
 
 void drawTheScore(int score) {
@@ -238,11 +238,11 @@ void drawScore() {
 
 		if (scoreCycle == nextScoreCycle) {
 
-			nextScoreCycle = scoreCycle + 1;
-			if (nextScoreCycle > SCORELINE_SCORE)
-				nextScoreCycle = manDead ? SCORELINE_LIVES : SCORELINE_TIME;
+			// nextScoreCycle = scoreCycle + 1;
+			// if (nextScoreCycle > SCORELINE_SCORE)
+			// 	nextScoreCycle = manDead ? SCORELINE_LIVES : SCORELINE_TIME;
 
-			guaranteedViewTime = 250;
+			// guaranteedViewTime = 250;
 		}
 
 		else {
@@ -252,12 +252,10 @@ void drawScore() {
 		}
 	}
 
-	if (!exitMode && !manDead && time60ths < 0xA00) {
-		//        ADDAUDIO(SFX_COUNTDOWN2);
-		scoreCycle = SCORELINE_TIME;
-	}
-
-	scoreCycle = SCORELINE_TIME; // tmp
+	// if (!exitMode && !manDead && time60ths < 0xA00) {
+	// 	//        ADDAUDIO(SFX_COUNTDOWN2);
+	// 	setScoreCycle(SCORELINE_TIME);
+	// }
 
 	for (int i = 0; i < 10; i++) {
 #if !ENABLE_COLOUR_SCORE
@@ -266,7 +264,7 @@ void drawScore() {
 		scoreLineNew[i] = DIGIT_SPACE;
 	}
 
-	// scoreCycle = SCORELINE_SCORE; // TMP
+	//	scoreCycle = SCORELINE_UNDO; // tmp
 
 	switch (scoreCycle) {
 	case SCORELINE_TIME:
@@ -281,6 +279,17 @@ void drawScore() {
 		drawTime();
 		drawLives();
 		break;
+
+	case SCORELINE_UNDO: {
+
+		int p = 3;
+		char *undo = "UNDO";
+		for (char *c = undo; *c; c++) {
+			scoreLineNew[p] = LETTER(*c);
+			scoreLineColour[p++] = RGB_RED;
+		}
+
+	} break;
 
 	default:
 		break;
