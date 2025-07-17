@@ -90,6 +90,10 @@ killEmulator:
 	$(KILL)
 
 armcode_defines: gfx $(asmSrcs)
+	#echo $(SERIAL_DATE) > main/serial_date.txt
+	#echo $(SERIAL_TIME) > main/serial_time.txt
+	echo 'const char *name="'$(SERIAL2)'";' > main/date2.txt
+	touch main/menu.c
 	@echo "Step 1/3 - Create $(DASM_TO_C)"
 	$(DASM) $(PROJECT).asm -p100 -f3 -v0 -s$(PROJECT).sym -l$(PROJECT).lst -o$(PROJECT).bin
 	@echo "// Do not change this file. It is auto-generated during the make process" > main/$(DASM_TO_C)
