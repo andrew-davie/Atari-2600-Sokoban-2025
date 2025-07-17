@@ -188,29 +188,24 @@ const unsigned char *const AnimateBase[] = {
     0,                  // 00 TYPE_SPACE
     0,                  // 01 TYPE_BRICKWALL
     0,                  // 02 TYPE_STEELWALL
-    0,                  // 03 TYPE_BOULDER
-    0,                  // 04 TYPE_MAN_PRE
-    AnimMan,            // 05 TYPE_MAN
-    AnimPill,           // 06 TYPE_PILL1
-    AnimPill,           // 07 TYPE_PILL2
-    0,                  // 08 TYPE_BOULDER_SHAKE
-    0,                  // 09 TYPE_BOULDER_GENERATOR
-    0,                  // 10 TYPE_BOULDER_FALLING
-    AnimBox_LtoR_LHS,   // 11 TYPE_BOX_LTOR_LHS
-    AnimBox_LtoR_RHS,   // 12 TYPE_BOX_LTOR_RHS
-    AnimBox_RtoL_LHS,   // 13 TYPE_BOX_RTOL_LHS
-    AnimBox_RtoL_RHS,   // 14 TYPE_BOX_RTOL_RHS
-    0,                  // 15 TYPE_ABOUTTOFALL
-    AnimBox_UtoD_TOP,   // 16 TYPE_BOX_UTOD_TOP
-    AnimBox_UtoD_BOT,   // 17 TYPE_BOX_UTOD_BOT
-    AnimBox_DtoU_TOP,   // 18 TYPE_BOX_DTOU_TOP
-    AnimBox_DtoU_BOT,   // 19 TYPE_BOX_DTOU_BOT
-    AnimBox_LtoR_LHS,   // 20 TYPE_BOX_LTOR_LEFT
-    AnimBox_LtoR_RHS,   // 21 TYPE_BOX_LTOR_RIGHT
-    AnimBox_RtoL_LHS,   // 22 TYPE_BOX_RTOL_LEFT
-    AnimBox_RtoL_RHS,   // 23 TYPE_BOX_RTOL_RIGHT
-    Animate_BoxLocked,  // 24 TYPE_BOX_LOCKED
-    Animate_BoxCorrect, // 25 TYPE_BOX_CORRECT
+    0,                  // 03 TYPE_BOX
+    AnimMan,            // 04 TYPE_MAN
+    AnimPill,           // 05 TYPE_PILL1
+    AnimPill,           // 06 TYPE_PILL2
+    AnimBox_LtoR_LHS,   // 07 TYPE_BOX_LTOR_LHS
+    AnimBox_LtoR_RHS,   // 08 TYPE_BOX_LTOR_RHS
+    AnimBox_RtoL_LHS,   // 09 TYPE_BOX_RTOL_LHS
+    AnimBox_RtoL_RHS,   // 10 TYPE_BOX_RTOL_RHS
+    AnimBox_UtoD_TOP,   // 11 TYPE_BOX_UTOD_TOP
+    AnimBox_UtoD_BOT,   // 12 TYPE_BOX_UTOD_BOT
+    AnimBox_DtoU_TOP,   // 13 TYPE_BOX_DTOU_TOP
+    AnimBox_DtoU_BOT,   // 14 TYPE_BOX_DTOU_BOT
+    AnimBox_LtoR_LHS,   // 15 TYPE_BOX_LTOR_LEFT
+    AnimBox_LtoR_RHS,   // 16 TYPE_BOX_LTOR_RIGHT
+    AnimBox_RtoL_LHS,   // 17 TYPE_BOX_RTOL_LEFT
+    AnimBox_RtoL_RHS,   // 18 TYPE_BOX_RTOL_RIGHT
+    Animate_BoxLocked,  // 19 TYPE_BOX_LOCKED
+    Animate_BoxCorrect, // 20 TYPE_BOX_CORRECT
 };
 
 void initCharAnimations() {

@@ -555,130 +555,18 @@ void playAudio() {
 
 #pragma GCC diagnostic pop
 
-// ref: http://www.retrointernals.org/ATT_ROCK-dash/music.html
-// ref:
-// https://forums.atariage.com/topic/176497-atari-2600-frequency-and-tuning-chart-new-v11/#comment-2198932
-
-// clang-format off
-
-
-/*
-Channel 1 (Melody):
-------------------------------------------
-| e4  f#4  g#4 | a4  b4  c#4 | d4  c#4  b4 | a4 |
-| e4  f#4  g#4 | a4  b4  c#4 | d4  e4  d4  | c#4 |
-------------------------------------------
-
-Channel 2 (Harmony):
-------------------------------------------
-| b3  c#4  d4  | e4  f#4  g#4 | a4  g#4  f#4 | e4 |
-| b3  c#4  d4  | e4  f#4  g#4 | a4  b4  a4  | g#4 |
-------------------------------------------*/
-
-
-// static const unsigned char trackBombe[] = {
-//     d4 c4 d4 b2
-//     TRACK_END
-// };
-
-// static const unsigned char trackAccompany[] = {
-
-//     // a2_SHARP a2_SHARP a2_SHARP a2_SHARP
-//     // a3 a3 a4_SHARP a4_SHARP
-
-//     // d4 a4 d3 d2_SHARP
-
-//     FULLNOTE
-//     e3 f3 g3 f3
-//     e3 f3 g3 f3
-//     e3 f3 g3 f3
-//     e3 f3 g3 f3
-
-//     // e3 f3 f3 a3_SHARP
-//     // g3 g4 g4 g4
-
-//     // a2_SHARP a2_SHARP a2_SHARP a3
-//     // a3_SHARP a3_SHARP a3_SHARP a3
-
-//     HALFNOTE
-//     c4 d4 e4 f4
-//     d4 e4 f4 g4
-//     c4 d4 e4 f4
-//     d4 e4 f4 g4
-
-
-//     // e4 g4
-//     // e4 g4
-//     // e4 g4
-//     // e4 g4
-
-//     //   e3 g3
-//     //   e3 g3
-//     //   e3 g3
-
-//     //    f4 f4 f4 f4
-//     //    g4 g4 g3 g3
-
-
-// //  e4  g4  a4  b4  b4  a4  g4  f4 e4  g4  a4  b4  b4  a4  g4  f4
-// //  e4  g4  a4  b4  b4  a4  g4  f4 e4  g4  a4  b4  b4  a4  g4  f4
-// //  d4  e4  f4  g4  g4  f4  e4  d4  d4  e4  f4  g4  g4  f4  e4  d4
-// //    a3 b3 c3 d3 c3 b3 d3 a3 g6 g6 g6 a6 a6 a6
-// // e4 d4 e4 a3 d4 e4 d4 c4 d4 e4 a3 g4
-// // e4 d4 e4 a3 d4 e4 d4 c4 d4 e4 a3 g4
-// // e4 d4 e4 g4 f4 e4 d4 e4 a3 d4 e4
-// // e4 d4 e4 g4 f4 e4 d4 e4 a3 d4 e4
-// // c4 d4 e4 a3 d4 e4 d4 c4 d4 e4 a3 g4
-// // e4 d4 e4 a3 d4 e4 d4 c4 d4 e4 a3 g4
-// // e4 d4 e4 g4 f4 e4 d4 e4 a3 d4 e4
-// // e4 d4 e4 g4 f4 e4 d4 e4 a3 d4 e4
-// // g3 e3 c3 d3 g3 e3 c3 d3
-// // a3 d3 g3 g3 g3 e3 c3 d3
-
-// // g3 e3 c3 d3 g3 e3 c3 d3
-// // a3 d3 g3 g3 g3 e3 c3 d3
-
-// //  0xFF,
-// //  0xFF,
-// //  0xFF,
-// //  0xFF,
-
-// //  0xFF,
-// //  0xFF,
-// //  0xFF,
-// //  0xFF,
-
-
-//     TRACK_LOOP
-// };
-
-// clang-format off
-
 const unsigned char trackRage[] = {
 
-    d4 d4 d4 d4
-    d5 d6 e4 e4
-    d4_SHARP d4_SHARP d4_SHARP a2_SHARP
-    TRACK_END
-};
+    d4 d4 d4 d4 d5 d6 e4 e4 d4_SHARP d4_SHARP d4_SHARP a2_SHARP TRACK_END};
 
 const unsigned char trackSimple[] = {
 
-e5 g5 a5 g5 a5 g5  
-e5 g5 a5 g5 a5 g5  
-c5 e5 g5 e5 f5 e5  
-d5 e5 f5 e5 d5 c5  
-e5 g5 a5 g5 a5 g5  
-e5 g5 a5 g5 a5 g5  
-c5 e5 g5 a5 g5 f5  
-g5 f5 e5 f5 e5 d5 
-    TRACK_LOOP
-    };
+    e5 g5 a5 g5 a5 g5 e5 g5 a5 g5 a5 g5 c5 e5 g5 e5 f5 e5 d5 e5 f5 e5 d5 c5 e5 g5 a5 g5 a5 g5 e5 g5
+        a5 g5 a5 g5 c5 e5 g5 a5 g5 f5 g5 f5 e5 f5 e5 d5 TRACK_LOOP};
 
 static const unsigned char trackSimple2[] = {
 
-c3 c3 a2_SHARP a2_SHARP f2 f2 g3 g3
-    TRACK_LOOP};
+    c3 c3 a2_SHARP a2_SHARP f2 f2 g3 g3 TRACK_LOOP};
 
 // Instrument envelopes have 16 bytes defining the volume multipliers for each "audio tick"
 
@@ -686,16 +574,16 @@ static const unsigned char adsr_Trombone[] = {
     // 200, 180, 160, 140, 96, 95, 94, 93,
     //                                           92,  91,  80,  60,  40, 20, 0,  0
 
-    255, 240, 240, 220, 200, 180, 160, 140,
-                                              120,  100,  80,  60,  40, 20, 0,  0
+    255, 240, 240, 220, 200, 180, 160, 140, 120,
+    100, 80,  60,  40,  20,  0,   0
 
-                                              };
+};
 static const unsigned char adsr_Rage[] = {
 
-    255, 255, 255, 100, 100, 100, 255, 255,
-                                              255,  100,  100,  100,  0, 0, 0,  0
+    255, 255, 255, 100, 100, 100, 255, 255, 255,
+    100, 100, 100, 0,   0,   0,   0
 
-                                              };
+};
 
 static const unsigned char adsr_Trombone2[] = {
     //    100, 200, 255, 255, 200, 150, 75, 75, 100, 100, 100, 100, 75, 75, 75, 75,

@@ -2436,7 +2436,7 @@ i2c_txack
 
 HandleSaveKey
 
-SAVEKEY_ADR     = $0600         ;           reserved address for Boulder Dash (64 bytes)
+;SAVEKEY_ADR     = $0600         ;           reserved address for game (TO DO!! - allocate)
 
 ; SK Memory Map:
 ;               room    level

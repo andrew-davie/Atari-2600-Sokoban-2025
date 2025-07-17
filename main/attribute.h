@@ -11,32 +11,27 @@ enum ObjectType {
 	// update Attribute[] in attribute.c if changing this
 	// update AnimateBase[] in animations.C
 
-	TYPE_SPACE,             // 00
-	TYPE_BRICKWALL,         // 01
-	TYPE_STEELWALL,         // 02
-	TYPE_BOULDER,           // 03
-	TYPE_MAN_PRE,           // 04
-	TYPE_MAN,               // 05
-	TYPE_PILL1,             // 06
-	TYPE_PILL2,             // 07
-	TYPE_BOULDER_SHAKE,     // 08
-	TYPE_BOULDER_GENERATOR, // 09
-	TYPE_BOULDER_FALLING,   // 10
-	TYPE_BOX_LTOR_LHS,      // 11
-	TYPE_BOX_LTOR_RHS,      // 12
-	TYPE_BOX_RTOL_LHS,      // 13
-	TYPE_BOX_RTOL_RHS,      // 14
-	TYPE_ABOUTTOFALL,       // 15
-	TYPE_BOX_UTOD_TOP,      // 16
-	TYPE_BOX_UTOD_BOT,      // 17
-	TYPE_BOX_DTOU_TOP,      // 18
-	TYPE_BOX_DTOU_BOT,      // 19
-	TYPE_BOX_LTOR_LEFT,     // 20
-	TYPE_BOX_LTOR_RIGHT,    // 21
-	TYPE_BOX_RTOL_LEFT,     // 22
-	TYPE_BOX_RTOL_RIGHT,    // 23
-	TYPE_BOX_LOCKED,        // 24
-	TYPE_BOX_CORRECT,       // 25
+	TYPE_SPACE,          // 00
+	TYPE_BRICKWALL,      // 01
+	TYPE_STEELWALL,      // 02
+	TYPE_BOX,            // 03
+	TYPE_MAN,            // 04
+	TYPE_PILL1,          // 05
+	TYPE_PILL2,          // 06
+	TYPE_BOX_LTOR_LHS,   // 07
+	TYPE_BOX_LTOR_RHS,   // 08
+	TYPE_BOX_RTOL_LHS,   // 09
+	TYPE_BOX_RTOL_RHS,   // 10
+	TYPE_BOX_UTOD_TOP,   // 11
+	TYPE_BOX_UTOD_BOT,   // 12
+	TYPE_BOX_DTOU_TOP,   // 13
+	TYPE_BOX_DTOU_BOT,   // 14
+	TYPE_BOX_LTOR_LEFT,  // 15
+	TYPE_BOX_LTOR_RIGHT, // 16
+	TYPE_BOX_RTOL_LEFT,  // 17
+	TYPE_BOX_RTOL_RIGHT, // 18
+	TYPE_BOX_LOCKED,     // 19
+	TYPE_BOX_CORRECT,    // 20
 
 	TYPE_MAX
 };
