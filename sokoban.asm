@@ -381,7 +381,7 @@ CallArmCode
 ; __WORD_RAGEQUIT     = 10
 ; __WORD_GOODBYE      = 11
 ; __WORD_SOSAD        = 12
-; __WORD_CAVE_ONE     = 14
+; __WORD_Room_ONE     = 14
 
 
 ; __SPEECH_ADDRESS
@@ -399,7 +399,7 @@ CallArmCode
 ;     WORDIS RAGEQUIT
 ;     WORDIS GOODBYE
 ;     WORDIS SOSAD
-;     WORDIS CAVE_ONE
+;     WORDIS Room_ONE
 
 ; ;    echo "   - SPEECH TABLE from", SPEECH_TABLE, "to", *, "(", (* - SPEECH_TABLE) , "bytes)"
 

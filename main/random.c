@@ -3,7 +3,7 @@
 unsigned int prng_b;
 unsigned int prng_a;
 
-unsigned int cave_random_a, cave_random_b;
+unsigned int Room_random_a, Room_random_b;
 
 unsigned int rndX;
 
@@ -12,8 +12,8 @@ void initRandom() {
 	prng_a = 0xFACE1234;
 	prng_b = 0xBABEACED;
 
-	cave_random_a = prng_a;
-	cave_random_b = prng_b;
+	Room_random_a = prng_a;
+	Room_random_b = prng_b;
 }
 
 unsigned int getRandom32() {

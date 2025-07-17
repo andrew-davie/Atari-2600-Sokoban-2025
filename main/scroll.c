@@ -35,7 +35,7 @@ void clamp(int *value, int max) {
 void accelerate(int accelTarget, int decelTarget, int playerScreen, int center, int targetBox,
                 int *speed, int increment) {
 
-	int rSpeed = (((SPEED_FLOOR + 0) << 16) / SPEED_FLOOR) >> 8;
+	int rSpeed = 0x100;
 
 	accelTarget = (accelTarget * rSpeed) >> 8;
 	int speedIncrement = (rSpeed * increment) >> 8;

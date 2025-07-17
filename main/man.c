@@ -1,19 +1,13 @@
 // clang-format off
 
 #include "defines.h"
-#include "defines_cdfj.h"
 #include "main.h"
 #include "man.h"
 
-#include "attribute.h"
-#include "characterset.h"
-#include "joystick.h"
 #include "player.h"
 #include "sound.h"
 
 // clang-format on
-
-// #define PLAYER_BORED 100
 
 int manX;
 int manY;
@@ -119,6 +113,6 @@ void initMan() {
 
 const signed char dirOffset[] = {-1, 1, -_1ROW, +_1ROW};
 
-void moveMan(/*unsigned char *me*/) { handled = false; }
+void moveMan() { handled = false; }
 
 // EOF

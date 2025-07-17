@@ -1,4 +1,3 @@
-// clang-format off
 
 #include <limits.h>
 #include <stdbool.h>
@@ -21,23 +20,17 @@
 #include "swipe.h"
 #endif
 
-#include "characterset.h"
 #include "colour.h"
 #include "drawplayer.h"
 #include "drawscreen.h"
-#include "joystick.h"
+#include "man.h"
 #include "menu.h"
 #include "player.h"
 #include "random.h"
 #include "rooms.h"
-#include "man.h"
 #include "score.h"
 #include "scroll.h"
 #include "sound.h"
-
-// clang-format on
-
-// unsigned int monitor[TYPE_MAX];
 
 ////////////////////////////////////////////////////////////////////////////////
 // CONFIGURABLE UX
@@ -56,8 +49,6 @@
 static int boardRow;
 int boardCol;
 bool triggerNextLife;
-bool boardDone;
-// bool exitTrigger;
 
 int moves;
 int showRoomCounter;
@@ -77,19 +68,12 @@ bool waitRelease;
 
 unsigned char mm_tv_type; // 0 = NTSC, 1 = PAL, 2 = PAL-60, 3 = SECAM... start @ NTSC always
 
-// unsigned int idleTimer;
 unsigned int sparkleTimer;
 
 int exitMode;
 enum PHASE exitPhase;
 
 unsigned int availableIdleTime;
-
-#if ENABLE_PERFECT
-int perfectTimer;
-int perfectBonus;
-int scoreMultiplier;
-#endif
 
 int gameFrame;
 
@@ -99,15 +83,13 @@ unsigned int triggerPressCounter;
 static unsigned int triggerOffCounter;
 
 int selectResetDelay;
-
 int resetDelay;
 
 int currentPalette;
 
-int cave = 0;
-int level = 0;
+int Room = 0;
 
-bool caveCompleted;
+bool roomCompleted;
 
 #if ENABLE_SHAKE
 int shakeX, shakeY;
@@ -215,38 +197,23 @@ void initNewGame() {
 	initScore();
 
 	swipeType = SWIPE_STAR;
-
 	lifeInit = true;
 }
 
 void initNextLife() {
 
 	setJumpVectors(_NORMAL_KERNEL, _EXIT_KERNEL);
-	// swipePhase = SWIPE_GROW;
 
 #if ENABLE_SHAKE
 	shakeTime = 0;
 #endif
 
 	exitPhase = PHASE_NONE;
-	caveCompleted = false;
+	roomCompleted = false;
 
-	boardDone = false;
 	boxLocation = 0;
 
-	extern bool joystickActive;
-	joystickActive = true;
-
-	//    lifeInit = true;
-
-	//    actualScore[0] = actualScore[1] = 0;
-
-#if ENABLE_PERFECT
-	perfectTimer = 100;
-#endif
-
 	exitMode = 0;
-	//    idleTimer = 0;
 	sparkleTimer = 0;
 	gameFrame = 0;
 	triggerPressCounter = 0;
@@ -254,8 +221,6 @@ void initNextLife() {
 
 	resetDelay = 0;
 	selectResetDelay = 0;
-
-	//	ADDAUDIO(SFX_UNCOVER);
 
 	lastDisplayMode = DISPLAY_NONE;
 
@@ -267,20 +232,15 @@ void initNextLife() {
 
 #if ENABLE_SWIPE
 	initStarSwipe();
-
-//    setSwipe(manX * 4, manY * 7 /*20, _ICC_SCANLINES / 2*/, -256, 512, SWIPE_GROW);
 #endif
 
 	guaranteedViewTime = 1;
-	speedCycle = 12 << 8;
-	setScoreCycle(SCORELINE_SPEEDRUN);
-
 	initCharAnimations();
 
-	gameSchedule = SCHEDULE_UNPACK_CAVE;
+	gameSchedule = SCHEDULE_UNPACK_Room;
 }
 
-void scheduleUnpackCave() {
+void scheduleUnpackRoom() {
 
 	if (KERNEL != KERNEL_GAME)
 		return;
@@ -295,12 +255,12 @@ void scheduleUnpackCave() {
 	// First dummy-unpack to get dimensions of room, then center and unpack
 
 	showRoomCounter = 100;
-	unpackRoom(&roomWidth, &roomHeight, true, cave);
+	unpackRoom(&roomWidth, &roomHeight, true, Room);
 
 	int x = (__BOARD_WIDTH - roomWidth) >> 1;
 	int y = (__BOARD_DEPTH - roomHeight) >> 1;
 
-	unpackRoom(&x, &y, false, cave);
+	unpackRoom(&x, &y, false, Room);
 
 #if ENABLE_SWIPE
 
@@ -308,7 +268,7 @@ void scheduleUnpackCave() {
 	getPlayerScreenPosition(&x, &y, displayMode);
 
 	// convert sprite to PF coordinates
-	y = (y * (0x100 / 3)) >> 8; // de-trixelise
+	y = (y * (0x100 / 3)) >> 8; // de-trixelise (x 1/3)
 	x = x >> 2;
 
 	setSwipe(x + 2, y + 4, 0, 100, SWIPE_GROW);
@@ -316,7 +276,7 @@ void scheduleUnpackCave() {
 
 	gameSchedule = SCHEDULE_PROCESSBOARD;
 
-	startCharAnimation(TYPE_PILL1, AnimateBase[TYPE_PILL1] + 9); // initial all-pill flash
+	startCharAnimation(TYPE_PILL1, AnimateBase[TYPE_PILL1] + 9); // initial all-pill startup flash
 }
 
 void GameIdle() {
@@ -324,7 +284,7 @@ void GameIdle() {
 	static void (*const scheduleFunc[])() = {
 
 	    processBoardSquares, // 0 SCHEDULE_PROCESSBOARD
-	    scheduleUnpackCave,  // 1 SCHEDULE_UNPACK_CAVE
+	    scheduleUnpackRoom,  // 1 SCHEDULE_UNPACK_Room
 	};
 
 	(*scheduleFunc[gameSchedule])();
@@ -422,8 +382,6 @@ void drawOverscanThings() {
 		}
 	}
 
-	// Scroll();
-
 	lastDisplayMode = displayMode;
 }
 
@@ -487,62 +445,6 @@ void checkButtonRelease() {
 	}
 }
 
-bool genericCounterUpper(int target, int points, const char *text, const char *text2) {
-
-	bool done = false;
-	static int countUp = 0;
-	static int delay = 0;
-
-	if (!target)
-		return true;
-
-	if (!delay--) {
-
-		delay = 3;
-
-		if (countUp >= target) {
-
-			//        if (!delay--) {
-			killAudio(SFX_UNCOVER);
-			ADDAUDIO(SFX_BLIP);
-			countUp = 0;
-			done = true;
-			//      }
-		}
-
-		else {
-
-			ADDAUDIO(SFX_UNCOVER);
-
-			int inc = (target - countUp);
-			for (int i = 3; i >= 0; i--) {
-				if (inc >= pwr[i]) {
-					inc = pwr[i];
-					break;
-				}
-			}
-
-			addScore(inc * points);
-			countUp += inc;
-
-			if (countUp >= target)
-				delay = 149;
-		}
-	}
-
-	if (!done) {
-		drawWord(text, 54, 4);
-		bigStuff(countUp);
-
-		if (text2)
-			drawWord(text2, 144, 4);
-	}
-
-	return done;
-}
-
-// const int radii[] = {378 << 8, 210 << 8, 120 << 8};
-
 #if ENABLE_SWIPE
 void swipeToPlayer() {
 
@@ -579,11 +481,7 @@ void swipeToPlayer() {
 }
 #endif
 
-static char bonus[] = "=1";
-
-void handleCaveCompletion() {
-
-	//    actualScore = exitPhase;
+void handleRoomCompletion() {
 
 	if (exitMode) {
 
@@ -591,28 +489,8 @@ void handleCaveCompletion() {
 
 		switch (exitPhase) {
 
-#if ENABLE_PERFECT
-		case PHASE_PERFECT: {
-
-			exitPhase = PHASE_TIME;
-
-			break;
-		}
-#endif
-
 		case PHASE_TIME: {
-
-			// if (playerAnimationID != ID_Shades)
-			//     startPlayerAnimation(ID_Shades);
-
-			setScoreCycle(SCORELINE_LIVES);
-
-			static const char t_time[] = "TIME";
-			bonus[1] = scoreMultiplier;
-
-			if (genericCounterUpper((time60ths >> 8), 1, t_time, scoreMultiplier > 1 ? bonus : 0))
-				exitPhase = PHASE_GEMS;
-
+			exitPhase = PHASE_GEMS;
 			break;
 		}
 
@@ -641,7 +519,7 @@ void handleCaveCompletion() {
 			if (!--exitMode) {
 #endif
 
-				caveCompleted = true;
+				roomCompleted = true;
 				exitMode = 0;
 			}
 			break;
@@ -676,21 +554,8 @@ void GameOverscan() { // ~32000
 		return;
 	}
 
-	if (gameSchedule == SCHEDULE_UNPACK_CAVE)
+	if (gameSchedule == SCHEDULE_UNPACK_Room)
 		return;
-
-	// #if __ENABLE_MAGICWALL
-	//     if (magicWallActive) {
-	//         if (millingTime)
-	//             millingTime--;
-	//         if (!millingTime) {
-	//             magicWallActive = false;
-	//             Animate[TYPE_MAGICWALL] = AnimateBase[TYPE_MAGICWALL];
-	//             AnimCount[TYPE_MAGICWALL] = 0;
-	//             killAudio(SFX_MAGIC);
-	//         }
-	//     }
-	// #endif
 
 	drawOverscanThings();
 
@@ -706,16 +571,10 @@ bool handleSelectReset() {
 
 	bool halt = false;
 
-	if (caveCompleted) {
+	if (roomCompleted) {
 
 		halt = true;
-		caveCompleted = false;
-
-		// if (++cave >= caveCount) {
-		// 	if (level < 4)
-		// 		++level;
-		// 	cave = 0;
-		// }
+		roomCompleted = false;
 
 		initKernel(KERNEL_STATS);
 		return true;
@@ -883,16 +742,6 @@ void GameVerticalBlank() { // ~7500
 	T1TCR = 1;
 
 	time60ths++;
-	// if ((time & 0xFF) == 60) {
-	// 	time &= ~0xFF;
-	// 	time += 0x100;
-
-	// 	if (time >= 0x3C00) {
-	// 		time &= ~0xFFFF;
-	// 		time += 100;
-	// 	}
-	// }
-
 	availableIdleTime = 115000;
 
 	if (KERNEL != KERNEL_GAME)
@@ -907,31 +756,24 @@ void GameVerticalBlank() { // ~7500
 	if (sparkleTimer)
 		--sparkleTimer;
 
-	if (gameSchedule != SCHEDULE_UNPACK_CAVE) {
+	if (gameSchedule != SCHEDULE_UNPACK_Room) {
 
 		if (displayMode == DISPLAY_OVERVIEW)
 			drawOverviewScreen(11, 22);
 
 		else {
 
-			handleCaveCompletion();
+			handleRoomCompletion();
 
 			if (time60ths && !manDead && !exitMode) {
-
-				// time--;
-
-				if ((time60ths & 0xFF) == 0xFF) {
-
+				if ((time60ths & 0xFF) == 0xFF)
 					time60ths -= 0xC4; // magic!  - (-256+60)
-					                   //					if (time60ths < 0xA00)
-					                   //						ADDAUDIO(SFX_COUNTDOWN2);
-				}
 			}
 
 			if (displayMode == DISPLAY_NORMAL) {
 				if (showRoomCounter) {
 					drawWord("ROOM", 40, 6);
-					bigStuff(cave);
+					bigStuff(Room);
 					showRoomCounter--;
 				}
 
@@ -951,11 +793,6 @@ void GameVerticalBlank() { // ~7500
 
 		if (sparkleTimer < 1500)
 			drawComplete();
-
-		else {
-			// if (playerAnimationID != ID_Shades)
-			// 	startAnimation(animationList[ANIM_PLAYER], ID_Shades);
-		}
 	}
 	Scroll();
 

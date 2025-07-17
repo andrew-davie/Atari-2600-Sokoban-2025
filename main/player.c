@@ -2104,8 +2104,8 @@ void adjustBoxPosition(int xOffset, int yOffset) {
 		if (!pillCount) {
 
 			FLASH(0xD4, 10);
-			if (cave < getRoomCount())
-				cave++;
+			if (Room < getRoomCount())
+				Room++;
 		}
 		//		}
 	}
@@ -2138,7 +2138,7 @@ void startBoxMoving(int dir) {
 	unsigned char *to = from + y + x;
 
 	if ((Attribute[CharToType[GET(*from)]] & ATT_PUSH) &&
-	    (Attribute[CharToType[GET(*to)]] & ATT_BLANK)) { // TODO: pill should have blank att
+	    (Attribute[CharToType[GET(*to)]] & ATT_BLANK)) {
 
 		moves++;
 		ADDAUDIO(SFX_DIRT);
@@ -2160,8 +2160,8 @@ void startBoxMoving(int dir) {
 		// 	if (!pillCount) {
 
 		// 		FLASH(0xD4, 10);
-		// 		if (cave < getRoomCount())
-		// 			cave++;
+		// 		if (Room < getRoomCount())
+		// 			Room++;
 		// 	}
 		// }
 
@@ -2177,12 +2177,10 @@ void startBoxMoving(int dir) {
 	}
 }
 
-bool joystickActive;
-
 bool vectorJoystick(Animation *animate) {
 
 	bool handled = false;
-	if (animate == animationList[ANIM_PLAYER]) { //} && joystickActive) {
+	if (animate == animationList[ANIM_PLAYER]) {
 
 		frameAdjustX = 0;
 		frameAdjustY = 0;
@@ -2226,17 +2224,12 @@ bool vectorJoystick(Animation *animate) {
 				unsigned char destType = CharToType[(*thisOffset) & 0x7F];
 
 				if (Attribute[destType] & ATT_BLANK) {
-					extern int whichHaiku;
-					whichHaiku = -1;
-					moves++;
+					//					moves++;
 					startAnimation(animate, WalkAnim[dir]);
 					handled = true;
 				}
 
 				else if (Attribute[destType] & ATT_PUSH) {
-					extern int whichHaiku;
-					whichHaiku = -1;
-
 					startAnimation(animate, PushAnim[dir]);
 					handled = true;
 				}
@@ -2255,8 +2248,6 @@ bool vectorJoystick(Animation *animate) {
 
 	return handled;
 }
-
-extern int whichHaiku;
 
 void processAnimation(Animation *animate) {
 
@@ -2308,8 +2299,6 @@ void processAnimation(Animation *animate) {
 			break;
 
 		case ACTION_JOYSTICK:
-
-			// joystickActive = *++animate->animation;
 			getJoystick();
 
 			animate->animation++;

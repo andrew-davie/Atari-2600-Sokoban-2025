@@ -12,26 +12,19 @@
 #define ENABLE_SECAM 0            /* 88 bytes */
 #define ENABLE_60MHZ_AUTODETECT 0 /* 16 bytes */
 #define ENABLE_ANIMATING_MAN 1    /* 244 bytes but man disappears */
-#define ENABLE_PERFECT 1          /* 184 bytes */
 #define ENABLE_TIMESHORT 0        /* 40 bytes - pulse player when time < 10s */
 #define ENABLE_SWIPE 1            /* 1108 bytes */
 #define ENABLE_SERIAL_NUMBER 1    /* 80 bytes (a) */
 #define ENABLE_FIREWORKS 0        /* a pixel-draw used for a fireworks starburst */
 
-// (a) and ENABLE_CAVEHINT share 'halfSize()' - enable both = 532 bytes
-
 #define ENABLE_PLAYERCELL 1
 
+// Characterset dimensions for each view...
 #define CHAR_HEIGHT 27
-
 #define CHAR_HEIGHT_HALF 18
 #define CHAR_HEIGHT_OVERVIEW 9
 
 #define SPRITE_DEPTH 23
-
-#define LEVELS 5
-#define SPEED_FLOOR 1
-#define SPEED_BASE (SPEED_FLOOR + LEVELS - 1)
 
 // range: slowest --> 7 6 5 4 3 <-- fastest
 
@@ -40,16 +33,13 @@
 #define PIXELS_PER_PF 4
 
 #define HALFWAYX 20
-#define HALFWAYY 28 /*32*/
+#define HALFWAYY 28
 #define TRILINES (CHAR_HEIGHT / 3)
 
 #define SCORE_SCANLINES 21
 #define SCANLINES (_ARENA_SCANLINES - SCORE_SCANLINES)
 
 #define _1ROW 40
-
-#define STATUS_BASE 20
-#define ICON_BASE (STATUS_BASE + 56)
 
 #define CR "\xFF"
 #define ADDRESS_OF(row) RAM + _BOARD + (row) * __BOARD_WIDTH
@@ -81,8 +71,7 @@ extern const unsigned char BitRev[];
 extern const unsigned char joyDirectBit[4];
 extern unsigned char mm_tv_type;
 
-extern int level;
-extern int cave;
+extern int Room;
 
 #if ENABLE_SHAKE
 extern int shakeTime;
@@ -96,7 +85,7 @@ extern unsigned char *boxLocation;
 enum SCHEDULE {
 	// SCHEDULE_START,
 	SCHEDULE_PROCESSBOARD,
-	SCHEDULE_UNPACK_CAVE,
+	SCHEDULE_UNPACK_Room,
 };
 
 extern enum SCHEDULE gameSchedule;
@@ -110,16 +99,7 @@ enum KERNEL_TYPE {
 	KERNEL_STATS,
 };
 
-enum PHASE {
-	PHASE_NONE = 0,
-#if ENABLE_PERFECT
-	PHASE_PERFECT = 1,
-#endif
-	PHASE_TIME = 2,
-	PHASE_GEMS = 3,
-	PHASE_SWIPE = 4,
-	PHASE_END = 5
-};
+enum PHASE { PHASE_NONE = 0, PHASE_TIME = 2, PHASE_GEMS = 3, PHASE_SWIPE = 4, PHASE_END = 5 };
 extern enum PHASE exitPhase;
 
 extern int frame;
@@ -131,10 +111,6 @@ extern bool waitRelease;
 extern bool rageQuit;
 extern unsigned int sparkleTimer;
 extern int perfectBonus;
-
-#if ENABLE_PERFECT
-extern int scoreMultiplier;
-#endif
 
 extern int exitMode;
 

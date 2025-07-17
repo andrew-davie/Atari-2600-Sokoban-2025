@@ -26,7 +26,7 @@
 int actualScore;
 
 enum SCORE_MODE scoreCycle, nextScoreCycle;
-int guaranteedViewTime, nextScoreTime;
+int guaranteedViewTime;
 
 static unsigned char scoreLineNew[10];
 
@@ -35,11 +35,9 @@ static unsigned char scoreLineOld[10];
 #endif
 
 static unsigned char scoreLineColour[10];
-int whichHaiku;
 
 void initScore() {
 
-	whichHaiku = rangeRandom(4);
 	actualScore = 0;
 	guaranteedViewTime = 1;
 }
@@ -72,7 +70,6 @@ const int base[] = {
 void setScoreCycle(enum SCORE_MODE cycle) {
 
 	nextScoreCycle = cycle;
-	nextScoreTime = 150;
 
 	if (guaranteedViewTime > 50)
 		guaranteedViewTime = 50;
@@ -186,34 +183,6 @@ unsigned char *drawDecimal2(unsigned char *buffer, unsigned char *colour_buffer,
 	return buffer;
 }
 
-// void drawCaveLevel() {
-
-//     scoreLineNew[2] = LETTER('C');
-//     scoreLineNew[3] = LETTER('A');
-//     scoreLineNew[4] = LETTER('V');
-//     scoreLineNew[5] = LETTER('E');
-
-//     scoreLineNew[7] = LETTER('A' + cave);
-//     scoreLineNew[8] = level + 1;
-
-//     scoreLineColour[2] = scoreLineColour[3] = scoreLineColour[4] = scoreLineColour[5] =
-//     RGB_YELLOW;
-
-//     scoreLineColour[7] = scoreLineColour[8] = RGB_AQUA;
-// }
-
-int speedCycle;
-void drawSpeedRun() {
-
-	speedCycle -= 4;
-	for (int i = 0; i < 8; i++) {
-		scoreLineNew[i + 1] = LETTER("SOKOBAN"[i]);
-		scoreLineColour[i + 1] = ((speedCycle + i * 0x30) >> 8) & 7;
-	}
-
-	drawDecimal2(scoreLineNew + 9, scoreLineColour + 9, ((speedCycle + 10 * 0x30) >> 8) & 7, 2);
-}
-
 void drawMoves() {
 	drawDecimal2(scoreLineNew + 7, scoreLineColour + 7, RGB_YELLOW, pillCount);
 	drawDecimal2(scoreLineNew + 2, scoreLineColour + 2, RGB_YELLOW, moves);
@@ -281,13 +250,6 @@ void drawScore() {
 			scoreCycle = nextScoreCycle;
 			guaranteedViewTime = 75;
 		}
-
-		//     // occasionally show score when idle
-		//     if (idleTimer > IDLE_TIME) {
-		//         idleTimer = 0;
-		//         setScoreCycle(SCORELINE_SCORE);
-		//     }
-		// }
 	}
 
 	if (!exitMode && !manDead && time60ths < 0xA00) {
@@ -308,137 +270,7 @@ void drawScore() {
 
 	switch (scoreCycle) {
 	case SCORELINE_TIME:
-
-		// if (showRoomCounter) {
-
-		// 	for (int i = 0; i < 4; i++) {
-		// 		scoreLineNew[i + 1] = LETTER("ROOM"[i]);
-		// 		scoreLineColour[i + 1] = 4;
-		// 	}
-
-		// 	drawDecimal2(scoreLineNew + 6, scoreLineColour + 6, 2, theRoomNumber);
-
-		// 	showRoomCounter--;
-		// }
-
-		// else
-
 		drawMoves();
-		//		drawSpeedRun();
-		//		drawTime();
-
-		/*		static int haikuWord = 0;
-		        static int haikuTime = 50;
-
-		        char *haiku[5][3][6] = {
-		            {{" ", "CRATES", "LIKE", "TOMBS", "OF", "THOUGHT"},
-		             {" ", "YOU", "DISTURB", "FORGOTTEN", "THINGS", 0},
-		             {" ", "NOTHING", "TURNS", "BUT", "YOU", 0}},
-
-		            {
-		                {
-		                    " ",
-		                    "BOXES",
-		                    "SEEK",
-		                    "THE",
-		                    "DARK",
-		                    " ",
-		                },
-		                {
-		                    " ",
-		                    "CORNERS",
-		                    "CARRY",
-		                    "OLD",
-		                    "SECRETS",
-		                    " ",
-		                },
-		                {
-		                    " ",
-		                    "YOU",
-		                    "COMPLETE",
-		                    "THE",
-		                    "RITUAL",
-		                    " ",
-		                },
-		            },
-
-		            {
-		                {
-		                    "A",
-		                    "SINGLE",
-		                    "MOVE",
-		                    "LOST",
-		                    " ",
-		                    " ",
-		                },
-		                {
-		                    "AND",
-		                    "THE",
-		                    "ROOM",
-		                    "STANDS",
-		                    "FOREVER",
-		                    " ",
-		                },
-		                {
-		                    "",
-		                    "WAITING",
-		                    "FOR",
-		                    "UNDO",
-		                    " ",
-		                    " ",
-		                },
-		            },
-
-		            {
-		                {
-		                    "WHEN",
-		                    "THE",
-		                    "ROOM",
-		                    "IS",
-		                    "STILL",
-		                    " ",
-		                },
-		                {
-		                    "AND",
-		                    "EVERYTHING",
-		                    "IS",
-		                    "IN",
-		                    "PLACE",
-		                    " ",
-		                },
-		                {
-		                    " ",
-		                    "THE",
-		                    "DOOR",
-		                    "MAY",
-		                    "OPEN",
-		                    " ",
-		                },
-		            },
-		        };
-
-		#define SYNC(a, b) {a, a + b, a + 2 * b, a + 3 * b, a + 4 * b, a + 5 * b},
-
-		        static int haikuX[3][6] = {SYNC(180, 5) SYNC(350, 5) SYNC(520, 5)};
-		        static int wordColour = 0;
-
-		        if (whichHaiku > 0) {
-		            for (int i = 0; i < 3; i++) {
-		                wordColour++;
-		                for (int l = 0; l < 6; l++) {
-
-		                    if (haikuX[i][l]) {
-		                        if (haikuX[i][l]-- < 120) {
-		                            if (haiku[whichHaiku][i][l])
-		                                drawWord(haiku[whichHaiku][i][l], 40 + l * 23,
-		                                         (wordColour >> 6) & 7);
-		                        }
-		                    }
-		                }
-		            }
-		        }
-		            */
-
 		break;
 	case SCORELINE_SCORE:
 
@@ -448,12 +280,6 @@ void drawScore() {
 	case SCORELINE_LIVES:
 		drawTime();
 		drawLives();
-		break;
-	// case SCORELINE_CAVELEVEL:
-	//     drawCaveLevel();
-	//     break;
-	case SCORELINE_SPEEDRUN:
-		drawSpeedRun();
 		break;
 
 	default:

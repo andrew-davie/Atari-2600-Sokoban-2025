@@ -227,9 +227,7 @@ void setPalette() { // 4148 ?!  2176! 2450 (3337)
 void chooseColourScheme() {
 
 	int paletteBase = (mm_tv_type == NTSC) ? 0 : __PALETTE_COUNT;
-	//    const unsigned char *c = (const unsigned char *)__COLOUR_POOL;
 	currentPalette = rangeRandom(__PALETTE_COUNT) + paletteBase;
-	// currentPalette = cave * 5 + level + 16;
 	currentPalette <<= 2;
 }
 

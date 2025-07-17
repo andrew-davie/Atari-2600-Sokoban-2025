@@ -10,25 +10,17 @@
 #define DIGIT_EXCLAMATION 11
 #define DIGIT_PLUS 12
 #define DIGIT_MOVES 13
-#define DIGIT_CAVE 20
-#define DIGIT_LEVEL 27
+#define DIGIT_Room 20
 #define DIGIT_ALPHABET 14
-
-#define IDLE_TIME 100
 
 #define ENABLE_COLOUR_SCORE 1
 
 enum SCORE_MODE {
-	// SCORELINE_CAVELEVEL,
 	SCORELINE_START,
-	SCORELINE_SPEEDRUN,
-	SCORELINE_TIME, // = SCORELINE_START,
+	SCORELINE_TIME,
 	SCORELINE_SCORE,
 	SCORELINE_LIVES,
 	SCORELINE_END,
-
-	//    SCORELINE_BLANK,
-	//    SCORELINE_COLOUREDIT,
 };
 
 #define LETTER(a) ((a) - 'A' + DIGIT_ALPHABET)
@@ -40,7 +32,6 @@ extern const int pwr[];
 
 extern int actualScore;
 extern int guaranteedViewTime;
-extern int speedCycle;
 
 void drawBigDigit(int digit, int pos, int offset, int colour);
 void drawLives();

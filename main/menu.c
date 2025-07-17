@@ -64,7 +64,7 @@ static int pushFrame;
 int frame;
 static int pushCount;
 static unsigned int menuLine;
-static int caveUnpackComplete;
+static int RoomUnpackComplete;
 unsigned int detectedPeriod;
 
 int thumbnailSpeed;
@@ -343,22 +343,6 @@ const unsigned char wordDisplay[] = {
 
 
 
-// const unsigned char andrewDavie[2][36] = {
-// {   _____XXX, ________, ________, ________, ________, ________,
-//     ___XX___, X_______, ________, ________, ________, ________,
-//     __X_____, ________, ________, ________, ______XX, XXX_____,
-//     _X______, ________, ________, ________, ____XX__, ___X____,
-//     _X______, ________, __X_____, ________, ____X___, ____X___,
-//     X_______, __X_____, __X_____, ________, ____X___, ____X___,
-// },{
-//     X_______, __X_____, __X___X_, _X__X___, _X__X___, ____X___,
-//     X_______, _XX_XX__, _XX__X__, X_X_X_X_, _X__X___, ____X___,
-//     X_______, _XX_X_X_, X_X_X___, XX__XXX_, X___X___, ___X____,
-//     X_______, X_XXX_XX, X_XXX___, _XX__X_X, ____X___, __X_____,
-//     _X____XX, ___X____, _XX_____, ________, ________, XX______,
-//     __XXXX__, ________, ________, ________, ________, ________,
-// },
-// };
 
 
 #if ENABLE_EASTER_MYNAME
@@ -384,6 +368,24 @@ const unsigned char andrewDavie[] = {
 
 
 #endif
+
+
+const unsigned char andrewDavie[2][36] = {
+{   _____XXX, ________, ________, ________, ________, ________,
+    ___XX___, X_______, ________, ________, ________, ________,
+    __X_____, ________, ________, ________, ______XX, XXX_____,
+    _X______, ________, ________, ________, ____XX__, ___X____,
+    _X______, ________, __X_____, ________, ____X___, ____X___,
+    X_______, __X_____, __X_____, ________, ____X___, ____X___,
+},{
+    X_______, __X_____, __X___X_, _X__X___, _X__X___, ____X___,
+    X_______, _XX_XX__, _XX__X__, X_X_X_X_, _X__X___, ____X___,
+    X_______, _XX_X_X_, X_X_X___, XX__XXX_, X___X___, ___X____,
+    X_______, X_XXX_XX, X_XXX___, _XX__X_X, ____X___, __X_____,
+    _X____XX, ___X____, _XX_____, ________, ________, XX______,
+    __XXXX__, ________, ________, ________, ________, ________,
+},
+};
 
 // clang-format on
 
@@ -441,11 +443,7 @@ void drawSmallString(int y, const unsigned char *smallText, int colour) {
 	drawSmallProxy(convertColour(colour), y, smallText);
 }
 
-// int flashTime2 = 0;
-
-// clang-format off
-
-char showCave[] = {"   "};
+char showRoom[] = {"   "};
 
 // const char TV[][6] = {
 
@@ -459,16 +457,12 @@ char showCave[] = {"   "};
 
 const char Level[][6] = {
 
-    {"NORMAL"},
-    {"MEDIUM"},
-    {"HARD>>"},
-    {"EXPERT"},
-    {"SUPER>"},
+    {"NORMAL"}, {"MEDIUM"}, {"HARD>>"}, {"EXPERT"}, {"SUPER>"},
 };
 
 const char displayOption[][6] = {
-    { "OFF>>>"},
-    { "ON>>>>"},
+    {"OFF>>>"},
+    {"ON>>>>"},
 };
 
 // clang-format on
@@ -513,39 +507,31 @@ void handleMenuScreen() {
 
 	case 0: {
 
-		showCave[0] = '0';
-		showCave[1] = '0';
-		showCave[2] = '0';
+		showRoom[0] = '0';
+		showRoom[1] = '0';
+		showRoom[2] = '0';
 
-		int ct = cave;
+		int ct = Room;
 		while (ct >= 100) {
-			showCave[0]++;
+			showRoom[0]++;
 			ct -= 100;
 		}
 
 		while (ct >= 10) {
-			showCave[1]++;
+			showRoom[1]++;
 			ct -= 10;
 		}
 
-		showCave[2] = '0' + ct;
+		showRoom[2] = '0' + ct;
 
-		dLine = showCave;
+		dLine = showRoom;
 
 	} break;
 
 	case 1:
-		// dLine = Level[level];
-		// break;
-
 	case 2:
 		dLine = displayOption[enableICC];
 		break;
-
-		// case OPTION_SYSTEM: {
-		//     dLine = TV[menuLineTVType];
-		//     break;
-		// }
 	}
 
 	if (dLine) {
@@ -557,8 +543,8 @@ void handleMenuScreen() {
 		drawString(0, y + 8, dLine, colour);
 	}
 
-	// drawSmallString(170, andrewDavie[0], 0xC);
-	// drawSmallString(176, andrewDavie[1], 0xC);
+	drawSmallString(170, andrewDavie[0], 0xC);
+	drawSmallString(176, andrewDavie[1], 0xC);
 
 #if ENABLE_SERIAL_NUMBER
 
@@ -606,7 +592,7 @@ void initKernel(int kernel) {
 
 	killRepeatingAudio();
 
-	gameSchedule = SCHEDULE_UNPACK_CAVE;
+	gameSchedule = SCHEDULE_UNPACK_Room;
 
 	// ARENA_COLOUR = 1;
 
@@ -663,21 +649,12 @@ void initKernel(int kernel) {
 		//     p[i] = 0;
 
 		mustWatchDelay = MUSTWATCH_STATS;
-		caveUnpackComplete = false;
+		RoomUnpackComplete = false;
 		thumbnailSpeed = -10;
 
-		// decode(cave);
+		// decode(Room);
 		setBackgroundPalette(EXTERNAL(__COLOUR_POOL) + currentPalette);
 		initCharAnimations();
-		initIconScreen();
-
-		// drawString(1, STATUS_BASE, "CAVE", bgPalette[0]);
-
-		// int colour = convertColour(((fgPalette[0] + 0x80) & 0xF0) | 6);
-
-		// doubleSize(3, STATUS_BASE + 17, level + 30, colour);
-		// doubleSize(1, STATUS_BASE + 17, cave + 3, colour);
-
 		break;
 	}
 
@@ -727,83 +704,6 @@ void MenuOverscan() {
 		break;
 
 	case KERNEL_STATS: // overscan
-
-		//		interleaveColour();
-
-		//        if (!haltAnimations) {
-		//		processCharAnimations();
-		//    haltAnimations = true;
-		//      }
-
-		//		initIconPalette();
-		//		drawIconScreen(0, 8);
-
-		// if (!caveUnpackComplete) {
-
-		//     if (sound_volume > 5)
-		//         sound_volume -= 6;
-
-		//     if (++thumbnailSpeed > 1) {
-		//         thumbnailSpeed = 0;
-		//         caveUnpackComplete = !decodeExplicitData(true);
-		//     }
-		// }
-
-		// else {
-
-		// colr++;
-
-		// #if ENABLE_CAVEHINT
-
-		// 		int x = 0;
-		// 		int y = STATUS_BASE + 162 - 35;
-		// #if ENABLE_MULTIHINT
-		// 		const unsigned char *name = caveList[cave].hint[level];
-		// #else
-		// 		const unsigned char *name = caveList[cave].hint;
-		// #endif
-		// 		unsigned char ch;
-
-		// 		static int sind = 0;
-		// 		sind++;
-
-		// 		//        int target = sinoid[(sind >> 5) & 15] << 12;
-
-		// 		unsigned char c = convertColour(0x28);
-		// 		for (int line = 0; line < 50; line++) {
-		// 			*(RAM + _BUF_MENU_COLUP0 + y + line - 1) = c;
-		// 			for (int col = 0; col < 6; col++) {
-		// 				*(RAM + _BUF_MENU_GRP0A + _ARENA_SCANLINES * col + line + y) = 0;
-		// 			}
-		// 		}
-
-		// 		int sin = (sind * 11) >> 5;
-
-		// 		do {
-
-		// 			int size = 0;
-		// 			const unsigned char *n2 = name;
-		// 			while ((ch = *n2++) != NEW_LINE && ch)
-		// 				size += halfSize(x, y, ch, false);
-
-		// 			x = (49 - size) >> 1;
-
-		// 			while ((ch = *name++) != NEW_LINE && ch) {
-		// 				int yoff = (EXTERNAL(__sinoid)[(y + sin) & 15] /** target*/); //>> 16;
-		// 				sin += 2;
-		// 				x += halfSize(x, y + yoff, ch, true);
-		// 			}
-
-		// 			y += 16;
-		// 		} while (ch && *name);
-		// #endif
-
-		// for (int i = 0; i < 10; i++) {
-		// 	unsigned char *cell = RAM + _BOARD + 40 + rangeRandom(800);
-		// 	if (Attribute[CharToType[GET(*cell)]] & ATT_DIAMOND)
-		// 		phaseshiftDiamond(cell);
-		// }
-
 		break;
 
 	default:
@@ -829,44 +729,35 @@ int setBounds(int value, int max) {
 void resetMode() {
 
 	gameFrame = 16;
-	//    ADDAUDIO(SFX_DRIP);
-
-	// mustWatchDelay = MUSTWATCH_MENU;
 	waitRelease = true;
 
 	pushCount = (rndX & 31) | 32;
 }
 
-// clang-format off
-
-
 void drawICCScreen(const unsigned char *icc) {
 
 	drawPalette(iCC_title_colour);
-	icc += 3;
 
 	unsigned char *pf1L = RAM + _BUF_MENU_PF1_LEFT;
 	for (int line = 0; line < _ARENA_SCANLINES << 2; line += 3) {
 
+		for (int i = 0; i < 3; i++) {
 
-			for (int i = 0; i < 3; i++) {
+			*pf1L++ = icc[roller];
 
-				*pf1L++ = icc[roller];
-
-				if (++roller > 2)
-					roller = 0;
-			}
-			icc += 3;
+			if (++roller > 2)
+				roller = 0;
+		}
+		icc += 3;
 	}
 }
 
 void handleMenuVB() {
 
-	if (
-	    !waitRelease && !(INPT4 & 0x80)) {
+	if (!waitRelease && !(INPT4 & 0x80)) {
 
 		ADDAUDIO(SFX_UNCOVERED);
-		// waitRelease = true;
+
 		initNewGame();
 		initKernel(KERNEL_STATS);
 		return;
@@ -879,63 +770,57 @@ void handleMenuVB() {
 		waitRelease = true;
 	}
 
-		drawICCScreen(iCC_title);
-		setTitleMarqueeColours();
-        
+	drawICCScreen(iCC_title);
+	setTitleMarqueeColours();
+
 #if ENABLE_ANIMATING_MAN
-		doMan();
+	doMan();
 #endif
 
-		for (int i = 0; i < 6; i++)
-			if (!RGB[i] || !rangeRandom(32))
-				RGB[i] =
+	for (int i = 0; i < 6; i++)
+		if (!RGB[i] || !rangeRandom(32))
+			RGB[i] =
 #if ENABLE_SECAM
-				    (mm_tv_type == SECAM) ? (rangeRandom(7) + 1) << 1 :
+			    (mm_tv_type == SECAM) ? (rangeRandom(7) + 1) << 1 :
 #endif
-				                          (LUMINANCE_TITLE + rangeRandom(8)) | (getRandom32() << 4);
+			                          (LUMINANCE_TITLE + rangeRandom(8)) | (getRandom32() << 4);
 
-		int negJoy = (SWCHA >> 4) ^ 0xF;
+	int negJoy = (SWCHA >> 4) ^ 0xF;
 
-		if (!waitRelease) {
+	if (!waitRelease) {
 
-			int dir = yInc[negJoy];
+		int dir = yInc[negJoy];
 
-			if (dir)
-				menuLine = setBounds(menuLine + dir, sizeof(smallWord) / sizeof(smallWord[0]) - 1);
+		if (dir)
+			menuLine = setBounds(menuLine + dir, sizeof(smallWord) / sizeof(smallWord[0]) - 1);
 
-			else {
+		else {
 
-				dir = xInc[negJoy];
-				if (dir) {
+			dir = xInc[negJoy];
+			if (dir) {
 
-					ADDAUDIO(SFX_SCORE);
-					switch (menuLine) {
+				ADDAUDIO(SFX_SCORE);
+				switch (menuLine) {
 
-					case 0:
+				case 0:
 
-						cave = setBounds(cave + dir, getRoomCount() - 1); //tmpcaveCount - 1);
-						// level = 4;
+					Room = setBounds(Room + dir, getRoomCount() - 1);
+					break;
 
-						break;
-
-					case 1:
-					case 2:
-						enableICC = !enableICC;
-						break;
-
-						// menuLineTVType = setBounds(menuLineTVType + dir, 3);
-						// mm_tv_type = TV_TYPE = menuLineTVType;
-						// break;
-					}
+				case 1:
+				case 2:
+					enableICC = !enableICC;
+					break;
 				}
 			}
-
-			if (dir) {
-				resetMode();
-				mustWatchDelay = MUSTWATCH_MENU;
-				ADDAUDIO(SFX_BLIP);
-			}
 		}
+
+		if (dir) {
+			resetMode();
+			mustWatchDelay = MUSTWATCH_MENU;
+			ADDAUDIO(SFX_BLIP);
+		}
+	}
 }
 
 void MenuVerticalBlank() {
@@ -952,39 +837,8 @@ void MenuVerticalBlank() {
 
 	case KERNEL_STATS: { // VBlank
 
-		// drawString(1, STATUS_BASE, "CAVE", bgPalette[0]);
-
-		// int colour = convertColour(
-		//     0x28); //((rangeRandom(15) + 1) << 4) | 6); //((fgPalette[0] + 0x80) & 0xF0) | 6);
-
-		// doubleSize(3, STATUS_BASE + 17, level + 30, colour);
-		// doubleSize(1, STATUS_BASE + 17, cave + 3, colour);
-
-		// if (sound_volume && !caveUnpackComplete)
-		// 	sound_volume--;
-
-//		if (!(INPT4 & 0x80) && !waitRelease) {
-			initKernel(KERNEL_GAME); //<-- goes overtime (264)
-			return;
-//		}
-
-		// drawPalette(EXTERNAL(__COLOUR_POOL) + currentPalette);
-		// drawIconScreen(8, 22);
-
-		// if (!caveUnpackComplete) {
-
-		// 	if (sound_volume > 5)
-		// 		sound_volume -= 6;
-
-		// 	if (++thumbnailSpeed > 1) {
-		// 		thumbnailSpeed = 0;
-		// 		caveUnpackComplete = !decodeExplicitData(true);
-		// 	}
-		// }
-
-		// if (handleSelectReset())
-		// 	return; // rage quit
-
+		initKernel(KERNEL_GAME); //<-- goes overtime (264)
+		return;
 		break;
 	}
 
@@ -1004,15 +858,6 @@ void MenuVerticalBlank() {
 		handleMenuVB();
 		break;
 	}
-
-	// if (KERNEL == KERNEL_STATS) {
-	// 	// clear behind the thumbnail
-	// 	unsigned char *gfx = RAM + _BUF_MENU_PF2_RIGHT;
-	// 	for (int line = ICON_BASE; line < ICON_BASE + decodingRow * 3 + 3; line++) {
-	// 		gfx[line] = 0;
-	// 		gfx[line + (_BUF_MENU_PF1_RIGHT - _BUF_MENU_PF2_RIGHT)] &= 0xF0;
-	// 	}
-	// }
 }
 
 void doubleSize(int x, int y, int letter, unsigned char colour) {
@@ -1038,7 +883,6 @@ void doubleSize(int x, int y, int letter, unsigned char colour) {
 	}
 }
 
-// #if ENABLE_CAVEHINT | ENABLE_SERIAL_NUMBER
 int halfSize(int x, int y, int letter, bool render) {
 
 	int col = x >> 3;
@@ -1088,6 +932,5 @@ int halfSize(int x, int y, int letter, bool render) {
 
 	return width;
 }
-// #endif
 
 // EOF
