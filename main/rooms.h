@@ -1,9 +1,18 @@
 #include <stdbool.h>
 
-extern unsigned char *room[];
+extern const unsigned char *room[];
 extern int pillCount;
 
-void unpackRoom(int *x, int *y, bool dryRun, int room);
+typedef struct {
+	int x;
+	int y;
+	int width;
+	int height;
+} BOUNDARY;
+
+extern BOUNDARY boundary;
+
+void unpackRoom(BOUNDARY *boundary, bool dryRun, int room);
 int getRandomRoomNumber();
 int getRoomCount();
 

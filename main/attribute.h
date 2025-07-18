@@ -32,6 +32,7 @@ enum ObjectType {
 	TYPE_BOX_RTOL_RIGHT, // 18
 	TYPE_BOX_LOCKED,     // 19
 	TYPE_BOX_CORRECT,    // 20
+	TYPE_BOX_DEADLOCKED, // 21
 
 	TYPE_MAX
 };
@@ -86,6 +87,7 @@ enum ChName {
 	CH_BOX_LOCKED,        // 42
 	CH_BOX_LOCKED2,       // 43
 	CH_BOX_CORRECT,       // 44
+	CH_BOX_DEADLOCK,      // 45
 
 	CH_MAX
 };
@@ -97,6 +99,7 @@ enum ATTRIBUTE_BITS {
     // used in Attribute[] to flag object's action/reaction to situations
 
     ATT_ROLL                    = 0b00000000000000000000000000000001, // ROL
+    ATT_BOX                     = 0b00000000000000000000000000000010, // BOX
     ATT_EXPLODABLE              = 0b00000000000000000000000000000100, // XPD
     ATT_PERMEABLE               = 0b00000000000000000000000000001000, // PER
     ATT_BLANK                   = 0b00000000000000000000000000010000, // SPC
@@ -121,6 +124,7 @@ enum ATTRIBUTE_BITS {
 
 enum AttributeAlias {
 
+	BOX = (ATT_BOX),                  // box or box on target
 	ROL = (ATT_ROLL),                 // rounded object - things roll off me
 	XPD = (ATT_EXPLODABLE),           // can be destroyed by explosion
 	PER = (ATT_PERMEABLE),            // player can move through object

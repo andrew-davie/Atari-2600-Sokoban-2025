@@ -6,6 +6,7 @@
 
 #include "player.h"
 #include "sound.h"
+#include "undo.h"
 
 // clang-format on
 
@@ -17,9 +18,6 @@ int frameAdjustY;
 enum FaceDirection manFaceDirection;
 bool manDead;
 static bool handled;
-
-int undoCount;
-unsigned char undo[1000];
 
 enum DIR {
 	DIR_UP = 1,
@@ -105,10 +103,7 @@ void initMan() {
 	manFaceDirection = FACE_RIGHT;
 
 	startAnimation(animationList[ANIM_PLAYER], ID_Stand);
-
-	undoCount = 0;
-	for (int i = 0; i < sizeof(undo); i++)
-		undo[i] = 0;
+	initUndo();
 }
 
 const signed char dirOffset[] = {-1, 1, -_1ROW, +_1ROW};

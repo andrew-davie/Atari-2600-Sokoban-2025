@@ -71,6 +71,7 @@ extern const unsigned char joyDirectBit[4];
 extern unsigned char mm_tv_type;
 
 extern int Room;
+extern bool deadlock;
 
 #if ENABLE_SHAKE
 extern int shakeTime;

@@ -6,9 +6,9 @@
 #include "defines_from_dasm_for_c.h"
 
 #include "defines.h"
-
 #include "main.h"
 #include "menu.h"
+#include "undo.h"
 
 #include "animations.h"
 #include "atarivox.h"
@@ -57,6 +57,7 @@ int trig;
 int roomWidth, roomHeight;
 
 unsigned char *boxLocation;
+bool deadlock = false;
 
 bool lifeInit;
 bool rageQuit;
@@ -65,6 +66,7 @@ int millingTime; // negative = expired
 int time60ths;
 
 bool waitRelease;
+BOUNDARY boundary;
 
 unsigned char mm_tv_type; // 0 = NTSC, 1 = PAL, 2 = PAL-60, 3 = SECAM... start @ NTSC always
 
@@ -210,7 +212,7 @@ void initNextLife() {
 
 	exitPhase = PHASE_NONE;
 	roomCompleted = false;
-
+	undoing = 0;
 	boxLocation = 0;
 
 	exitMode = 0;
@@ -254,15 +256,20 @@ void scheduleUnpackRoom() {
 	// Decode the room data
 	// First dummy-unpack to get dimensions of room, then center and unpack
 
+	boundary.x = 0;
+	boundary.y = 0;
+
 	showRoomCounter = 100;
-	unpackRoom(&roomWidth, &roomHeight, true, Room);
+	unpackRoom(&boundary, true, Room);
 
-	int x = (__BOARD_WIDTH - roomWidth) >> 1;
-	int y = (__BOARD_DEPTH - roomHeight) >> 1;
+	boundary.x = (__BOARD_WIDTH - boundary.width) >> 1;
+	boundary.y = (__BOARD_DEPTH - boundary.height) >> 1;
 
-	unpackRoom(&x, &y, false, Room);
+	unpackRoom(&boundary, false, Room);
 
 #if ENABLE_SWIPE
+
+	int x, y;
 
 	clearMask(0);
 	getPlayerScreenPosition(&x, &y, displayMode);
@@ -335,12 +342,13 @@ void checkExitWarning() {
 				displayMode = DISPLAY_NORMAL;
 				FLASH(0x44, 6);
 				waitRelease = true;
+				triggerPressCounter = 0;
 			}
 
 			else {
 
 				scoreCycle = SCORELINE_TIME;
-				FLASH(0xD2, 12);
+				FLASH(0xD6, 10);
 				triggerPressCounter = 0;
 				waitRelease = true;
 			}
@@ -401,7 +409,6 @@ void drawOverscanThings() {
 		}
 
 		else {
-
 			drawScreen();
 			drawPlayerSprite();
 		}
@@ -662,27 +669,37 @@ void triggerStuff() {
 
 		if (!triggerNextLife) {
 
-			if (scoreCycle != SCORELINE_UNDO && !exitMode && triggerOffCounter &&
-			    triggerOffCounter < DOUBLE_TAP && triggerPressCounter < TOOLONG) {
+			if (triggerOffCounter < DOUBLE_TAP && triggerPressCounter < TOOLONG &&
+			    triggerOffCounter) {
 
-				// Handle double-click view mode switching
+				if (scoreCycle != SCORELINE_UNDO) {
+					if (!exitMode) {
 
-				//            ADDAUDIO(SFX_BLIP);
+						// Handle double-click view mode switching
 
-				switch (displayMode) {
-				case DISPLAY_NORMAL:
-				case DISPLAY_HALF: {
-					displayMode = DISPLAY_OVERVIEW;
-					trig = 0;
-					break;
+						//            ADDAUDIO(SFX_BLIP);
+
+						switch (displayMode) {
+						case DISPLAY_NORMAL:
+						case DISPLAY_HALF: {
+							displayMode = DISPLAY_OVERVIEW;
+							trig = 0;
+							break;
+						}
+						default:
+							displayMode = DISPLAY_NORMAL;
+							break;
+						}
+
+						triggerPressCounter = 0;
+						waitRelease = true;
+					}
+				} else {
+
+					undoLastPush();
+					triggerPressCounter = 0;
+					waitRelease = true;
 				}
-				default:
-					displayMode = DISPLAY_NORMAL;
-					break;
-				}
-
-				triggerPressCounter = 0;
-				waitRelease = true;
 			} else {
 
 				triggerPressCounter++;
@@ -721,15 +738,18 @@ void triggerStuff() {
 				}
 
 			} else {
-				FLASH(0x92, 2);
-
-				// TODO: here, we do an undo-move
+				undoing = UNDO_SPEED;
 			}
 			triggerPressCounter = 0;
 			triggerOffCounter = 0;
 		}
 		triggerOffCounter++;
 	}
+
+	if (undoing)
+		if (!--undoing)
+			if (undoLastMove())
+				undoing = UNDO_SPEED;
 }
 
 void drawComplete() { // 32k
@@ -811,10 +831,13 @@ void GameVerticalBlank() { // ~7500
 
 			}
 
-			else
+			else {
 				drawHalfScreen(1);
+			}
 
 			drawScore();
+			if (deadlock)
+				drawWord("DEADLOCK", 30, 6);
 		}
 	}
 
@@ -886,8 +909,8 @@ void setupBoard() {
 
 	activated = isActive[++selectorCounter & 3];
 
-	boardCol = -1;
-	boardRow = 0;
+	boardCol = -1; // boundary.x - 1;
+	boardRow = 0;  // boundary.y;
 
 	me = RAM + _BOARD - 1;
 }
@@ -898,6 +921,59 @@ void pulse(unsigned char *cell, int baseChar) {
 
 	unsigned char dType = ((rndX & 0xFF) * 4) >> 8;
 	*cell = baseChar + dType;
+}
+
+// Check if a position is a wall
+bool is_wall(unsigned char *p) { return *p == CH_BRICKWALL; }
+
+// Check if a position is a goal
+bool is_goal(unsigned char *p) { return Attribute[CharToType[*p]] & ATT_TARGETLIKE; }
+
+// Check if a position has a box NOT on a target
+bool is_box(unsigned char *p) {
+
+	int type = CharToType[*p];
+	return (type != TYPE_BOX_LOCKED && type != TYPE_BOX_CORRECT &&
+	        Attribute[CharToType[*p]] & ATT_BOX);
+}
+
+// Detect static corner deadlock
+void is_corner_deadlock() {
+	// if (is_goal(y, x))
+	// 	return false; // goals are allowed
+	bool wall_up = is_wall(me - _1ROW);
+	bool wall_down = is_wall(me + _1ROW);
+	bool wall_left = is_wall(me - 1);
+	bool wall_right = is_wall(me + 1);
+
+	bool thisDead =
+	    // Any 90° corner
+	    (wall_up && wall_left) || (wall_up && wall_right) || (wall_down && wall_left) ||
+	    (wall_down && wall_right);
+
+	if (thisDead) {
+		*me = CH_BOX_DEADLOCK;
+		deadlock = true;
+	}
+}
+
+// Detect 2x2 box cluster deadlock
+void is_box_block() {
+
+	bool thisDead = is_box(me + _1ROW) && is_box(me + 1) && is_box(me + _1ROW + 1);
+
+	if (thisDead) {
+		*(me + _1ROW) = CH_BOX_DEADLOCK;
+		*(me + _1ROW + 1) = CH_BOX_DEADLOCK;
+		*(me + 1) = CH_BOX_DEADLOCK;
+		*(me) = CH_BOX_DEADLOCK;
+		deadlock = true;
+	}
+}
+
+void checkDeadlocks() {
+	is_corner_deadlock();
+	is_box_block();
 }
 
 bool processType() {
@@ -1012,7 +1088,13 @@ void processBoardSquares() {
 		if (!(creature & FLAG_THISFRAME)) {
 
 			type = CharToType[creature];
+
 			if (Attribute[type] & activated) {
+
+				//				if (displayMode != DISPLAY_OVERVIEW) {
+				if ((Attribute[type] & ATT_BOX) && !(Attribute[type] & ATT_TARGETLIKE))
+					checkDeadlocks();
+				//				}
 
 				if (!processType())
 					processCreature();

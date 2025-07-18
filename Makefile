@@ -67,7 +67,8 @@ SRCS =  animations.c \
 		score.c \
 		scroll.c \
 		sound.c \
-		swipe.c
+		swipe.c \
+		undo.c
 
 OBJS = $(SRCS:.c=.o)
 DEPS = $(SRCS:.c=.d)

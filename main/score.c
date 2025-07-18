@@ -11,6 +11,7 @@
 #include "rooms.h"
 #include "score.h"
 #include "sound.h"
+#include "undo.h"
 
 // #define RGB_BLACK       0
 #define RGB_RED 1
@@ -282,12 +283,14 @@ void drawScore() {
 
 	case SCORELINE_UNDO: {
 
-		int p = 3;
+		int p = 2;
 		char *undo = "UNDO";
 		for (char *c = undo; *c; c++) {
 			scoreLineNew[p] = LETTER(*c);
 			scoreLineColour[p++] = RGB_RED;
 		}
+
+		drawDecimal2(scoreLineNew + 7, scoreLineColour + 7, RGB_RED, undoTop);
 
 	} break;
 

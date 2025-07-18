@@ -1162,6 +1162,7 @@ const CSET charSet[CH_MAX] = {
     { char_box_locked,        smallchar_box_locked,        },// 42
     { char_box_locked2,       smallchar_box_locked2,       },// 43
     { char_box_correct,       smallchar_box_correct,       },// 44
+    { char_box_UtoD_top_0,             smallchar_box, } // 45
 
 };
 

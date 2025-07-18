@@ -17,6 +17,7 @@
 #include "rooms.h"
 #include "score.h"
 #include "sound.h"
+#include "undo.h"
 
 unsigned char pillFlagFrom, pillFlagTo;
 
@@ -2090,7 +2091,8 @@ void adjustBoxPosition(int xOffset, int yOffset) {
 	bool lock = (pillFlagTo == CH_PILL1 || pillFlagTo == CH_PILL_1);
 
 	// then box
-	*(boxLocation + yOffset * _1ROW + xOffset) = lock ? CH_BOX_CORRECT : CH_BOX;
+	unsigned char *to = boxLocation + yOffset * _1ROW + xOffset;
+	*to = lock ? CH_BOX_CORRECT : CH_BOX;
 
 	if (lock) {
 		startCharAnimation(TYPE_BOX_CORRECT, AnimateBase[TYPE_BOX_CORRECT]);
@@ -2110,6 +2112,7 @@ void adjustBoxPosition(int xOffset, int yOffset) {
 		//		}
 	}
 
+	pushUndo(manX, manY, boxLocation, to);
 	boxLocation = 0;
 
 	manY += yOffset;
@@ -2202,41 +2205,42 @@ bool vectorJoystick(Animation *animate) {
 		    ID_PushDown,
 		};
 
-		for (int dir = 0; dir < 4; dir++) {
-			int joybit = joyDirectBit[dir] << 4;
+		if (scoreCycle != SCORELINE_UNDO)
+			for (int dir = 0; dir < 4; dir++) {
+				int joybit = joyDirectBit[dir] << 4;
 
-			if (pillCount && !(swcha & joybit)) {
+				if (pillCount && !(swcha & joybit)) {
 
-				static const signed char faceDirection[] = {
-				    FACE_LEFT,
-				    FACE_RIGHT,
-				    0,
-				    0,
-				};
+					static const signed char faceDirection[] = {
+					    FACE_LEFT,
+					    FACE_RIGHT,
+					    0,
+					    0,
+					};
 
-				if (faceDirection[dir] && manFaceDirection != faceDirection[dir])
-					manFaceDirection = faceDirection[dir];
+					if (faceDirection[dir] && manFaceDirection != faceDirection[dir])
+						manFaceDirection = faceDirection[dir];
 
-				unsigned char *me = ADDRESS_OF(manY) + manX;
-				extern const signed char dirOffset[];
-				int offset = dirOffset[dir];
-				unsigned char *thisOffset = me + offset;
-				unsigned char destType = CharToType[(*thisOffset) & 0x7F];
+					unsigned char *me = ADDRESS_OF(manY) + manX;
+					extern const signed char dirOffset[];
+					int offset = dirOffset[dir];
+					unsigned char *thisOffset = me + offset;
+					unsigned char destType = CharToType[(*thisOffset) & 0x7F];
 
-				if (Attribute[destType] & ATT_BLANK) {
-					//					moves++;
-					startAnimation(animate, WalkAnim[dir]);
-					handled = true;
+					if (Attribute[destType] & ATT_BLANK) {
+						//					moves++;
+						startAnimation(animate, WalkAnim[dir]);
+						handled = true;
+					}
+
+					else if (Attribute[destType] & ATT_PUSH) {
+						startAnimation(animate, PushAnim[dir]);
+						handled = true;
+					}
+
+					break;
 				}
-
-				else if (Attribute[destType] & ATT_PUSH) {
-					startAnimation(animate, PushAnim[dir]);
-					handled = true;
-				}
-
-				break;
 			}
-		}
 
 		if (!handled) {
 			if (pillCount)
@@ -2261,8 +2265,11 @@ void processAnimation(Animation *animate) {
 
 		case ACTION_NEXTSQUARE:
 
+			pushUndo(manX, manY, 0, 0);
+
 			manX += *++animate->animation * (manFaceDirection < 0 ? -1 : 1);
 			manY += *++animate->animation;
+
 			animate->animation++;
 			break;
 
