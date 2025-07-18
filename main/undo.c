@@ -1,6 +1,7 @@
 #include "undo.h"
 #include "attribute.h"
 #include "colour.h"
+#include "deadlock.h"
 #include "man.h"
 #include "rooms.h"
 #include "score.h"
@@ -32,6 +33,50 @@ void undoLastPush() {
 }
 
 bool undoLastMove() {
+	/*
+	    // Returns true if we only moved player, not a box
+	    // allowing iteration until box pushed
+
+	    for (int i = undoTop - 1; i >= 0; i--)
+	        if (undoStack[i].to) { // there's a box move!
+
+	            MOVE *m = &undoStack[--undoTop];
+
+	            manX = m->manX;
+	            manY = m->manY;
+
+	            if (m->to) {
+
+	                int type = CharToType[*m->to];
+	                if (Attribute[type] & ATT_TARGETLIKE) {
+	                    pillCount++;
+	                    *m->to = CH_PILL1;
+	                } else
+	                    *m->to = CH_BLANK;
+
+	                type = CharToType[*m->from];
+	                if (Attribute[type] & ATT_TARGETLIKE) {
+	                    pillCount--;
+	                    *m->from = CH_BOX_LOCKED;
+	                } else
+	                    *m->from = CH_BOX;
+
+	                deadlock = false; // force recalculation
+	                return false;
+	            }
+
+	            return true;
+	        }
+
+	    // no box moves in undo list so we exit UNDO
+	    // don't bother clearing stack; it will auto-drop as moves are added
+
+	    FLASH(0xD6, 10);
+	    scoreCycle = SCORELINE_TIME;
+
+	    return false;
+	}
+	*/
 
 	bool repeat = false;
 	if (undoTop) {

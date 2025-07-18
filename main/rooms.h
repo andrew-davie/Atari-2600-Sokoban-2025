@@ -1,6 +1,6 @@
 #include <stdbool.h>
 
-extern const unsigned char *room[];
+extern const char *room[];
 extern int pillCount;
 
 typedef struct {

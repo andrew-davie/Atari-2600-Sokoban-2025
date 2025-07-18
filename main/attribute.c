@@ -89,22 +89,22 @@ const int Attribute[TYPE_MAX] = {
      _ | _ | _ |DRP| _ | _ | _ | _ |HRD| _ | _ | _ | _ | _ |XPD| _ |ROL| _ ,  // 01 TYPE_BRICKWALL
      _ | _ | _ |DRP| _ | _ | _ | _ |HRD| _ | _ | _ | _ | _ | _ | _ | _ | _ ,  // 02 TYPE_STEELWALL
      _ |PH2| _ | _ | _ |PSH| _ | _ |HRD| _ |ACT| _ | _ | _ |XPD|BOX|ROL| _ ,  // 03 TYPE_BOX
-     _ |PH2| _ | _ |RKF| _ |QUI| _ | _ |SQB|ACT| _ | _ | _ |XPD| _ | _ | _ ,  // 04 TYPE_MAN
+     _ |PH2| _ | _ |RKF| _ |QUI| _ | _ |SQB| _ | _ | _ | _ |XPD| _ | _ | _ ,  // 04 TYPE_MAN
      _ | _ |DRT|DRP| _ | _ | _ | _ | _ | _ | _ | _ |SPC|PER|XPD| _ | _ |TRG,  // 05 TYPE_PILL1
      _ | _ |DRT|DRP| _ | _ | _ | _ | _ | _ | _ | _ |SPC|PER|XPD| _ | _ |TRG,  // 06 TYPE_PILL2
-     _ |PH1| _ | _ | _ | _ | _ | _ |HRD| _ |ACT| _ | _ | _ |XPD| _ | _ | _ ,  // 07 TYPE_BOX_LTOR_LHS
-     _ |PH1| _ | _ | _ | _ | _ | _ |HRD| _ |ACT| _ | _ | _ |XPD| _ | _ | _ ,  // 08 TYPE_BOX_LTOR_RHS
-     _ |PH1| _ | _ | _ | _ | _ | _ |HRD| _ |ACT| _ | _ | _ | _ | _ | _ | _ ,  // 09 TYPE_BOX_RTOL_LHS
-     _ |PH1| _ | _ | _ | _ | _ | _ |HRD| _ |ACT| _ | _ | _ | _ | _ | _ | _ ,  // 10 TYPE_BOX_RTOL_RHS
-     _ |PH1| _ | _ | _ |PSH| _ | _ |HRD| _ |ACT| _ | _ | _ | _ | _ | _ | _ ,  // 11 TYPE_BOX_UTOD_TOP
-     _ |PH1| _ | _ | _ |PSH| _ | _ |HRD| _ |ACT| _ | _ | _ | _ | _ | _ | _ ,  // 12 TYPE_BOX_UTOD_BOT
-     _ |PH1| _ | _ | _ |PSH| _ | _ |HRD| _ |ACT| _ | _ | _ | _ | _ | _ | _ ,  // 13 TYPE_BOX_DTOU_TOP
-     _ |PH1| _ | _ | _ |PSH| _ | _ |HRD| _ |ACT| _ | _ | _ | _ | _ | _ | _ ,  // 14 TYPE_BOX_DTOU_BOT
-     _ |PH1| _ | _ | _ |PSH| _ | _ |HRD| _ |ACT| _ | _ | _ | _ | _ | _ | _ ,  // 15 TYPE_BOX_LTOR_LEFT
-     _ |PH1| _ | _ | _ |PSH| _ | _ |HRD| _ |ACT| _ | _ | _ | _ | _ | _ | _ ,  // 16 TYPE_BOX_LTOR_RIGHT
-     _ |PH1| _ | _ | _ |PSH| _ | _ |HRD| _ |ACT| _ | _ | _ | _ | _ | _ | _ ,  // 17 TYPE_BOX_RTOL_LEFT
-     _ |PH1| _ | _ | _ |PSH| _ | _ |HRD| _ |ACT| _ | _ | _ | _ | _ | _ | _ ,  // 18 TYPE_BOX_RTOL_RIGHT
-     _ |PH2| _ | _ | _ |PSH| _ | _ |HRD| _ |ACT| _ | _ | _ |XPD|BOX|ROL|TRG,  // 19 TYPE_BOX_LOCKED
+     _ |PH1| _ | _ | _ | _ | _ | _ |HRD| _ | _ | _ | _ | _ |XPD| _ | _ | _ ,  // 07 TYPE_BOX_LTOR_LHS
+     _ |PH1| _ | _ | _ | _ | _ | _ |HRD| _ | _ | _ | _ | _ |XPD| _ | _ | _ ,  // 08 TYPE_BOX_LTOR_RHS
+     _ |PH1| _ | _ | _ | _ | _ | _ |HRD| _ | _ | _ | _ | _ | _ | _ | _ | _ ,  // 09 TYPE_BOX_RTOL_LHS
+     _ |PH1| _ | _ | _ | _ | _ | _ |HRD| _ | _ | _ | _ | _ | _ | _ | _ | _ ,  // 10 TYPE_BOX_RTOL_RHS
+     _ |PH1| _ | _ | _ |PSH| _ | _ |HRD| _ | _ | _ | _ | _ | _ | _ | _ | _ ,  // 11 TYPE_BOX_UTOD_TOP
+     _ |PH1| _ | _ | _ |PSH| _ | _ |HRD| _ | _ | _ | _ | _ | _ | _ | _ | _ ,  // 12 TYPE_BOX_UTOD_BOT
+     _ |PH1| _ | _ | _ |PSH| _ | _ |HRD| _ | _ | _ | _ | _ | _ | _ | _ | _ ,  // 13 TYPE_BOX_DTOU_TOP
+     _ |PH1| _ | _ | _ |PSH| _ | _ |HRD| _ | _ | _ | _ | _ | _ | _ | _ | _ ,  // 14 TYPE_BOX_DTOU_BOT
+     _ |PH1| _ | _ | _ |PSH| _ | _ |HRD| _ | _ | _ | _ | _ | _ | _ | _ | _ ,  // 15 TYPE_BOX_LTOR_LEFT
+     _ |PH1| _ | _ | _ |PSH| _ | _ |HRD| _ | _ | _ | _ | _ | _ | _ | _ | _ ,  // 16 TYPE_BOX_LTOR_RIGHT
+     _ |PH1| _ | _ | _ |PSH| _ | _ |HRD| _ | _ | _ | _ | _ | _ | _ | _ | _ ,  // 17 TYPE_BOX_RTOL_LEFT
+     _ |PH1| _ | _ | _ |PSH| _ | _ |HRD| _ | _ | _ | _ | _ | _ | _ | _ | _ ,  // 18 TYPE_BOX_RTOL_RIGHT
+     _ |PH2| _ | _ | _ |PSH| _ | _ |HRD| _ | _ | _ | _ | _ |XPD|BOX|ROL|TRG,  // 19 TYPE_BOX_LOCKED
      _ |PH2| _ | _ | _ |PSH| _ | _ |HRD| _ |ACT| _ | _ | _ |XPD|BOX|ROL|TRG,  // 20 TYPE_BOX_CORRECT
      _ |PH2| _ | _ | _ |PSH| _ | _ |HRD| _ |ACT| _ | _ | _ |XPD|BOX|ROL| _ ,  // 21 TYPE_BOX_DEADLOCKED
 

@@ -55,6 +55,7 @@ SRCS =  animations.c \
 		characterset.c \
 		colour.c \
 		custom.c \
+		deadlock.c \
 		drawplayer.c \
 		drawscreen.c \
 		joystick.c \

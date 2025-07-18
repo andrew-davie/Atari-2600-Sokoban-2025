@@ -22,8 +22,6 @@
 #define RGB_AQUA 6
 // #define RGB_WHITE       7
 
-#define SPARKLE 180 /* # frames to sparkle BG on extra life */
-
 int actualScore;
 
 enum SCORE_MODE scoreCycle, nextScoreCycle;
