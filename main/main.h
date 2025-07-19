@@ -76,7 +76,6 @@ extern int Room;
 extern int shakeTime;
 extern int shakeX, shakeY;
 #endif
-extern int roomWidth, roomHeight;
 
 extern unsigned char enablePALPalette;
 extern unsigned char *boxLocation;

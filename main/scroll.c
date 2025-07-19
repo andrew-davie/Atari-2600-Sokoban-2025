@@ -1,19 +1,19 @@
-// clang-format off
 
-#include "defines_cdfj.h"
 #include "defines.h"
+#include "defines_cdfj.h"
 #include "defines_from_dasm_for_c.h"
 
-#include "main.h"
-#include "scroll.h"
 #include "drawplayer.h"
+#include "main.h"
+#include "rooms.h"
+#include "scroll.h"
 
 #if ENABLE_SWIPE
 #include "swipe.h"
 #endif
 
-#include "player.h"
 #include "man.h"
+#include "player.h"
 
 // clang-format on
 
@@ -108,9 +108,9 @@ void Scroll() {
 			scrollY[mode] += speedY[mode];
 
 			if (mode == DISPLAY_HALF) {
-				if (roomWidth < 14)
+				if (boundary.width < 14)
 					scrollX[mode] = 76 << SHIFT_SCROLLX;
-				if (roomHeight < 10)
+				if (boundary.height < 10)
 					scrollY[mode] = 66 << SHIFT_SCROLLY;
 			}
 		}

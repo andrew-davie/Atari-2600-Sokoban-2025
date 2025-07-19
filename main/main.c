@@ -55,7 +55,6 @@ int moves;
 int showRoomCounter;
 
 int trig;
-int roomWidth, roomHeight;
 
 unsigned char *boxLocation;
 
@@ -808,8 +807,7 @@ void GameVerticalBlank() { // ~7500
 	if (gameSchedule != SCHEDULE_UNPACK_Room) {
 
 		if (displayMode == DISPLAY_OVERVIEW) {
-			drawOverviewScreen(11, 21);
-			//			drawOverviewScreen(11, 22);
+			drawOverviewScreen(11, 22);
 		}
 
 		else {
