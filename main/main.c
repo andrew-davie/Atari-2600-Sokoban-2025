@@ -807,8 +807,10 @@ void GameVerticalBlank() { // ~7500
 
 	if (gameSchedule != SCHEDULE_UNPACK_Room) {
 
-		if (displayMode == DISPLAY_OVERVIEW)
-			drawOverviewScreen(11, 22);
+		if (displayMode == DISPLAY_OVERVIEW) {
+			drawOverviewScreen(11, 21);
+			//			drawOverviewScreen(11, 22);
+		}
 
 		else {
 
@@ -834,7 +836,7 @@ void GameVerticalBlank() { // ~7500
 
 			drawScore();
 
-			if (deadlock)
+			if (deadlock && displayMode != DISPLAY_OVERVIEW)
 				drawWord("DEADLOCK", 30, 6);
 		}
 	}

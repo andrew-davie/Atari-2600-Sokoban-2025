@@ -7,6 +7,8 @@ void initMan();
 extern int frameAdjustX;
 extern int frameAdjustY;
 
+extern const signed char dirOffset[];
+
 extern enum FaceDirection manFaceDirection;
 extern int manX, manY;
 

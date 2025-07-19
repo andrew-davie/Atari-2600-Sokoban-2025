@@ -2,6 +2,8 @@
 #include "attribute.h"
 #include "colour.h"
 #include "deadlock.h"
+#include "defines_cdfj.h"
+#include "main.h"
 #include "man.h"
 #include "rooms.h"
 #include "score.h"
@@ -16,15 +18,14 @@ void initUndo() {
 	undoing = 0;
 }
 
-void pushUndo(int px, int py, unsigned char *from, unsigned char *to) {
+void pushUndo(int px, int py, int dir, bool boxMoved) {
 
 	if (undoTop >= MAX_UNDO) {
 		undoTop = 0;
 		for (int i = 1; i < MAX_UNDO; i++)
-			pushUndo(undoStack[i].manX, undoStack[i].manY, undoStack[i].from, undoStack[i].to);
+			pushUndo(undoStack[i].manX, undoStack[i].manY, undoStack[i].dir, undoStack[i].boxMoved);
 	}
-
-	undoStack[undoTop++] = (MOVE){px, py, from, to};
+	undoStack[undoTop++] = (MOVE){px, py, dir, boxMoved};
 }
 
 void undoLastPush() {
@@ -86,32 +87,37 @@ bool undoLastMove() {
 		manX = m.manX;
 		manY = m.manY;
 
-		if (m.to) {
+		int dir = m.dir;
 
-			int type = CharToType[*m.to];
-			if (Attribute[type] & ATT_TARGETLIKE) {
-				pillCount++;
-				*m.to = CH_PILL1;
-			} else
-				*m.to = CH_BLANK;
+		unsigned char *from = ADDRESS_OF(manY) + manX + dirOffset[dir];
+		unsigned char *to = from + dirOffset[dir];
 
-			type = CharToType[*m.from];
-			if (Attribute[type] & ATT_TARGETLIKE) {
+		int typeTo = CharToType[*to];
+		if (Attribute[typeTo] & ATT_TARGETLIKE) {
+			pillCount++;
+			*to = CH_PILL1;
+		} else
+			*to = CH_BLANK;
+
+		int typeFrom = CharToType[*from];
+
+		// Only if we pused a box off, do we need to modify the square
+		if (Attribute[typeTo] & ATT_BOX) {
+
+			if (Attribute[typeFrom] & ATT_TARGETLIKE) {
 				pillCount--;
-				*m.from = CH_BOX_LOCKED;
+				*from = CH_BOX_LOCKED;
 			} else
-				*m.from = CH_BOX;
+				*from = CH_BOX;
 
-			repeat = false;
+			deadlock = false; // force recalculation
 		}
 
 		else
 			repeat = true;
 
-		deadlock = false; // force recalculation
-	}
+	} else {
 
-	else {
 		FLASH(0xD6, 10);
 		scoreCycle = SCORELINE_TIME; // exit undo mode
 	}

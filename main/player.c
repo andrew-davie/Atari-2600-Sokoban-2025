@@ -2112,7 +2112,15 @@ void adjustBoxPosition(int xOffset, int yOffset) {
 		//		}
 	}
 
-	pushUndo(manX, manY, boxLocation, to);
+	int dir = 0;
+	if (xOffset > 0)
+		dir = 1;
+	else if (yOffset < 0)
+		dir = 2;
+	else if (yOffset > 0)
+		dir = 3;
+
+	pushUndo(manX, manY, dir, true);
 	boxLocation = 0;
 
 	manY += yOffset;
@@ -2222,7 +2230,6 @@ bool vectorJoystick(Animation *animate) {
 						manFaceDirection = faceDirection[dir];
 
 					unsigned char *me = ADDRESS_OF(manY) + manX;
-					extern const signed char dirOffset[];
 					int offset = dirOffset[dir];
 					unsigned char *thisOffset = me + offset;
 					unsigned char destType = CharToType[(*thisOffset) & 0x7F];
@@ -2263,15 +2270,26 @@ void processAnimation(Animation *animate) {
 			animate->animation++;
 			break;
 
-		case ACTION_NEXTSQUARE:
+		case ACTION_NEXTSQUARE: {
 
-			pushUndo(manX, manY, 0, 0);
+			int x = *++animate->animation * (manFaceDirection < 0 ? -1 : 1);
+			int y = *++animate->animation;
 
-			manX += *++animate->animation * (manFaceDirection < 0 ? -1 : 1);
-			manY += *++animate->animation;
+			int dir = 0;
+			if (x > 0)
+				dir = 1;
+			if (y < 0)
+				dir = 2;
+			if (y > 0)
+				dir = 3;
+
+			pushUndo(manX, manY, dir, false);
+
+			manX += x;
+			manY += y;
 
 			animate->animation++;
-			break;
+		} break;
 
 		case ACTION_LOOP:
 
