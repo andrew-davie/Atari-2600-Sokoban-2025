@@ -326,31 +326,42 @@ void drawWord(const char *string, int y, int colour) {
 
 void checkExitWarning() {
 
-	if ((triggerPressCounter > BUTTONTIME_EXIT_BOUNDARY)) {
-		if (triggerPressCounter & 24) {
-			drawWord("EXIT", 50, 3);
-			//			drawWord("ROOM", 75, 3);
-		}
-	}
+	if (waitRelease) {
 
-	else if (triggerPressCounter > BUTTONTIME_UNDO_MODE) {
+		if (triggerOffCounter > BUTTONTIME_EXIT_BOUNDARY) {
 
-		if (!waitRelease) {
-
-			if (scoreCycle != SCORELINE_UNDO) {
-				scoreCycle = SCORELINE_UNDO;
-				displayMode = DISPLAY_NORMAL;
-				FLASH(0x44, 6);
-				waitRelease = true;
-				triggerPressCounter = 0;
+			//		if ((triggerPressCounter > BUTTONTIME_EXIT_BOUNDARY)) {
+			if (triggerOffCounter & 24) {
+				drawWord("EXIT", 50, 3);
+				//			drawWord("ROOM", 75, 3);
 			}
 
-			else {
+			if (triggerOffCounter > BUTTONTIME_EXIT_BOUNDARY + 50) {
 
-				scoreCycle = SCORELINE_TIME;
-				FLASH(0xD6, 10);
-				triggerPressCounter = 0;
+				rageQuit = true;
+				initKernel(KERNEL_MENU);
+			}
+		}
+
+	} else {
+
+		if (triggerPressCounter > BUTTONTIME_UNDO_MODE) {
+
+			if (!waitRelease) {
+
+				if (scoreCycle != SCORELINE_UNDO) {
+					scoreCycle = SCORELINE_UNDO;
+					displayMode = DISPLAY_NORMAL;
+					FLASH(0x44, 6);
+
+				} else {
+
+					scoreCycle = SCORELINE_TIME;
+					FLASH(0xD6, 10);
+				}
+
 				waitRelease = true;
+				triggerPressCounter = 0;
 			}
 		}
 	}

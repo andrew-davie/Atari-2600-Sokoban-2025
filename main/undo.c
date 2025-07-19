@@ -7,6 +7,7 @@
 #include "man.h"
 #include "rooms.h"
 #include "score.h"
+#include "sound.h"
 #include <stdbool.h>
 
 unsigned short undoStack[MAX_UNDO];
@@ -38,6 +39,8 @@ bool undoLastMove() {
 	bool repeat = false;
 	if (undoTop) {
 
+		ADDAUDIO(SFX_SPACE);
+
 		unsigned short m = undoStack[--undoTop];
 
 		manX = (m >> 9) & 0x3F;
@@ -52,6 +55,9 @@ bool undoLastMove() {
 		// Only if we pushed a box off, do we need to modify the to square
 
 		if (boxMoved) {
+
+			ADDAUDIO(SFX_PUSH);
+
 			int typeTo = CharToType[*to];
 			if (Attribute[typeTo] & ATT_TARGETLIKE) {
 				pillCount++;
