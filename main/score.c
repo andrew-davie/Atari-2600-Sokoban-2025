@@ -24,7 +24,7 @@
 
 int actualScore;
 
-enum SCORE_MODE scoreCycle, nextScoreCycle;
+int scoreCycle, nextScoreCycle;
 int guaranteedViewTime;
 
 static unsigned char scoreLineNew[10];
@@ -37,15 +37,16 @@ static unsigned char scoreLineColour[10];
 
 void initScore() {
 
-	actualScore = 0;
-	guaranteedViewTime = 1;
+  actualScore = 0;
+  guaranteedViewTime = 1;
+  nextScoreCycle = scoreCycle = SCORELINE_TIME;
 }
 
 void addScore(int score) {
 
-	actualScore += score;
+  actualScore += score;
 
-	ADDAUDIO(SFX_SCORE);
+  ADDAUDIO(SFX_SCORE);
 }
 
 const int pwr[] = {
@@ -62,252 +63,254 @@ const bool mirror[] = {
 };
 
 const int base[] = {
-    _BUF_PF2_RIGHT, _BUF_PF2_RIGHT, _BUF_PF1_RIGHT, _BUF_PF1_RIGHT, _BUF_PF0_RIGHT,
-    _BUF_PF2_LEFT,  _BUF_PF2_LEFT,  _BUF_PF1_LEFT,  _BUF_PF1_LEFT,  _BUF_PF0_LEFT,
+    _BUF_PF2_RIGHT, _BUF_PF2_RIGHT, _BUF_PF1_RIGHT, _BUF_PF1_RIGHT,
+    _BUF_PF0_RIGHT, _BUF_PF2_LEFT,  _BUF_PF2_LEFT,  _BUF_PF1_LEFT,
+    _BUF_PF1_LEFT,  _BUF_PF0_LEFT,
 };
 
-void setScoreCycle(enum SCORE_MODE cycle) {
+void setScoreCycle(int cycle) {
 
-	nextScoreCycle = cycle;
+  nextScoreCycle = cycle;
 
-	if (guaranteedViewTime > 50)
-		guaranteedViewTime = 50;
+  if (guaranteedViewTime > 50)
+    guaranteedViewTime = 50;
 }
 
 static unsigned char bigDigitBuffer[DIGIT_SIZE];
 
 void drawBigDigit(int digit, int pos, int offset, int colour) {
 
-	unsigned char pmask = mask[pos];
-	unsigned char *p = RAM + base[pos] + offset;
+  unsigned char pmask = mask[pos];
+  unsigned char *p = RAM + base[pos] + offset;
 
-	// if (digit == DIGIT_SPACE) {
-	//     for (int line = 0; line < DIGIT_SIZE; line++)
-	//         p[line] &= pmask;
-	//     return;
-	// }
+  // if (digit == DIGIT_SPACE) {
+  //     for (int line = 0; line < DIGIT_SIZE; line++)
+  //         p[line] &= pmask;
+  //     return;
+  // }
 
-	int shift2 = (pmask == 0x0F) ? 0 : 4;
-	if (!mirror[pos])
-		shift2 ^= 4;
+  int shift2 = (pmask == 0x0F) ? 0 : 4;
+  if (!mirror[pos])
+    shift2 ^= 4;
 
 #if ENABLE_COLOUR_SCORE
-	if (!offset && colour && !enableICC)
+  if (!offset && colour && !enableICC)
 #endif
-		if (colour & 7)
-			colour = 7;
+    if (colour & 7)
+      colour = 7;
 
-	int shift = (digit & 1) << 2;
-	digit >>= 1;
+  int shift = (digit & 1) << 2;
+  digit >>= 1;
 
-	int dbase = offset + roller;
-	dbase -= ((dbase * (0x10003 / 3)) >> 16) * 3; // = mod 3
-	dbase = 1 << dbase;
+  int dbase = offset + roller;
+  dbase -= ((dbase * (0x10003 / 3)) >> 16) * 3; // = mod 3
+  dbase = 1 << dbase;
 
-	const unsigned char *dig;
-	if (digit & 0x40)
-		dig = bigDigitBuffer;
-	else
-		dig = EXTERNAL(__DIGIT_SHAPE) + digit * DIGIT_SIZE;
+  const unsigned char *dig;
+  if (digit & 0x40)
+    dig = bigDigitBuffer;
+  else
+    dig = EXTERNAL(__DIGIT_SHAPE) + digit * DIGIT_SIZE;
 
-	unsigned char shape;
+  unsigned char shape;
 
-	if (mirror[pos]) {
+  if (mirror[pos]) {
 
-		for (int line = 0; line < DIGIT_SIZE; line++) {
-			shape = BitRev[((dig[line] >> shift) & 0xF) << shift2];
-			p[line] &= ~shape;
-			if (colour & dbase)
-				p[line] |= shape;
-			dbase = (dbase << 1) | (dbase >> 2);
-		}
-	}
+    for (int line = 0; line < DIGIT_SIZE; line++) {
+      shape = BitRev[((dig[line] >> shift) & 0xF) << shift2];
+      p[line] &= ~shape;
+      if (colour & dbase)
+        p[line] |= shape;
+      dbase = (dbase << 1) | (dbase >> 2);
+    }
+  }
 
-	else {
+  else {
 
-		for (int line = 0; line < DIGIT_SIZE; line++) {
-			shape = ((dig[line] >> shift) & 0xF) << shift2;
-			p[line] &= ~shape;
-			if ((colour & dbase))
-				p[line] |= shape;
-			dbase = (dbase << 1) | (dbase >> 2);
-		}
-	}
+    for (int line = 0; line < DIGIT_SIZE; line++) {
+      shape = ((dig[line] >> shift) & 0xF) << shift2;
+      p[line] &= ~shape;
+      if ((colour & dbase))
+        p[line] |= shape;
+      dbase = (dbase << 1) | (dbase >> 2);
+    }
+  }
 }
 
 void fillBit(int line, unsigned char b) {
-	unsigned char *bdp = bigDigitBuffer + (line << 2);
-	bdp[0] = bdp[1] = bdp[2] = bdp[3] = b;
+  unsigned char *bdp = bigDigitBuffer + (line << 2);
+  bdp[0] = bdp[1] = bdp[2] = bdp[3] = b;
 }
 
 void doubleSizeScore(int x, int y, int letter, int col) {
 
-	const unsigned char *sample = EXTERNAL(__CHAR_A_TO_Z) + (letter + 29) * 10;
+  const unsigned char *sample = EXTERNAL(__CHAR_A_TO_Z) + (letter + 29) * 10;
 
-	for (int line = 0; line < 5; line++)
-		fillBit(line, sample[line]);
+  for (int line = 0; line < 5; line++)
+    fillBit(line, sample[line]);
 
-	drawBigDigit(0x80, x, y, /*0x80 | */ col);
-	drawBigDigit(0x81, x + 1, y, /*0x80 |*/ col);
+  drawBigDigit(0x80, x, y, /*0x80 | */ col);
+  drawBigDigit(0x81, x + 1, y, /*0x80 |*/ col);
 
-	for (int line = 0; line < 5; line++)
-		fillBit(line, sample[line + 5]);
+  for (int line = 0; line < 5; line++)
+    fillBit(line, sample[line + 5]);
 
-	drawBigDigit(0x80, x, y + DIGIT_SIZE, /*0x40 | */ col);
-	drawBigDigit(0x81, x + 1, y + DIGIT_SIZE, /*0x40 | */ col);
+  drawBigDigit(0x80, x, y + DIGIT_SIZE, /*0x40 | */ col);
+  drawBigDigit(0x81, x + 1, y + DIGIT_SIZE, /*0x40 | */ col);
 }
 
 unsigned char *drawDecimal2(unsigned char *buffer, unsigned char *colour_buffer,
                             unsigned int colour, int cvt) {
 
-	int forced = 0;
-	for (int digit = 3; digit >= 0; digit--) {
+  int forced = 0;
+  for (int digit = 3; digit >= 0; digit--) {
 
-		int displayDigit = 0;
-		while (cvt >= pwr[digit]) {
-			displayDigit++;
-			cvt -= pwr[digit];
-		}
+    int displayDigit = 0;
+    while (cvt >= pwr[digit]) {
+      displayDigit++;
+      cvt -= pwr[digit];
+    }
 
-		forced |= displayDigit;
+    forced |= displayDigit;
 
-		if (forced || !digit) {
-			*buffer++ = displayDigit;
+    if (forced || !digit) {
+      *buffer++ = displayDigit;
 
-			if (colour_buffer)
-				*colour_buffer++ = colour;
-		}
-	}
+      if (colour_buffer)
+        *colour_buffer++ = colour;
+    }
+  }
 
-	return buffer;
+  return buffer;
 }
 
 void drawMoves() {
-	drawDecimal2(scoreLineNew + 7, scoreLineColour + 7, RGB_YELLOW, pillCount);
-	drawDecimal2(scoreLineNew + 2, scoreLineColour + 2, RGB_YELLOW, moves);
+  drawDecimal2(scoreLineNew + 7, scoreLineColour + 7, RGB_YELLOW, pillCount);
+  drawDecimal2(scoreLineNew + 2, scoreLineColour + 2, RGB_YELLOW, moves);
 }
 
 void drawTime() {
 
-	//	time = 0x65000;
+  //	time = 0x65000;
 
-	int tPos = time60ths >= 0xA00 ? time60ths >= 0x6400 ? 5 : 6 : 7;
+  int tPos = time60ths >= 0xA00 ? time60ths >= 0x6400 ? 5 : 6 : 7;
 
-	scoreLineNew[tPos] = LETTER('T');
-	scoreLineColour[tPos++] = RGB_BLUE;
+  scoreLineNew[tPos] = LETTER('T');
+  scoreLineColour[tPos++] = RGB_BLUE;
 
-	// if (time60ths > 0xA00 || ++toggle & 16)
-	drawDecimal2(scoreLineNew + tPos, scoreLineColour + tPos,
-	             time60ths < 0xA00 ? RGB_RED : RGB_AQUA, time60ths >> 8);
+  // if (time60ths > 0xA00 || ++toggle & 16)
+  drawDecimal2(scoreLineNew + tPos, scoreLineColour + tPos,
+               time60ths < 0xA00 ? RGB_RED : RGB_AQUA, time60ths >> 8);
 }
 
 void drawLives() {
 
-	// scoreLineNew[1] = LETTER('L');
-	// scoreLineColour[1] = RGB_BLUE;
+  // scoreLineNew[1] = LETTER('L');
+  // scoreLineColour[1] = RGB_BLUE;
 
-	// drawDecimal2(scoreLineNew + 2, scoreLineColour + 2, RGB_YELLOW, lives & 0x7F);
+  // drawDecimal2(scoreLineNew + 2, scoreLineColour + 2, RGB_YELLOW, lives &
+  // 0x7F);
 }
 
 void drawTheScore(int score) {
 
-	for (int digit = 5; digit >= 0; digit--) {
+  for (int digit = 5; digit >= 0; digit--) {
 
-		int displayDigit = 0;
-		while (score >= pwr[digit]) {
-			displayDigit++;
-			score -= pwr[digit];
-		}
+    int displayDigit = 0;
+    while (score >= pwr[digit]) {
+      displayDigit++;
+      score -= pwr[digit];
+    }
 
-		scoreLineNew[7 - digit] = displayDigit;
-		scoreLineColour[7 - digit] = 1; // digit + 1;
-	}
+    scoreLineNew[7 - digit] = displayDigit;
+    scoreLineColour[7 - digit] = 1; // digit + 1;
+  }
 
-	for (int digit = 5; digit; digit--) {
-		if (!scoreLineNew[digit])
-			scoreLineNew[digit] = DIGIT_SPACE;
-		else
-			break;
-	}
+  for (int digit = 5; digit; digit--) {
+    if (!scoreLineNew[digit])
+      scoreLineNew[digit] = DIGIT_SPACE;
+    else
+      break;
+  }
 }
 
 void drawScore() {
 
-	if (!--guaranteedViewTime) {
+  if (!--guaranteedViewTime) {
 
-		if (scoreCycle == nextScoreCycle) {
+    if (scoreCycle == nextScoreCycle) {
 
-			// nextScoreCycle = scoreCycle + 1;
-			// if (nextScoreCycle > SCORELINE_SCORE)
-			// 	nextScoreCycle = manDead ? SCORELINE_LIVES : SCORELINE_TIME;
+      // nextScoreCycle = scoreCycle + 1;
+      // if (nextScoreCycle > SCORELINE_SCORE)
+      // 	nextScoreCycle = manDead ? SCORELINE_LIVES : SCORELINE_TIME;
 
-			// guaranteedViewTime = 250;
-		}
+      // guaranteedViewTime = 250;
+    }
 
-		else {
+    else {
 
-			scoreCycle = nextScoreCycle;
-			guaranteedViewTime = 75;
-		}
-	}
+      scoreCycle = nextScoreCycle;
+      guaranteedViewTime = 75;
+    }
+  }
 
-	// if (!exitMode && !manDead && time60ths < 0xA00) {
-	// 	//        ADDAUDIO(SFX_COUNTDOWN2);
-	// 	setScoreCycle(SCORELINE_TIME);
-	// }
+  // if (!exitMode && !manDead && time60ths < 0xA00) {
+  // 	//        ADDAUDIO(SFX_COUNTDOWN2);
+  // 	setScoreCycle(SCORELINE_TIME);
+  // }
 
-	for (int i = 0; i < 10; i++) {
+  for (int i = 0; i < 10; i++) {
 #if !ENABLE_COLOUR_SCORE
-		scoreLineOld[i] = scoreLineNew[i];
+    scoreLineOld[i] = scoreLineNew[i];
 #endif
-		scoreLineNew[i] = DIGIT_SPACE;
-	}
+    scoreLineNew[i] = DIGIT_SPACE;
+  }
 
-	//	scoreCycle = SCORELINE_UNDO; // tmp
+  //  scoreCycle = SCORELINE_TIME; // tmp
 
-	switch (scoreCycle) {
-	case SCORELINE_TIME:
-		drawMoves();
-		break;
-	case SCORELINE_SCORE:
+  switch (scoreCycle) {
+  case SCORELINE_TIME:
+    drawMoves();
+    break;
+  case SCORELINE_SCORE:
 
-		drawTheScore(actualScore);
-		break;
+    drawTheScore(actualScore);
+    break;
 
-	case SCORELINE_LIVES:
-		drawTime();
-		drawLives();
-		break;
+  case SCORELINE_LIVES:
+    drawTime();
+    drawLives();
+    break;
 
-	case SCORELINE_UNDO: {
+  case SCORELINE_UNDO: {
 
-		int p = 2;
-		char *undo = "UNDO";
-		for (char *c = undo; *c; c++) {
-			scoreLineNew[p] = LETTER(*c);
-			scoreLineColour[p++] = RGB_RED;
-		}
+    int p = 2;
+    char *undo = "UNDO";
+    for (char *c = undo; *c; c++) {
+      scoreLineNew[p] = LETTER(*c);
+      scoreLineColour[p++] = RGB_RED;
+    }
 
-		drawDecimal2(scoreLineNew + 7, scoreLineColour + 7, RGB_RED, undoTop);
+    drawDecimal2(scoreLineNew + 7, scoreLineColour + 7, RGB_RED, undoTop);
 
-	} break;
+  } break;
 
-	default:
-		break;
-	}
+  default:
+    break;
+  }
 
-	unsigned char *p = RAM + _BUF_PF0_LEFT;
-	for (int line = 0; line < SCORE_SCANLINES; p++, line++)
-		for (int i = 0; i < 6; i++)
-			p[i * _ARENA_SCANLINES] = 0;
+  unsigned char *p = RAM + _BUF_PF0_LEFT;
+  for (int line = 0; line < SCORE_SCANLINES; p++, line++)
+    for (int i = 0; i < 6; i++)
+      p[i * _ARENA_SCANLINES] = 0;
 
-	for (int i = 0; i < 10; i++) {
+  for (int i = 0; i < 10; i++) {
 #if !ENABLE_COLOUR_SCORE
-		if (scoreLineNew[i] != scoreLineOld[i])
+    if (scoreLineNew[i] != scoreLineOld[i])
 #endif
 
-			drawBigDigit(scoreLineNew[i], 9 - i, 0, scoreLineColour[i]);
-	}
+      drawBigDigit(scoreLineNew[i], 9 - i, 0, scoreLineColour[i]);
+  }
 }
 
 // EOF

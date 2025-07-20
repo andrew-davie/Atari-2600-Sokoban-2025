@@ -10,11 +10,12 @@
 #define ENABLE_SHAKE 1            /* */
 #define ENABLE_IDLE_ANIMATION 1   /* */
 #define ENABLE_SECAM 0            /* 88 bytes */
-#define ENABLE_60MHZ_AUTODETECT 0 /* 16 bytes */
+#define ENABLE_60MHZ_AUTODETECT 1 /* 16 bytes */
 #define ENABLE_ANIMATING_MAN 1    /* 244 bytes but man disappears */
 #define ENABLE_SWIPE 1            /* 1108 bytes */
 #define ENABLE_SERIAL_NUMBER 1    /* 232 bytes(with 'halfsize' routine) */
-#define ENABLE_FIREWORKS 0        /* 244 bytes - a pixel-draw used for a fireworks starburst */
+#define ENABLE_FIREWORKS                                                       \
+  0 /* 244 bytes - a pixel-draw used for a fireworks starburst */
 
 #define ENABLE_PLAYERCELL 1
 
@@ -48,7 +49,12 @@ void InitializeNewGame();
 
 void drawWord(const char *string, int y, int colour);
 
-enum DisplayMode { DISPLAY_NORMAL, DISPLAY_HALF, DISPLAY_OVERVIEW, DISPLAY_NONE };
+enum DisplayMode {
+  DISPLAY_NORMAL,
+  DISPLAY_HALF,
+  DISPLAY_OVERVIEW,
+  DISPLAY_NONE
+};
 
 extern enum DisplayMode displayMode, lastDisplayMode;
 
@@ -81,9 +87,9 @@ extern unsigned char enablePALPalette;
 extern unsigned char *boxLocation;
 
 enum SCHEDULE {
-	// SCHEDULE_START,
-	SCHEDULE_PROCESSBOARD,
-	SCHEDULE_UNPACK_Room,
+  // SCHEDULE_START,
+  SCHEDULE_PROCESSBOARD,
+  SCHEDULE_UNPACK_Room,
 };
 
 extern enum SCHEDULE gameSchedule;
@@ -91,13 +97,19 @@ extern int gameSpeed;
 extern int gameFrame;
 
 enum KERNEL_TYPE {
-	KERNEL_COPYRIGHT,
-	KERNEL_MENU,
-	KERNEL_GAME,
-	KERNEL_STATS,
+  KERNEL_COPYRIGHT,
+  KERNEL_MENU,
+  KERNEL_GAME,
+  KERNEL_STATS,
 };
 
-enum PHASE { PHASE_NONE = 0, PHASE_TIME = 2, PHASE_GEMS = 3, PHASE_SWIPE = 4, PHASE_END = 5 };
+enum PHASE {
+  PHASE_NONE = 0,
+  PHASE_TIME = 2,
+  PHASE_GEMS = 3,
+  PHASE_SWIPE = 4,
+  PHASE_END = 5
+};
 extern enum PHASE exitPhase;
 
 extern int frame;
@@ -124,10 +136,10 @@ extern bool enableICC;
 extern bool roomCompleted;
 
 enum FaceDirection {
-	FACE_LEFT = -1,
-	FACE_RIGHT = 1,
-	FACE_UP = -1,
-	FACE_DOWN = 1,
+  FACE_LEFT = -1,
+  FACE_RIGHT = 1,
+  FACE_UP = -1,
+  FACE_DOWN = 1,
 };
 
 extern int currentPalette;

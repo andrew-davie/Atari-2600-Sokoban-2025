@@ -2,8 +2,9 @@
 #define __SCORELINE_H
 
 #define DIGIT_SIZE 20 /* displayed lines */
-#define SCOREVISIBLETIME                                                                           \
-	200 /* # frames to show changed scoreline item before reverting to defaults */
+#define SCOREVISIBLETIME                                                       \
+  200 /* # frames to show changed scoreline item before reverting to defaults  \
+       */
 
 #define DIGIT_SPACE (DIGIT_ALPHABET + 26)
 // #define DIGIT_LIVES     10
@@ -16,17 +17,17 @@
 #define ENABLE_COLOUR_SCORE 1
 
 enum SCORE_MODE {
-	SCORELINE_START,
-	SCORELINE_TIME,
-	SCORELINE_SCORE,
-	SCORELINE_LIVES,
-	SCORELINE_END,
-	SCORELINE_UNDO,
+  SCORELINE_START,
+  SCORELINE_TIME,
+  SCORELINE_SCORE,
+  SCORELINE_LIVES,
+  SCORELINE_END,
+  SCORELINE_UNDO,
 };
 
 #define LETTER(a) ((a) - 'A' + DIGIT_ALPHABET)
 
-extern enum SCORE_MODE scoreCycle;
+extern int scoreCycle;
 extern unsigned char timeString[];
 extern const int baser[];
 extern const int pwr[];
@@ -39,8 +40,8 @@ void drawLives();
 void drawTheScore(int score);
 void drawScore();
 void addScore(int score);
-void setScoreCycle(enum SCORE_MODE scoreCycle);
-enum SCORE_MODE getScoreCycle();
+void setScoreCycle(int scoreCycle);
+int getScoreCycle();
 void setScore(int score);
 void drawTime2(int value);
 void doubleSizeScore(int x, int y, int letter, int col);

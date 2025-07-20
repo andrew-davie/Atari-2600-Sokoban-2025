@@ -2,10 +2,10 @@
 #define __MENU_H
 
 #define MUSTWATCH_STATS 0x200
-#define MUSTWATCH_COPYRIGHT 50 /*0x180*/
 #define MUSTWATCH_MENU 0x400
 
 #define DETECT_FRAME_COUNT 10
+#define MUSTWATCH_COPYRIGHT (DETECT_FRAME_COUNT + 2)
 
 void MenuOverscan();
 void MenuVerticalBlank();

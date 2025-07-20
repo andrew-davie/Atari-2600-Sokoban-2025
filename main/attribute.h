@@ -106,7 +106,7 @@ enum ATTRIBUTE_BITS {
     ATT_DIRT                    = 0b00000000000000000000000000100000, // DRT
     ATT_ACTIVE                  = 0b00000000000000000000000010000000, // ACT
     ATT_SQUASHABLE_TO_BLANKS    = 0b00000000000000000000000100000000, // SQB
-    ATT_HARD                    = 0b00000000000000000000001000000000, // HRD
+    ATT_DEADLOCK                = 0b00000000000000000000001000000000, // DED
     ATT_EXIT                    = 0b00000000000000000000010000000000, // XIT
     ATT_NOROCKNOISE             = 0b00000000000000000000100000000000, // QUI
     ATT_PUSH                    = 0b00000000000000000001000000000000, // PSH
@@ -132,7 +132,7 @@ enum AttributeAlias {
 	DRT = (ATT_DIRT),                 // area is dirt
 	ACT = (ATT_ACTIVE),               // object has logic/requires processing
 	SQB = (ATT_SQUASHABLE_TO_BLANKS), // when killed explodes as blanks
-	HRD = (ATT_HARD),                 // loud noise when something falls on this
+	DED = (ATT_DEADLOCK),             // contributes to a deadlock
 	XIT = (ATT_EXIT),                 //  this is an exit
 	QUI = (ATT_NOROCKNOISE),          // no noise when something falls on this
 	PSH = (ATT_PUSH),                 // can be pushed

@@ -28,7 +28,7 @@
 int halfSize(int x, int y, int letter, bool render);
 #endif
 
-#define LUMINANCE_TITLE 0x4
+#define LUMINANCE_TITLE 0x6
 
 
 void initCopyrightScreen();
@@ -73,135 +73,136 @@ unsigned int sline = 0;
 
 void detectConsoleType() {
 
-	switch (frame) {
+  switch (frame) {
 
-	case 0:
+  case 0:
 
-		mm_tv_type = /*TV_TYPE =*/0; // force NTSC frame
+    mm_tv_type = NTSC; // force NTSC frame for autodetect purposes
 
-		T1TC = 0;
-		T1TCR = 1;
-		break;
+    T1TC = 0;
+    T1TCR = 1;
+    break;
 
-	case DETECT_FRAME_COUNT: {
+  case DETECT_FRAME_COUNT: {
 
-		detectedPeriod = T1TC;
+    detectedPeriod = T1TC;
 
-		static const struct fmt {
+    static const struct fmt {
 
-			int frequency;
-			unsigned char format;
+      int frequency;
+      unsigned char format;
 
-		} mapTimeToFormat[] = {
+    } mapTimeToFormat[] = {
 
 #define NTSC_70MHZ (0xB240F6 * DETECT_FRAME_COUNT / 10)
 #define PAL_70MHZ (0xB3E40D * DETECT_FRAME_COUNT / 10)
 
-		    {
-		        NTSC_70MHZ,
-		        NTSC,
-		    },
+        {
+            NTSC_70MHZ,
+            NTSC,
+        },
 
 #if ENABLE_SECAM
 #define SECAM_70MHZ (0xB294EA * DETECT_FRAME_COUNT / 10)
-		    {
-		        SECAM_70MHZ,
-		        SECAM,
-		    },
+        {
+            SECAM_70MHZ,
+            SECAM,
+        },
 #endif
-		    {
-		        PAL_70MHZ,
-		        PAL_60,
-		    },
+        {
+            PAL_70MHZ,
+            PAL_60,
+        },
 
 #if ENABLE_60MHZ_AUTODETECT
 
 #define NTSC_60MHZ (0x98EB2F * DETECT_FRAME_COUNT / 10)
 #define PAL_60MHZ (0x9A0EEF * DETECT_FRAME_COUNT / 10)
-#define SECAM_60MHZ (((PAL_60MHZ - NTSC_60MHZ) / 2 + NTSC_60MHZ) * DETECT_FRAME_COUNT / 10)
+#define SECAM_60MHZ                                                            \
+  (((PAL_60MHZ - NTSC_60MHZ) / 2 + NTSC_60MHZ) * DETECT_FRAME_COUNT / 10)
 
-		    {
-		        NTSC_60MHZ,
-		        NTSC,
-		    },
-		    {
-		        SECAM_60MHZ,
-		        SECAM,
-		    },
-		    {
-		        PAL_60MHZ,
-		        PAL_60,
-		    },
+        {
+            NTSC_60MHZ,
+            NTSC,
+        },
+        {
+            SECAM_60MHZ,
+            SECAM,
+        },
+        {
+            PAL_60MHZ,
+            PAL_60,
+        },
 #endif
-		};
+    };
 
-		int delta = INT_MAX;
-		for (unsigned int i = 0; i < sizeof(mapTimeToFormat) / sizeof(struct fmt); i++) {
+    int delta = INT_MAX;
+    for (unsigned int i = 0; i < sizeof(mapTimeToFormat) / sizeof(struct fmt);
+         i++) {
 
-			int dist = detectedPeriod - mapTimeToFormat[i].frequency;
-			if (dist < 0)
-				dist = -dist;
+      int dist = detectedPeriod - mapTimeToFormat[i].frequency;
+      if (dist < 0)
+        dist = -dist;
 
-			if (dist < delta) {
-				delta = dist;
-				mm_tv_type = mapTimeToFormat[i].format;
-			}
-		}
+      if (dist < delta) {
+        delta = dist;
+        mm_tv_type = mapTimeToFormat[i].format;
+      }
+    }
 
-		// TV_TYPE = mm_tv_type;
+    // TV_TYPE = mm_tv_type;
 
-		initCopyrightScreen();
+    initCopyrightScreen();
+    break;
+  }
 
-		break;
-	}
+  default:
+    break;
+  }
 
-	default:
-		break;
-	}
-
-	//    frame++;
+  //    frame++;
 }
 
 void zeroBuffer(int *buffer, int size) {
-	for (int i = 0; i < size; i++)
-		*buffer++ = 0;
+  for (int i = 0; i < size; i++)
+    *buffer++ = 0;
 }
 
 void initMenuDatastreams() {
 
-	static const struct ptrs {
+  static const struct ptrs {
 
-		unsigned char dataStream;
-		unsigned short buffer;
+    unsigned char dataStream;
+    unsigned short buffer;
 
-	} streamInits[] = {
+  } streamInits[] = {
 
-	    {_DS_PF1_LEFT, _BUF_MENU_PF1_LEFT},
-	    {_DS_PF2_LEFT, _BUF_MENU_PF2_LEFT},
-	    {_DS_PF1_RIGHT, _BUF_MENU_PF1_RIGHT},
-	    {_DS_PF2_RIGHT, _BUF_MENU_PF2_RIGHT},
-	    {_DS_AUDV0, _BUF_AUDV},
-	    {_DS_AUDC0, _BUF_AUDC},
-	    {_DS_AUDF0, _BUF_AUDF},
+      {_DS_PF1_LEFT, _BUF_MENU_PF1_LEFT},
+      {_DS_PF2_LEFT, _BUF_MENU_PF2_LEFT},
+      {_DS_PF1_RIGHT, _BUF_MENU_PF1_RIGHT},
+      {_DS_PF2_RIGHT, _BUF_MENU_PF2_RIGHT},
+      {_DS_AUDV0, _BUF_AUDV},
+      {_DS_AUDC0, _BUF_AUDC},
+      {_DS_AUDF0, _BUF_AUDF},
 #if __ENABLE_ATARIVOX
-	    {_DS_SPEECH, _BUF_SPEECH},
+      {_DS_SPEECH, _BUF_SPEECH},
 #endif
-	    {_DS_COLUPF, _BUF_MENU_COLUPF},
-	    {_DS_COLUP0, _BUF_MENU_COLUP0},
-	    {_DS_GRP0a, _BUF_MENU_GRP0A},
-	    {_DS_GRP1a, _BUF_MENU_GRP1A},
-	    {_DS_GRP0b, _BUF_MENU_GRP0B},
-	    {_DS_GRP1b, _BUF_MENU_GRP1B},
-	    {_DS_GRP0c, _BUF_MENU_GRP0C},
-	    {_DS_GRP1c, _BUF_MENU_GRP1C},
-	    {0x21, _BUF_JUMP1},
+      {_DS_COLUPF, _BUF_MENU_COLUPF},
+      {_DS_COLUP0, _BUF_MENU_COLUP0},
+      {_DS_GRP0a, _BUF_MENU_GRP0A},
+      {_DS_GRP1a, _BUF_MENU_GRP1A},
+      {_DS_GRP0b, _BUF_MENU_GRP0B},
+      {_DS_GRP1b, _BUF_MENU_GRP1B},
+      {_DS_GRP0c, _BUF_MENU_GRP0C},
+      {_DS_GRP1c, _BUF_MENU_GRP1C},
+      {0x21, _BUF_JUMP1},
 
-	};
+  };
 
-	for (unsigned int i = 0; i < sizeof(streamInits) / sizeof(struct ptrs); i++)
-		setPointer(streamInits[i].dataStream, streamInits[i].buffer);
+  for (unsigned int i = 0; i < sizeof(streamInits) / sizeof(struct ptrs); i++)
+    setPointer(streamInits[i].dataStream, streamInits[i].buffer);
 
-	// QINC[_DS_SPEECH] = 0;
+  // QINC[_DS_SPEECH] = 0;
 }
 
 #if ENABLE_ANIMATING_MAN
@@ -236,11 +237,13 @@ const unsigned char manPushing[][73] = {
     },
 
     {
-        72,  28,  28,  0,   60,  60,  0,   48,  56,          8,   32,  180,         148, 32,  184,
-        152, 128, 176, 176, 128, 186, 186, 224, 242,         242, 242, 242,         242, 254, 254,
-        254, 126, 124, 126, 124, 108, 124, 112, 112,         112, 112, 112,         112, 16,  16,
-        16,  96,  0,   0,   80,  0,   0,   120, 0,           0,   120, 0,           0,   88,  0,
-        0,   88,  0,   0,   0,   72,  0,   0,   72 + 32 + 4, 0,   0,   72 + 32 + 4, 0,
+        72,  28,  28,          0,   60,  60,          0,   48,  56,  8,   32,
+        180, 148, 32,          184, 152, 128,         176, 176, 128, 186, 186,
+        224, 242, 242,         242, 242, 242,         254, 254, 254, 126, 124,
+        126, 124, 108,         124, 112, 112,         112, 112, 112, 112, 16,
+        16,  16,  96,          0,   0,   80,          0,   0,   120, 0,   0,
+        120, 0,   0,           88,  0,   0,           88,  0,   0,   0,   72,
+        0,   0,   72 + 32 + 4, 0,   0,   72 + 32 + 4, 0,
     },
 };
 #endif
@@ -249,65 +252,65 @@ char RGB[6];
 
 void doDrawBitmap(const unsigned char *shape, int x, int y) {
 
-	unsigned char *pf1L = RAM + _BUF_MENU_PF1_LEFT + y;
-	unsigned char *pf2L = pf1L + _ARENA_SCANLINES;
-	unsigned char *pf1R = pf2L + _ARENA_SCANLINES;
-	unsigned char *pf2R = pf1R + _ARENA_SCANLINES;
+  unsigned char *pf1L = RAM + _BUF_MENU_PF1_LEFT + y;
+  unsigned char *pf2L = pf1L + _ARENA_SCANLINES;
+  unsigned char *pf1R = pf2L + _ARENA_SCANLINES;
+  unsigned char *pf2R = pf1R + _ARENA_SCANLINES;
 
-	int size = shape[0];
-	const unsigned char *bf = shape + 1;
+  int size = shape[0];
+  const unsigned char *bf = shape + 1;
 
-	int baseRoll = roller;
+  int baseRoll = roller;
 
-	union g {
-		int bGraphic;
-		unsigned char g[4];
-	} gfx;
+  union g {
+    int bGraphic;
+    unsigned char g[4];
+  } gfx;
 
-	union masker {
-		int mask;
-		unsigned char mask2[4];
-	} mask;
+  union masker {
+    int mask;
+    unsigned char mask2[4];
+  } mask;
 
-	for (int i = 0; i < size; i += 3) {
+  for (int i = 0; i < size; i += 3) {
 
-		mask.mask = ((bf[0] | bf[1] | bf[2]) << x) ^ 0xFFFFFFFF;
+    mask.mask = ((bf[0] | bf[1] | bf[2]) << x) ^ 0xFFFFFFFF;
 
-		for (int line = 0; line < 3; line++) {
+    for (int line = 0; line < 3; line++) {
 
-			gfx.bGraphic = bf[baseRoll] << x;
+      gfx.bGraphic = bf[baseRoll] << x;
 
-			*pf1L = (*pf1L & mask.mask2[3]) | gfx.g[3];
-			*pf1R = (*pf1R & BitRev[mask.mask2[0]]) | BitRev[gfx.g[0]];
-			*pf2R = (*pf2R & mask.mask2[1]) | gfx.g[1];
-			*pf2L = (*pf2L & BitRev[mask.mask2[2]]) | BitRev[gfx.g[2]];
+      *pf1L = (*pf1L & mask.mask2[3]) | gfx.g[3];
+      *pf1R = (*pf1R & BitRev[mask.mask2[0]]) | BitRev[gfx.g[0]];
+      *pf2R = (*pf2R & mask.mask2[1]) | gfx.g[1];
+      *pf2L = (*pf2L & BitRev[mask.mask2[2]]) | BitRev[gfx.g[2]];
 
-			if (++baseRoll > 2)
-				baseRoll = 0;
+      if (++baseRoll > 2)
+        baseRoll = 0;
 
-			pf1L++;
-			pf1R++;
-			pf2L++;
-			pf2R++;
-		}
+      pf1L++;
+      pf1R++;
+      pf2L++;
+      pf2R++;
+    }
 
-		bf += 3;
-	}
+    bf += 3;
+  }
 }
 
 #if ENABLE_ANIMATING_MAN
 void doMan() {
 
-	if (--pushCount < 0 && !rangeRandom(256))
-		pushCount = rangeRandom(32) | 32;
+  if (--pushCount < 0 && !rangeRandom(256))
+    pushCount = rangeRandom(32) | 32;
 
-	pushFrame = pushCount < 0;
+  pushFrame = pushCount < 0;
 
-	int jiggle = 0;
-	if (!pushFrame)
-		jiggle = -((gameFrame >> 2) & 1) * 3;
+  int jiggle = 0;
+  if (!pushFrame)
+    jiggle = -((gameFrame >> 2) & 1) * 3;
 
-	doDrawBitmap(manPushing[pushFrame], 23, 120 + jiggle);
+  doDrawBitmap(manPushing[pushFrame], 23, 120 + jiggle);
 }
 #endif
 
@@ -373,56 +376,57 @@ const unsigned char andrewDavie[] = {
 
 void drawPalette(const unsigned char *palette) {
 
-	unsigned char *p = RAM + _BUF_MENU_COLUPF;
+  unsigned char *p = RAM + _BUF_MENU_COLUPF;
 
-	unsigned char pal[3];
+  unsigned char pal[3];
 
-	int baseRoller = roller;
-	for (int i = 0; i < 3; i++) {
-		pal[i] = convertColour(palette[baseRoller]);
-		if (++baseRoller > 2)
-			baseRoller = 0;
-	}
+  int baseRoller = roller;
+  for (int i = 0; i < 3; i++) {
+    pal[i] = convertColour(palette[baseRoller]);
+    if (++baseRoller > 2)
+      baseRoller = 0;
+  }
 
-	for (int i = 0; i < _ARENA_SCANLINES; i += 3) {
-		p[i] = pal[0];
-		p[i + 1] = pal[1];
-		p[i + 2] = pal[2];
-	}
+  for (int i = 0; i < _ARENA_SCANLINES; i += 3) {
+    p[i] = pal[0];
+    p[i + 1] = pal[1];
+    p[i + 2] = pal[2];
+  }
 }
 
 void drawCharacter(int x, int y, int ch) {
 
-	ch -= '>';
-	if (ch < 0)
-		ch += 43;
-	const unsigned char *p = EXTERNAL(__CHAR_A_TO_Z) + ch * 10;
-	unsigned char *col = RAM + _BUF_MENU_GRP0A + _ARENA_SCANLINES * x + y;
+  ch -= '>';
+  if (ch < 0)
+    ch += 43;
+  const unsigned char *p = EXTERNAL(__CHAR_A_TO_Z) + ch * 10;
+  unsigned char *col = RAM + _BUF_MENU_GRP0A + _ARENA_SCANLINES * x + y;
 
-	for (int i = 0; i < LETTER_HEIGHT; i++)
-		*col++ = *p++;
+  for (int i = 0; i < LETTER_HEIGHT; i++)
+    *col++ = *p++;
 }
 
 void drawString(int x, int y, const char *text, int colour) {
 
-	while (*text && x < 6)
-		drawCharacter(x++, y, *text++);
+  while (*text && x < 6)
+    drawCharacter(x++, y, *text++);
 
-	for (int i = 0; i < LETTER_HEIGHT; i++)
-		RAM[_BUF_MENU_COLUP0 + i + y - 1] = convertColour(colour);
+  for (int i = 0; i < LETTER_HEIGHT; i++)
+    RAM[_BUF_MENU_COLUP0 + i + y - 1] = convertColour(colour);
 }
 
-void drawSmallProxy(unsigned char colour, int y, const unsigned char *smallText) {
+void drawSmallProxy(unsigned char colour, int y,
+                    const unsigned char *smallText) {
 
-	for (int line = 0; line < 6; line++) {
-		RAM[_BUF_MENU_COLUP0 + y + line - 1] = colour;
-		for (int i = 0; i < 6; i++)
-			RAM[_BUF_MENU_GRP0A + _ARENA_SCANLINES * i + y + line] |= *smallText++;
-	}
+  for (int line = 0; line < 6; line++) {
+    RAM[_BUF_MENU_COLUP0 + y + line - 1] = colour;
+    for (int i = 0; i < 6; i++)
+      RAM[_BUF_MENU_GRP0A + _ARENA_SCANLINES * i + y + line] |= *smallText++;
+  }
 }
 
 void drawSmallString(int y, const unsigned char *smallText, int colour) {
-	drawSmallProxy(convertColour(colour), y, smallText);
+  drawSmallProxy(convertColour(colour), y, smallText);
 }
 
 char showRoom[] = {"   "};
@@ -457,445 +461,453 @@ const unsigned char *smallWord[] = {
 void SchedulerMenu() {}
 
 void setTitleMarqueeColours() {
-	unsigned char *const p = RAM + _BUF_MENU_COLUPF;
+  unsigned char *const p = RAM + _BUF_MENU_COLUPF;
 
-	int baseRoller = roller + 1;
-	for (int i = 0; i < 80; i++) {
+  int baseRoller = roller + 1;
+  for (int i = 0; i < 80; i++) {
 
-		if (++baseRoller > 2)
-			baseRoller -= 3;
+    if (++baseRoller > 2)
+      baseRoller -= 3;
 
-		int offset = 0; // i < 80 ? 0 : 3;
-		p[i] = RGB[baseRoller + offset];
-	}
+    int offset = i < 80 ? 0 : 3;
+    p[i] = RGB[baseRoller + offset];
+  }
 }
 
 // int showAuthor;
 
 void handleMenuScreen() {
 
-	sline++;
-	if (sline >= sizeof(smallWord) / sizeof(smallWord[0]))
-		sline = 0;
+  sline++;
+  if (sline >= sizeof(smallWord) / sizeof(smallWord[0]))
+    sline = 0;
 
-	int y = sline * 24 + 96;
+  int y = sline * 24 + 96;
 
-	if (gameFrame)
-		--gameFrame;
+  if (gameFrame)
+    --gameFrame;
 
-	const char *dLine = 0;
+  const char *dLine = 0;
 
-	switch (sline) {
+  switch (sline) {
 
-	case 0: {
+  case 0: {
 
-		showRoom[0] = '0';
-		showRoom[1] = '0';
-		showRoom[2] = '0';
+    showRoom[0] = '0';
+    showRoom[1] = '0';
+    showRoom[2] = '0';
 
-		int ct = Room;
-		while (ct >= 100) {
-			showRoom[0]++;
-			ct -= 100;
-		}
+    int ct = Room;
+    while (ct >= 100) {
+      showRoom[0]++;
+      ct -= 100;
+    }
 
-		while (ct >= 10) {
-			showRoom[1]++;
-			ct -= 10;
-		}
+    while (ct >= 10) {
+      showRoom[1]++;
+      ct -= 10;
+    }
 
-		showRoom[2] = '0' + ct;
+    showRoom[2] = '0' + ct;
 
-		dLine = showRoom;
+    dLine = showRoom;
 
-	} break;
+  } break;
 
-	case 1:
-	case 2:
-		dLine = displayOption[enableICC];
-		break;
-	}
+  case 1:
+  case 2:
+    dLine = displayOption[enableICC];
+    break;
+  }
 
-	if (dLine) {
+  if (dLine) {
 
-		drawSmallString(y, smallWord[sline], sline == menuLine ? 0xA : 0x9A);
+    drawSmallString(y, smallWord[sline], sline == menuLine ? 0xA : 0x9A);
 
-		int colour =
-		    sline == menuLine ? (gameFrame & 4) ? 0x8 : ((++sin << 4) & 0xF0) | 0x18 : 0xB8;
-		drawString(0, y + 8, dLine, colour);
-	}
+    int colour = sline == menuLine
+                     ? (gameFrame & 4) ? 0x8 : ((++sin << 4) & 0xF0) | 0x18
+                     : 0xB8;
+    drawString(0, y + 8, dLine, colour);
+  }
 
 #if ENABLE_SERIAL_NUMBER
 
-	if (GAME_SELECT_PRESSED && GAME_RESET_PRESSED) {
+  if (GAME_SELECT_PRESSED && GAME_RESET_PRESSED) {
 
-		// for (int i = 179; i < 190; i++)
-		//     *(RAM + _BUF_MENU_COLUP0 + i) = 0xA;
+    // for (int i = 179; i < 190; i++)
+    //     *(RAM + _BUF_MENU_COLUP0 + i) = 0xA;
 
-		char ch;
-		int x = 0;
+    char ch;
+    int x = 0;
 
 #include "date2.txt"
 
-		while ((ch = *name++))
-			x += halfSize(x, 180, ch, true);
-	}
+    while ((ch = *name++))
+      x += halfSize(x, 180, ch, true);
+  }
 #endif
 }
 
 void initCopyrightScreen() {
 
-	// const unsigned char *p = EXTERNAL(__COPYRIGHT_START);
-	// unsigned char *r = RAM + _BUF_MENU_GRP0A;
+  // const unsigned char *p = EXTERNAL(__COPYRIGHT_START);
+  // unsigned char *r = RAM + _BUF_MENU_GRP0A;
 
-	// const int rStart = (_ARENA_SCANLINES - __COPYRIGHT_ROWS) / 2;
-	// const int rEnd = (_ARENA_SCANLINES + __COPYRIGHT_ROWS) / 2;
+  // const int rStart = (_ARENA_SCANLINES - __COPYRIGHT_ROWS) / 2;
+  // const int rEnd = (_ARENA_SCANLINES + __COPYRIGHT_ROWS) / 2;
 
-	// for (int col = 0; col < 6; col++) {
-	// 	for (int row = rStart; row < rEnd; row++) {
-	// 		RAM[_BUF_MENU_COLUP0 + row - 1] = convertColour(row < 53 ? 0x28 : 0x42); // multi OK
-	// 		r[row] = *p++;
-	// 	}
-	// 	r += _ARENA_SCANLINES;
-	// }
+  // for (int col = 0; col < 6; col++) {
+  // 	for (int row = rStart; row < rEnd; row++) {
+  // 		RAM[_BUF_MENU_COLUP0 + row - 1] = convertColour(row < 53 ? 0x28
+  // : 0x42); // multi OK 		r[row] = *p++;
+  // 	}
+  // 	r += _ARENA_SCANLINES;
+  // }
 }
 
 void initKernel(int kernel) {
 
-	// T1TC = 0;
-	// T1TCR = 1; // tmp
+  // T1TC = 0;
+  // T1TCR = 1; // tmp
 
-	KERNEL = kernel;
+  KERNEL = kernel;
 
-	setJumpVectors(_MENU_KERNEL, _EXIT_MENU_KERNEL);
+  setJumpVectors(_MENU_KERNEL, _EXIT_MENU_KERNEL);
 
-	killRepeatingAudio();
+  killRepeatingAudio();
 
-	gameSchedule = SCHEDULE_UNPACK_Room;
+  gameSchedule = SCHEDULE_UNPACK_Room;
 
-	// ARENA_COLOUR = 1;
+  // ARENA_COLOUR = 1;
 
-	P0_X = 80; // sets the menu sprites position
-	P1_X = 88;
+  P0_X = 80; // sets the menu sprites position
+  P1_X = 88;
 
-	waitRelease = true;
-	sound_max_volume = VOLUME_MAX;
+  waitRelease = true;
+  sound_max_volume = VOLUME_MAX;
 
-	zeroBuffer((int *)(RAM + _BUF_MENU_COLUPF), 12 * _ARENA_SCANLINES / 4); // dubious
-	chooseColourScheme();
+  zeroBuffer((int *)(RAM + _BUF_MENU_COLUPF),
+             12 * _ARENA_SCANLINES / 4); // dubious
+  chooseColourScheme();
 
-	switch (kernel) {
+  switch (kernel) {
 
-	case KERNEL_COPYRIGHT:
+  case KERNEL_COPYRIGHT:
 
-		frame = 0;          // for auto-detect
-		currentPalette = 0; // 4;
+    frame = 0;          // for auto-detect
+    currentPalette = 0; // 4;
 
-		mustWatchDelay = 5; // MUSTWATCH_COPYRIGHT;
-		break;
+    mustWatchDelay = MUSTWATCH_COPYRIGHT;
+    break;
 
-	case KERNEL_MENU:
+  case KERNEL_MENU:
 
-		rndX = getRandom32();
+    rndX = getRandom32();
 
-		menuLine = 0;
+    menuLine = 0;
 
-		if (rageQuit) {
+    if (rageQuit) {
 
-			SAY(__WORD_RAGEQUIT);
+      SAY(__WORD_RAGEQUIT);
 
-			sound_volume = VOLUME_NONPLAYING;
-		}
+      sound_volume = VOLUME_NONPLAYING;
+    }
 
-		int delta = VOLUME_NONPLAYING - sound_volume;
-		sound_volume += (delta > 0) - (delta < 0);
+    int delta = VOLUME_NONPLAYING - sound_volume;
+    sound_volume += (delta > 0) - (delta < 0);
 
-		// if (sound_volume < VOLUME_NONPLAYING)
-		//     sound_volume++;
-		// else if (sound_volume > VOLUME_NONPLAYING)
-		//     sound_volume--;
+    // if (sound_volume < VOLUME_NONPLAYING)
+    //     sound_volume++;
+    // else if (sound_volume > VOLUME_NONPLAYING)
+    //     sound_volume--;
 
-		resetMode();
+    resetMode();
 
-		mustWatchDelay = MUSTWATCH_MENU;
+    mustWatchDelay = MUSTWATCH_MENU;
 
-		break;
+    break;
 
-	case KERNEL_STATS: {
+  case KERNEL_STATS: {
 
-		// unsigned char *p = RAM + _BUF_MENU_PF1_LEFT;
-		// for (int i = 0; i < 4 * _ARENA_SCANLINES; i++)
-		//     p[i] = 0;
+    // unsigned char *p = RAM + _BUF_MENU_PF1_LEFT;
+    // for (int i = 0; i < 4 * _ARENA_SCANLINES; i++)
+    //     p[i] = 0;
 
-		mustWatchDelay = MUSTWATCH_STATS;
-		RoomUnpackComplete = false;
-		thumbnailSpeed = -10;
+    mustWatchDelay = MUSTWATCH_STATS;
+    RoomUnpackComplete = false;
+    thumbnailSpeed = -10;
 
-		// decode(Room);
-		setBackgroundPalette(EXTERNAL(__COLOUR_POOL) + currentPalette);
-		initCharAnimations();
-		break;
-	}
+    // decode(Room);
+    setBackgroundPalette(EXTERNAL(__COLOUR_POOL) + currentPalette);
+    initCharAnimations();
+    break;
+  }
 
-	case KERNEL_GAME: {
+  case KERNEL_GAME: {
 
-		extern bool lifeInit;
-		lifeInit = true;
+    extern bool lifeInit;
+    lifeInit = true;
 
-		sound_max_volume = VOLUME_PLAYING;
+    sound_max_volume = VOLUME_PLAYING;
 
-		break;
-	}
-	}
+    break;
+  }
+  }
 }
 
 void MenuOverscan() {
 
-	// T1TC = 0;
-	// T1TCR = 1; // tmp
+  // T1TC = 0;
+  // T1TCR = 1; // tmp
 
-	initMenuDatastreams();
+  initMenuDatastreams();
 
 #if __ENABLE_ATARIVOX
-	processSpeech();
+  processSpeech();
 #endif
 
-	playAudio();
+  playAudio();
 
-	zeroBuffer((int *)(RAM + _BUF_MENU_PF1_LEFT), _ARENA_SCANLINES);
+  zeroBuffer((int *)(RAM + _BUF_MENU_PF1_LEFT), _ARENA_SCANLINES);
 
-	// zeroBuffer((int *)(RAM + _BUF_MENU_COLUPF), 12 * _ARENA_SCANLINES / 4);
+  // zeroBuffer((int *)(RAM + _BUF_MENU_COLUPF), 12 * _ARENA_SCANLINES / 4);
 
-	// #else
-	//     zeroBuffer((int *)(RAM + _BUF_MENU_PF1_LEFT), _ARENA_SCANLINES);
-	// #endif
+  // #else
+  //     zeroBuffer((int *)(RAM + _BUF_MENU_PF1_LEFT), _ARENA_SCANLINES);
+  // #endif
 
-	switch (KERNEL) {
+  switch (KERNEL) {
 
-	case KERNEL_COPYRIGHT:
+  case KERNEL_COPYRIGHT:
 
-		detectConsoleType();
-		break;
+    detectConsoleType();
+    break;
 
-	case KERNEL_MENU:
+  case KERNEL_MENU:
 
-		handleMenuScreen();
-		break;
+    handleMenuScreen();
+    break;
 
-	case KERNEL_STATS: // overscan
-		break;
+  case KERNEL_STATS: // overscan
+    break;
 
-	default:
-		break;
-	}
+  default:
+    break;
+  }
 
-	// if (T1TC > detectedPeriod)
-	//     detectedPeriod = T1TC; // tmp   ~0x19500
+  // if (T1TC > detectedPeriod)
+  //     detectedPeriod = T1TC; // tmp   ~0x19500
 
-	// detectedPeriod = T1TC; // tmp
+  // detectedPeriod = T1TC; // tmp
 
-	frame++;
+  frame++;
 }
 
 int setBounds(int value, int max) {
-	if (value < 0)
-		value = max;
-	if (value > max)
-		value = 0;
-	return value;
+  if (value < 0)
+    value = max;
+  if (value > max)
+    value = 0;
+  return value;
 }
 
 void resetMode() {
 
-	gameFrame = 16;
-	waitRelease = true;
+  gameFrame = 16;
+  waitRelease = true;
 
-	pushCount = (rndX & 31) | 32;
+  pushCount = (rndX & 31) | 32;
 }
 
 void drawICCScreen(const unsigned char *icc) {
 
-	drawPalette(iCC_title_colour);
+  drawPalette(iCC_title_colour);
 
-	unsigned char *pf1L = RAM + _BUF_MENU_PF1_LEFT;
-	for (int line = 0; line < _ARENA_SCANLINES << 2; line += 3) {
+  unsigned char *pf1L = RAM + _BUF_MENU_PF1_LEFT;
+  for (int line = 0; line < _ARENA_SCANLINES << 2; line += 3) {
 
-		for (int i = 0; i < 3; i++) {
+    for (int i = 0; i < 3; i++) {
 
-			*pf1L++ = icc[roller];
+      *pf1L++ = icc[roller];
 
-			if (++roller > 2)
-				roller = 0;
-		}
-		icc += 3;
-	}
+      if (++roller > 2)
+        roller = 0;
+    }
+    icc += 3;
+  }
 }
 
 void handleMenuVB() {
 
-	if (!waitRelease && !(INPT4 & 0x80)) {
+  if (!waitRelease && !(INPT4 & 0x80)) {
 
-		ADDAUDIO(SFX_UNCOVERED);
+    ADDAUDIO(SFX_UNCOVERED);
 
-		initNewGame();
-		initKernel(KERNEL_STATS);
-		return;
-	}
+    initNewGame();
+    initKernel(KERNEL_STATS);
+    return;
+  }
 
-	interleaveColour();
+  interleaveColour();
 
-	if (!(INPT4 & 0x80) && !waitRelease) {
-		rageQuit = false;
-		waitRelease = true;
-	}
+  if (!(INPT4 & 0x80) && !waitRelease) {
+    rageQuit = false;
+    waitRelease = true;
+  }
 
-	drawICCScreen(iCC_title);
-	setTitleMarqueeColours();
+  drawICCScreen(iCC_title);
+  setTitleMarqueeColours();
 
 #if ENABLE_ANIMATING_MAN
-	doMan();
+  doMan();
 #endif
 
-	for (int i = 0; i < 6; i++)
-		if (!RGB[i] || !rangeRandom(32))
-			RGB[i] =
+  static int mq[6] = {0};
+
+  for (int i = 0; i < 6; i++)
+    if (!RGB[i] || (mq[i]++ > 100)) {
+      RGB[i] =
 #if ENABLE_SECAM
-			    (mm_tv_type == SECAM) ? (rangeRandom(7) + 1) << 1 :
+          (mm_tv_type == SECAM) ? (rangeRandom(7) + 1) << 1 :
 #endif
-			                          (LUMINANCE_TITLE + rangeRandom(8)) | (getRandom32() << 4);
+                                (LUMINANCE_TITLE + rangeRandom(5)) |
+                                    (getRandom32() << 4);
+      mq[i] = rangeRandom(50);
+    }
 
-	int negJoy = (SWCHA >> 4) ^ 0xF;
+  int negJoy = (SWCHA >> 4) ^ 0xF;
 
-	if (!waitRelease) {
+  if (!waitRelease) {
 
-		int dir = yInc[negJoy];
+    int dir = yInc[negJoy];
 
-		if (dir)
-			menuLine = setBounds(menuLine + dir, sizeof(smallWord) / sizeof(smallWord[0]) - 1);
+    if (dir)
+      menuLine = setBounds(menuLine + dir,
+                           sizeof(smallWord) / sizeof(smallWord[0]) - 1);
 
-		else {
+    else {
 
-			dir = xInc[negJoy];
-			if (dir) {
+      dir = xInc[negJoy];
+      if (dir) {
 
-				ADDAUDIO(SFX_SCORE);
-				switch (menuLine) {
+        ADDAUDIO(SFX_SCORE);
+        switch (menuLine) {
 
-				case 0:
+        case 0:
 
-					Room = setBounds(Room + dir, getRoomCount() - 1);
-					break;
+          Room = setBounds(Room + dir, getRoomCount() - 1);
+          break;
 
-				case 1:
-				case 2:
-					enableICC = !enableICC;
-					break;
-				}
-			}
-		}
+        case 1:
+        case 2:
+          enableICC = !enableICC;
+          break;
+        }
+      }
+    }
 
-		if (dir) {
-			resetMode();
-			mustWatchDelay = MUSTWATCH_MENU;
-			ADDAUDIO(SFX_BLIP);
-		}
-	}
+    if (dir) {
+      resetMode();
+      mustWatchDelay = MUSTWATCH_MENU;
+      ADDAUDIO(SFX_BLIP);
+    }
+  }
 }
 
 void MenuVerticalBlank() {
 
 #if __ENABLE_ATARIVOX
-	processSpeech();
+  processSpeech();
 #endif
 
-	getJoystick();
-	checkButtonRelease();
-	doFlash();
+  getJoystick();
+  checkButtonRelease();
+  doFlash();
 
-	switch (KERNEL) {
+  switch (KERNEL) {
 
-	case KERNEL_STATS: { // VBlank
+  case KERNEL_STATS: { // VBlank
 
-		initKernel(KERNEL_GAME); //<-- goes overtime (264)
-		return;
-		break;
-	}
+    initKernel(KERNEL_GAME); //<-- goes overtime (264)
+    return;
+    break;
+  }
 
-	case KERNEL_COPYRIGHT: // VBlank
+  case KERNEL_COPYRIGHT: // VBlank
 
-		if (!--mustWatchDelay) {
-			initKernel(KERNEL_MENU);
-			return;
-		}
+    if (!--mustWatchDelay) {
+      initKernel(KERNEL_MENU);
+      return;
+    }
 
-		interleaveColour();
-		drawPalette(EXTERNAL(__COLOUR_POOL));
-		break;
+    interleaveColour();
+    drawPalette(EXTERNAL(__COLOUR_POOL));
+    break;
 
-	case KERNEL_MENU:
+  case KERNEL_MENU:
 
-		handleMenuVB();
-		break;
-	}
+    handleMenuVB();
+    break;
+  }
 }
 
 void doubleSize(int x, int y, int letter, unsigned char colour) {
 
-	const unsigned char *gfx = EXTERNAL(__CHAR_A_TO_Z) + letter * LETTER_HEIGHT;
+  const unsigned char *gfx = EXTERNAL(__CHAR_A_TO_Z) + letter * LETTER_HEIGHT;
 
-	unsigned char *col0 = RAM + _BUF_MENU_GRP0A + _ARENA_SCANLINES * x + y;
-	unsigned char *p = RAM + _BUF_MENU_COLUP0 + y - 1;
+  unsigned char *col0 = RAM + _BUF_MENU_GRP0A + _ARENA_SCANLINES * x + y;
+  unsigned char *p = RAM + _BUF_MENU_COLUP0 + y - 1;
 
-	for (int line = 0; line < LETTER_HEIGHT; line++) {
+  for (int line = 0; line < LETTER_HEIGHT; line++) {
 
-		int doubledByte = 0;
-		for (int i = 7; i >= 0; --i) {
-			unsigned char bit = (gfx[line] >> i) & 1;
-			doubledByte = (doubledByte << 2) | (bit << 1) | bit;
-		}
+    int doubledByte = 0;
+    for (int i = 7; i >= 0; --i) {
+      unsigned char bit = (gfx[line] >> i) & 1;
+      doubledByte = (doubledByte << 2) | (bit << 1) | bit;
+    }
 
-		for (int stretch = 0; stretch < 3; stretch++) {
-			*col0 = doubledByte >> 8;
-			*(col0++ + _ARENA_SCANLINES) = doubledByte;
-			*p++ = colour;
-		}
-	}
+    for (int stretch = 0; stretch < 3; stretch++) {
+      *col0 = doubledByte >> 8;
+      *(col0++ + _ARENA_SCANLINES) = doubledByte;
+      *p++ = colour;
+    }
+  }
 }
 
 #if ENABLE_SERIAL_NUMBER
 int halfSize(int x, int y, int letter, bool render) {
 
-	int col = x >> 3;
-	int shift = 8 - (x & 7);
+  int col = x >> 3;
+  int shift = 8 - (x & 7);
 
-	if (letter <= '9')
-		letter = letter - '0' + 'Z' + 1;
+  if (letter <= '9')
+    letter = letter - '0' + 'Z' + 1;
 
-	const unsigned char *gfx =
-	    EXTERNAL(__CHAR_A_TO_Z) + letter * LETTER_HEIGHT - ('>' * LETTER_HEIGHT);
-	unsigned char *col0 = RAM + _BUF_MENU_GRP0A + _ARENA_SCANLINES * col + y;
+  const unsigned char *gfx =
+      EXTERNAL(__CHAR_A_TO_Z) + letter * LETTER_HEIGHT - ('>' * LETTER_HEIGHT);
+  unsigned char *col0 = RAM + _BUF_MENU_GRP0A + _ARENA_SCANLINES * col + y;
 
-	unsigned char merged = 0;
-	for (int line = 0; line < LETTER_HEIGHT; line++)
-		merged |= gfx[line];
+  unsigned char merged = 0;
+  for (int line = 0; line < LETTER_HEIGHT; line++)
+    merged |= gfx[line];
 
-	while (merged && !(merged & 128)) {
-		merged <<= 2;
-		shift++;
-	}
+  while (merged && !(merged & 128)) {
+    merged <<= 2;
+    shift++;
+  }
 
-	int width = 1;
-	while (merged) {
-		merged <<= 2;
-		width++;
-	}
+  int width = 1;
+  while (merged) {
+    merged <<= 2;
+    width++;
+  }
 
-	if (render)
-		for (int line = 0; line < LETTER_HEIGHT; line++) {
+  if (render)
+    for (int line = 0; line < LETTER_HEIGHT; line++) {
 
-			unsigned int c = gfx[line];
+      unsigned int c = gfx[line];
 
-			// clang-format off
+      // clang-format off
             unsigned int half = (
 
                 (c >> 7 << 31 >> 24 |    // 128
@@ -904,13 +916,13 @@ int halfSize(int x, int y, int letter, bool render) {
                  c >> 1 << 31 >> 27 ))   // 2
 
                 << shift;
-			// clang-format on
+      // clang-format on
 
-			*col0 |= half >> 8;
-			*(col0++ + _ARENA_SCANLINES) |= half;
-		}
+      *col0 |= half >> 8;
+      *(col0++ + _ARENA_SCANLINES) |= half;
+    }
 
-	return width;
+  return width;
 }
 #endif
 

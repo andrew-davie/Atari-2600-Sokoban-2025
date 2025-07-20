@@ -74,50 +74,50 @@ const int Attribute[TYPE_MAX] = {
 //                                     e           k                               e
 //                                    s           n                   e           k
 //                                   i           a               e   l           i
-//                                  o           l               l   b           l
-//         g               e       n           B               b   a           -
-//        n               k       k           h   e           a   d           t
-//       i   e           i       c           s   v       k   e   o           e
+//                                  o       k   l               l   b           l
+//         g               e       n       c   B               b   a           -
+//        n               k       k       o   h   e           a   d           t
+//       i   e           i       c       l   s   v       k   e   o           e
 //      l   s   t   p   l   h   o   t   d   a   i       n   m   l       1   g
-//     l   a   r   i   n   s   R   i   r   u   t       a   r   p   x   l   r
-//    a   h   i   r   a   u   o   x   a   q   c       l   e   x   o   o   a
-//   F   P   D   D   M   P   N   E   H   S   A       B   P   E   B   R   T
+//     l   a   r   i   n   s   R   i   a   u   t       a   r   p   x   l   r
+//    a   h   i   r   a   u   o   x   e   q   c       l   e   x   o   o   a
+//   F   P   D   D   M   P   N   E   D   S   A       B   P   E   B   R   T
 //   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
-//  FAL PHA DRT DRP RKF PSH QUI XIT HRD SQB ACT ___ SPC PER XPD ___ ROL TRG
+//  FAL PHA DRT DRP RKF PSH QUI XIT DED SQB ACT ___ SPC PER XPD ___ ROL TRG
 
      _ | _ | _ | _ |RKF| _ |QUI| _ | _ | _ | _ | _ |SPC|PER|XPD| _ | _ | _ ,  // 00 TYPE_SPACE
-     _ | _ | _ |DRP| _ | _ | _ | _ |HRD| _ | _ | _ | _ | _ |XPD| _ |ROL| _ ,  // 01 TYPE_BRICKWALL
-     _ | _ | _ |DRP| _ | _ | _ | _ |HRD| _ | _ | _ | _ | _ | _ | _ | _ | _ ,  // 02 TYPE_STEELWALL
-     _ |PH2| _ | _ | _ |PSH| _ | _ |HRD| _ |ACT| _ | _ | _ |XPD|BOX|ROL| _ ,  // 03 TYPE_BOX
+     _ | _ | _ |DRP| _ | _ | _ | _ |DED| _ | _ | _ | _ | _ |XPD| _ |ROL| _ ,  // 01 TYPE_BRICKWALL
+     _ | _ | _ |DRP| _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ ,  // 02 TYPE_STEELWALL
+     _ |PH2| _ | _ | _ |PSH| _ | _ |DED| _ |ACT| _ | _ | _ |XPD|BOX|ROL| _ ,  // 03 TYPE_BOX
      _ |PH2| _ | _ |RKF| _ |QUI| _ | _ |SQB| _ | _ | _ | _ |XPD| _ | _ | _ ,  // 04 TYPE_MAN
      _ | _ |DRT|DRP| _ | _ | _ | _ | _ | _ | _ | _ |SPC|PER|XPD| _ | _ |TRG,  // 05 TYPE_PILL1
      _ | _ |DRT|DRP| _ | _ | _ | _ | _ | _ | _ | _ |SPC|PER|XPD| _ | _ |TRG,  // 06 TYPE_PILL2
-     _ |PH1| _ | _ | _ | _ | _ | _ |HRD| _ | _ | _ | _ | _ |XPD| _ | _ | _ ,  // 07 TYPE_BOX_LTOR_LHS
-     _ |PH1| _ | _ | _ | _ | _ | _ |HRD| _ | _ | _ | _ | _ |XPD| _ | _ | _ ,  // 08 TYPE_BOX_LTOR_RHS
-     _ |PH1| _ | _ | _ | _ | _ | _ |HRD| _ | _ | _ | _ | _ | _ | _ | _ | _ ,  // 09 TYPE_BOX_RTOL_LHS
-     _ |PH1| _ | _ | _ | _ | _ | _ |HRD| _ | _ | _ | _ | _ | _ | _ | _ | _ ,  // 10 TYPE_BOX_RTOL_RHS
-     _ |PH1| _ | _ | _ |PSH| _ | _ |HRD| _ | _ | _ | _ | _ | _ | _ | _ | _ ,  // 11 TYPE_BOX_UTOD_TOP
-     _ |PH1| _ | _ | _ |PSH| _ | _ |HRD| _ | _ | _ | _ | _ | _ | _ | _ | _ ,  // 12 TYPE_BOX_UTOD_BOT
-     _ |PH1| _ | _ | _ |PSH| _ | _ |HRD| _ | _ | _ | _ | _ | _ | _ | _ | _ ,  // 13 TYPE_BOX_DTOU_TOP
-     _ |PH1| _ | _ | _ |PSH| _ | _ |HRD| _ | _ | _ | _ | _ | _ | _ | _ | _ ,  // 14 TYPE_BOX_DTOU_BOT
-     _ |PH1| _ | _ | _ |PSH| _ | _ |HRD| _ | _ | _ | _ | _ | _ | _ | _ | _ ,  // 15 TYPE_BOX_LTOR_LEFT
-     _ |PH1| _ | _ | _ |PSH| _ | _ |HRD| _ | _ | _ | _ | _ | _ | _ | _ | _ ,  // 16 TYPE_BOX_LTOR_RIGHT
-     _ |PH1| _ | _ | _ |PSH| _ | _ |HRD| _ | _ | _ | _ | _ | _ | _ | _ | _ ,  // 17 TYPE_BOX_RTOL_LEFT
-     _ |PH1| _ | _ | _ |PSH| _ | _ |HRD| _ | _ | _ | _ | _ | _ | _ | _ | _ ,  // 18 TYPE_BOX_RTOL_RIGHT
-     _ |PH2| _ | _ | _ |PSH| _ | _ |HRD| _ | _ | _ | _ | _ |XPD|BOX|ROL|TRG,  // 19 TYPE_BOX_LOCKED
-     _ |PH2| _ | _ | _ |PSH| _ | _ |HRD| _ |ACT| _ | _ | _ |XPD|BOX|ROL|TRG,  // 20 TYPE_BOX_CORRECT
-     _ |PH2| _ | _ | _ |PSH| _ | _ |HRD| _ |ACT| _ | _ | _ |XPD|BOX|ROL| _ ,  // 21 TYPE_BOX_DEADLOCKED
+     _ |PH1| _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ |XPD| _ | _ | _ ,  // 07 TYPE_BOX_LTOR_LHS
+     _ |PH1| _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ |XPD| _ | _ | _ ,  // 08 TYPE_BOX_LTOR_RHS
+     _ |PH1| _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ ,  // 09 TYPE_BOX_RTOL_LHS
+     _ |PH1| _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ ,  // 10 TYPE_BOX_RTOL_RHS
+     _ |PH1| _ | _ | _ |PSH| _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ ,  // 11 TYPE_BOX_UTOD_TOP
+     _ |PH1| _ | _ | _ |PSH| _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ ,  // 12 TYPE_BOX_UTOD_BOT
+     _ |PH1| _ | _ | _ |PSH| _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ ,  // 13 TYPE_BOX_DTOU_TOP
+     _ |PH1| _ | _ | _ |PSH| _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ ,  // 14 TYPE_BOX_DTOU_BOT
+     _ |PH1| _ | _ | _ |PSH| _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ ,  // 15 TYPE_BOX_LTOR_LEFT
+     _ |PH1| _ | _ | _ |PSH| _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ ,  // 16 TYPE_BOX_LTOR_RIGHT
+     _ |PH1| _ | _ | _ |PSH| _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ ,  // 17 TYPE_BOX_RTOL_LEFT
+     _ |PH1| _ | _ | _ |PSH| _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ ,  // 18 TYPE_BOX_RTOL_RIGHT
+     _ |PH2| _ | _ | _ |PSH| _ | _ |DED| _ | _ | _ | _ | _ |XPD|BOX|ROL|TRG,  // 19 TYPE_BOX_LOCKED
+     _ |PH2| _ | _ | _ |PSH| _ | _ |DED| _ |ACT| _ | _ | _ |XPD|BOX|ROL|TRG,  // 20 TYPE_BOX_CORRECT
+     _ |PH2| _ | _ | _ |PSH| _ | _ |DED| _ |ACT| _ | _ | _ |XPD|BOX|ROL| _ ,  // 21 TYPE_BOX_DEADLOCKED
 
-//  FAL PHA DRT DRP RKF PSH QUI XIT HRD SQB ACT  _  SPC PER XPD BOX ROL TRG
+//  FAL PHA DRT DRP RKF PSH QUI XIT DED SQB ACT  _  SPC PER XPD BOX ROL TRG
 //   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
-//   F   P   D   D   M   P   N   E   H   S   A       B   P   E   B   R   T
-//    a   h   i   r   a   u   o   x   a   q   c       l   e   x   o   o   a
-//     l   a   r   i   n   s   R   i   r   u   t       a   r   p   x   l   r
+//   F   P   D   D   M   P   N   E   D   S   A       B   P   E   B   R   T
+//    a   h   i   r   a   u   o   x   e   q   c       l   e   x   o   o   a
+//     l   a   r   i   n   s   R   i   a   u   t       a   r   p   x   l   r
 //      l   s   t   p   l   h   o   t   d   a   i       n   m   l       1   g
-//       i   e           i       c           s   v       k   e   o           e
-//        n               k       k           h   e           a   a           t
-//         g               e       n           B               b   b           -
-//                                  o           l               l   l           l
+//       i   e           i       c       l   s   v       k   e   o           e
+//        n               k       k       o   h   e           a   a           t
+//         g               e       n       c   B               b   b           -
+//                                  o       k   l               l   l           l
 //                                   i           a               e   e           i
 //                                    s           n                               k
 //                                     e           k                               e
