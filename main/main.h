@@ -14,8 +14,7 @@
 #define ENABLE_ANIMATING_MAN 1    /* 244 bytes but man disappears */
 #define ENABLE_SWIPE 1            /* 1108 bytes */
 #define ENABLE_SERIAL_NUMBER 1    /* 232 bytes(with 'halfsize' routine) */
-#define ENABLE_FIREWORKS                                                       \
-  0 /* 244 bytes - a pixel-draw used for a fireworks starburst */
+#define ENABLE_FIREWORKS 1        /* 244 bytes - a pixel-draw used for a fireworks starburst */
 
 #define ENABLE_PLAYERCELL 1
 
@@ -49,16 +48,12 @@ void InitializeNewGame();
 
 void drawWord(const char *string, int y, int colour);
 
-enum DisplayMode {
-  DISPLAY_NORMAL,
-  DISPLAY_HALF,
-  DISPLAY_OVERVIEW,
-  DISPLAY_NONE
-};
+enum DisplayMode { DISPLAY_NORMAL, DISPLAY_HALF, DISPLAY_OVERVIEW, DISPLAY_NONE };
 
 extern enum DisplayMode displayMode, lastDisplayMode;
 
 extern const unsigned char BitRev[];
+extern int boardRow, boardCol;
 
 // struct Animation {
 // 	signed char index;
@@ -87,29 +82,40 @@ extern unsigned char enablePALPalette;
 extern unsigned char *boxLocation;
 
 enum SCHEDULE {
-  // SCHEDULE_START,
-  SCHEDULE_PROCESSBOARD,
-  SCHEDULE_UNPACK_Room,
+	// SCHEDULE_START,
+	SCHEDULE_PROCESSBOARD,
+	SCHEDULE_UNPACK_Room,
 };
 
 extern enum SCHEDULE gameSchedule;
 extern int gameSpeed;
 extern int gameFrame;
 
+#if ENABLE_FIREWORKS
+#define SPLATS 10
+typedef struct {
+	unsigned char row, column;
+	int x;
+	int y;
+	int dX;
+	int dY;
+	int age;
+} FIREWORKS;
+
+extern FIREWORKS fireworks[SPLATS];
+
+void addFirework(int x, int y);
+
+#endif
+
 enum KERNEL_TYPE {
-  KERNEL_COPYRIGHT,
-  KERNEL_MENU,
-  KERNEL_GAME,
-  KERNEL_STATS,
+	KERNEL_COPYRIGHT,
+	KERNEL_MENU,
+	KERNEL_GAME,
+	KERNEL_STATS,
 };
 
-enum PHASE {
-  PHASE_NONE = 0,
-  PHASE_TIME = 2,
-  PHASE_GEMS = 3,
-  PHASE_SWIPE = 4,
-  PHASE_END = 5
-};
+enum PHASE { PHASE_NONE = 0, PHASE_TIME = 2, PHASE_GEMS = 3, PHASE_SWIPE = 4, PHASE_END = 5 };
 extern enum PHASE exitPhase;
 
 extern int frame;
@@ -136,10 +142,10 @@ extern bool enableICC;
 extern bool roomCompleted;
 
 enum FaceDirection {
-  FACE_LEFT = -1,
-  FACE_RIGHT = 1,
-  FACE_UP = -1,
-  FACE_DOWN = 1,
+	FACE_LEFT = -1,
+	FACE_RIGHT = 1,
+	FACE_UP = -1,
+	FACE_DOWN = 1,
 };
 
 extern int currentPalette;

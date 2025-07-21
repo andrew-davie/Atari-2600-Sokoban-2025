@@ -88,6 +88,7 @@ enum ChName {
 	CH_BOX_LOCKED2,       // 43
 	CH_BOX_CORRECT,       // 44
 	CH_BOX_DEADLOCK,      // 45
+	CH_BOX_PADLOCK,       // 46
 
 	CH_MAX
 };

@@ -141,19 +141,19 @@ void drawPlayerSprite() { // --> 1976 cycles
 	}
 }
 
-void getPlayerScreenPosition(int *screenX, int *screenY, int mode) {
+void getPlayerScreenPosition(int x, int y, int *screenX, int *screenY, int mode) {
 
 	switch (mode) {
 	case DISPLAY_NORMAL:
-		*screenY = SCORE_SCANLINES + (manY)*CHAR_HEIGHT - (scrollY[mode] >> SHIFT_SCROLLY) * 3 - 3;
-		*screenX = (manX * PIXELS_PER_CHAR - (scrollX[mode] >> SHIFT_SCROLLX)) * 4;
+		*screenY = SCORE_SCANLINES + (y)*CHAR_HEIGHT - (scrollY[mode] >> SHIFT_SCROLLY) * 3 - 3;
+		*screenX = (x * PIXELS_PER_CHAR - (scrollX[mode] >> SHIFT_SCROLLX)) * 4;
 		break;
 
 	case DISPLAY_HALF:
 		*screenX =
-		    ((manX * PIXELS_PER_CHAR_HALF - (scrollX[DISPLAY_HALF] >> (SHIFT_SCROLLX + 1))) * 4);
+		    ((x * PIXELS_PER_CHAR_HALF - (scrollX[DISPLAY_HALF] >> (SHIFT_SCROLLX + 1))) * 4);
 
-		*screenY = SCORE_SCANLINES + manY * CHAR_HEIGHT_HALF -
+		*screenY = SCORE_SCANLINES + y * CHAR_HEIGHT_HALF -
 		           ((scrollY[DISPLAY_HALF] * 3) >> (SHIFT_SCROLLY + 1)) + 3;
 
 		break;

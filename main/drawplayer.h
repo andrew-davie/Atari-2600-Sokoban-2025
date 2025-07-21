@@ -11,6 +11,6 @@ void removeHalfSprite();
 
 void initSprites();
 
-void getPlayerScreenPosition(int *screenX, int *screenY, int mode);
+void getPlayerScreenPosition(int x, int y, int *screenX, int *screenY, int mode);
 
 #endif

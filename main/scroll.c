@@ -88,7 +88,7 @@ void Scroll() {
 		else {
 
 			int x, y;
-			getPlayerScreenPosition(&x, &y, mode);
+			getPlayerScreenPosition(manX, manY, &x, &y, mode);
 			x += manFaceDirection * frameAdjustX;
 
 			switch (mode) {

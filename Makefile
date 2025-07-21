@@ -36,7 +36,7 @@ SERIAL2 := $(shell date +"%m%d%H%M")
 
 
 ifeq ($(EMULATOR),gopher)
-RUN=@zsh -c "nohup ../Gopher2600/gopher2600_darwin_arm64 -tv PAL -right savekey ./$(PROJECT).bin &"
+RUN=@zsh -c "nohup ../Gopher2600/gopher2600_darwin_arm64 -tv NTSC -right savekey ./$(PROJECT).bin &"
 KILL=@killall -INT gopher2600_darwin_arm64 || true > silent
 else
 RUN=@open -a /Applications/Stella.app ./$(PROJECT).bin
