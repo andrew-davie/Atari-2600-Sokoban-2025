@@ -120,13 +120,13 @@ void swipe(int reserved) {
 			int x2 = (circleX * 7) >> 4;
 			int y2 = (circleY * 7) >> 4;
 
-			drawMaskBit(swipeCenterX + y2, swipeCenterY + circleX) |
-			    drawMaskBit(swipeCenterX + y2, swipeCenterY - circleX) |
-			    drawMaskBit(swipeCenterX + x2, swipeCenterY - circleY) |
-			    drawMaskBit(swipeCenterX - x2, swipeCenterY - circleY) |
-			    drawMaskBit(swipeCenterX - y2, swipeCenterY - circleX) |
-			    drawMaskBit(swipeCenterX - y2, swipeCenterY + circleX) |
-			    drawMaskBit(swipeCenterX - x2, swipeCenterY + circleY);
+			drawMaskBit(swipeCenterX + y2, swipeCenterY + circleX);
+			drawMaskBit(swipeCenterX + y2, swipeCenterY - circleX);
+			drawMaskBit(swipeCenterX + x2, swipeCenterY - circleY);
+			drawMaskBit(swipeCenterX - x2, swipeCenterY - circleY);
+			drawMaskBit(swipeCenterX - y2, swipeCenterY - circleX);
+			drawMaskBit(swipeCenterX - y2, swipeCenterY + circleX);
+			drawMaskBit(swipeCenterX - x2, swipeCenterY + circleY);
 
 			circleY++;
 

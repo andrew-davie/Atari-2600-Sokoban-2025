@@ -18,7 +18,7 @@ DASM_TO_C=defines_from_dasm_for_c.h
 
 # Tool names
 TOOLPATH = ./tools
-TOOLCHAIN= ~/Documents/software/gcc-arm-none-eabi/bin/arm-none-eabi
+TOOLCHAIN= ../../gcc-arm-none-eabi/bin/arm-none-eabi
 
 CC=$(TOOLCHAIN)-gcc
 AS=$(TOOLCHAIN)-as

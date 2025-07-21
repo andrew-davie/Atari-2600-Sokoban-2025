@@ -107,7 +107,7 @@ void checkDeadlocks() {
 
 	};
 
-	for (int i = 0; i < sizeof(block) / sizeof(block[0]); i++)
+	for (unsigned int i = 0; i < sizeof(block) / sizeof(block[0]); i++)
 		dead |= validate(block[i]);
 
 	if (dead) {
