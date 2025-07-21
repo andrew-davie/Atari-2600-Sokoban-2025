@@ -52,7 +52,9 @@ int boardRow;
 int boardCol;
 bool triggerNextLife;
 
+int pushingMoves;
 int moves;
+
 int showRoomCounter;
 
 int trig;
@@ -245,9 +247,8 @@ void initNextLife() {
 
 #if ENABLE_FIREWORKS
 
-	for (int i = 0; i < SPLATS; i++) {
+	for (int i = 0; i < SPLATS; i++)
 		fireworks[i].age = 0;
-	}
 #endif
 
 	guaranteedViewTime = 1;
@@ -870,30 +871,18 @@ void GameVerticalBlank() { // ~7500
 #if ENABLE_FIREWORKS
 	if (displayMode == DISPLAY_NORMAL) {
 		for (int i = 0; i < SPLATS; i++) {
-
 			if (fireworks[i].age) {
-
-				unsigned char *p = ADDRESS_OF(fireworks[i].row) + fireworks[i].column;
-				if (!(Attribute[CharToType[*p]] & ATT_DEADLOCK)) {
-					fireworks[i].age = 0;
-					break;
-				}
 
 				fireworks[i].x += fireworks[i].dX;
 				fireworks[i].y += fireworks[i].dY;
 
-				int x = (fireworks[i].x - scrollX[displayMode]) >> SHIFT_SCROLLX;
-				int y = (fireworks[i].y - scrollY[displayMode]) >> SHIFT_SCROLLY;
+				int x = ((fireworks[i].x << 8) - scrollX[DISPLAY_NORMAL]) >> SHIFT_SCROLLX;
+				int y = ((fireworks[i].y << 8) - scrollY[DISPLAY_NORMAL]) >> SHIFT_SCROLLY;
 
-				drawBit(x, y); // + SCORE_SCANLINES + 2);
+				drawBit(x, y);
 				fireworks[i].age--;
 			}
 		}
-
-		// else {
-		// 	fireworks[i].age = 0;
-		// 	fireworks[i].parent = 0;
-		// }
 	}
 #endif
 
@@ -920,15 +909,11 @@ void addFirework(int x, int y) {
 
 	for (int i = 0; i < SPLATS; i++)
 		if (!fireworks[i].age) {
-
-			fireworks[i].row = y;
-			fireworks[i].column = x;
-
-			fireworks[i].x = ((x * PIXELS_PER_CHAR + 4) << SHIFT_SCROLLX);
-			fireworks[i].y = ((y * (CHAR_HEIGHT / 3) + 5) << SHIFT_SCROLLY);
-			fireworks[i].dX = (rangeRandom(0x180) - 0xC0) << (SHIFT_SCROLLX - 9);
-			fireworks[i].dY = (rangeRandom(0x180) - 0xC0) << (SHIFT_SCROLLY - 8);
-			fireworks[i].age = 20;
+			fireworks[i].x = ((x * PIXELS_PER_CHAR + 3) << (SHIFT_SCROLLX - 8));
+			fireworks[i].y = ((y * (CHAR_HEIGHT / 3) + 5) << (SHIFT_SCROLLY - 8));
+			fireworks[i].dX = ((rangeRandom(SPLAT_RANGE) - SPLAT_RANGE / 2) + SPLAT_MIN) >> 3;
+			fireworks[i].dY = ((rangeRandom(SPLAT_RANGE) - SPLAT_RANGE / 2) + SPLAT_MIN);
+			fireworks[i].age = 10 + rangeRandom(SPLAT_LIFESPAN);
 			break;
 		}
 }
@@ -963,11 +948,10 @@ bool processType() {
 
 	case TYPE_BOX_CORRECT: {
 
-		if (!*(Animate[TYPE_BOX_CORRECT] + 1)) {
+		if (!*(Animate[TYPE_BOX_CORRECT] + 1))
 			*me = CH_BOX_LOCKED;
-		}
 
-		for (int i = 0; i < SPLATS / 2; i++)
+		for (int i = 0; i < 3; i++)
 			addFirework(boardCol, boardRow);
 
 		// if (selectResetDelay > DEAD_RESTART_COUCH ||

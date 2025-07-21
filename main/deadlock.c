@@ -9,10 +9,10 @@
 bool deadlock;
 
 // Check if a position is a wall
-bool is_wall(unsigned char *p) { return *p == CH_BRICKWALL; }
+bool isWall(unsigned char *p) { return *p == CH_BRICKWALL; }
 
 // Check if a position is a goal
-bool is_goal(unsigned char *p) { return Attribute[CharToType[*p]] & ATT_TARGETLIKE; }
+bool isGoal(unsigned char *p) { return Attribute[CharToType[*p]] & ATT_TARGETLIKE; }
 
 bool isBox(unsigned char *p) { return Attribute[CharToType[*p]] & ATT_BOX; }
 
@@ -22,11 +22,13 @@ bool isUnplacedBox(unsigned char *p) {
 
 bool isBoxorWall(unsigned char *p) { return (Attribute[CharToType[*p]] & ATT_DEADLOCK); }
 
+bool isUnplacedBoxorWall(unsigned char *p) { return isBoxorWall(p) && !isGoal(p); }
+
 bool validate(unsigned char *offset[4]) {
 
-	bool dead = ((isBox(offset[1])) && isBoxorWall(offset[2]) && isBoxorWall(offset[3]));
+	bool dead = isUnplacedBox(offset[0]) && isUnplacedBoxorWall(offset[1]) &&
+	            isUnplacedBoxorWall(offset[2]) && isUnplacedBoxorWall(offset[3]);
 	if (dead) {
-
 		// axiom: offset[0] and offset[1] ARE boxes
 		for (int i = 0; i < 4; i++)
 			if (isUnplacedBox(offset[i]))
@@ -36,8 +38,10 @@ bool validate(unsigned char *offset[4]) {
 	return dead;
 }
 
-// Detect static corner deadlock
-void is_corner_deadlock() {
+void checkDeadlocks() {
+
+	if (*me == CH_BOX_DEADLOCK)
+		*me = CH_BOX;
 
 	//      BOX 0       BOX 1       BOX 2       BOX 3
 	//     +-+-+-+     +-+-+-+     +-+-+-+     +-+-+-+
@@ -53,15 +57,13 @@ void is_corner_deadlock() {
 	// [ ] = "me"
 	//  W  = wall
 
-	bool wall_up = is_wall(me - _1ROW);
-	bool wall_down = is_wall(me + _1ROW);
-	bool wall_left = is_wall(me - 1);
-	bool wall_right = is_wall(me + 1);
+	bool wall_up = isWall(me - _1ROW);
+	bool wall_down = isWall(me + _1ROW);
+	bool wall_left = isWall(me - 1);
+	bool wall_right = isWall(me + 1);
 
-	bool dead = !is_goal(me) && (
-	                                // Any 90° corner
-	                                (wall_up && wall_left) || (wall_up && wall_right) ||
-	                                (wall_down && wall_left) || (wall_down && wall_right));
+	bool dead = !isGoal(me) && ((wall_up && wall_left) || (wall_up && wall_right) ||
+	                            (wall_down && wall_left) || (wall_down && wall_right));
 
 	// Against-wall options
 
@@ -94,8 +96,6 @@ void is_corner_deadlock() {
 	//     +-+-+-+     +-+-+-+     +-+-+-+     +-+-+-+
 	//     -1 0 1      -1 0 1      -1 0 1      -1 0 1
 
-	//
-	//
 	// [] = "me"
 
 	unsigned char *block[][4] = {
@@ -112,59 +112,7 @@ void is_corner_deadlock() {
 
 	if (dead) {
 		deadlock = true;
-		if (isUnplacedBox(me)) {
+		if (isUnplacedBox(me))
 			*me = CH_BOX_DEADLOCK;
-
-			//			addFirework(boardCol, boardRow);
-		}
 	}
-}
-
-// bool checkBlock(unsigned char *p) {
-
-// 	// check a 2x2 block with TL at p. If any of the blocks are not
-// 	// 'box-wall'-like then the block itself is not a deadlock contributor
-
-// 	bool dead = true;
-// 	for (int x = 0; x < 2; x++)
-// 		for (int y = 0; y < 2 * _1ROW; y += _1ROW)
-// 			dead &= isBoxorWall(p + x + y);
-
-// 	return dead;
-// }
-
-// void isBox_block() {
-
-// 	// Detect all 2x2 box cluster deadlocks around "me"
-// 	// If *any* of the numbered squares in each group are not 'box/wall'-like
-// 	// then that group is not deadlocked and more specifically the [] square in
-// 	// that group is not deadlocked by that block. If aany  Otherwise, all of
-// 	// the squares in that group which are boxlike are marked as deadlocked.
-
-// 	bool dead = false;
-// 	for (int x = -1; x < 1; x++)
-// 		for (int y = -_1ROW; y < _1ROW; y += _1ROW)
-// 			dead |= checkBlock(me + x + y);
-
-// 	if (dead) {
-
-// 		deadlock = true;
-// 		for (int x = -1; x < 2; x += 2)
-// 			for (int y = -1; y < 2; y += 2) {
-// 				unsigned char *p = me + x + y * _1ROW;
-// 				if (isBox(p) && !(Attribute[CharToType[*p]] & ATT_TARGETLIKE)) {
-// 					*(p) = CH_BOX_DEADLOCK;
-// 					addFirework(boardRow + x, boardCol + y);
-// 				}
-// 			}
-// 	}
-// }
-
-void checkDeadlocks() {
-
-	if (*me == CH_BOX_DEADLOCK)
-		*me = CH_BOX;
-
-	is_corner_deadlock();
-	//	isBox_block();
 }

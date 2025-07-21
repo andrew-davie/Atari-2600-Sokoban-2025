@@ -92,14 +92,18 @@ extern int gameSpeed;
 extern int gameFrame;
 
 #if ENABLE_FIREWORKS
-#define SPLATS 10
+#define SPLATS 30
+#define SPLAT_LIFESPAN 40
+#define SPLAT_MIN 0x10
+#define SPLAT_RANGE 0x120
+#define SPLAT_SPEED (SPLAT_MIN + SPLAT_RANGE)
 typedef struct {
-	unsigned char row, column;
-	int x;
-	int y;
-	int dX;
-	int dY;
-	int age;
+	// unsigned char row, column;
+	short int x;
+	short int y;
+	short int dX;
+	short int dY;
+	unsigned char age;
 } FIREWORKS;
 
 extern FIREWORKS fireworks[SPLATS];
@@ -120,6 +124,7 @@ extern enum PHASE exitPhase;
 
 extern int frame;
 
+extern int pushingMoves;
 extern int moves;
 extern int lives;
 extern int time60ths;

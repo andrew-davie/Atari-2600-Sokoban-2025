@@ -2112,13 +2112,7 @@ void adjustBoxPosition(int xOffset, int yOffset) {
 		//		}
 	}
 
-	int dir = 0;
-	if (xOffset > 0)
-		dir = 1;
-	else if (yOffset < 0)
-		dir = 2;
-	else if (yOffset > 0)
-		dir = 3;
+	int dir = ((yOffset != 0) << 1) | (xOffset > 0) | (yOffset > 0);
 
 	pushUndo(manX, manY, dir, true);
 	boxLocation = 0;
@@ -2151,7 +2145,7 @@ void startBoxMoving(int dir) {
 	if ((Attribute[CharToType[GET(*from)]] & ATT_PUSH) &&
 	    (Attribute[CharToType[GET(*to)]] & ATT_BLANK)) {
 
-		moves++;
+		pushingMoves++;
 		ADDAUDIO(SFX_DIRT);
 
 		pillFlagTo = *to;

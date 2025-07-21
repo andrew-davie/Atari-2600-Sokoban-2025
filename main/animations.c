@@ -21,6 +21,8 @@ static const unsigned char Animate_BoxCorrect[] = {
 
     CH_BOX_CORRECT,3,
     CH_PILL1,3,
+    // CH_BOX_CORRECT,3,
+    // CH_PILL1,3,
     CH_BOX, 6,
     CH_PILL1,3,
     CH_BOX, 6,
