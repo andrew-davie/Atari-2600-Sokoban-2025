@@ -1,58 +1,59 @@
 #include "attribute.h"
 
-const unsigned char CharToType[128] = {
+const unsigned char CharToType[CH_MAX] = {
 
     // see ChName@attribute.h for corresponding character name/number
     // Attribute[] array (see below) must correspond to these entries
 
-    TYPE_SPACE,          // 00 CH_BLANK
-    TYPE_BRICKWALL,      // 01 CH_BRICKWALL
-    TYPE_STEELWALL,      // 02 CH_STEELWALL
-    TYPE_PILL1,          // 03 CH_PILL1
-    TYPE_PILL1,          // 04 CH_PILL2
-    TYPE_BOX,            // 05 CH_BOX
-    TYPE_MAN,            // 06 CH_MAN
-    TYPE_BOX_UTOD_TOP,   // 07 CH_BOX_UTOD_TOP_0
-    TYPE_BOX_DTOU_TOP,   // 08 CH_BOX_UTOD_TOP_1
-    TYPE_BOX_UTOD_TOP,   // 09 CH_BOX_UTOD_TOP_2
-    TYPE_BOX_UTOD_TOP,   // 10 CH_BOX_UTOD_TOP_3
-    TYPE_BOX_UTOD_TOP,   // 11 CH_BOX_UTOD_TOP_4
-    TYPE_BOX_UTOD_TOP,   // 12 CH_BOX_UTOD_TOP_5
-    TYPE_BOX_UTOD_TOP,   // 13 CH_BOX_UTOD_TOP_6
-    TYPE_BOX_UTOD_TOP,   // 14 CH_BOX_UTOD_TOP_7
-    TYPE_BOX_UTOD_TOP,   // 15 CH_BOX_UTOD_TOP_8
-    TYPE_BOX_UTOD_BOT,   // 16 CH_BOX_UTOD_BOTTOM_0
-    TYPE_BOX_DTOU_BOT,   // 17 CH_BOX_UTOD_BOTTOM_1
-    TYPE_BOX_UTOD_BOT,   // 18 CH_BOX_UTOD_BOTTOM_2
-    TYPE_BOX_UTOD_BOT,   // 19 CH_BOX_UTOD_BOTTOM_3
-    TYPE_BOX_UTOD_BOT,   // 20 CH_BOX_UTOD_BOTTOM_4
-    TYPE_BOX_UTOD_BOT,   // 21 CH_BOX_UTOD_BOTTOM_5
-    TYPE_BOX_UTOD_BOT,   // 22 CH_BOX_UTOD_BOTTOM_6
-    TYPE_BOX_UTOD_BOT,   // 23 CH_BOX_UTOD_BOTTOM_7
-    TYPE_BOX_UTOD_BOT,   // 24 CH_BOX_UTOD_BOTTOM_8
-    TYPE_BOX_LTOR_LHS,   // 25 CH_BOX_LTOR_LEFT_0
-    TYPE_BOX_RTOL_LHS,   // 26 CH_BOX_LTOR_LEFT_1
-    TYPE_BOX_LTOR_LHS,   // 27 CH_BOX_LTOR_LEFT_2
-    TYPE_BOX_LTOR_LHS,   // 28 CH_BOX_LTOR_LEFT_3
-    TYPE_BOX_LTOR_LHS,   // 29 CH_BOX_LTOR_LEFT_4
-    TYPE_BOX_LTOR_RHS,   // 30 CH_BOX_LTOR_RIGHT_0
-    TYPE_BOX_RTOL_RHS,   // 31 CH_BOX_LTOR_RIGHT_1
-    TYPE_BOX_LTOR_RHS,   // 32 CH_BOX_LTOR_RIGHT_2
-    TYPE_BOX_LTOR_RHS,   // 33 CH_BOX_LTOR_RIGHT_3
-    TYPE_BOX_LTOR_RHS,   // 34 CH_BOX_LTOR_RIGHT_4
-    TYPE_PILL1,          // 35 CH_PILL_1
-    TYPE_PILL1,          // 36 CH_PILL_2
-    TYPE_PILL1,          // 37 CH_PILL_3
-    TYPE_PILL1,          // 38 CH_PILL_4
-    TYPE_PILL1,          // 39 CH_PILL_5
-    TYPE_PILL1,          // 40 CH_PILL_6
-    TYPE_PILL1,          // 41 CH_PILL_7
-    TYPE_BOX_LOCKED,     // 42 CH_BOX_LOCKED
-    TYPE_BOX_LOCKED,     // 43 CH_BOX_LOCKED
-    TYPE_BOX_CORRECT,    // 44 CH_BOX_CORRECT
-    TYPE_BOX_DEADLOCKED, // 45 CH_BOX_DEADLOCKED
-    TYPE_BOX_DEADLOCKED, // 46 CH_BOX_PADLOCK
-
+    TYPE_SPACE,            // 00 CH_BLANK
+    TYPE_BRICKWALL,        // 01 CH_BRICKWALL
+    TYPE_STEELWALL,        // 02 CH_STEELWALL
+    TYPE_PILL1,            // 03 CH_PILL1
+    TYPE_PILL1,            // 04 CH_PILL2
+    TYPE_BOX,              // 05 CH_BOX
+    TYPE_MAN,              // 06 CH_MAN
+    TYPE_BOX_UTOD_TOP,     // 07 CH_BOX_UTOD_TOP_0
+    TYPE_BOX_DTOU_TOP,     // 08 CH_BOX_UTOD_TOP_1
+    TYPE_BOX_UTOD_TOP,     // 09 CH_BOX_UTOD_TOP_2
+    TYPE_BOX_UTOD_TOP,     // 10 CH_BOX_UTOD_TOP_3
+    TYPE_BOX_UTOD_TOP,     // 11 CH_BOX_UTOD_TOP_4
+    TYPE_BOX_UTOD_TOP,     // 12 CH_BOX_UTOD_TOP_5
+    TYPE_BOX_UTOD_TOP,     // 13 CH_BOX_UTOD_TOP_6
+    TYPE_BOX_UTOD_TOP,     // 14 CH_BOX_UTOD_TOP_7
+    TYPE_BOX_UTOD_TOP,     // 15 CH_BOX_UTOD_TOP_8
+    TYPE_BOX_UTOD_BOT,     // 16 CH_BOX_UTOD_BOTTOM_0
+    TYPE_BOX_DTOU_BOT,     // 17 CH_BOX_UTOD_BOTTOM_1
+    TYPE_BOX_UTOD_BOT,     // 18 CH_BOX_UTOD_BOTTOM_2
+    TYPE_BOX_UTOD_BOT,     // 19 CH_BOX_UTOD_BOTTOM_3
+    TYPE_BOX_UTOD_BOT,     // 20 CH_BOX_UTOD_BOTTOM_4
+    TYPE_BOX_UTOD_BOT,     // 21 CH_BOX_UTOD_BOTTOM_5
+    TYPE_BOX_UTOD_BOT,     // 22 CH_BOX_UTOD_BOTTOM_6
+    TYPE_BOX_UTOD_BOT,     // 23 CH_BOX_UTOD_BOTTOM_7
+    TYPE_BOX_UTOD_BOT,     // 24 CH_BOX_UTOD_BOTTOM_8
+    TYPE_BOX_LTOR_LHS,     // 25 CH_BOX_LTOR_LEFT_0
+    TYPE_BOX_RTOL_LHS,     // 26 CH_BOX_LTOR_LEFT_1
+    TYPE_BOX_LTOR_LHS,     // 27 CH_BOX_LTOR_LEFT_2
+    TYPE_BOX_LTOR_LHS,     // 28 CH_BOX_LTOR_LEFT_3
+    TYPE_BOX_LTOR_LHS,     // 29 CH_BOX_LTOR_LEFT_4
+    TYPE_BOX_LTOR_RHS,     // 30 CH_BOX_LTOR_RIGHT_0
+    TYPE_BOX_RTOL_RHS,     // 31 CH_BOX_LTOR_RIGHT_1
+    TYPE_BOX_LTOR_RHS,     // 32 CH_BOX_LTOR_RIGHT_2
+    TYPE_BOX_LTOR_RHS,     // 33 CH_BOX_LTOR_RIGHT_3
+    TYPE_BOX_LTOR_RHS,     // 34 CH_BOX_LTOR_RIGHT_4
+    TYPE_PILL1,            // 35 CH_PILL_1
+    TYPE_PILL1,            // 36 CH_PILL_2
+    TYPE_PILL1,            // 37 CH_PILL_3
+    TYPE_PILL1,            // 38 CH_PILL_4
+    TYPE_PILL1,            // 39 CH_PILL_5
+    TYPE_PILL1,            // 40 CH_PILL_6
+    TYPE_PILL1,            // 41 CH_PILL_7
+    TYPE_BOX_LOCKED,       // 42 CH_BOX_LOCKED
+    TYPE_BOX_LOCKED,       // 43 CH_BOX_LOCKED2
+    TYPE_BOX_CORRECT,      // 44 CH_BOX_CORRECT
+    TYPE_BOX_DEADLOCKED,   // 45 CH_BOX_DEADLOCKED
+    TYPE_BOX_DEADLOCKED,   // 46 CH_BOX_PADLOCK
+    TYPE_BOX_UNDO,         // 47 CH_BOX_UNDO
+    TYPE_BOX_UNDO_CORRECT, // 48 CH_BOX_UNDO_CORRECT
 };
 
 const int Attribute[TYPE_MAX] = {
@@ -108,6 +109,9 @@ const int Attribute[TYPE_MAX] = {
      _ |PH2| _ | _ | _ |PSH| _ | _ |DED| _ | _ | _ | _ | _ |XPD|BOX|ROL|TRG,  // 19 TYPE_BOX_LOCKED
      _ |PH2| _ | _ | _ |PSH| _ | _ |DED| _ |ACT| _ | _ | _ |XPD|BOX|ROL|TRG,  // 20 TYPE_BOX_CORRECT
      _ |PH2| _ | _ | _ |PSH| _ | _ |DED| _ |ACT| _ | _ | _ |XPD|BOX|ROL| _ ,  // 21 TYPE_BOX_DEADLOCKED
+     _ |PH2| _ | _ | _ |PSH| _ | _ | _ | _ |ACT| _ | _ | _ |XPD|BOX|ROL| _ ,  // 22 TYPE_BOX_UNDO
+     _ |PH2| _ | _ | _ |PSH| _ | _ | _ | _ |ACT| _ | _ | _ |XPD|BOX|ROL|TRG,  // 23 TYPE_BOX_UNDOCORRECT
+
 
 //  FAL PHA DRT DRP RKF PSH QUI XIT DED SQB ACT  _  SPC PER XPD BOX ROL TRG
 //   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |

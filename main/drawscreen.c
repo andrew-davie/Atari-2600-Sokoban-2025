@@ -416,7 +416,7 @@ void drawOverviewScreen(int startRow, int endRow) { // 35848 (A1)
 	}
 }
 
-bool drawBit(char x, int y) {
+bool drawBit(char x, int y, int colour) {
 
 	int line = y * 3 + 21;
 	if (line >= _ARENA_SCANLINES - 3 || line < SCORE_SCANLINES)
@@ -438,9 +438,18 @@ bool drawBit(char x, int y) {
 	int shift = col < 4 ? col + 4 : col < 12 ? 11 - col : col - 12;
 	int bit = 1 << shift;
 
-	base[0] |= bit;
-	base[1] |= bit;
-	base[2] |= bit;
+	colour |= -colour << 3;
+	int roll = roller;
+	for (int i = 0; i < 3; i++) {
+
+		if (colour & (1 << (roll + i)))
+			base[roll] |= bit;
+
+		if (++roll > 2)
+			roll = 0;
+	}
+
+	//  }
 
 	return true;
 }

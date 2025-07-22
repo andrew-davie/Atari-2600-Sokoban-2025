@@ -4,6 +4,7 @@
 #include <stdbool.h>
 
 extern bool deadlock;
+extern int deadlockCounter;
 
 void checkDeadlocks();
 

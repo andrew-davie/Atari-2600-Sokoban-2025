@@ -1,10 +1,13 @@
 #include "undo.h"
+#include "animations.h"
 #include "attribute.h"
 #include "colour.h"
 #include "deadlock.h"
+#include "defines.h"
 #include "defines_cdfj.h"
 #include "main.h"
 #include "man.h"
+#include "player.h"
 #include "rooms.h"
 #include "score.h"
 #include "sound.h"
@@ -56,6 +59,42 @@ bool undoLastMove() {
 
 		if (boxMoved) {
 
+			// 			// clang-format off
+			//              int arrowOffset[4][8][2] = {
+			// {{3 ,0},{4,0},{5,0},{6,0},{5,1},{5,-1},{4,2},{4,-2},},
+			// {{3 ,0},{4,0},{5,0},{6,0},{4,1},{4,-1},{5,2},{5,-2},},
+			// {{0 ,3},{0,4},{0,5},{0,6},{-1,5},{1,5},{-2,4},{2,4},},
+			// {{0 ,3},{0,4},{0,5},{0,6},{-1,4},{1,4},{-2,5},{2,5},},
+			//             };
+
+			//             int arrowStart[4][2] = {{-15,-2},{6,-2},{0,-24},{0,11}};
+			// 			// clang-format on
+
+			// int x = (manX * PIXELS_PER_CHAR + 2 + ((manFaceDirection * frameAdjustX) >> 2));
+			// int y = ((manY * (CHAR_HEIGHT / 3) + 6 - ((frameAdjustY * (0X100 / 3)) >> 8)));
+
+			// // 			for (int i = 0; i < 8; i++)
+			// // 				addLocalFirework(x + arrowOffset[dir][i][0], y +
+			// arrowOffset[dir][i][1],
+			// // 7, 20);
+
+			// static int circleindex = 0;
+
+			// int circle_x[35] = {5,  5,  5,  4,  4,  3,  3,  2,  1,  0,  -1, -2,
+			//                     -3, -3, -3, -4, -5, -5, -5, -5, -5, -4, -4, -3,
+			//                     -3, -2, -1, 0,  1,  2,  3,  3,  3,  4,  5};
+			// int circle_y[35] = {0, 1,  2,  3,  4,  5,  6,  7,  7,  7,  7,  7,  6,  5,  4,  3,  2,
+			// 1,
+			//                     0, -1, -2, -3, -4, -5, -6, -7, -7, -7, -7, -7, -6, -5, -4, -3,
+			//                     -2};
+
+			// const int offX[] = {-5, 5, 0, 0};
+			// const int offY[] = {0, 0, -10, 10};
+
+			// for (int i = 0; i < SPLATS; i++)
+			// 	addLocalFirework(x + ((circle_x[i] * 0xC0) >> 8) + offX[dir],
+			// 	                 y + circle_y[i] + offY[dir], 2, 120);
+
 			ADDAUDIO(SFX_PUSH);
 
 			int typeTo = CharToType[*to];
@@ -72,9 +111,12 @@ bool undoLastMove() {
 		if (boxMoved) {
 			if (Attribute[typeFrom] & ATT_TARGETLIKE) {
 				pillCount--;
-				*from = CH_BOX_LOCKED;
-			} else
-				*from = CH_BOX;
+				*from = CH_BOX_UNDO_CORRECT;
+				startCharAnimation(TYPE_BOX_UNDO_CORRECT, AnimateBase[TYPE_BOX_UNDO_CORRECT]);
+			} else {
+				*from = CH_BOX_UNDO;
+				startCharAnimation(TYPE_BOX_UNDO, AnimateBase[TYPE_BOX_UNDO]);
+			}
 		}
 
 		else
@@ -82,9 +124,14 @@ bool undoLastMove() {
 	}
 
 	if (!undoTop) {
-		FLASH(0xD6, 10);
+		//		FLASH(0xD6, 4);
 		scoreCycle = SCORELINE_TIME; // exit undo mode
+		hackStartAnimation(animationList[ANIM_PLAYER], ID_Stand);
 		repeat = false;
+	}
+
+	else {
+		ARENA_COLOUR = 0x40;
 	}
 
 	return repeat;

@@ -4,6 +4,7 @@
 #include "defines_from_dasm_for_c.h"
 #include <stdbool.h>
 
+#include "drawplayer.h"
 #include "main.h"
 
 #include "animations.h"
@@ -16,6 +17,7 @@
 #include "player.h"
 #include "rooms.h"
 #include "score.h"
+#include "scroll.h"
 #include "sound.h"
 #include "undo.h"
 
@@ -34,6 +36,22 @@ unsigned char originType;
 
 const signed char AnimationDefault[] = {
     FRAME_STAND,1,
+    STOP
+};
+
+const signed char AnimationUndo[] = {
+    ACTION_FLIP,
+    FRAME_LOOK1, 6,
+    FRAME_LOOK2, 6,
+    ACTION_FLIP,
+    FRAME_LOOK1, 6,
+    FRAME_LOOK2, 6,
+    ACTION_FLIP,
+    FRAME_LOOK1, 6,
+    FRAME_LOOK2, 6,
+    ACTION_FLIP,
+    FRAME_LOOK1, 6,
+    FRAME_LOOK2, 6,
     STOP
 };
 
@@ -278,7 +296,9 @@ const signed char AnimationWalkUp[] = {
 
 
 
-
+Animation playerUndo = {
+    0, FRAME_SKELETON, 0, AnimationUndo, AnimationUndo
+};
 
 
 
@@ -707,11 +727,12 @@ const signed char *const AnimationVector[] = {
     AnimationStandUp,     // 19
     AnimationStandDown,   // 20
     AnimationArmsUp,      // 21
+    AnimationUndo,        // 22
     //
-    FrameServer_Walk,     // 22
-    FrameServer_WalkUp,   // 23
-    FrameServer_WalkDown, // 24
-    FrameServer_Push,     // 25
+    FrameServer_Walk,     // 23
+    FrameServer_WalkUp,   // 24
+    FrameServer_WalkDown, // 25
+    FrameServer_Push,     // 26
 
 };
 
@@ -2085,9 +2106,7 @@ const signed char playerBigSprite[][2 + SPRITE_DEPTH * 3] = {
 void adjustBoxPosition(int xOffset, int yOffset) {
 
 	// first move PLAYER
-	//	*(boxLocation - yOffset * _1ROW - xOffset) = CH_BLANK;
 	*boxLocation = pillFlagFrom == CH_BOX ? CH_BLANK : CH_PILL_1;
-
 	bool lock = (pillFlagTo == CH_PILL1 || pillFlagTo == CH_PILL_1);
 
 	// then box
@@ -2095,11 +2114,10 @@ void adjustBoxPosition(int xOffset, int yOffset) {
 	*to = lock ? CH_BOX_CORRECT : CH_BOX;
 
 	if (lock) {
+
 		startCharAnimation(TYPE_BOX_CORRECT, AnimateBase[TYPE_BOX_CORRECT]);
-		//	FLASH(0xD4, 2);
 		ADDAUDIO(SFX_MAGIC2);
 
-		//		if (Attribute[CharToType[pillFlagTo]] & ATT_TARGETLIKE) {
 		pillCount--;
 		ADDAUDIO(SFX_UNCOVER);
 
@@ -2109,7 +2127,6 @@ void adjustBoxPosition(int xOffset, int yOffset) {
 			if (Room < getRoomCount())
 				Room++;
 		}
-		//		}
 	}
 
 	int dir = ((yOffset != 0) << 1) | (xOffset > 0) | (yOffset > 0);
@@ -2299,6 +2316,29 @@ void processAnimation(Animation *animate) {
 
 			frameAdjustX = *++animate->animation;
 			frameAdjustY = *++animate->animation;
+
+			static int lastx = 0;
+			static int lasty = 0;
+
+			//			if (!(frame & 3)) {
+			int x = (manX * PIXELS_PER_CHAR + 2 + ((manFaceDirection * frameAdjustX) >> 2));
+			int y = ((manY * (CHAR_HEIGHT / 3) + 6 - ((frameAdjustY * (0X100 / 3)) >> 8)));
+
+			int deltax = lastx - x;
+			if (deltax < 0)
+				deltax = -deltax;
+
+			int deltay = lasty - y;
+			if (deltay < 0)
+				deltay = -deltay;
+
+			if (deltax > 1 || deltay > 2) {
+				lastx = x;
+				lasty = y;
+				addLocalFirework(x, y, 3, 40);
+			}
+			//			}
+
 			animate->animation++;
 
 		} break;
@@ -2346,6 +2386,8 @@ void processAnimation(Animation *animate) {
 	//	actualScore = animationList[ANIM_PLAYER]->count;
 }
 
+// see ANIM_* definitions in player.h
+
 Animation *animationList[] = {&playerAnim, &autoWalk, &autoWalkUp, &autoWalkDown, &autoPush};
 
 void initAnimations() {
@@ -2353,6 +2395,9 @@ void initAnimations() {
 	startAnimation(animationList[ANIM_PLAYER], ID_Stand);
 	startAnimation(animationList[ANIM_AUTO_WALK], AUTO_Walk);
 	startAnimation(animationList[ANIM_AUTO_WALKUP], AUTO_WalkUp);
+	startAnimation(animationList[ANIM_AUTO_WALKDOWN], AUTO_WalkDown);
+	startAnimation(animationList[ANIM_AUTO_PUSH], AUTO_Push);
+	//    startAnimation(animationList[ANIM_AUTO_PUSH], AUTOPush);
 }
 
 void updateAnimations() {
@@ -2369,6 +2414,8 @@ void updateAnimations() {
 		}
 	}
 }
+
+void hackStartAnimation(Animation *anim, enum AnimationIdent id) { startAnimation(anim, id); }
 
 void startAnimation(Animation *anim, enum AnimationIdent id) {
 

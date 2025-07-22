@@ -8,7 +8,7 @@ void Scroll();
 bool isScrolling();
 void clamp(int *value, int max);
 
-#define SHIFT_SCROLLX 14
+#define SHIFT_SCROLLX 16
 #define SHIFT_SCROLLY 16
 
 #define SCROLL_MAXIMUM_X_NORMAL (0xAC << SHIFT_SCROLLX)

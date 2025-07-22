@@ -4,7 +4,7 @@
 #include <stdbool.h>
 
 #define MAX_UNDO 100
-#define UNDO_SPEED 10
+#define UNDO_SPEED 6
 
 extern unsigned short undoStack[MAX_UNDO];
 extern int undoTop;

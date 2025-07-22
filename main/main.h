@@ -92,24 +92,25 @@ extern int gameSpeed;
 extern int gameFrame;
 
 #if ENABLE_FIREWORKS
-#define SPLATS 30
+#define SPLATS 20
 #define SPLAT_LIFESPAN 40
 #define SPLAT_MIN 0x10
-#define SPLAT_RANGE 0x120
+#define SPLAT_RANGE 0x90
 #define SPLAT_SPEED (SPLAT_MIN + SPLAT_RANGE)
 typedef struct {
 	// unsigned char row, column;
-	short int x;
-	short int y;
-	short int dX;
-	short int dY;
+	short int x;  // 8.8 fixed point
+	short int y;  // 8.8 fixed point
+	short int dX; // 8.8 fixed point
+	short int dY; // 8.8 fixed point
 	unsigned char age;
+	char colour;
 } FIREWORKS;
 
 extern FIREWORKS fireworks[SPLATS];
 
 void addFirework(int x, int y);
-
+void addLocalFirework(int x, int y, int colour, int age);
 #endif
 
 enum KERNEL_TYPE {

@@ -11,28 +11,30 @@ enum ObjectType {
 	// update Attribute[] in attribute.c if changing this
 	// update AnimateBase[] in animations.C
 
-	TYPE_SPACE,          // 00
-	TYPE_BRICKWALL,      // 01
-	TYPE_STEELWALL,      // 02
-	TYPE_BOX,            // 03
-	TYPE_MAN,            // 04
-	TYPE_PILL1,          // 05
-	TYPE_PILL2,          // 06
-	TYPE_BOX_LTOR_LHS,   // 07
-	TYPE_BOX_LTOR_RHS,   // 08
-	TYPE_BOX_RTOL_LHS,   // 09
-	TYPE_BOX_RTOL_RHS,   // 10
-	TYPE_BOX_UTOD_TOP,   // 11
-	TYPE_BOX_UTOD_BOT,   // 12
-	TYPE_BOX_DTOU_TOP,   // 13
-	TYPE_BOX_DTOU_BOT,   // 14
-	TYPE_BOX_LTOR_LEFT,  // 15
-	TYPE_BOX_LTOR_RIGHT, // 16
-	TYPE_BOX_RTOL_LEFT,  // 17
-	TYPE_BOX_RTOL_RIGHT, // 18
-	TYPE_BOX_LOCKED,     // 19
-	TYPE_BOX_CORRECT,    // 20
-	TYPE_BOX_DEADLOCKED, // 21
+	TYPE_SPACE,            // 00
+	TYPE_BRICKWALL,        // 01
+	TYPE_STEELWALL,        // 02
+	TYPE_BOX,              // 03
+	TYPE_MAN,              // 04
+	TYPE_PILL1,            // 05
+	TYPE_PILL2,            // 06
+	TYPE_BOX_LTOR_LHS,     // 07
+	TYPE_BOX_LTOR_RHS,     // 08
+	TYPE_BOX_RTOL_LHS,     // 09
+	TYPE_BOX_RTOL_RHS,     // 10
+	TYPE_BOX_UTOD_TOP,     // 11
+	TYPE_BOX_UTOD_BOT,     // 12
+	TYPE_BOX_DTOU_TOP,     // 13
+	TYPE_BOX_DTOU_BOT,     // 14
+	TYPE_BOX_LTOR_LEFT,    // 15
+	TYPE_BOX_LTOR_RIGHT,   // 16
+	TYPE_BOX_RTOL_LEFT,    // 17
+	TYPE_BOX_RTOL_RIGHT,   // 18
+	TYPE_BOX_LOCKED,       // 19
+	TYPE_BOX_CORRECT,      // 20
+	TYPE_BOX_DEADLOCKED,   // 21
+	TYPE_BOX_UNDO,         // 22
+	TYPE_BOX_UNDO_CORRECT, // 23
 
 	TYPE_MAX
 };
@@ -89,6 +91,8 @@ enum ChName {
 	CH_BOX_CORRECT,       // 44
 	CH_BOX_DEADLOCK,      // 45
 	CH_BOX_PADLOCK,       // 46
+	CH_BOX_UNDO,          // 47
+	CH_BOX_UNDO_CORRECT,  // 48
 
 	CH_MAX
 };

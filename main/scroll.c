@@ -94,12 +94,12 @@ void Scroll() {
 			switch (mode) {
 
 			case DISPLAY_NORMAL:
-				accelerate(0xC00, 0x80, x, 80, 25, &speedX[mode], 0xC00);
+				accelerate(0xC00 << 2, 0x80 << 2, x, 80, 25, &speedX[mode], 0xC00 << 2);
 				accelerate(0x5000, 0x900, y, SCANLINES >> 1, 15, &speedY[mode], 0x5000);
 				break;
 
 			case DISPLAY_HALF:
-				accelerate(0x1000, 0x100, x, 80, 35, &speedX[mode], 0x1000);
+				accelerate(0x1000 << 2, 0x100 << 2, x, 80, 35, &speedX[mode], 0x1000 << 2);
 				accelerate(0x10000, 0x900, y, SCANLINES >> 1, 20, &speedY[mode], 0x2800);
 				break;
 			}

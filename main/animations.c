@@ -12,12 +12,33 @@ char AnimCount[TYPE_MAX];
 static const unsigned char Animate_BoxDeadlocked[] = {
 
     CH_BOX_PADLOCK,12,
-    CH_BLANK, 6,
+    CH_BOX_DEADLOCK, 12,
     ANIM_LOOP
 };
 
 
+static const unsigned char Animate_BoxUndo[] = {
+    
+    CH_BLANK,6,
+    CH_BOX,6,
+    CH_BLANK,6,
+    CH_BOX,6,
+    CH_BLANK,6,
+    CH_BOX,6,
+
+    // CH_BOX_PADLOCK,3,
+    // CH_BOX_DEADLOCK, 3,
+    // CH_BOX_PADLOCK,3,
+    // CH_BOX_DEADLOCK, 3,
+    // CH_BOX_DEADLOCK,
+    CH_BLANK,
+    ANIM_HALT,
+};
+
+
 static const unsigned char Animate_BoxCorrect[] = {
+
+//    CH_STEELWALL, ANIM_HALT, //tmp
 
     CH_BOX_CORRECT,3,
     CH_PILL1,3,
@@ -217,6 +238,8 @@ const unsigned char *const AnimateBase[] = {
     Animate_BoxLocked,     // 19 TYPE_BOX_LOCKED
     Animate_BoxCorrect,    // 20 TYPE_BOX_CORRECT
     Animate_BoxDeadlocked, // 21 TYPE_BOX_DEADLOCKED
+    Animate_BoxUndo,       // 22 TYPE_BOX_UNDO
+    Animate_BoxUndo,       // 23 TYPE_BOX_UNDO_CORRECT
 };
 
 void initCharAnimations() {

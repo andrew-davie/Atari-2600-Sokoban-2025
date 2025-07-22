@@ -367,12 +367,19 @@ void checkExitWarning() {
 				if (scoreCycle != SCORELINE_UNDO) {
 					scoreCycle = SCORELINE_UNDO;
 					displayMode = DISPLAY_NORMAL;
-					FLASH(0x44, 6);
+					// FLASH(0x44, 6);
+
+					startAnimation(animationList[ANIM_PLAYER], ID_Undo);
+					ARENA_COLOUR = 0x40; // not working
 
 				} else {
 
 					scoreCycle = SCORELINE_TIME;
-					FLASH(0xD6, 10);
+					hackStartAnimation(animationList[ANIM_PLAYER], ID_Stand);
+
+					// startAnimation(animationList[ANIM_PLAYER], ID_Stand);
+					// playerAnim.animation--; // hack
+					// FLASH(0xD6, 10);
 				}
 
 				waitRelease = true;
@@ -674,6 +681,12 @@ void triggerStuff() {
 #define DOUBLE_TAP 8
 #define TOOLONG 30
 
+	if (scoreCycle == SCORELINE_UNDO && SWCHA != 0xFF) {
+		scoreCycle = SCORELINE_TIME; // exit undo mode
+		ARENA_COLOUR = 1;
+		return;
+	}
+
 	if ((!pillCount && !(INPT4 & 0x80)) || (triggerNextLife
 #if ENABLE_SWIPE
 	                                        && swipeComplete)
@@ -760,7 +773,7 @@ void triggerStuff() {
 				}
 
 			} else {
-				undoing = UNDO_SPEED;
+				undoing = 1; // UNDO_SPEED;
 			}
 			triggerPressCounter = 0;
 			triggerOffCounter = 0;
@@ -776,8 +789,8 @@ void triggerStuff() {
 
 void drawComplete() { // 32k
 
-	for (int y = -1; y < 2; y += 2)
-		drawWord("LEGEND", 40 + y, 0);
+	//	for (int y = -1; y < 2; y += 2)
+	drawWord("LEGEND", 42, 0);
 
 	drawWord("LEGEND", 39, 5);
 
@@ -849,12 +862,17 @@ void GameVerticalBlank() { // ~7500
 
 			drawScore();
 
-			if (deadlock && displayMode != DISPLAY_OVERVIEW)
+			if (deadlock && (deadlockCounter > 1) && displayMode != DISPLAY_OVERVIEW) {
+				deadlockCounter--;
 				drawWord("DEADLOCK", 30, 6);
+			}
 		}
 	}
 
 	if (!pillCount) {
+
+		if (!sparkleTimer)
+			ADDAUDIO(SFX_EXTRA);
 
 		sparkleTimer += 10;
 		displayMode = DISPLAY_NORMAL;
@@ -862,11 +880,8 @@ void GameVerticalBlank() { // ~7500
 		if (sparkleTimer < 1500)
 			drawComplete();
 	}
-	Scroll();
 
-	doFlash();
-	updateAnimations();
-	processCharAnimations();
+	Scroll();
 
 #if ENABLE_FIREWORKS
 	if (displayMode == DISPLAY_NORMAL) {
@@ -876,15 +891,19 @@ void GameVerticalBlank() { // ~7500
 				fireworks[i].x += fireworks[i].dX;
 				fireworks[i].y += fireworks[i].dY;
 
-				int x = ((fireworks[i].x << 8) - scrollX[DISPLAY_NORMAL]) >> SHIFT_SCROLLX;
-				int y = ((fireworks[i].y << 8) - scrollY[DISPLAY_NORMAL]) >> SHIFT_SCROLLY;
+				int x = (fireworks[i].x >> 8) - (scrollX[DISPLAY_NORMAL] >> SHIFT_SCROLLX);
+				int y = (fireworks[i].y >> 8) - (scrollY[DISPLAY_NORMAL] >> SHIFT_SCROLLY);
 
-				drawBit(x, y);
+				drawBit(x, y, fireworks[i].colour);
 				fireworks[i].age--;
 			}
 		}
 	}
 #endif
+
+	doFlash();
+	updateAnimations();
+	processCharAnimations();
 
 	checkExitWarning();
 
@@ -909,11 +928,26 @@ void addFirework(int x, int y) {
 
 	for (int i = 0; i < SPLATS; i++)
 		if (!fireworks[i].age) {
-			fireworks[i].x = ((x * PIXELS_PER_CHAR + 3) << (SHIFT_SCROLLX - 8));
-			fireworks[i].y = ((y * (CHAR_HEIGHT / 3) + 5) << (SHIFT_SCROLLY - 8));
-			fireworks[i].dX = ((rangeRandom(SPLAT_RANGE) - SPLAT_RANGE / 2) + SPLAT_MIN) >> 3;
+			fireworks[i].x = (x * PIXELS_PER_CHAR + 2) << 8;
+			fireworks[i].y = (y * (CHAR_HEIGHT / 3) + 4) << 8;
+			fireworks[i].dX = ((rangeRandom(SPLAT_RANGE) - SPLAT_RANGE / 2) + SPLAT_MIN) >> 1;
 			fireworks[i].dY = ((rangeRandom(SPLAT_RANGE) - SPLAT_RANGE / 2) + SPLAT_MIN);
 			fireworks[i].age = 10 + rangeRandom(SPLAT_LIFESPAN);
+			fireworks[i].colour = 7;
+			break;
+		}
+}
+
+void addLocalFirework(int x, int y, int colour, int age) {
+
+	for (int i = 0; i < SPLATS; i++)
+		if (!fireworks[i].age) {
+			fireworks[i].x = x << 8;
+			fireworks[i].y = y << 8;
+			fireworks[i].dX = 0;
+			fireworks[i].dY = 0;
+			fireworks[i].age = age;
+			fireworks[i].colour = colour;
 			break;
 		}
 }
@@ -946,12 +980,27 @@ bool processType() {
 
 	switch (type) {
 
+	case TYPE_BOX_UNDO:
+		if (!*(Animate[TYPE_BOX_UNDO] + 1))
+			*me = CH_BOX;
+		break;
+
+	case TYPE_BOX_UNDO_CORRECT:
+		if (!*(Animate[TYPE_BOX_UNDO_CORRECT] + 1)) {
+			*me = CH_BOX_LOCKED;
+		}
+
+		for (int i = 0; i < SPLATS / 2; i++)
+			addFirework(boardCol, boardRow);
+		break;
+
 	case TYPE_BOX_CORRECT: {
 
-		if (!*(Animate[TYPE_BOX_CORRECT] + 1))
+		if (!*(Animate[TYPE_BOX_CORRECT] + 1)) {
 			*me = CH_BOX_LOCKED;
+		}
 
-		for (int i = 0; i < 3; i++)
+		for (int i = 0; i < SPLATS / 2; i++)
 			addFirework(boardCol, boardRow);
 
 		// if (selectResetDelay > DEAD_RESTART_COUCH ||
@@ -1042,6 +1091,9 @@ void processBoardSquares() {
 					startAnimation(animationList[ANIM_PLAYER], ID_Die);
 					//                            *me = CH_BLANK;
 				}
+
+				if (!deadlock && deadlockCounter == 1)
+					deadlockCounter = 0;
 
 				return;
 			}

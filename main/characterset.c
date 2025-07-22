@@ -21,32 +21,32 @@ static const unsigned char char_parallaxBlank[CHAR_HEIGHT];
 
 static const unsigned char char_box_deadlocked[CHAR_HEIGHT] = {
 
-    0b00011111,
-    0b00011111,
-    0b00011111,
-    0b00011111,
-    0b00000000,
-    0b00010001,
-    0b00011111,
-    0b00001010,
-    0b00010000,
-    0b00011111,
-    0b00000100,
-    0b00010001,
-    0b00011111,
-    0b00000100,
-    0b00010000,
-    0b00011111,
-    0b00001010,
-    0b00010001,
-    0b00011111,
-    0b00000000,
-    0b00010000,
-    0b00011111,
-    0b00000000,
-    0b00010001,
-    0b00011111,
-    0b00000000,
+    0b00011111,     /*0*/\
+    0b00011111, \
+    0b00011111, \
+    0b00010001,     /*1*/\
+    0b00000000, \
+    0b00011111, \
+    0b00010001,     /*2*/\
+    0b00000000, \
+    0b00011110, \
+    0b00010001,     /*3*/\
+    0b00000000, \
+    0b00011111, \
+    0b00010001,     /*4*/\
+    0b00000000, \
+    0b00011110, \
+    0b00010001,     /*5*/\
+    0b00000000, \
+    0b00011111, \
+    0b00010001,     /*6*/\
+    0b00000000, \
+    0b00011110, \
+    0b00010001,     /*7*/\
+    0b00000000, \
+    0b00011111, \
+    0b00011111,     /*8*/\
+    0b00000000, \
     0b00011111
 
 };
@@ -1149,54 +1149,55 @@ const CSET charSet[CH_MAX] = {
 
     // LARGE CHARACTER        MEDIUM+SMALL CHARACTER PAIRS
 
-    { C(char_parallaxBlank),  C(char_parallaxBlank),  },// 00
-    { C(__CHAR_BRICKWALL),    C(__SMALLCHAR_BRICKWALL),    },// 01
-    { C(__CHAR_STEELWALL),    C(__SMALLCHAR_STEELWALL),    },// 02
-    { char_pill1,             smallchar_pill7,             },// 03
-    { char_pill1,             smallchar_pill7,             },// 04
-    { char_box_UtoD_top_0,    smallchar_box,    },// 05
-    { char_PlayerCell,        char_PlayerCell,        },// 06
-    { char_box_UtoD_top_0,    smallchar_box,}, //_UtoD_top_0,    },// 07
-    { char_box_UtoD_top_1,    smallchar_box_UtoD_top_1,}, //_UtoD_top_0,    },// 08
-    { char_box_UtoD_top_2,    smallchar_box_UtoD_top_1,}, //_UtoD_top_1,    },// 09
-    { char_box_UtoD_top_3,    smallchar_box_UtoD_top_2,}, //_UtoD_top_1,    },// 10
-    { char_box_UtoD_top_4,    smallchar_box_UtoD_top_3,}, //_UtoD_top_2,    },// 11
-    { char_box_UtoD_top_5,    smallchar_box_UtoD_top_3,}, //_UtoD_top_2,    },// 12
-    { char_box_UtoD_top_6,    smallchar_box_UtoD_top_4,}, //_UtoD_top_3,    },// 13
-    { char_box_UtoD_top_7,    smallchar_box_UtoD_top_4,}, //_UtoD_top_3,    },// 14
-    { char_box_UtoD_top_8,    smallchar_box_UtoD_top_5,}, //_UtoD_top_4,    },// 15
-    { char_box_UtoD_bottom_0, char_parallaxBlank,}, //_UtoD_bottom_0, },// 16
-    { char_box_UtoD_bottom_1, smallchar_box_UtoD_bottom_5,}, //_UtoD_bottom_0, },// 17
-    { char_box_UtoD_bottom_2, smallchar_box_UtoD_bottom_5,}, //_UtoD_bottom_1, },// 18
-    { char_box_UtoD_bottom_3, smallchar_box_UtoD_bottom_4,}, //_UtoD_bottom_1, },// 19
-    { char_box_UtoD_bottom_4, smallchar_box_UtoD_bottom_3,}, //_UtoD_bottom_2, },// 20
-    { char_box_UtoD_bottom_5, smallchar_box_UtoD_bottom_3,}, //_UtoD_bottom_2, },// 21
-    { char_box_UtoD_bottom_6, smallchar_box_UtoD_bottom_2,}, //_UtoD_bottom_3, },// 22
-    { char_box_UtoD_bottom_7, smallchar_box_UtoD_bottom_2,}, //_UtoD_bottom_3, },// 23
-    { char_box_UtoD_bottom_8, smallchar_box_UtoD_bottom_1,}, //_UtoD_bottom_4, },// 24
-    { char_box_LtoR_left_0,   smallchar_box,}, //_LtoR_left_0,   },// 25
-    { char_box_LtoR_left_1,   smallchar_box_LtoR_left_1,}, //_LtoR_left_1,   },// 26
-    { char_box_LtoR_left_2,   smallchar_box_LtoR_left_1,}, //_LtoR_left_2,   },// 27
-    { char_box_LtoR_left_3,   smallchar_box_LtoR_left_2,}, //_LtoR_left_3,   },// 28
-    { char_box_LtoR_left_4,   smallchar_box_LtoR_left_2,}, //_LtoR_left_4,   },// 29
-    { char_box_LtoR_right_0,  char_parallaxBlank,}, //_LtoR_right_0,  },// 30
-    { char_box_LtoR_right_1,  smallchar_box_LtoR_right_1,}, //_LtoR_right_1,  },// 31
-    { char_box_LtoR_right_2,  smallchar_box_LtoR_right_1,}, //_LtoR_right_2,  },// 32
-    { char_box_LtoR_right_3,  smallchar_box_LtoR_right_2,}, //_LtoR_right_3,  },// 33
-    { char_box_LtoR_right_4,  smallchar_box_LtoR_right_2,}, //_LtoR_right_4,  },// 34
-    { char_pill1,             smallchar_pill7,             },// 35
-    { char_pill2,             smallchar_pill7,             },// 36
-    { char_pill3,             smallchar_pill7,             },// 37
-    { char_pill4,             smallchar_pill7,             },// 38
-    { char_pill5,             smallchar_pill7,             },// 39
-    { char_pill6,             smallchar_pill7,             },// 40
-    { char_pill7,             smallchar_pill7,             },// 41
-    { char_box_locked,        smallchar_box_locked,        },// 42
-    { char_box_locked2,       smallchar_box_locked2,       },// 43
-    { char_box_correct,       smallchar_box_correct,       },// 44
-    { char_box_UtoD_top_0,             smallchar_box, }, // 45
-    { char_box_UtoD_top_0,    smallchar_box, } // 46
-
+    { C(char_parallaxBlank),  C(char_parallaxBlank),       }, // 00
+    { C(__CHAR_BRICKWALL),    C(__SMALLCHAR_BRICKWALL),    }, // 01
+    { C(__CHAR_STEELWALL),    C(__SMALLCHAR_STEELWALL),    }, // 02
+    { char_pill1,             smallchar_pill7,             }, // 03
+    { char_pill1,             smallchar_pill7,             }, // 04
+    { char_box_UtoD_top_0,    smallchar_box,               }, // 05
+    { char_PlayerCell,        char_PlayerCell,             }, // 06
+    { char_box_UtoD_top_0,    smallchar_box,               }, // 00 _UtoD_top_0,    },// 07
+    { char_box_UtoD_top_1,    smallchar_box_UtoD_top_1,    }, // 00 _UtoD_top_0,    },// 08
+    { char_box_UtoD_top_2,    smallchar_box_UtoD_top_1,    }, // 00 _UtoD_top_1,    },// 09
+    { char_box_UtoD_top_3,    smallchar_box_UtoD_top_2,    }, // 00 _UtoD_top_1,    },// 10
+    { char_box_UtoD_top_4,    smallchar_box_UtoD_top_3,    }, // 00 _UtoD_top_2,    },// 11
+    { char_box_UtoD_top_5,    smallchar_box_UtoD_top_3,    }, // 00 _UtoD_top_2,    },// 12
+    { char_box_UtoD_top_6,    smallchar_box_UtoD_top_4,    }, // 00 _UtoD_top_3,    },// 13
+    { char_box_UtoD_top_7,    smallchar_box_UtoD_top_4,    }, // 00 _UtoD_top_3,    },// 14
+    { char_box_UtoD_top_8,    smallchar_box_UtoD_top_5,    }, // 00 _UtoD_top_4,    },// 15
+    { char_box_UtoD_bottom_0, char_parallaxBlank,          }, // 00 _UtoD_bottom_0, },// 16
+    { char_box_UtoD_bottom_1, smallchar_box_UtoD_bottom_5, }, // 00 _UtoD_bottom_0, },// 17
+    { char_box_UtoD_bottom_2, smallchar_box_UtoD_bottom_5, }, // 00 _UtoD_bottom_1, },// 18
+    { char_box_UtoD_bottom_3, smallchar_box_UtoD_bottom_4, }, // 00 _UtoD_bottom_1, },// 19
+    { char_box_UtoD_bottom_4, smallchar_box_UtoD_bottom_3, }, // 00 _UtoD_bottom_2, },// 20
+    { char_box_UtoD_bottom_5, smallchar_box_UtoD_bottom_3, }, // 00 _UtoD_bottom_2, },// 21
+    { char_box_UtoD_bottom_6, smallchar_box_UtoD_bottom_2, }, // 00 _UtoD_bottom_3, },// 22
+    { char_box_UtoD_bottom_7, smallchar_box_UtoD_bottom_2, }, // 00 _UtoD_bottom_3, },// 23
+    { char_box_UtoD_bottom_8, smallchar_box_UtoD_bottom_1, }, // 00 _UtoD_bottom_4, },// 24
+    { char_box_LtoR_left_0,   smallchar_box,               }, // 00 _LtoR_left_0,   },// 25
+    { char_box_LtoR_left_1,   smallchar_box_LtoR_left_1,   }, // 00 _LtoR_left_1,   },// 26
+    { char_box_LtoR_left_2,   smallchar_box_LtoR_left_1,   }, // 00 _LtoR_left_2,   },// 27
+    { char_box_LtoR_left_3,   smallchar_box_LtoR_left_2,   }, // 00 _LtoR_left_3,   },// 28
+    { char_box_LtoR_left_4,   smallchar_box_LtoR_left_2,   }, // 00 _LtoR_left_4,   },// 29
+    { char_box_LtoR_right_0,  char_parallaxBlank,          }, // 00 _LtoR_right_0,  },// 30
+    { char_box_LtoR_right_1,  smallchar_box_LtoR_right_1,  }, // 00 _LtoR_right_1,  },// 31
+    { char_box_LtoR_right_2,  smallchar_box_LtoR_right_1,  }, // 00 _LtoR_right_2,  },// 32
+    { char_box_LtoR_right_3,  smallchar_box_LtoR_right_2,  }, // 00 _LtoR_right_3,  },// 33
+    { char_box_LtoR_right_4,  smallchar_box_LtoR_right_2,  }, // 00 _LtoR_right_4,  },// 34
+    { char_pill1,             smallchar_pill7,             }, // 35
+    { char_pill2,             smallchar_pill7,             }, // 36
+    { char_pill3,             smallchar_pill7,             }, // 37
+    { char_pill4,             smallchar_pill7,             }, // 38
+    { char_pill5,             smallchar_pill7,             }, // 39
+    { char_pill6,             smallchar_pill7,             }, // 40
+    { char_pill7,             smallchar_pill7,             }, // 41
+    { char_box_locked,        smallchar_box_locked,        }, // 42
+    { char_box_locked2,       smallchar_box_locked2,       }, // 43
+    { char_box_correct,       smallchar_box_correct,       }, // 44
+    { char_box_deadlocked,    smallchar_box,               }, // 46
+    { char_box_UtoD_top_0,    smallchar_box,               }, // 47 padlock
+    { char_box_UtoD_top_0,    smallchar_box,               }, // 48 undo
+    { char_box_UtoD_top_0,    smallchar_box,               }, // 49 undo_correct
 };
 
 // clang-format on

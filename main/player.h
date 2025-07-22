@@ -86,10 +86,11 @@ enum AnimationIdent {
 	ID_StandUp,     // 19
 	ID_StandDown,   // 20
 	ID_ArmsUp,      // 21
-	                //
-	AUTO_Walk,      // 22
-	AUTO_WalkUp,    // 23
-	AUTO_WalkDown,  // 24
+	ID_Undo,        // 23
+	AUTO_Walk,      // 24
+	AUTO_WalkUp,    // 25
+	AUTO_WalkDown,  // 26
+	AUTO_Push,      // 27
 };
 
 extern enum AnimationIdent playerAnimationID;
@@ -116,12 +117,16 @@ typedef struct Animation {
 
 extern Animation *animationList[];
 
+// These are enums giving FRAMESERVER animation IDs
+// Vectoring via animationList[].  Init in initAnimations() !!!
+
 #define ANIM_PLAYER 0
 #define ANIM_AUTO_WALK 1
 #define ANIM_AUTO_WALKUP 2
 #define ANIM_AUTO_WALKDOWN 3
 #define ANIM_AUTO_PUSH 4
 
+void hackStartAnimation(Animation *anim, enum AnimationIdent id);
 void startAnimation(Animation *anim, enum AnimationIdent id);
 void processAnimation(Animation *anim);
 void updateAnimations();
