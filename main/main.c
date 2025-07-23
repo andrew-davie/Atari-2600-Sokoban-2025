@@ -887,19 +887,19 @@ void GameVerticalBlank() { // ~7500
 	Scroll();
 
 #if ENABLE_FIREWORKS
-	if (displayMode == DISPLAY_NORMAL) {
-		for (int i = 0; i < SPLATS; i++) {
-			if (fireworks[i].age) {
+	for (int i = 0; i < SPLATS; i++) {
+		if (fireworks[i].age) {
 
-				fireworks[i].x += fireworks[i].dX;
-				fireworks[i].y += fireworks[i].dY;
+			fireworks[i].x += fireworks[i].dX;
+			fireworks[i].y += fireworks[i].dY;
 
+			if (displayMode == DISPLAY_NORMAL) {
 				int x = (fireworks[i].x >> 8) - (scrollX[DISPLAY_NORMAL] >> SHIFT_SCROLLX);
 				int y = (fireworks[i].y >> 8) - (scrollY[DISPLAY_NORMAL] >> SHIFT_SCROLLY);
 
 				drawBit(x, y, fireworks[i].colour);
-				fireworks[i].age--;
 			}
+			fireworks[i].age--;
 		}
 	}
 #endif
@@ -924,7 +924,7 @@ void GameVerticalBlank() { // ~7500
 }
 
 #if ENABLE_FIREWORKS
-void addFirework(int x, int y) {
+int addFirework(int x, int y) {
 
 	int screenX, screenY;
 	getPlayerScreenPosition(x, y, &screenX, &screenY, DISPLAY_NORMAL);
@@ -937,11 +937,12 @@ void addFirework(int x, int y) {
 			fireworks[i].dY = ((rangeRandom(SPLAT_RANGE) - SPLAT_RANGE / 2) + SPLAT_MIN);
 			fireworks[i].age = 10 + rangeRandom(SPLAT_LIFESPAN);
 			fireworks[i].colour = 7;
-			break;
+			return i;
 		}
+	return -1;
 }
 
-void addLocalFirework(int x, int y, int colour, int age) {
+int addLocalFirework(int x, int y, int colour, int age) {
 
 	for (int i = 0; i < SPLATS; i++)
 		if (!fireworks[i].age) {
@@ -951,8 +952,9 @@ void addLocalFirework(int x, int y, int colour, int age) {
 			fireworks[i].dY = 0;
 			fireworks[i].age = age;
 			fireworks[i].colour = colour;
-			break;
+			return i;
 		}
+	return -1;
 }
 
 #endif

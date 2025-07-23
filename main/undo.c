@@ -8,6 +8,7 @@
 #include "main.h"
 #include "man.h"
 #include "player.h"
+#include "random.h"
 #include "rooms.h"
 #include "score.h"
 #include "sound.h"
@@ -21,59 +22,32 @@ void highlightUndo() {
 
 	if (scoreCycle == SCORELINE_UNDO) {
 		typedef struct {
-			int x;
-			int y;
+			signed char x;
+			signed y;
 		} Point;
 
-		static const Point circlePoints[60] = {
-		    {4, 0},   {4, 1},   {4, 2},   {4, 2},   {4, 3},   {3, 4},   {3, 5},   {3, 5},
-		    {3, 6},   {2, 6},   {2, 7},   {2, 7},   {1, 8},   {1, 8},   {0, 8},   {0, 8},
-		    {0, 8},   {-1, 8},  {-1, 8},  {-2, 7},  {-2, 7},  {-2, 6},  {-3, 6},  {-3, 5},
-		    {-3, 5},  {-3, 4},  {-4, 3},  {-4, 2},  {-4, 2},  {-4, 1},  {-4, 0},  {-4, -1},
-		    {-4, -2}, {-4, -2}, {-4, -3}, {-3, -4}, {-3, -5}, {-3, -5}, {-3, -6}, {-2, -6},
-		    {-2, -7}, {-2, -7}, {-1, -8}, {-1, -8}, {0, -8},  {0, -8},  {0, -8},  {1, -8},
-		    {1, -8},  {2, -7},  {2, -7},  {2, -6},  {3, -6},  {3, -5},  {3, -5},  {3, -4},
-		    {4, -3},  {4, -2},  {4, -2},  {4, -1},
+		const Point circlePoints[48] = {
+		    {4, 0},   {4, 1},   {4, 2},   {4, 3},   {3, 4},   {3, 5},   {3, 6},   {2, 6},
+		    {2, 7},   {2, 7},   {1, 8},   {1, 8},   {0, 8},   {-1, 8},  {-1, 8},  {-2, 7},
+		    {-2, 7},  {-2, 6},  {-3, 6},  {-3, 5},  {-3, 4},  {-4, 3},  {-4, 2},  {-4, 1},
+		    {-4, 0},  {-4, -1}, {-4, -2}, {-4, -3}, {-3, -4}, {-3, -5}, {-3, -6}, {-2, -6},
+		    {-2, -7}, {-2, -7}, {-1, -8}, {-1, -8}, {0, -8},  {1, -8},  {1, -8},  {2, -7},
+		    {2, -7},  {2, -6},  {3, -6},  {3, -5},  {3, -4},  {4, -3},  {4, -2},  {4, -1},
 		};
+
+		// Calculate trixel coordinates
+		// x: (char blocks * pixels per char block) + centering + (direction * pixel offset) / 4
+		// pixels per PF y: char blocks * trixels per char + centering + pixel offset converted to
+		// trixels (i.e. /3)
 
 		int x = (manX * PIXELS_PER_CHAR + 2 + ((manFaceDirection * frameAdjustX) >> 2));
 		int y = ((manY * (CHAR_HEIGHT / 3) + 4 - ((frameAdjustY * (0X100 / 3)) >> 8)));
 
-#define CPS 320
-		// #define CPCOLOURSPEED 10
-
-		static unsigned int cp = 0;
-		// static int cpc = 0;
-		// static int cpcolour = 0;
-
-		// if (cpc++ > CPCOLOURSPEED) {
-		// 	cpcolour = (cpcolour + 1) & 7;
-		// 	if (!cpcolour)
-		// 		cpcolour = 1;
-		// 	cpc = 0;
-		// }
-
-		static int lastcp = 0;
-
-		++cp;
-		int cp2 = (cp * CPS) >> 8;
-		if (cp2 >= (sizeof(circlePoints) / sizeof(circlePoints[0]))) {
+		static int cp = 0;
+		if (++cp >= (int)(sizeof(circlePoints) / sizeof(circlePoints[0])))
 			cp = 0;
-			cp2 = 0;
-		}
 
-		if (cp2 != lastcp) {
-
-			addLocalFirework(x + circlePoints[cp2].x, y + circlePoints[cp2].y, 3, 15);
-
-			// for (int ox = -1; ox < 1; ox++)
-			// 	for (int oy = -1; oy < 2; oy++) {
-			// 		addLocalFirework(ox + x + circlePoints[cp2].x, oy + y + circlePoints[cp2].y, 7,
-			// 		                 6);
-			// 	}
-
-			lastcp = cp2;
-		}
+		addLocalFirework(x + circlePoints[cp].x, y + circlePoints[cp].y, 5, 15);
 	}
 }
 

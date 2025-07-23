@@ -16,7 +16,54 @@ int pillCount;
 
 const char *room[] = {
 
-"4#|# .#|#2 3#|#*@2 #|#2 $ #|#2 3#|`4#",
+#define NEXTLINE '|'
+#define WALL '#'
+#define PLAYERONGOAL '+'
+#define PLAYERONNORMAL '@'
+#define BOXONTARGET '*'
+#define TARGET '.'
+#define GAP ' '
+#define GAP2 '-'
+#define GAP3 '_'
+#define BOX '$'
+
+// To add new rooms just place either compressed or uncompressed room here.
+// Rooms are standard-format, represented as a single 0-terminated string
+// tools/compressroom.py will compress a room for you
+
+" ####   |"\
+" #@ ####|"\
+" #  #  #|"\
+"## .#$ #|"\
+"# $ $  #|"\
+"#  * #.#|"\
+"#  #  .#|"\
+"########",
+
+
+
+
+"############################|"\
+"###########  #######   #   #|"\
+"## $                 #   $ #|"\
+"## ##### ## ############# ##|"\
+"## #     ## #..#  #  # .   #|"\
+"## #  ## #   $ #*.$  # #   #|"\
+"## ## #  #  #  #..#  # #####|"\
+"#     # ### #* #*.#  # ## ##|"\
+"#  ##$#     #  #..#  # # # #|"\
+"## #  #######* #*.#  # ## ##|"\
+"## #     #  #   ..#  # #####|"\
+"## # #   $  #  #..#  #     #|"\
+"## #$## ##  ####### ###### #|"\
+"#  # $ @# $$ #  #          #|"\
+"# $$ $###  $    # #  # # # #|"\
+"#  #       ##   #          #|"\
+"############################",
+
+
+
+"4#|# .#|#2 3#|#*@2 #|#2 $ #|#2 3#|`4#", // what the `  ??
 "6#|#4 #|# #@ #|# $* #|# .* #|#4 #|6#",
 "6 6#|6 #4 #|6 # @2 3#|4#2 #6 #|#2 4#2.#.#$5#|# $ $ 2#3.6 #|#5 5.#2$3 #|6# 2#$2# 5#|5 #2 $4 #|5 4# 4#|7 #2 #|7 #2 5#|5 3# $4 #|5 #2 $ $3 #|5 # #$# 4#|5 #5 #|5 7#",
 
@@ -625,17 +672,6 @@ void setScroll() {
 }
 
 void unpackRoom(BOUNDARY *boundary, bool dryRun, int roomNumber) {
-
-#define NEXTLINE '|'
-#define WALL '#'
-#define PLAYERONGOAL '+'
-#define PLAYERONNORMAL '@'
-#define BOXONTARGET '*'
-#define TARGET '.'
-#define GAP ' '
-#define GAP2 '-'
-#define GAP3 '_'
-#define BOX '$'
 
 	pillCount = 0;
 

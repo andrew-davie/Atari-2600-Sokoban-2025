@@ -109,8 +109,8 @@ typedef struct {
 
 extern FIREWORKS fireworks[SPLATS];
 
-void addFirework(int x, int y);
-void addLocalFirework(int x, int y, int colour, int age);
+int addFirework(int x, int y);
+int addLocalFirework(int x, int y, int colour, int age);
 #endif
 
 enum KERNEL_TYPE {
