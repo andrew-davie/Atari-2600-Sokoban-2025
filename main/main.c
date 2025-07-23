@@ -370,7 +370,7 @@ void checkExitWarning() {
 					// FLASH(0x44, 6);
 
 					startAnimation(animationList[ANIM_PLAYER], ID_Undo);
-					ARENA_COLOUR = 0x40; // not working
+					// ARENA_COLOUR = 0x40; // not working
 
 				} else {
 
@@ -379,7 +379,7 @@ void checkExitWarning() {
 
 					// startAnimation(animationList[ANIM_PLAYER], ID_Stand);
 					// playerAnim.animation--; // hack
-					// FLASH(0xD6, 10);
+					//					FLASH(0xD6, 10);
 				}
 
 				waitRelease = true;
@@ -446,6 +446,8 @@ void drawOverscanThings() {
 			drawPlayerSprite();
 		}
 	}
+
+	highlightUndo();
 
 	lastDisplayMode = displayMode;
 }
@@ -683,6 +685,7 @@ void triggerStuff() {
 
 	if (scoreCycle == SCORELINE_UNDO && SWCHA != 0xFF) {
 		scoreCycle = SCORELINE_TIME; // exit undo mode
+		hackStartAnimation(animationList[ANIM_PLAYER], ID_Stand);
 		ARENA_COLOUR = 1;
 		return;
 	}

@@ -17,6 +17,66 @@ unsigned short undoStack[MAX_UNDO];
 int undoTop;
 int undoing;
 
+void highlightUndo() {
+
+	if (scoreCycle == SCORELINE_UNDO) {
+		typedef struct {
+			int x;
+			int y;
+		} Point;
+
+		static const Point circlePoints[60] = {
+		    {4, 0},   {4, 1},   {4, 2},   {4, 2},   {4, 3},   {3, 4},   {3, 5},   {3, 5},
+		    {3, 6},   {2, 6},   {2, 7},   {2, 7},   {1, 8},   {1, 8},   {0, 8},   {0, 8},
+		    {0, 8},   {-1, 8},  {-1, 8},  {-2, 7},  {-2, 7},  {-2, 6},  {-3, 6},  {-3, 5},
+		    {-3, 5},  {-3, 4},  {-4, 3},  {-4, 2},  {-4, 2},  {-4, 1},  {-4, 0},  {-4, -1},
+		    {-4, -2}, {-4, -2}, {-4, -3}, {-3, -4}, {-3, -5}, {-3, -5}, {-3, -6}, {-2, -6},
+		    {-2, -7}, {-2, -7}, {-1, -8}, {-1, -8}, {0, -8},  {0, -8},  {0, -8},  {1, -8},
+		    {1, -8},  {2, -7},  {2, -7},  {2, -6},  {3, -6},  {3, -5},  {3, -5},  {3, -4},
+		    {4, -3},  {4, -2},  {4, -2},  {4, -1},
+		};
+
+		int x = (manX * PIXELS_PER_CHAR + 2 + ((manFaceDirection * frameAdjustX) >> 2));
+		int y = ((manY * (CHAR_HEIGHT / 3) + 4 - ((frameAdjustY * (0X100 / 3)) >> 8)));
+
+#define CPS 320
+		// #define CPCOLOURSPEED 10
+
+		static unsigned int cp = 0;
+		// static int cpc = 0;
+		// static int cpcolour = 0;
+
+		// if (cpc++ > CPCOLOURSPEED) {
+		// 	cpcolour = (cpcolour + 1) & 7;
+		// 	if (!cpcolour)
+		// 		cpcolour = 1;
+		// 	cpc = 0;
+		// }
+
+		static int lastcp = 0;
+
+		++cp;
+		int cp2 = (cp * CPS) >> 8;
+		if (cp2 >= (sizeof(circlePoints) / sizeof(circlePoints[0]))) {
+			cp = 0;
+			cp2 = 0;
+		}
+
+		if (cp2 != lastcp) {
+
+			addLocalFirework(x + circlePoints[cp2].x, y + circlePoints[cp2].y, 3, 15);
+
+			// for (int ox = -1; ox < 1; ox++)
+			// 	for (int oy = -1; oy < 2; oy++) {
+			// 		addLocalFirework(ox + x + circlePoints[cp2].x, oy + y + circlePoints[cp2].y, 7,
+			// 		                 6);
+			// 	}
+
+			lastcp = cp2;
+		}
+	}
+}
+
 void initUndo() {
 	undoTop = 0;
 	undoing = 0;
@@ -83,10 +143,10 @@ bool undoLastMove() {
 			// int circle_x[35] = {5,  5,  5,  4,  4,  3,  3,  2,  1,  0,  -1, -2,
 			//                     -3, -3, -3, -4, -5, -5, -5, -5, -5, -4, -4, -3,
 			//                     -3, -2, -1, 0,  1,  2,  3,  3,  3,  4,  5};
-			// int circle_y[35] = {0, 1,  2,  3,  4,  5,  6,  7,  7,  7,  7,  7,  6,  5,  4,  3,  2,
-			// 1,
-			//                     0, -1, -2, -3, -4, -5, -6, -7, -7, -7, -7, -7, -6, -5, -4, -3,
-			//                     -2};
+			// int circle_y[35] = {0, 1,  2,  3,  4,  5,  6,  7,  7,  7,  7,  7,  6,  5,  4,  3,
+			// 2, 1,
+			//                     0, -1, -2, -3, -4, -5, -6, -7, -7, -7, -7, -7, -6, -5, -4,
+			//                     -3, -2};
 
 			// const int offX[] = {-5, 5, 0, 0};
 			// const int offY[] = {0, 0, -10, 10};
@@ -131,7 +191,7 @@ bool undoLastMove() {
 	}
 
 	else {
-		ARENA_COLOUR = 0x40;
+		//		ARENA_COLOUR = 0x40;
 	}
 
 	return repeat;

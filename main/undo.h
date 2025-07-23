@@ -4,7 +4,7 @@
 #include <stdbool.h>
 
 #define MAX_UNDO 100
-#define UNDO_SPEED 6
+#define UNDO_SPEED 10
 
 extern unsigned short undoStack[MAX_UNDO];
 extern int undoTop;
@@ -15,6 +15,7 @@ void initUndo();
 int undoCount();
 void pushUndo(int px, int py, int dir, bool boxMoved);
 bool undoLastMove();
+void highlightUndo();
 
 #endif
 // EOF

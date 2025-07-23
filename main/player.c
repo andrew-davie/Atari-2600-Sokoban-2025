@@ -41,18 +41,11 @@ const signed char AnimationDefault[] = {
 
 const signed char AnimationUndo[] = {
     ACTION_FLIP,
-    FRAME_LOOK1, 6,
-    FRAME_LOOK2, 6,
-    ACTION_FLIP,
-    FRAME_LOOK1, 6,
-    FRAME_LOOK2, 6,
-    ACTION_FLIP,
-    FRAME_LOOK1, 6,
-    FRAME_LOOK2, 6,
-    ACTION_FLIP,
-    FRAME_LOOK1, 6,
-    FRAME_LOOK2, 6,
-    STOP
+    FRAME_LOOK1, 3,
+    FRAME_LOOK2, 21,
+    FRAME_LOOK1, 3,
+    FRAME_STAND, 3,
+    LOOP
 };
 
 //------------------------------------------------------------------------------

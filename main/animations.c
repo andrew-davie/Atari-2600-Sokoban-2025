@@ -19,11 +19,11 @@ static const unsigned char Animate_BoxDeadlocked[] = {
 
 static const unsigned char Animate_BoxUndo[] = {
     
-    CH_BLANK,6,
+    CH_BOX_DEADLOCK,6,
     CH_BOX,6,
-    CH_BLANK,6,
+    CH_BOX_DEADLOCK,6,
     CH_BOX,6,
-    CH_BLANK,6,
+    CH_BOX_DEADLOCK,6,
     CH_BOX,6,
 
     // CH_BOX_PADLOCK,3,
@@ -31,7 +31,6 @@ static const unsigned char Animate_BoxUndo[] = {
     // CH_BOX_PADLOCK,3,
     // CH_BOX_DEADLOCK, 3,
     // CH_BOX_DEADLOCK,
-    CH_BLANK,
     ANIM_HALT,
 };
 
