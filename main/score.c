@@ -195,7 +195,6 @@ void drawMoves() {
 }
 
 void drawTime() {
-
 	//	time = 0x65000;
 
 	int tPos = time60ths >= 0xA00 ? time60ths >= 0x6400 ? 5 : 6 : 7;

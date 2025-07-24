@@ -4,9 +4,13 @@
 #include "colour.h"
 #include "main.h"
 #include "man.h"
+#include "score.h"
+#include "sound.h"
 #include <stdbool.h>
 
-bool deadlock;
+int deadlock;
+int lastDeadlock;
+
 int deadlockCounter;
 
 // Check if a position is a wall
@@ -114,7 +118,9 @@ void checkDeadlocks() {
 	if (dead) {
 		if (deadlockCounter < 1)
 			deadlockCounter = 100;
-		deadlock = true;
+
+		deadlock++;
+
 		if (isUnplacedBox(me))
 			*me = CH_BOX_DEADLOCK;
 	}

@@ -26,6 +26,7 @@ enum SCORE_MODE {
 };
 
 #define LETTER(a) ((a) - 'A' + DIGIT_ALPHABET)
+#define NUMBER(a) ((a) - 74 + DIGIT_ALPHABET)
 
 extern int scoreCycle;
 extern unsigned char timeString[];

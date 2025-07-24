@@ -90,8 +90,8 @@ const int Attribute[TYPE_MAX] = {
      _ | _ | _ | _ |RKF| _ |QUI| _ | _ | _ | _ | _ |SPC|PER|XPD| _ | _ | _ ,  // 00 TYPE_SPACE
      _ | _ | _ |DRP| _ | _ | _ | _ |DED| _ | _ | _ | _ | _ |XPD| _ |ROL| _ ,  // 01 TYPE_BRICKWALL
      _ | _ | _ |DRP| _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ ,  // 02 TYPE_STEELWALL
-     _ |PH2| _ | _ | _ |PSH| _ | _ |DED| _ |ACT| _ | _ | _ |XPD|BOX|ROL| _ ,  // 03 TYPE_BOX
-     _ |PH2| _ | _ |RKF| _ |QUI| _ | _ |SQB| _ | _ | _ | _ |XPD| _ | _ | _ ,  // 04 TYPE_MAN
+     _ |PH1| _ | _ | _ |PSH| _ | _ |DED| _ |ACT| _ | _ | _ |XPD|BOX|ROL| _ ,  // 03 TYPE_BOX
+     _ |PH1| _ | _ |RKF| _ |QUI| _ | _ |SQB| _ | _ | _ | _ |XPD| _ | _ | _ ,  // 04 TYPE_MAN
      _ | _ |DRT|DRP| _ | _ | _ | _ | _ | _ | _ | _ |SPC|PER|XPD| _ | _ |TRG,  // 05 TYPE_PILL1
      _ | _ |DRT|DRP| _ | _ | _ | _ | _ | _ | _ | _ |SPC|PER|XPD| _ | _ |TRG,  // 06 TYPE_PILL2
      _ |PH1| _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ |XPD| _ | _ | _ ,  // 07 TYPE_BOX_LTOR_LHS
@@ -106,11 +106,11 @@ const int Attribute[TYPE_MAX] = {
      _ |PH1| _ | _ | _ |PSH| _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ ,  // 16 TYPE_BOX_LTOR_RIGHT
      _ |PH1| _ | _ | _ |PSH| _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ ,  // 17 TYPE_BOX_RTOL_LEFT
      _ |PH1| _ | _ | _ |PSH| _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ ,  // 18 TYPE_BOX_RTOL_RIGHT
-     _ |PH2| _ | _ | _ |PSH| _ | _ |DED| _ | _ | _ | _ | _ |XPD|BOX|ROL|TRG,  // 19 TYPE_BOX_LOCKED
-     _ |PH2| _ | _ | _ |PSH| _ | _ |DED| _ |ACT| _ | _ | _ |XPD|BOX|ROL|TRG,  // 20 TYPE_BOX_CORRECT
-     _ |PH2| _ | _ | _ |PSH| _ | _ |DED| _ |ACT| _ | _ | _ |XPD|BOX|ROL| _ ,  // 21 TYPE_BOX_DEADLOCKED
-     _ |PH2| _ | _ | _ |PSH| _ | _ | _ | _ |ACT| _ | _ | _ |XPD|BOX|ROL| _ ,  // 22 TYPE_BOX_UNDO
-     _ |PH2| _ | _ | _ |PSH| _ | _ | _ | _ |ACT| _ | _ | _ |XPD|BOX|ROL|TRG,  // 23 TYPE_BOX_UNDOCORRECT
+     _ |PH1| _ | _ | _ |PSH| _ | _ |DED| _ | _ | _ | _ | _ |XPD|BOX|ROL|TRG,  // 19 TYPE_BOX_LOCKED
+     _ |PH1| _ | _ | _ |PSH| _ | _ |DED| _ |ACT| _ | _ | _ |XPD|BOX|ROL|TRG,  // 20 TYPE_BOX_CORRECT
+     _ |PH1| _ | _ | _ |PSH| _ | _ |DED| _ |ACT| _ | _ | _ |XPD|BOX|ROL| _ ,  // 21 TYPE_BOX_DEADLOCKED
+     _ |PH1| _ | _ | _ |PSH| _ | _ | _ | _ |ACT| _ | _ | _ |XPD|BOX|ROL| _ ,  // 22 TYPE_BOX_UNDO
+     _ |PH1| _ | _ | _ |PSH| _ | _ | _ | _ |ACT| _ | _ | _ |XPD|BOX|ROL|TRG,  // 23 TYPE_BOX_UNDOCORRECT
 
 
 //  FAL PHA DRT DRP RKF PSH QUI XIT DED SQB ACT  _  SPC PER XPD BOX ROL TRG

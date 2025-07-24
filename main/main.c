@@ -105,6 +105,9 @@ int shakeX, shakeY;
 int shakeTime;
 #endif
 
+bool drawNotification();
+bool showNotification(char *text, int y, int colour);
+
 static const int isActive[] = {
 
     ATT_PHASE1,
@@ -222,7 +225,8 @@ void initNextLife() {
 	roomCompleted = false;
 	undoing = 0;
 	boxLocation = 0;
-	deadlock = false;
+	deadlock = 0;
+	lastDeadlock = 0;
 
 	exitMode = 0;
 	sparkleTimer = 0;
@@ -793,9 +797,12 @@ void triggerStuff() {
 void drawComplete() { // 32k
 
 	//	for (int y = -1; y < 2; y += 2)
-	drawWord("LEGEND", 42, 0);
 
-	drawWord("LEGEND", 39, 5);
+	showNotification("LEGEND", 42, 200);
+
+	// drawWord("LEGEND", 42, 0);
+
+	// drawWord("LEGEND", 39, 5);
 
 	// 	static const char gameOver[] = "OK";
 
@@ -814,6 +821,8 @@ void drawComplete() { // 32k
 	// 		digitPos -= 2;
 	// 	}
 }
+
+const char *deadlockText = "DEADLOCK";
 
 void GameVerticalBlank() { // ~7500
 
@@ -865,10 +874,12 @@ void GameVerticalBlank() { // ~7500
 
 			drawScore();
 
-			if (deadlock && (deadlockCounter > 1) && displayMode != DISPLAY_OVERVIEW) {
-				deadlockCounter--;
-				drawWord("DEADLOCK", 30, 6);
-			}
+			// if (deadlock /*&& displayMode != DISPLAY_OVERVIEW*/) {
+
+			// 	showNotification((char *)deadlockText, 30, 6);
+			// 	// deadlockCounter--;
+			// 	// drawWord("DEADLOCK", 30, 6);
+			// }
 		}
 	}
 
@@ -909,6 +920,7 @@ void GameVerticalBlank() { // ~7500
 	processCharAnimations();
 
 	checkExitWarning();
+	drawNotification();
 
 #if ENABLE_SWIPE
 
@@ -981,6 +993,28 @@ void pulse(unsigned char *cell, int baseChar) {
 	*cell = baseChar + dType;
 }
 
+int notifyVisible = 0;
+int notifyCol = 0;
+int notifyY = 0;
+char *notifyString;
+
+bool drawNotification() {
+	if (notifyVisible) {
+		notifyVisible--;
+		if (displayMode != DISPLAY_OVERVIEW)
+			drawWord(notifyString, notifyY, notifyCol);
+	}
+}
+
+bool showNotification(char *text, int y, int colour) {
+	//	if (text != notifyString) {
+	notifyString = text;
+	notifyVisible = 100;
+	notifyY = y;
+	notifyCol = colour;
+	//	}
+}
+
 bool processType() {
 
 	switch (type) {
@@ -995,8 +1029,8 @@ bool processType() {
 			*me = CH_BOX_LOCKED;
 		}
 
-		for (int i = 0; i < SPLATS / 2; i++)
-			addFirework(boardCol, boardRow);
+		//		for (int i = 0; i < 3; i++)
+		addFirework(boardCol, boardRow);
 		break;
 
 	case TYPE_BOX_CORRECT: {
@@ -1005,8 +1039,8 @@ bool processType() {
 			*me = CH_BOX_LOCKED;
 		}
 
-		for (int i = 0; i < SPLATS / 2; i++)
-			addFirework(boardCol, boardRow);
+		//		for (int i = 0; i < 3; i++)
+		addFirework(boardCol, boardRow);
 
 		// if (selectResetDelay > DEAD_RESTART_COUCH ||
 		//     (selectResetDelay > DEAD_RESTART && GAME_RESET_PRESSED &&
@@ -1073,6 +1107,8 @@ void processCreature() {
 	// }
 }
 
+char dl[] = "?? STUCK";
+
 void processBoardSquares() {
 
 	while (T1TC + MAX_CREATURE_TIME < availableIdleTime) {
@@ -1096,6 +1132,22 @@ void processBoardSquares() {
 					startAnimation(animationList[ANIM_PLAYER], ID_Die);
 					//                            *me = CH_BLANK;
 				}
+
+				if (deadlock > lastDeadlock) {
+
+					if (scoreCycle != SCORELINE_UNDO)
+						ADDAUDIO(SFX_WHOOSH2);
+
+					int d10 = (deadlock * (256 / 10)) >> 8;
+					int d = deadlock - d10 * 10;
+
+					dl[0] = d10 ? d10 : ' ';
+					dl[1] = d;
+
+					showNotification(dl, 30, 7);
+				}
+				lastDeadlock = deadlock;
+				deadlock = 0;
 
 				if (!deadlock && deadlockCounter == 1)
 					deadlockCounter = 0;

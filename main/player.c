@@ -15,6 +15,7 @@
 #include "joystick.h"
 #include "man.h"
 #include "player.h"
+#include "random.h"
 #include "rooms.h"
 #include "score.h"
 #include "scroll.h"
@@ -2264,6 +2265,8 @@ bool vectorJoystick(Animation *animate) {
 	return handled;
 }
 
+int absolute(int x) { return x < 0 ? -x : x; }
+
 void processAnimation(Animation *animate) {
 
 	while (!animate->count)
@@ -2312,24 +2315,27 @@ void processAnimation(Animation *animate) {
 
 			static int lastx = 0;
 			static int lasty = 0;
+			static int deltaDelay = 0;
 
 			//			if (!(frame & 3)) {
 			int x = (manX * PIXELS_PER_CHAR + 2 + ((manFaceDirection * frameAdjustX) >> 2));
 			int y = ((manY * (CHAR_HEIGHT / 3) + 6 - ((frameAdjustY * (0X100 / 3)) >> 8)));
 
-			int deltax = lastx - x;
-			if (deltax < 0)
-				deltax = -deltax;
+			int deltax = absolute(lastx - x);
+			int deltay = absolute(lasty - y);
 
-			int deltay = lasty - y;
-			if (deltay < 0)
-				deltay = -deltay;
+			if (!(deltax + deltay)) {
+				deltaDelay = 0;
+			}
 
-			if (deltax > 1 || deltay > 2) {
+			if (deltaDelay > 4 && (deltax > 1 || deltay > 2)) {
 				lastx = x;
 				lasty = y;
 				addLocalFirework(x, y, 3, 40);
 			}
+
+			deltaDelay++;
+
 			//			}
 
 			animate->animation++;

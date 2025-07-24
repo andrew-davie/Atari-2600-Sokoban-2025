@@ -51,6 +51,29 @@ static const unsigned char char_box_deadlocked[CHAR_HEIGHT] = {
 
 };
 
+static const unsigned char smallchar_box_deadlocked[CHAR_HEIGHT_HALF] = {
+
+    0b11111111,
+    0b11111111,
+    0b11111111,
+    0b00000011,
+    0b00000000,
+    0b11111100,
+    0b00100111,
+    0b00000000,
+    0b11111100,
+    0b00000000,
+    0b00000000,
+    0b11111100,
+    0b01000100,
+    0b00000000,
+    0b11111100,
+    0b00000000,
+    0b00000000,
+    0b11111100,
+
+};
+
 
 static const unsigned char char_box_locked[CHAR_HEIGHT] = {
 
@@ -524,7 +547,7 @@ static const unsigned char smallchar_box_locked[CHAR_HEIGHT_HALF] = {
     0b00000000,
     0b11111100,
     0b00000000,
-    0b10100100,
+    0b00100100,
     0b11111100,
     0b00000000,
     0b00000000,
@@ -547,7 +570,7 @@ static const unsigned char smallchar_box_locked2[CHAR_HEIGHT_HALF] = {
     0b01001000,
     0b11111100,
     0b00000000,
-    0b10100100,
+    0b00100100,
     0b11111100,
     0b00000000,
     0b00000000,
@@ -1194,7 +1217,7 @@ const CSET charSet[CH_MAX] = {
     { char_box_locked,        smallchar_box_locked,        }, // 42
     { char_box_locked2,       smallchar_box_locked2,       }, // 43
     { char_box_correct,       smallchar_box_correct,       }, // 44
-    { char_box_deadlocked,    smallchar_box,               }, // 46
+    { char_box_deadlocked,    smallchar_box_deadlocked,    }, // 46
     { char_box_UtoD_top_0,    smallchar_box,               }, // 47 padlock
     { char_box_UtoD_top_0,    smallchar_box,               }, // 48 undo
     { char_box_UtoD_top_0,    smallchar_box,               }, // 49 undo_correct

@@ -3,7 +3,9 @@
 
 #include <stdbool.h>
 
-extern bool deadlock;
+extern int deadlock;
+extern int lastDeadlock;
+
 extern int deadlockCounter;
 
 void checkDeadlocks();

@@ -15,7 +15,7 @@
 #define ENABLE_SWIPE 1            /* 1108 bytes */
 #define ENABLE_SERIAL_NUMBER 1    /* 232 bytes(with 'halfsize' routine) */
 #define ENABLE_FIREWORKS 1        /* 244 bytes - a pixel-draw used for a fireworks starburst */
-
+#define ENABLE_UNDO_DOTGUIDE 1    /* places a snail trail on boxes when undoing */
 #define ENABLE_PLAYERCELL 1
 
 // Characterset dimensions for each view...

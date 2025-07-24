@@ -21,17 +21,19 @@ int undoing;
 void highlightUndo() {
 
 	if (scoreCycle == SCORELINE_UNDO) {
-		typedef struct {
+
+		findBox
+
+		    typedef struct {
 			signed char x;
 			signed y;
 		} Point;
 
-		const Point circlePoints[48] = {
+		const Point circlePoints[] = {
 		    {4, 0},   {4, 1},   {4, 2},   {4, 3},   {3, 4},   {3, 5},   {3, 6},   {2, 6},
-		    {2, 7},   {2, 7},   {1, 8},   {1, 8},   {0, 8},   {-1, 8},  {-1, 8},  {-2, 7},
-		    {-2, 7},  {-2, 6},  {-3, 6},  {-3, 5},  {-3, 4},  {-4, 3},  {-4, 2},  {-4, 1},
-		    {-4, 0},  {-4, -1}, {-4, -2}, {-4, -3}, {-3, -4}, {-3, -5}, {-3, -6}, {-2, -6},
-		    {-2, -7}, {-2, -7}, {-1, -8}, {-1, -8}, {0, -8},  {1, -8},  {1, -8},  {2, -7},
+		    {2, 7},   {1, 8},   {0, 8},   {-1, 8},  {-2, 7},  {-2, 6},  {-3, 6},  {-3, 5},
+		    {-3, 4},  {-4, 3},  {-4, 2},  {-4, 1},  {-4, 0},  {-4, -1}, {-4, -2}, {-4, -3},
+		    {-3, -4}, {-3, -5}, {-3, -6}, {-2, -6}, {-2, -7}, {-1, -8}, {0, -8},  {1, -8},
 		    {2, -7},  {2, -6},  {3, -6},  {3, -5},  {3, -4},  {4, -3},  {4, -2},  {4, -1},
 		};
 
@@ -47,7 +49,7 @@ void highlightUndo() {
 		if (++cp >= (int)(sizeof(circlePoints) / sizeof(circlePoints[0])))
 			cp = 0;
 
-		addLocalFirework(x + circlePoints[cp].x, y + circlePoints[cp].y, 5, 15);
+		addLocalFirework(x + circlePoints[cp].x, y + circlePoints[cp].y, 3, 15);
 	}
 }
 
@@ -80,11 +82,14 @@ bool undoLastMove() {
 
 		unsigned short m = undoStack[--undoTop];
 
-		manX = (m >> 9) & 0x3F;
-		manY = (m >> 3) & 0x3F;
-
 		int dir = (m >> 1) & 3;
 		bool boxMoved = (m & 1) > 0;
+
+		int x = (manX * PIXELS_PER_CHAR + 2 + ((manFaceDirection * frameAdjustX) >> 2));
+		int y = ((manY * (CHAR_HEIGHT / 3) + 4 - ((frameAdjustY * (0X100 / 3)) >> 8)));
+
+		manX = (m >> 9) & 0x3F;
+		manY = (m >> 3) & 0x3F;
 
 		unsigned char *from = ADDRESS_OF(manY) + manX + dirOffset[dir];
 		unsigned char *to = from + dirOffset[dir];
@@ -93,41 +98,15 @@ bool undoLastMove() {
 
 		if (boxMoved) {
 
-			// 			// clang-format off
-			//              int arrowOffset[4][8][2] = {
-			// {{3 ,0},{4,0},{5,0},{6,0},{5,1},{5,-1},{4,2},{4,-2},},
-			// {{3 ,0},{4,0},{5,0},{6,0},{4,1},{4,-1},{5,2},{5,-2},},
-			// {{0 ,3},{0,4},{0,5},{0,6},{-1,5},{1,5},{-2,4},{2,4},},
-			// {{0 ,3},{0,4},{0,5},{0,6},{-1,4},{1,4},{-2,5},{2,5},},
-			//             };
+#if ENABLE_UNDO_DOTGUIDE
 
-			//             int arrowStart[4][2] = {{-15,-2},{6,-2},{0,-24},{0,11}};
-			// 			// clang-format on
-
-			// int x = (manX * PIXELS_PER_CHAR + 2 + ((manFaceDirection * frameAdjustX) >> 2));
-			// int y = ((manY * (CHAR_HEIGHT / 3) + 6 - ((frameAdjustY * (0X100 / 3)) >> 8)));
-
-			// // 			for (int i = 0; i < 8; i++)
-			// // 				addLocalFirework(x + arrowOffset[dir][i][0], y +
-			// arrowOffset[dir][i][1],
-			// // 7, 20);
-
-			// static int circleindex = 0;
-
-			// int circle_x[35] = {5,  5,  5,  4,  4,  3,  3,  2,  1,  0,  -1, -2,
-			//                     -3, -3, -3, -4, -5, -5, -5, -5, -5, -4, -4, -3,
-			//                     -3, -2, -1, 0,  1,  2,  3,  3,  3,  4,  5};
-			// int circle_y[35] = {0, 1,  2,  3,  4,  5,  6,  7,  7,  7,  7,  7,  6,  5,  4,  3,
-			// 2, 1,
-			//                     0, -1, -2, -3, -4, -5, -6, -7, -7, -7, -7, -7, -6, -5, -4,
-			//                     -3, -2};
-
-			// const int offX[] = {-5, 5, 0, 0};
-			// const int offY[] = {0, 0, -10, 10};
-
-			// for (int i = 0; i < SPLATS; i++)
-			// 	addLocalFirework(x + ((circle_x[i] * 0xC0) >> 8) + offX[dir],
-			// 	                 y + circle_y[i] + offY[dir], 2, 120);
+			// dotted path lines showing box movement
+			static const signed char mv[][2] = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
+			for (int i = 0; i < ((dir < 2) ? 3 : 4); i++)
+				addLocalFirework(x - mv[dir][0] * PIXELS_PER_CHAR + i * mv[dir][0] * 2,
+				                 y - mv[dir][1] * (CHAR_HEIGHT / 3) + i * mv[dir][1] * 3, 7,
+				                 i * 5 + 20);
+#endif
 
 			ADDAUDIO(SFX_PUSH);
 
@@ -138,7 +117,8 @@ bool undoLastMove() {
 			} else
 				*to = CH_BLANK;
 
-			deadlock = false; // force recalculation
+			deadlock = 0; // force recalculation
+			lastDeadlock = 0;
 		}
 
 		int typeFrom = CharToType[*from];

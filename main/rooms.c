@@ -31,6 +31,27 @@ const char *room[] = {
 // Rooms are standard-format, represented as a single 0-terminated string
 // tools/compressroom.py will compress a room for you
 
+
+// Collection/Set: DD-1
+// Serial Number: 19
+// Name: DD-1 19
+// Author: David Dahlem
+// Width: 8
+// Height: 15
+// Nb Boxes: 13
+// Pushes: 1090
+// Moves: 4680
+
+" ####|"\
+"##  ###########|"\
+"#@$ .$  $  $  #|"\
+"# $* .$.*.*.*.#|"\
+"## *$  $      #|"\
+" # . ##########|"\
+" # . #|"\
+" #####",
+
+
 " ####   |"\
 " #@ ####|"\
 " #  #  #|"\
