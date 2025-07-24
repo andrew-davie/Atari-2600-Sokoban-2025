@@ -444,6 +444,8 @@ bool drawBit(char x, int y, int colour) {
 
 		if (colour & (1 << (roll + i)))
 			base[roll] |= bit;
+		else
+			base[roll] &= ~bit;
 
 		if (++roll > 2)
 			roll = 0;

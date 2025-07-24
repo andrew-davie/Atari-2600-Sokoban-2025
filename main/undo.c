@@ -18,38 +18,64 @@ unsigned short undoStack[MAX_UNDO];
 int undoTop;
 int undoing;
 
+bool findBox(int *x, int *y) {
+
+	bool found = false;
+	int localTop = undoTop;
+
+	while (!found && localTop) {
+
+		unsigned short m = undoStack[--localTop];
+
+		int dir = (m >> 1) & 3;
+		found = (m & 1) > 0;
+
+		if (found) {
+			const unsigned char offX[] = {-2, 2, 0, 0};
+			const unsigned char offY[] = {0, 0, -2, 2};
+
+			*x = ((m >> 10) & 0x3F) + offX[dir];
+			*y = ((m >> 3) & 0x7F) + offY[dir];
+		}
+	}
+
+	return found;
+}
+
 void highlightUndo() {
 
 	if (scoreCycle == SCORELINE_UNDO) {
 
-		findBox
+		int boxX, boxY;
+		if (findBox(&boxX, &boxY)) {
 
-		    typedef struct {
-			signed char x;
-			signed y;
-		} Point;
+			typedef struct {
+				signed char x;
+				signed y;
+			} Point;
 
-		const Point circlePoints[] = {
-		    {4, 0},   {4, 1},   {4, 2},   {4, 3},   {3, 4},   {3, 5},   {3, 6},   {2, 6},
-		    {2, 7},   {1, 8},   {0, 8},   {-1, 8},  {-2, 7},  {-2, 6},  {-3, 6},  {-3, 5},
-		    {-3, 4},  {-4, 3},  {-4, 2},  {-4, 1},  {-4, 0},  {-4, -1}, {-4, -2}, {-4, -3},
-		    {-3, -4}, {-3, -5}, {-3, -6}, {-2, -6}, {-2, -7}, {-1, -8}, {0, -8},  {1, -8},
-		    {2, -7},  {2, -6},  {3, -6},  {3, -5},  {3, -4},  {4, -3},  {4, -2},  {4, -1},
-		};
+			const Point circlePoints[] = {
+			    {4, 0},   {4, 1},   {4, 2},   {4, 3},   {3, 4},   {3, 5},   {3, 6},   {2, 6},
+			    {2, 7},   {1, 8},   {0, 8},   {-1, 8},  {-2, 7},  {-2, 6},  {-3, 6},  {-3, 5},
+			    {-3, 4},  {-4, 3},  {-4, 2},  {-4, 1},  {-4, 0},  {-4, -1}, {-4, -2}, {-4, -3},
+			    {-3, -4}, {-3, -5}, {-3, -6}, {-2, -6}, {-2, -7}, {-1, -8}, {0, -8},  {1, -8},
+			    {2, -7},  {2, -6},  {3, -6},  {3, -5},  {3, -4},  {4, -3},  {4, -2},  {4, -1},
+			};
 
-		// Calculate trixel coordinates
-		// x: (char blocks * pixels per char block) + centering + (direction * pixel offset) / 4
-		// pixels per PF y: char blocks * trixels per char + centering + pixel offset converted to
-		// trixels (i.e. /3)
+			// Calculate trixel coordinates
+			// x: (char blocks * pixels per char block) + centering + (direction * pixel offset) / 4
+			// pixels per PF y: char blocks * trixels per char + centering + pixel offset converted
+			// to trixels (i.e. /3)
 
-		int x = (manX * PIXELS_PER_CHAR + 2 + ((manFaceDirection * frameAdjustX) >> 2));
-		int y = ((manY * (CHAR_HEIGHT / 3) + 4 - ((frameAdjustY * (0X100 / 3)) >> 8)));
+			int x = (boxX * PIXELS_PER_CHAR + 2 + ((manFaceDirection * frameAdjustX) >> 2));
+			int y = ((boxY * (CHAR_HEIGHT / 3) + 4 - ((frameAdjustY * (0X100 / 3)) >> 8)));
 
-		static int cp = 0;
-		if (++cp >= (int)(sizeof(circlePoints) / sizeof(circlePoints[0])))
-			cp = 0;
+			static int cp = 0;
+			if (++cp >= (int)(sizeof(circlePoints) / sizeof(circlePoints[0])))
+				cp = 0;
 
-		addLocalFirework(x + circlePoints[cp].x, y + circlePoints[cp].y, 3, 15);
+			addLocalFirework(x + circlePoints[cp].x, y + circlePoints[cp].y, 2, 15);
+		}
 	}
 }
 
@@ -66,8 +92,10 @@ void pushUndo(int px, int py, int dir, bool boxMoved) {
 			undoStack[undoTop++] = undoStack[i];
 	}
 
+	// TODO: compress non-box moves for player when stack too big
+
 	undoStack[undoTop++] =
-	    ((px & 0x3F) << 9) | ((py & 0x3F) << 3) | ((dir & 3) << 1) | ((int)boxMoved & 1);
+	    ((px & 0x3F) << 10) | ((py & 0x7F) << 3) | ((dir & 3) << 1) | ((int)boxMoved & 1);
 }
 
 bool undoLastMove() {
@@ -76,7 +104,7 @@ bool undoLastMove() {
 	// allowing iteration until box pushed
 
 	bool repeat = false;
-	if (undoTop) {
+	if (undoTop && findBox(0, 0)) {
 
 		ADDAUDIO(SFX_SPACE);
 
@@ -88,8 +116,8 @@ bool undoLastMove() {
 		int x = (manX * PIXELS_PER_CHAR + 2 + ((manFaceDirection * frameAdjustX) >> 2));
 		int y = ((manY * (CHAR_HEIGHT / 3) + 4 - ((frameAdjustY * (0X100 / 3)) >> 8)));
 
-		manX = (m >> 9) & 0x3F;
-		manY = (m >> 3) & 0x3F;
+		manX = (m >> 10) & 0x3F;
+		manY = (m >> 3) & 0x7F;
 
 		unsigned char *from = ADDRESS_OF(manY) + manX + dirOffset[dir];
 		unsigned char *to = from + dirOffset[dir];
