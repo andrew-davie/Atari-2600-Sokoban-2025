@@ -46,6 +46,9 @@ void highlightUndo() {
 
 	if (scoreCycle == SCORELINE_UNDO) {
 
+		frameAdjustX += 2 * ((frameAdjustX < 0) - (frameAdjustX > 0));
+		frameAdjustY += ((frameAdjustY < 0) - (frameAdjustY > 0)) * 3;
+
 		int boxX, boxY;
 		if (findBox(&boxX, &boxY)) {
 
@@ -74,7 +77,7 @@ void highlightUndo() {
 			if (++cp >= (int)(sizeof(circlePoints) / sizeof(circlePoints[0])))
 				cp = 0;
 
-			addLocalFirework(x + circlePoints[cp].x, y + circlePoints[cp].y, 2, 15);
+			addLocalFirework(x + circlePoints[cp].x, y + circlePoints[cp].y, 3, 15);
 		}
 	}
 }
@@ -113,14 +116,22 @@ bool undoLastMove() {
 		int dir = (m >> 1) & 3;
 		bool boxMoved = (m & 1) > 0;
 
-		int x = (manX * PIXELS_PER_CHAR + 2 + ((manFaceDirection * frameAdjustX) >> 2));
-		int y = ((manY * (CHAR_HEIGHT / 3) + 4 - ((frameAdjustY * (0X100 / 3)) >> 8)));
+		int oldX = manX;
+		int oldY = manY;
 
 		manX = (m >> 10) & 0x3F;
 		manY = (m >> 3) & 0x7F;
 
+		static const unsigned char mfd[] = {-1, 1, 1, 1};
+		manFaceDirection = mfd[dir];
+
+		frameAdjustX = manFaceDirection * (oldX - manX) * PIXELS_PER_CHAR * 4;
+		frameAdjustY = (manY - oldY) * CHAR_HEIGHT;
+
 		unsigned char *from = ADDRESS_OF(manY) + manX + dirOffset[dir];
 		unsigned char *to = from + dirOffset[dir];
+
+		int typeFrom = CharToType[*from];
 
 		// Only if we pushed a box off, do we need to modify the to square
 
@@ -147,10 +158,7 @@ bool undoLastMove() {
 
 			deadlock = 0; // force recalculation
 			lastDeadlock = 0;
-		}
 
-		int typeFrom = CharToType[*from];
-		if (boxMoved) {
 			if (Attribute[typeFrom] & ATT_TARGETLIKE) {
 				pillCount--;
 				*from = CH_BOX_UNDO_CORRECT;
@@ -161,19 +169,16 @@ bool undoLastMove() {
 			}
 		}
 
-		else
+		else {
 			repeat = true;
+			undoing = 100;
+		}
 	}
 
 	if (!undoTop) {
-		//		FLASH(0xD6, 4);
 		scoreCycle = SCORELINE_TIME; // exit undo mode
 		hackStartAnimation(animationList[ANIM_PLAYER], ID_Stand);
 		repeat = false;
-	}
-
-	else {
-		//		ARENA_COLOUR = 0x40;
 	}
 
 	return repeat;

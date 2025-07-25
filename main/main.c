@@ -788,10 +788,8 @@ void triggerStuff() {
 		triggerOffCounter++;
 	}
 
-	if (undoing)
-		if (!--undoing)
-			if (undoLastMove())
-				undoing = UNDO_SPEED;
+	if (undoing && !--undoing && undoLastMove())
+		undoing = UNDO_SPEED;
 }
 
 void drawComplete() { // 32k

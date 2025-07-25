@@ -41,7 +41,7 @@ const signed char AnimationDefault[] = {
 };
 
 const signed char AnimationUndo[] = {
-    ACTION_FLIP,
+//    ACTION_FLIP,                      // CANNOT flip during undo due to manFaceDirection requrements
     FRAME_LOOK1, 3,
     FRAME_LOOK2, 21,
     FRAME_LOOK1, 3,
@@ -2317,16 +2317,14 @@ void processAnimation(Animation *animate) {
 			static int lasty = 0;
 			static int deltaDelay = 0;
 
-			//			if (!(frame & 3)) {
 			int x = (manX * PIXELS_PER_CHAR + 2 + ((manFaceDirection * frameAdjustX) >> 2));
 			int y = ((manY * (CHAR_HEIGHT / 3) + 6 - ((frameAdjustY * (0X100 / 3)) >> 8)));
 
 			int deltax = absolute(lastx - x);
 			int deltay = absolute(lasty - y);
 
-			if (!(deltax + deltay)) {
+			if (!(deltax + deltay))
 				deltaDelay = 0;
-			}
 
 			if (deltaDelay > 4 && (deltax > 1 || deltay > 2)) {
 				lastx = x;
@@ -2335,8 +2333,6 @@ void processAnimation(Animation *animate) {
 			}
 
 			deltaDelay++;
-
-			//			}
 
 			animate->animation++;
 
