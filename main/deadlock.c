@@ -31,8 +31,8 @@ bool isUnplacedBoxorWall(unsigned char *p) { return isBoxorWall(p) && !isGoal(p)
 
 bool validate(unsigned char *offset[4]) {
 
-	bool dead = isUnplacedBox(offset[0]) && isUnplacedBoxorWall(offset[1]) &&
-	            isUnplacedBoxorWall(offset[2]) && isUnplacedBoxorWall(offset[3]);
+	bool dead = isUnplacedBox(offset[0]) && isBoxorWall(offset[1]) && isBoxorWall(offset[2]) &&
+	            isBoxorWall(offset[3]);
 	if (dead) {
 		// axiom: offset[0] and offset[1] ARE boxes
 		for (int i = 0; i < 4; i++)

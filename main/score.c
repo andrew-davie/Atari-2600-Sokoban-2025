@@ -186,10 +186,10 @@ unsigned char *drawDecimal2(unsigned char *buffer, unsigned char *colour_buffer,
 
 void drawMoves() {
 
-	if (deadlock && !(frame & 16))
-		return;
+	// if (deadlock && !(frame & 16))
+	// 	return;
 
-	int colour = deadlock ? RGB_RED : RGB_YELLOW;
+	int colour = /*deadlock ? RGB_RED :*/ RGB_YELLOW;
 	drawDecimal2(scoreLineNew + 7, scoreLineColour + 7, colour, pillCount);
 	drawDecimal2(scoreLineNew + 2, scoreLineColour + 2, colour, pushingMoves);
 }

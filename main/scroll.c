@@ -6,6 +6,7 @@
 #include "drawplayer.h"
 #include "main.h"
 #include "rooms.h"
+#include "score.h"
 #include "scroll.h"
 
 #if ENABLE_SWIPE
@@ -34,6 +35,11 @@ void clamp(int *value, int max) {
 
 void accelerate(int accelTarget, int decelTarget, int playerScreen, int center, int targetBox,
                 int *speed, int increment) {
+
+	// if (scoreCycle == SCORELINE_UNDO) {
+	// 	accelTarget *= 2;
+	// 	decelTarget *= 2;
+	// }
 
 	int rSpeed = 0x100;
 
