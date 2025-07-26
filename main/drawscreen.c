@@ -180,7 +180,7 @@ void drawScreen() { // 46391
 	int scanline = 0;
 	for (int row = startRow; scanline < SCANLINES; row++) {
 
-		const int height = SCANLINES - scanline < CHAR_HEIGHT ? SCANLINES - scanline : CHAR_HEIGHT;
+		int height = SCANLINES - scanline < CHAR_HEIGHT ? SCANLINES - scanline : CHAR_HEIGHT;
 
 		for (int half = 0; half < 2; half++) {
 

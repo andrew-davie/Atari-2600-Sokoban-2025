@@ -20,8 +20,14 @@ int undoing;
 
 bool findBox(int *x, int *y) {
 
+	const unsigned char offX[] = {-1, 1, 0, 0};
+	const unsigned char offY[] = {0, 0, -1, 1};
+
 	bool found = false;
 	int localTop = undoTop;
+
+	*x = manX;
+	*y = manY;
 
 	while (!found && localTop) {
 
@@ -30,12 +36,13 @@ bool findBox(int *x, int *y) {
 		int dir = (m >> 1) & 3;
 		found = (m & 1) > 0;
 
-		if (found) {
-			const unsigned char offX[] = {-2, 2, 0, 0};
-			const unsigned char offY[] = {0, 0, -2, 2};
+		*x -= offX[dir];
+		*y -= offY[dir];
 
-			*x = ((m >> 10) & 0x3F) + offX[dir];
-			*y = ((m >> 3) & 0x7F) + offY[dir];
+		if (found) {
+
+			*x += 2 * offX[dir]; //((m >> 10) & 0x3F) + 2 * offX[dir];
+			*y += 2 * offY[dir]; //((m >> 3) & 0x7F) + 2 *offY[dir];
 		}
 	}
 

@@ -57,14 +57,14 @@ int moves;
 
 int showRoomCounter;
 
-int trig;
+// int trig;
 
 unsigned char *boxLocation;
 
 bool lifeInit;
-bool rageQuit;
+// bool rageQuit;
 unsigned char *me;
-int millingTime; // negative = expired
+// int millingTime; // negative = expired
 int time60ths;
 
 int notifyVisible;
@@ -73,7 +73,7 @@ int notifyY;
 char *notifyString;
 
 bool waitRelease;
-BOUNDARY boundary;
+BOUNDARY boundary; // TODO : incomplete implementation
 
 #if ENABLE_FIREWORKS
 FIREWORKS fireworks[SPLATS];
@@ -198,7 +198,7 @@ void SystemReset() {
 
 	initKernel(KERNEL_COPYRIGHT);
 
-	rageQuit = false;
+	// rageQuit = false;
 	ARENA_COLOUR = 1;
 }
 
@@ -373,7 +373,7 @@ void checkExitWarning() {
 
 			if (triggerOffCounter > BUTTONTIME_EXIT_BOUNDARY + 50) {
 
-				rageQuit = true;
+				// rageQuit = true;
 				initKernel(KERNEL_MENU);
 			}
 		}
@@ -429,7 +429,7 @@ void drawOverscanThings() {
 
 	if (displayMode == DISPLAY_OVERVIEW) {
 
-		drawOverviewScreen(0, 11);
+		drawOverviewScreen(0, 11); // 11);
 
 		if (lastDisplayMode == displayMode)
 			drawPlayerSmallSprite();
@@ -679,7 +679,7 @@ bool handleSelectReset() {
 
 			else if (++resetDelay == RESET_DELAY) {
 
-				rageQuit = true;
+				// rageQuit = true;
 
 				initKernel(KERNEL_MENU);
 				//                ADDAUDIO(SFX_BLIP);
@@ -738,7 +738,7 @@ void triggerStuff() {
 						case DISPLAY_NORMAL:
 						case DISPLAY_HALF: {
 							displayMode = DISPLAY_OVERVIEW;
-							trig = 0;
+							// trig = 0;
 							break;
 						}
 						default:

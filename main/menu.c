@@ -344,29 +344,19 @@ const unsigned char wordDisplay[] = {
 
 
 
-#if ENABLE_EASTER_MYNAME
+// #if ENABLE_EASTER_MYNAME
 
-const unsigned char andrewDavie[] = {
-    ______XX, _______X, ________, _______X, X_______, ___X____,
-    _____X_X, _XX___XX, __XX_XX_, X__X___X, _X__XX_X, _X____XX,
-    ____X__X, _XXX_X_X, _XX_X_X_, X__X___X, __X__X_X, _X_X_X_X,
-    ____XXXX, _X_X_X_X, _X__XXX_, X__X___X, __XXXX_X, _X_X_XXX,
-    ____X__X, _X_X_XXX, _X__X___, XXXX___X, XX_X_X_X, XX_X_X__,
-    ____X__X, _X_X_XXX, _X___XX_, X__X___X, X__XXX__, X__X__XX,
-};
-
-
-// const unsigned char jurgenOster[] = {
-//     ___XX_X_, X_______, ________, _____XX_, ______X_, ________,
-//     ____X___, ___XX__X, X__X__XX, ____X__X, __XX_XXX, __X___XX,
-//     ____X_X_, X_X___X_, X_X_X_X_, X___X__X, _X____X_, _X_X_X__,
-//     ____X_X_, X_X____X, X_XXX_X_, X___X__X, __XX__X_, _XXX_X__,
-//     ____X_X_, X_X_____, X_X___X_, X___X__X, ____X_X_, _X___X__,
-//     __XX___X, X_X___XX, ___XX_X_, X____XX_, __XX___X, __XX_X__,
+// const unsigned char andrewDavie[] = {
+//     ______XX, _______X, ________, _______X, X_______, ___X____,
+//     _____X_X, _XX___XX, __XX_XX_, X__X___X, _X__XX_X, _X____XX,
+//     ____X__X, _XXX_X_X, _XX_X_X_, X__X___X, __X__X_X, _X_X_X_X,
+//     ____XXXX, _X_X_X_X, _X__XXX_, X__X___X, __XXXX_X, _X_X_XXX,
+//     ____X__X, _X_X_XXX, _X__X___, XXXX___X, XX_X_X_X, XX_X_X__,
+//     ____X__X, _X_X_XXX, _X___XX_, X__X___X, X__XXX__, X__X__XX,
 // };
 
 
-#endif
+// #endif
 
 // clang-format on
 
@@ -603,12 +593,12 @@ void initKernel(int kernel) {
 
 		menuLine = 0;
 
-		if (rageQuit) {
+		// if (rageQuit) {
 
-			SAY(__WORD_RAGEQUIT);
+		// 	SAY(__WORD_RAGEQUIT);
 
-			sound_volume = VOLUME_NONPLAYING;
-		}
+		// 	sound_volume = VOLUME_NONPLAYING;
+		// }
 
 		int delta = VOLUME_NONPLAYING - sound_volume;
 		sound_volume += (delta > 0) - (delta < 0);
@@ -749,7 +739,7 @@ void handleMenuVB() {
 	interleaveColour();
 
 	if (!(INPT4 & 0x80) && !waitRelease) {
-		rageQuit = false;
+		// rageQuit = false;
 		waitRelease = true;
 	}
 

@@ -92,7 +92,7 @@ extern int gameSpeed;
 extern int gameFrame;
 
 #if ENABLE_FIREWORKS
-#define SPLATS 32
+#define SPLATS 20
 #define SPLAT_LIFESPAN 40
 #define SPLAT_MIN 0x10
 #define SPLAT_RANGE 0x90
@@ -130,7 +130,7 @@ extern int moves;
 extern int lives;
 extern int time60ths;
 extern bool waitRelease;
-extern bool rageQuit;
+// extern bool rageQuit;
 extern unsigned int sparkleTimer;
 extern int perfectBonus;
 
