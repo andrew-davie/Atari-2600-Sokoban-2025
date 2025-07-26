@@ -54,6 +54,13 @@ const unsigned char CharToType[CH_MAX] = {
     TYPE_BOX_DEADLOCKED,   // 46 CH_BOX_PADLOCK
     TYPE_BOX_UNDO,         // 47 CH_BOX_UNDO
     TYPE_BOX_UNDO_CORRECT, // 48 CH_BOX_UNDO_CORRECT
+
+    TYPE_BOX,
+    TYPE_BOX,
+    TYPE_BOX,
+    TYPE_BOX,
+    TYPE_BOX,
+
 };
 
 const int Attribute[TYPE_MAX] = {

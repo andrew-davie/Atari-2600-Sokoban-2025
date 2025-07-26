@@ -8,23 +8,50 @@
 const unsigned char *Animate[TYPE_MAX];
 char AnimCount[TYPE_MAX];
 
+static const unsigned char AnimBoxComplete[] = {
+
+    // CH_BOX_ZOOM1, 12,
+    // // CH_BOX_ZOOM2, 3,
+    // // CH_BOX_ZOOM3, 3,
+    // CH_BOX_ZOOM4, 12,
+    // CH_BOX_ZOOM3, 3,
+    // CH_BOX_ZOOM2, 3,
+    // CH_BOX_ZOOM1, 3,
+    CH_BOX_DEADLOCK,12,
+    ANIM_LOOP,
+};
+
 
 static const unsigned char Animate_BoxDeadlocked[] = {
 
-    CH_BOX_PADLOCK,12,
-    CH_BOX_DEADLOCK, 12,
+
+    CH_BOX_DEADLOCK,99,
+    CH_BOX_ZOOM1,3,
+    CH_BOX_ZOOM2,3,
+    CH_BOX_ZOOM3,3,
+    CH_BOX_ZOOM4,6,
+    CH_BOX_ZOOM3,3,
+    CH_BOX_ZOOM2,3,
+    CH_BOX_ZOOM1,3,
+
+
+    // CH_BOX_PADLOCK,12,
+    // CH_BOX_DEADLOCK, 12,
     ANIM_LOOP
 };
 
 
 static const unsigned char Animate_BoxUndo[] = {
     
-    CH_BOX_DEADLOCK,6,
-    CH_BOX,6,
-    CH_BOX_DEADLOCK,6,
-    CH_BOX,6,
-    CH_BOX_DEADLOCK,6,
-    CH_BOX,6,
+    CH_BOX,3,
+    // CH_BLANK,12,
+    // CH_BOX,6,
+    // CH_BLANK,9,
+    // CH_BOX,9,
+    // CH_BLANK,6,
+    // CH_BOX,12,
+    // CH_BLANK,3,
+//    CH_BOX,6,
 
     // CH_BOX_PADLOCK,3,
     // CH_BOX_DEADLOCK, 3,
@@ -44,9 +71,9 @@ static const unsigned char Animate_BoxCorrect[] = {
     // CH_BOX_CORRECT,3,
     // CH_PILL1,3,
     CH_BOX, 6,
-    CH_PILL1,3,
-    CH_BOX, 6,
-    CH_PILL1,3,
+//    CH_PILL1,3,
+    // CH_BOX, 6,
+    // CH_PILL1,3,
 //    CH_BOX,
     ANIM_HALT,
 };
@@ -236,7 +263,7 @@ const unsigned char *const AnimateBase[] = {
     AnimBox_RtoL_RHS,      // 18 TYPE_BOX_RTOL_RIGHT
     Animate_BoxLocked,     // 19 TYPE_BOX_LOCKED
     Animate_BoxCorrect,    // 20 TYPE_BOX_CORRECT
-    Animate_BoxDeadlocked, // 21 TYPE_BOX_DEADLOCKED
+    Animate_BoxDeadlocked, // BoxDeadlocked, // 21 TYPE_BOX_DEADLOCKED
     Animate_BoxUndo,       // 22 TYPE_BOX_UNDO
     Animate_BoxUndo,       // 23 TYPE_BOX_UNDO_CORRECT
 };

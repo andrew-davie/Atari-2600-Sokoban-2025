@@ -12,8 +12,8 @@
 
 int manX;
 int manY;
-int frameAdjustX;
-int frameAdjustY;
+int frameAdjustX; // 24.8
+int frameAdjustY; // 24.8
 
 enum FaceDirection manFaceDirection;
 bool manDead;

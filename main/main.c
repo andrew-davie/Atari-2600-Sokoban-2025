@@ -67,6 +67,11 @@ unsigned char *me;
 int millingTime; // negative = expired
 int time60ths;
 
+int notifyVisible;
+int notifyCol;
+int notifyY;
+char *notifyString;
+
 bool waitRelease;
 BOUNDARY boundary;
 
@@ -233,6 +238,7 @@ void initNextLife() {
 	gameFrame = 0;
 	triggerPressCounter = 0;
 	triggerOffCounter = 0;
+	notifyVisible = 0;
 
 	resetDelay = 0;
 	selectResetDelay = 0;
@@ -318,6 +324,12 @@ void GameIdle() {
 
 void drawWord(const char *string, int y, int colour) {
 
+	static int wc = 0;
+
+	if (!roller)
+		if (++wc >= 8 << 2)
+			wc = 1 << 2;
+
 	unsigned char ch;
 
 	const char *width = string;
@@ -329,12 +341,16 @@ void drawWord(const char *string, int y, int colour) {
 	while ((ch = *string++) != NEW_LINE && ch) {
 
 		if (ch != ' ') {
-			if (ch >= '<')
+
+			if (ch >= 'A')
 				ch = LETTER(ch);
+			else if (ch >= '0')
+				ch = ch - '0';
 
 			drawBigDigit(ch, x, y + EXTERNAL(__sinoid)[(x + (frame >> 2)) & 15] - 3, 7);
 			drawBigDigit(ch, x, y + EXTERNAL(__sinoid)[(x + (frame >> 2)) & 15] + 3, 0);
-			drawBigDigit(ch, x, y + EXTERNAL(__sinoid)[(x + (frame >> 2)) & 15], colour);
+			drawBigDigit(ch, x, y + EXTERNAL(__sinoid)[(x + (frame >> 2)) & 15],
+			             wc >> 2 /*colour*/);
 		}
 		x--;
 	}
@@ -371,19 +387,12 @@ void checkExitWarning() {
 				if (scoreCycle != SCORELINE_UNDO) {
 					scoreCycle = SCORELINE_UNDO;
 					displayMode = DISPLAY_NORMAL;
-					// FLASH(0x44, 6);
-
 					startAnimation(animationList[ANIM_PLAYER], ID_Undo);
-					// ARENA_COLOUR = 0x40; // not working
 
 				} else {
 
 					scoreCycle = SCORELINE_TIME;
 					hackStartAnimation(animationList[ANIM_PLAYER], ID_Stand);
-
-					// startAnimation(animationList[ANIM_PLAYER], ID_Stand);
-					// playerAnim.animation--; // hack
-					//					FLASH(0xD6, 10);
 				}
 
 				waitRelease = true;
@@ -780,7 +789,7 @@ void triggerStuff() {
 				}
 
 			} else {
-				undoing = 1; // UNDO_SPEED;
+				undoing = UNDO_SPEED;
 			}
 			triggerPressCounter = 0;
 			triggerOffCounter = 0;
@@ -952,7 +961,7 @@ int addFirework(int x, int y) {
 	return -1;
 }
 
-int addLocalFirework(int x, int y, int colour, int age) {
+int addLocalPixel(int x, int y, int colour, int age) {
 
 	for (int i = 0; i < SPLATS; i++)
 		if (!fireworks[i].age) {
@@ -990,11 +999,6 @@ void pulse(unsigned char *cell, int baseChar) {
 	unsigned char dType = ((rndX & 0xFF) * 4) >> 8;
 	*cell = baseChar + dType;
 }
-
-int notifyVisible = 0;
-int notifyCol = 0;
-int notifyY = 0;
-char *notifyString;
 
 bool drawNotification() {
 	if (notifyVisible) {
@@ -1136,11 +1140,18 @@ void processBoardSquares() {
 					if (scoreCycle != SCORELINE_UNDO)
 						ADDAUDIO(SFX_WHOOSH2);
 
-					int d10 = (deadlock * (256 / 10)) >> 8;
-					int d = deadlock - d10 * 10;
+					int dd = deadlock;
+					int d10 = 0;
+					while (dd >= 10) {
+						d10++;
+						dd -= 10;
+					}
 
-					dl[0] = d10 ? d10 : ' ';
-					dl[1] = d;
+					//					int d10 = (deadlock * (256 / 10)) >> 8;
+					int d = dd; // deadlock - d10 * 10;
+
+					dl[0] = d10 ? '0' + d10 : ' ';
+					dl[1] = '0' + d;
 
 					showNotification(dl, 30, 7);
 				}

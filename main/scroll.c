@@ -36,10 +36,10 @@ void clamp(int *value, int max) {
 void accelerate(int accelTarget, int decelTarget, int playerScreen, int center, int targetBox,
                 int *speed, int increment) {
 
-	// if (scoreCycle == SCORELINE_UNDO) {
-	// 	accelTarget *= 2;
-	// 	decelTarget *= 2;
-	// }
+	if (scoreCycle == SCORELINE_UNDO) {
+		accelTarget *= 3;
+		decelTarget *= 3;
+	}
 
 	int rSpeed = 0x100;
 

@@ -438,14 +438,13 @@ bool drawBit(char x, int y, int colour) {
 	int shift = col < 4 ? col + 4 : col < 12 ? 11 - col : col - 12;
 	int bit = 1 << shift;
 
-	colour |= -colour << 3;
 	int roll = roller;
 	for (int i = 0; i < 3; i++) {
 
-		if (colour & (1 << (roll + i)))
-			base[roll] |= bit;
+		if (colour & (1 << roll))
+			base[i] |= bit;
 		else
-			base[roll] &= ~bit;
+			base[i] &= ~bit;
 
 		if (++roll > 2)
 			roll = 0;

@@ -94,6 +94,12 @@ enum ChName {
 	CH_BOX_UNDO,          // 47
 	CH_BOX_UNDO_CORRECT,  // 48
 
+    CH_BOX_ZOOM1,
+    CH_BOX_ZOOM2,
+    CH_BOX_ZOOM3,
+    CH_BOX_ZOOM4,
+    CH_BOX_ZOOM5,
+
 	CH_MAX
 };
 

@@ -92,7 +92,7 @@ extern int gameSpeed;
 extern int gameFrame;
 
 #if ENABLE_FIREWORKS
-#define SPLATS 20
+#define SPLATS 32
 #define SPLAT_LIFESPAN 40
 #define SPLAT_MIN 0x10
 #define SPLAT_RANGE 0x90
@@ -110,7 +110,7 @@ typedef struct {
 extern FIREWORKS fireworks[SPLATS];
 
 int addFirework(int x, int y);
-int addLocalFirework(int x, int y, int colour, int age);
+int addLocalPixel(int x, int y, int colour, int age);
 #endif
 
 enum KERNEL_TYPE {

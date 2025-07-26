@@ -304,7 +304,7 @@ bool star() {
 	if (starNextPoint > 9) {
 		starNextPoint = 0;
 		swipeComplete = true;
-		swipeStep += 20;
+		swipeStep += 8;
 	}
 
 	bool visible = bresenhamLine(starX[starPoint], starY[starPoint], starX[starNextPoint],

@@ -54,7 +54,7 @@ void highlightUndo() {
 
 			typedef struct {
 				signed char x;
-				signed y;
+				signed char y;
 			} Point;
 
 			const Point circlePoints[] = {
@@ -77,7 +77,9 @@ void highlightUndo() {
 			if (++cp >= (int)(sizeof(circlePoints) / sizeof(circlePoints[0])))
 				cp = 0;
 
-			addLocalFirework(x + circlePoints[cp].x, y + circlePoints[cp].y, 3, 15);
+			addLocalPixel(x + circlePoints[cp].x, y + circlePoints[cp].y, 6, 12);
+			addLocalPixel(x + circlePoints[cp].x,
+			              y + circlePoints[cp].y + (circlePoints[cp].y > 0 ? 1 : -1), 6, 12);
 		}
 	}
 }
@@ -142,9 +144,9 @@ bool undoLastMove() {
 			// dotted path lines showing box movement
 			static const signed char mv[][2] = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
 			for (int i = 0; i < ((dir < 2) ? 3 : 4); i++)
-				addLocalFirework(x - mv[dir][0] * PIXELS_PER_CHAR + i * mv[dir][0] * 2,
-				                 y - mv[dir][1] * (CHAR_HEIGHT / 3) + i * mv[dir][1] * 3, 7,
-				                 i * 5 + 20);
+				addLocalPixel(x - mv[dir][0] * PIXELS_PER_CHAR + i * mv[dir][0] * 2,
+				              y - mv[dir][1] * (CHAR_HEIGHT / 3) + i * mv[dir][1] * 3, 7,
+				              i * 5 + 20);
 #endif
 
 			ADDAUDIO(SFX_PUSH);
@@ -171,7 +173,7 @@ bool undoLastMove() {
 
 		else {
 			repeat = true;
-			undoing = 100;
+			undoing = UNDO_SPEED;
 		}
 	}
 
