@@ -8,6 +8,9 @@ void getShakenCoords(int *x, int *y);
 void sparkly();
 void doSparkles();
 bool drawBit(char x, int y, int colour);
+void initIconScreen();
+void drawIconScreen(int startRow, int endRow);
+void initIconPalette();
 
 #endif
 // EOF

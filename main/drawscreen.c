@@ -455,4 +455,105 @@ bool drawBit(char x, int y, int colour) {
 	return true;
 }
 
+#define ICON_BASE 108
+
+void initIconPalette() {
+
+#if ENABLE_RAINBOW
+
+	if (rainbow) {
+		rollRainbow();
+		doRainbowBackground();
+	}
+
+#endif
+
+	unsigned char rollColours[3];
+
+	rollColours[1] = 0x94; // convertColour(fgPalette[0]);
+	rollColours[2] = 0xD4; // convertColour(fgPalette[1]);
+
+	roller++;
+	if (roller > 2)
+		roller = 0; // tmp
+
+	int baseRoller = roller;
+
+	if (enableICC && ++baseRoller > 2)
+		baseRoller = 0;
+
+	unsigned char *pal0 = RAM + _BUF_MENU_COLUP0 + ICON_BASE - 1;
+
+	for (int j = 0; j < __BOARD_DEPTH; j++) {
+		rollColours[0] = 0x44; // tmp bgPalette[j];
+		for (int i = 0; i < 3; i++) {
+			*pal0++ = rollColours[baseRoller];
+			if (++baseRoller > 2)
+				baseRoller = 0;
+		}
+	}
+}
+
+unsigned int cc[48];
+
+void initIconScreen() {
+
+	const int stepper = 40 * 65536 / 48;
+	for (int i = 0; i < 48; i++)
+		cc[i] = (i * stepper + (stepper >> 1)) >> 16;
+}
+
+void drawIconScreen(int startRow, int endRow) { // --> 101102 cycles
+
+	p = ADDRESS_OF(startRow);
+
+	int m1 = 4 + (startRow & 1);
+	int m2 = m1 ^ 1;
+
+	int br = roller;
+	if (!enableICC)
+		br--;
+
+	for (int row = startRow; row < endRow; row++) {
+
+		for (int col = 0; col < _1ROW; col++) {
+			unsigned char p2 = p[col] & 0b00111111;
+			int type = CharToType[p2];
+			if (Animate[type])
+				p2 = *Animate[type];
+			img[col] = charSet[p2].small;
+		}
+
+		p += _1ROW;
+
+		unsigned char *ppf = RAM + ICON_BASE + row * 3 + _BUF_MENU_GRP0A;
+
+		for (int col = 0; col < 6; col++) {
+
+			unsigned int *p = cc + (col << 3);
+
+			for (int segment = 0; segment < 3; segment++) {
+
+				if (++br > 2)
+					br = 0;
+
+				int roll = segment * 3 + br;
+
+				// clang-format off
+                ppf[segment] = (unsigned char)(img[p[0]][roll] >> m2 << 7) |
+                               (unsigned char)(img[p[1]][roll] >> m1 << 7) >> 1 |
+                               (unsigned char)(img[p[2]][roll] >> m2 << 7) >> 2 |
+                               (unsigned char)(img[p[3]][roll] >> m1 << 7) >> 3 |
+                               (unsigned char)(img[p[4]][roll] >> m2 << 7) >> 4 |
+                               (unsigned char)(img[p[5]][roll] >> m1 << 7) >> 5 |
+                               (unsigned char)(img[p[6]][roll] >> m2 << 7) >> 6 |
+                               (unsigned char)(img[p[7]][roll] >> m1 << 7) >> 7;
+				// clang-format on
+			}
+
+			ppf += _ARENA_SCANLINES;
+		}
+	}
+}
+
 // EOF

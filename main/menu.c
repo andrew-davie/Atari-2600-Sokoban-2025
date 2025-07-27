@@ -36,12 +36,13 @@ void resetMode();
 
 
 static int sin = 0;
+int lastRoom = -1;
 
 #include "../iCC_title.c"
 
 const unsigned char iCC_title_colour[] = {
 
-    0xCA, 0x28, 0x34,
+    0x36, 0x66, 0xD8,
 };
 
 // clang-format on
@@ -414,7 +415,7 @@ void drawSmallString(int y, const unsigned char *smallText, int colour) {
 	drawSmallProxy(convertColour(colour), y, smallText);
 }
 
-char showRoom[] = {"   "};
+char showRoom[3] = {"   "};
 
 // const char TV[][6] = {
 
@@ -426,15 +427,17 @@ char showRoom[] = {"   "};
 // #endif
 // };
 
-const char Level[][6] = {
+// const char Level[][6] = {
 
-    {"NORMAL"}, {"MEDIUM"}, {"HARD>>"}, {"EXPERT"}, {"SUPER>"},
-};
+//     {"NORMAL"}, {"MEDIUM"}, {"HARD>>"}, {"EXPERT"}, {"SUPER>"},
+// };
 
 const char displayOption[][6] = {
     {"OFF>>>"},
     {"ON>>>>"},
 };
+
+const char word2025[] = {"2025.0"};
 
 // clang-format on
 
@@ -449,7 +452,7 @@ void setTitleMarqueeColours() {
 	unsigned char *const p = RAM + _BUF_MENU_COLUPF;
 
 	int baseRoller = roller + 1;
-	for (int i = 0; i < 69; i++) {
+	for (int i = 0; i < 48; i++) {
 
 		if (++baseRoller > 2)
 			baseRoller -= 3;
@@ -467,7 +470,7 @@ void handleMenuScreen() {
 	if (sline >= sizeof(smallWord) / sizeof(smallWord[0]))
 		sline = 0;
 
-	int y = sline * 24 + 96;
+	int y = sline * 85 + 92;
 
 	if (gameFrame)
 		--gameFrame;
@@ -478,40 +481,40 @@ void handleMenuScreen() {
 
 	case 0: {
 
-		showRoom[0] = '0';
-		showRoom[1] = '0';
-		showRoom[2] = '0';
+		int cvt = Room;
+		int dig = 0;
 
-		int ct = Room;
-		while (ct >= 100) {
-			showRoom[0]++;
-			ct -= 100;
+		for (int digit = 2; digit >= 0; digit--) {
+			showRoom[2 - digit] = '0';
+			int displayDigit = 0;
+			while (cvt >= pwr[digit]) {
+				showRoom[2 - digit]++;
+				cvt -= pwr[digit];
+			}
+
+			if (displayDigit) {
+				showRoom[dig++] = 'A'; //'0' + displayDigit - 1;
+			}
 		}
 
-		while (ct >= 10) {
-			showRoom[1]++;
-			ct -= 10;
-		}
-
-		showRoom[2] = '0' + ct;
-
-		dLine = showRoom;
+		// showRoom[0] = '0';
+		dLine = &showRoom[0];
 
 	} break;
 
-	case 1:
-	case 2:
-		dLine = displayOption[enableICC];
-		break;
+		// case 1:
+		// case 2:
+		// 	dLine = displayOption[enableICC];
+		// 	break;
 	}
 
 	if (dLine) {
 
-		drawSmallString(y, smallWord[sline], sline == menuLine ? 0xA : 0x9A);
+		//		drawSmallString(y, smallWord[sline], sline == menuLine ? 0x8 : 0x98);
 
 		int colour =
-		    sline == menuLine ? (gameFrame & 4) ? 0x8 : ((++sin << 4) & 0xF0) | 0x18 : 0xB8;
-		drawString(0, y + 8, dLine, colour);
+		    sline == menuLine ? (gameFrame & 4) ? 0x8 : ((++sin << 4) & 0xF0) | 0x18 : 0x04;
+		drawString(3, y - 3, dLine, 7 /*colour*/);
 	}
 
 #if ENABLE_SERIAL_NUMBER
@@ -530,6 +533,13 @@ void handleMenuScreen() {
 			x += halfSize(x, 180, ch, true);
 	}
 #endif
+
+	// static bool b2025 = false;
+	// if (!b2025) {
+	// 	const unsigned char word2025[] = {"2025.0"};
+	// 	drawString(0, 50, "  2025", 0);
+	// 	b2025 = true;
+	// }
 }
 
 void initCopyrightScreen() {
@@ -591,7 +601,11 @@ void initKernel(int kernel) {
 		for (int i = 0; i < 6; i++)
 			RGB[i] = 0x46;
 
+		initIconPalette();
+		initIconScreen();
+
 		menuLine = 0;
+		lastRoom = -1;
 
 		// if (rageQuit) {
 
@@ -648,6 +662,7 @@ void MenuOverscan() {
 	// T1TCR = 1; // tmp
 
 	initMenuDatastreams();
+	processCharAnimations();
 	rndX = getRandom32();
 
 #if __ENABLE_ATARIVOX
@@ -673,7 +688,16 @@ void MenuOverscan() {
 
 	case KERNEL_MENU:
 
+		if (lastRoom != Room) {
+			lastRoom = Room;
+
+			roomUnpack(Room, true);
+		}
+
+		initIconPalette();
+		drawIconScreen(0, 12);
 		handleMenuScreen();
+
 		break;
 
 	case KERNEL_STATS: // overscan
@@ -746,22 +770,31 @@ void handleMenuVB() {
 	drawICCScreen(iCC_title);
 	setTitleMarqueeColours();
 
+	roller--;
+	drawIconScreen(12, 22);
+
 #if ENABLE_ANIMATING_MAN
 	doMan();
 #endif
 
+	// Pulse/colour-change SOKOBAN marquee
+
 	static int lum = 0;
-	static const unsigned int lumOffset[16] = {0, 2, 4, 6, 8, 8, 8, 8, 8, 8, 8, 8, 6, 4, 2, 0};
+	static const unsigned int lumOffset[] = {0, 2, 4, 6, 8, 8, 8, 8, 8, 8, 8, 8,
+	                                         8, 8, 8, 8, 8, 8, 8, 8, 6, 4, 2, 0};
 
-	for (int i = 0; i < 3; i++) {
+	for (int i = 0; i < 6; i++) {
 
-		if (!lum && i < 3)
-			RGB[i] = (RGB[i] & 0xF) | (getRandom32() << 4);
+		if (!roller)
+			if (((i >= 3) && !rangeRandom(100)) || (!lum) ||
+			    !rangeRandom(20)) // lumOffset[lum] == 8)
+				RGB[i] = (RGB[i] & 0xF) | (getRandom32() << 4);
 
-		RGB[i] = lumOffset[(lum >> LUMSHIFT)] | (RGB[i] & 0xF0);
+		if (i < 3)
+			RGB[i] = lumOffset[(lum >> LUMSHIFT)] | (RGB[i] & 0xF0);
 	}
 
-	if ((++lum >> LUMSHIFT) >= 16)
+	if ((++lum >> LUMSHIFT) >= (int)sizeof(lumOffset) / sizeof(lumOffset[0]))
 		lum = 0;
 
 	int negJoy = (SWCHA >> 4) ^ 0xF;
@@ -782,8 +815,9 @@ void handleMenuVB() {
 				switch (menuLine) {
 
 				case 0:
-
+					lastRoom = Room;
 					Room = setBounds(Room + dir, getRoomCount() - 1);
+					clearBoard();
 					break;
 
 				case 1:

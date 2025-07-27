@@ -27,7 +27,7 @@ int swipeStep;   // 24.8
 
 int swipeCenterX;
 int swipeCenterY;
-int circleX, circleY, circleDelta;
+// int circleX, circleY, circleDelta;
 bool swipeComplete;
 bool swipeVisible;
 
@@ -62,11 +62,11 @@ void setSwipe(int x, int y, int radius, int step, enum CIRCLEPHASE phase) {
 	swipePhase = phase;
 
 	switch (swipeType) {
-	case SWIPE_CIRCLE:
-		circleX = swipeRadius >> 8;
-		circleY = 0;
-		circleDelta = 1 - circleX;
-		break;
+		// case SWIPE_CIRCLE:
+		// 	circleX = swipeRadius >> 8;
+		// 	circleY = 0;
+		// 	circleDelta = 1 - circleX;
+		// 	break;
 
 	case SWIPE_STAR:
 		generateStar();
@@ -113,30 +113,30 @@ void swipe(int reserved) {
 
 		//		FLASH(0x44, 2);
 		switch (swipeType) {
-		case SWIPE_CIRCLE: {
+			// case SWIPE_CIRCLE: {
 
-			FLASH(0xD2, 2);
+			// 	FLASH(0xD2, 2);
 
-			int x2 = (circleX * 7) >> 4;
-			int y2 = (circleY * 7) >> 4;
+			// 	int x2 = (circleX * 7) >> 4;
+			// 	int y2 = (circleY * 7) >> 4;
 
-			drawMaskBit(swipeCenterX + y2, swipeCenterY + circleX);
-			drawMaskBit(swipeCenterX + y2, swipeCenterY - circleX);
-			drawMaskBit(swipeCenterX + x2, swipeCenterY - circleY);
-			drawMaskBit(swipeCenterX - x2, swipeCenterY - circleY);
-			drawMaskBit(swipeCenterX - y2, swipeCenterY - circleX);
-			drawMaskBit(swipeCenterX - y2, swipeCenterY + circleX);
-			drawMaskBit(swipeCenterX - x2, swipeCenterY + circleY);
+			// 	drawMaskBit(swipeCenterX + y2, swipeCenterY + circleX);
+			// 	drawMaskBit(swipeCenterX + y2, swipeCenterY - circleX);
+			// 	drawMaskBit(swipeCenterX + x2, swipeCenterY - circleY);
+			// 	drawMaskBit(swipeCenterX - x2, swipeCenterY - circleY);
+			// 	drawMaskBit(swipeCenterX - y2, swipeCenterY - circleX);
+			// 	drawMaskBit(swipeCenterX - y2, swipeCenterY + circleX);
+			// 	drawMaskBit(swipeCenterX - x2, swipeCenterY + circleY);
 
-			circleY++;
+			// 	circleY++;
 
-			if (circleDelta < 0)
-				circleDelta += 2 * circleY + 1;
-			else
-				circleDelta += 2 * (circleY - --circleX) + 1;
-			swipeComplete = circleX < circleY;
-			break;
-		}
+			// 	if (circleDelta < 0)
+			// 		circleDelta += 2 * circleY + 1;
+			// 	else
+			// 		circleDelta += 2 * (circleY - --circleX) + 1;
+			// 	swipeComplete = circleX < circleY;
+			// 	break;
+			// }
 
 		case SWIPE_STAR:
 			swipeVisible |= star();

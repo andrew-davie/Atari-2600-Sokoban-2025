@@ -1,12 +1,20 @@
 
 #include "animations.h"
 #include "attribute.h"
+#include "colour.h"
 #include "random.h"
 
 // clang-format off
 
 const unsigned char *Animate[TYPE_MAX];
 char AnimCount[TYPE_MAX];
+
+
+// static const unsigned char Animate_Debug[] = {
+//     CH_BOX,40,
+//     CH_BLANK,40,
+//     ANIM_LOOP,
+// };
 
 static const unsigned char AnimBoxComplete[] = {
 
@@ -294,7 +302,6 @@ void startCharAnimation(int type, const unsigned char *idx) {
 void startDefaultCharAnimation(int type) { startCharAnimation(type, AnimateBase[type]); }
 
 void processCharAnimations() {
-
 	for (int type = 0; type < TYPE_MAX; type++)
 		if (AnimCount[type] && AnimateBase[type])
 			if (!--AnimCount[type])

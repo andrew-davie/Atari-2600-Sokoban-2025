@@ -11,7 +11,7 @@
 #define ENABLE_IDLE_ANIMATION 1   /* */
 #define ENABLE_SECAM 0            /* 88 bytes */
 #define ENABLE_60MHZ_AUTODETECT 1 /* 16 bytes */
-#define ENABLE_ANIMATING_MAN 1    /* 244 bytes but man disappears */
+#define ENABLE_ANIMATING_MAN 0    /* 244 bytes but man disappears */
 #define ENABLE_SWIPE 1            /* 1108 bytes */
 #define ENABLE_SERIAL_NUMBER 1    /* 232 bytes(with 'halfsize' routine) */
 #define ENABLE_FIREWORKS 1        /* 244 bytes - a pixel-draw used for a fireworks starburst */
@@ -45,6 +45,8 @@
 
 void setJumpVectors(int midKernel, int exitKernel);
 void InitializeNewGame();
+void roomUnpack(int roomNumber, int center);
+void clearBoard();
 
 void drawWord(const char *string, int y, int colour);
 

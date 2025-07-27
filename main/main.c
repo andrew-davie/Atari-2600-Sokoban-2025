@@ -267,16 +267,7 @@ void initNextLife() {
 	gameSchedule = SCHEDULE_UNPACK_Room;
 }
 
-void scheduleUnpackRoom() {
-
-	if (KERNEL != KERNEL_GAME)
-		return;
-
-	setupBoard();
-
-	unsigned char *b = ADDRESS_OF(0);
-	for (int i = 0; i < __BOARD_SIZE; i++)
-		b[i] = 0;
+void roomUnpack(int roomNumber, int center) {
 
 	// Decode the room data
 	// First dummy-unpack to get dimensions of room, then center and unpack
@@ -285,12 +276,32 @@ void scheduleUnpackRoom() {
 	boundary.y = 0;
 
 	showRoomCounter = 100;
-	unpackRoom(&boundary, true, Room);
 
-	boundary.x = (__BOARD_WIDTH - boundary.width) >> 1;
-	boundary.y = (__BOARD_DEPTH - boundary.height) >> 1;
+	if (center) {
 
-	unpackRoom(&boundary, false, Room);
+		unpackRoom(&boundary, true, roomNumber);
+
+		boundary.x = (__BOARD_WIDTH - boundary.width) >> 1;
+		boundary.y = (__BOARD_DEPTH - boundary.height) >> 1;
+	}
+
+	unpackRoom(&boundary, false, roomNumber);
+}
+
+void clearBoard() {
+	unsigned char *b = ADDRESS_OF(0);
+	for (int i = 0; i < __BOARD_SIZE; i++)
+		b[i] = 0;
+}
+
+void scheduleUnpackRoom() {
+
+	if (KERNEL != KERNEL_GAME)
+		return;
+
+	setupBoard();
+
+	roomUnpack(Room, true);
 
 #if ENABLE_SWIPE
 

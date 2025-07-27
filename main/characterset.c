@@ -387,7 +387,7 @@ static const unsigned char char_box_locked2b[CHAR_HEIGHT] = {
     0b00000000,     /*7*/
     0b00000000,
     0b00011111,
-    0b00000000,     /*8*/
+    0b00011111,     /*8*/
     0b00000000,
     0b00011111
 };
@@ -405,7 +405,7 @@ static const unsigned char smallchar_box[CHAR_HEIGHT_HALF] = {
     0b00000000,
     0b11111111,
     0b00000000,
-    0b00100100,
+    0b00100111,
     0b11111100,
     0b00000000,
     0b00000000,
