@@ -1702,7 +1702,7 @@ __CHAR_A_TO_Z
    dc BXXX_XXX_
    dc BXXXXXXX_
    dc BXXXXXXX_
-   dc BXX_X_XX_
+   dc BXXXX_XX_
    dc BXXX__XX_
    dc BXXX__XX_
    dc BXXX__XX_
@@ -1715,7 +1715,7 @@ __CHAR_A_TO_Z
    dc BXXXXXXX_
    dc BXXXXXXX_
    dc BXXXXXXX_
-   dc BXX_XXXX_
+   dc BXXXXXXX_
    dc BXXX_XXX_
    dc BXXX__XX_
    dc BXXX__XX_
@@ -1813,7 +1813,7 @@ __CHAR_A_TO_Z
    dc BXXX__XX_
    dc BXXX__XX_
    dc BXXX__XX_
-   dc BXX_X_XX_
+   dc BXXXX_XX_
    dc BXXXXXXX_
    dc BXXXXXXX_
    dc BXXX_XXX_
@@ -1852,115 +1852,115 @@ __CHAR_A_TO_Z
    dc BXXXXXXX_
    dc BXXXXXXX_
 
-   dc B_XXXXX__
-   dc BXXXXXXX_
-   dc BXXX__XX_
-   dc BXXX__XX_
-   dc BXXX__XX_
-   dc BXXX__XX_
-   dc BXXX__XX_
-   dc BXXXXXXX_
-   dc BXXXXXXX_
-   dc B_XXXXX__
+   dc BXXXXXXXX
+   dc BXXXXXXXX
+   dc BXXX__XXX
+   dc BXXX__XXX
+   dc BXXX__XXX
+   dc BXXX__XXX
+   dc BXXX__XXX
+   dc BXXX__XXX
+   dc BXXXXXXXX
+   dc BXXXXXXXX
 
-   dc B___XX___
    dc B__XXX___
    dc B__XXX___
    dc B__XXX___
-   dc B___XX___
-   dc B___XX___
-   dc B___XX___
-   dc B__XXXX__
-   dc B__XXXX__
-   dc B__XXXX__
-
-   dc B_XXXXX__
-   dc BXXXXXXX_
-   dc BXXX_XXX_
-   dc B____XXX_
-   dc B___XXX__
    dc B__XXX___
-   dc B_XXX____
-   dc BXXXXXXX_
-   dc BXXXXXXX_
-   dc BXXXXXXX_
+   dc B__XXX___
+   dc B__XXX___
+   dc B__XXX___
+   dc B__XXX___
+   dc B__XXX___
+   dc B__XXX___
 
-   dc BXXXXXXX_
-   dc BXXXXXXX_
-   dc B____XXX_
-   dc B___XXX__
-   dc B__XXXX__
-   dc B____XXX_
-   dc BXXX__XX_
-   dc BXXXXXXX_
-   dc BXXXXXXX_
-   dc B_XXXXX__
-
-   dc B___XXX__
-   dc B__XXXX__
-   dc B_XXXXX__
-   dc BXXX_XX__
-   dc BXX__XX__
-   dc BXXXXXXX_
-   dc BXXXXXXX_
-   dc BXXXXXXX_
-   dc B____XX__
-   dc B____XX__
-
-   dc BXXXXXXX_
-   dc BXXXXXXX_
+   dc BXXXXXXXX
+   dc BXXXXXXXX
+   dc B_____XXX
+   dc B_____XXX
+   dc BXXXXXXXX
+   dc BXXXXXXXX
    dc BXXX_____
-   dc BXXXXXX__
-   dc BXXXXXXX_
-   dc B_____XX_
-   dc BXXX__XX_
-   dc BXXXXXXX_
-   dc BXXXXXXX_
-   dc B_XXXXX__
-
-   dc B_XXXXX__
-   dc BXXXXXX__
    dc BXXX_____
-   dc BXXXXXX__
-   dc BXXXXXXX_
-   dc BXXX__XX_
-   dc BXXX__XX_
-   dc BXXXXXXX_
-   dc BXXXXXXX_
-   dc B_XXXXX__
+   dc BXXXXXXXX
+   dc BXXXXXXXX
 
-   dc BXXXXXXX_
-   dc BXXXXXXX_
-   dc BXXXXXXX_
-   dc B____XXX_
-   dc B___XXX__
-   dc B___XXX__
-   dc B__XXX___
-   dc B__XXX___
-   dc B__XXX___
-   dc B__XXX___
+   dc BXXXXXXXX
+   dc BXXXXXXXX
+   dc B_____XXX
+   dc B_____XXX
+   dc B__XXXXXX
+   dc B__XXXXXX
+   dc B_____XXX
+   dc B_____XXX
+   dc BXXXXXXXX
+   dc BXXXXXXXX
 
-   dc B_XXXXX__
-   dc BXXXXXXX_
-   dc BXXX__XX_
-   dc B_XXXXX__
-   dc BXXXXXXX_
-   dc BXXX__XX_
-   dc BXXX__XX_
-   dc BXXXXXXX_
-   dc BXXXXXXX_
-   dc B_XXXXX__
+   dc BXXX__XXX
+   dc BXXX__XXX
+   dc BXXX__XXX
+   dc BXXX__XXX
+   dc BXXXXXXXX
+   dc BXXXXXXXX
+   dc B_____XXX
+   dc B_____XXX
+   dc B_____XXX
+   dc B_____XXX
 
-   dc B_XXXXX__
-   dc BXXXXXXX_
-   dc BXX__XXX_
-   dc BXX__XXX_
-   dc BXX__XXX_
-   dc BXXXXXXX_
-   dc B_XXXXXX_
-   dc B____XXX_
-   dc B_XXXXX__
-   dc B_XXXX___
+   dc BXXXXXXXX
+   dc BXXXXXXXX
+   dc BXXX_____
+   dc BXXX_____
+   dc BXXXXXXXX
+   dc BXXXXXXXX
+   dc B_____XXX
+   dc B_____XXX
+   dc BXXXXXXXX
+   dc BXXXXXXXX
+
+   dc BXXXXXXXX
+   dc BXXXXXXXX
+   dc BXXX_____
+   dc BXXX_____
+   dc BXXXXXXXX
+   dc BXXXXXXXX
+   dc BXXX__XXX
+   dc BXXX__XXX
+   dc BXXXXXXXX
+   dc BXXXXXXXX
+
+   dc BXXXXXXXX
+   dc BXXXXXXXX
+   dc BXXXXXXXX
+   dc B_____XXX
+   dc B_____XXX
+   dc B_____XXX
+   dc B_____XXX
+   dc B_____XXX
+   dc B_____XXX
+   dc B_____XXX
+
+   dc BXXXXXXXX
+   dc BXXXXXXXX
+   dc BXXX__XXX
+   dc BXXX__XXX
+   dc BXXXXXXXX
+   dc BXXXXXXXX
+   dc BXXX__XXX
+   dc BXXX__XXX
+   dc BXXXXXXXX
+   dc BXXXXXXXX
+
+   dc BXXXXXXXX
+   dc BXXXXXXXX
+   dc BXXX__XXX
+   dc BXXX__XXX
+   dc BXXXXXXXX
+   dc BXXXXXXXX
+   dc B_____XXX
+   dc B_____XXX
+   dc BXXXXXXXX
+   dc BXXXXXXXX
 
 
 
@@ -2718,7 +2718,7 @@ _BUF_AUDF           ds 2
 
 _BUF_JUMP1          ds _ARENA_SCANLINES * 2 + 2         ; long-word align!!
 
-
+ align 4
 _BOARD              ds __BOARD_SIZE + 4    ; extra for grab+1 in drawscreen "bug"
 
     IF __ENABLE_ATARIVOX

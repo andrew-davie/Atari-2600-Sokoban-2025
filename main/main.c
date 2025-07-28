@@ -288,11 +288,11 @@ void roomUnpack(int roomNumber, int center) {
 	unpackRoom(&boundary, false, roomNumber);
 }
 
-void clearBoard() {
-	unsigned char *b = ADDRESS_OF(0);
-	for (int i = 0; i < __BOARD_SIZE; i++)
-		b[i] = 0;
-}
+// void clearBoard() {
+// 	unsigned int *b = (unsigned int *)ADDRESS_OF(0);
+// 	for (int i = 0; i < __BOARD_SIZE / 4; i++)
+// 		b[i] = 0;
+// }
 
 void scheduleUnpackRoom() {
 

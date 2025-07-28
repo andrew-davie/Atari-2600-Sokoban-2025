@@ -85,8 +85,6 @@ void highlightUndo() {
 				cp = 0;
 
 			addLocalPixel(x + circlePoints[cp].x, y + circlePoints[cp].y, 6, 12);
-			addLocalPixel(x + circlePoints[cp].x,
-			              y + circlePoints[cp].y + (circlePoints[cp].y > 0 ? 1 : -1), 6, 12);
 		}
 	}
 }

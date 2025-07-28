@@ -27,4 +27,7 @@ extern bool swipeComplete;
 
 extern enum SWIPE swipeType;
 extern enum CIRCLEPHASE swipePhase;
+
+extern unsigned char swipeMask[6][_ICC_SCANLINES];
+
 #endif

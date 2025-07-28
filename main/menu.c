@@ -28,21 +28,36 @@
 int halfSize(int x, int y, int letter, bool render);
 #endif
 
-#define LUMSHIFT 3              /* speed of title pulsing -- 0 = fast, 1 is slower, etc. */
+#define LUMSHIFT 1              /* speed of title pulsing -- 0 = fast, 1 is slower, etc. */
 
+unsigned char palicc[][3] = {
+
+{0xf8, 0x78, 0x38},
+{0x28, 0xa8, 0x18},
+{0x38, 0x18, 0x78},
+{0x58, 0x98, 0xe8},
+{0x78, 0xb8, 0x18},
+{0x28, 0x98, 0xc8},
+{0x68, 0x98, 0xe8},
+{0x08, 0xa8, 0xf8},
+};
+
+int staticx = 0;
+int staticy;
 
 void initCopyrightScreen();
 void resetMode();
-
+int triggerRemote = 0;
 
 static int sin = 0;
 int lastRoom = -1;
 
 #include "../iCC_title.c"
+#include "../iCC_title2.c"
 
 const unsigned char iCC_title_colour[] = {
 
-    0x36, 0x66, 0xD8,
+    0x36, 0x96, 0xD8,
 };
 
 // clang-format on
@@ -70,7 +85,7 @@ unsigned int detectedPeriod;
 
 int thumbnailSpeed;
 
-unsigned int sline = 0;
+// unsigned int sline = 0;
 
 void detectConsoleType() {
 
@@ -204,48 +219,7 @@ void initMenuDatastreams() {
 	// QINC[_DS_SPEECH] = 0;
 }
 
-#if ENABLE_ANIMATING_MAN
-const unsigned char manPushing[][73] = {
-
-    {
-        72,  0,   0,
-        0,   14,  14,
-        0,   30,  30,
-        0,   24,  28,
-        4,   16,  90,
-        74,  16,  92,
-        76,  64,  89,
-        89,  64,  125,
-        125, 97,  113,
-        113, 115, 115,
-        115, 127, 126,
-        127, 124, 124,
-        124, 120, 104,
-        120, 240, 240,
-        240, 32,  32,
-        32,  192, 0,
-        0,   160, 0,
-        0,   240, 0,
-        0,   120, 0,
-        0,   120, 0,
-        0,   208, 0,
-        0,   0,   144,
-        0,   0,   144 + 64 + 8,
-        0,   0,   144 + 64 + 8,
-        0,
-    },
-
-    {
-        72,  28,  28,  0,   60,  60,  0,   48,  56,          8,   32,  180,         148, 32,  184,
-        152, 128, 176, 176, 128, 186, 186, 224, 242,         242, 242, 242,         242, 254, 254,
-        254, 126, 124, 126, 124, 108, 124, 112, 112,         112, 112, 112,         112, 16,  16,
-        16,  96,  0,   0,   80,  0,   0,   120, 0,           0,   120, 0,           0,   88,  0,
-        0,   88,  0,   0,   0,   72,  0,   0,   72 + 32 + 4, 0,   0,   72 + 32 + 4, 0,
-    },
-};
-#endif
-
-char RGB[6] = {0x26};
+char RGB[6];
 
 void doDrawBitmap(const unsigned char *shape, int x, int y) {
 
@@ -294,22 +268,6 @@ void doDrawBitmap(const unsigned char *shape, int x, int y) {
 		bf += 3;
 	}
 }
-
-#if ENABLE_ANIMATING_MAN
-void doMan() {
-
-	if (--pushCount < 0 && !rangeRandom(256))
-		pushCount = rangeRandom(32) | 32;
-
-	pushFrame = pushCount < 0;
-
-	int jiggle = 0;
-	if (!pushFrame)
-		jiggle = -((gameFrame >> 2) & 1) * 3;
-
-	doDrawBitmap(manPushing[pushFrame], 23, 120 + jiggle);
-}
-#endif
 
 // clang-format off
 
@@ -415,29 +373,14 @@ void drawSmallString(int y, const unsigned char *smallText, int colour) {
 	drawSmallProxy(convertColour(colour), y, smallText);
 }
 
-char showRoom[3] = {"   "};
-
-// const char TV[][6] = {
-
-//     {"NTSC;;"},
-//     {"PAL;;;"},
-//     {"PAL60;"},
-// #if ENABLE_SECAM
-//     {"SECAM;"},
-// #endif
-// };
-
-// const char Level[][6] = {
-
-//     {"NORMAL"}, {"MEDIUM"}, {"HARD>>"}, {"EXPERT"}, {"SUPER>"},
-// };
+char showRoom[4] = {'0', '2', '7', 0};
 
 const char displayOption[][6] = {
     {"OFF>>>"},
     {"ON>>>>"},
 };
 
-const char word2025[] = {"2025.0"};
+// const char word2025[] = {"2025.0"};
 
 // clang-format on
 
@@ -464,82 +407,40 @@ void setTitleMarqueeColours() {
 
 // int showAuthor;
 
+void proportionalText(char *s, int x, int y) {
+	char ch;
+	while ((ch = *s++))
+		x += halfSize(x, y, ch, true);
+}
+
 void handleMenuScreen() {
-
-	sline++;
-	if (sline >= sizeof(smallWord) / sizeof(smallWord[0]))
-		sline = 0;
-
-	int y = sline * 85 + 92;
 
 	if (gameFrame)
 		--gameFrame;
 
-	const char *dLine = 0;
+	int cvt = Room;
+	int dig = 0;
 
-	switch (sline) {
-
-	case 0: {
-
-		int cvt = Room;
-		int dig = 0;
-
-		for (int digit = 2; digit >= 0; digit--) {
-			showRoom[2 - digit] = '0';
-			int displayDigit = 0;
-			while (cvt >= pwr[digit]) {
-				showRoom[2 - digit]++;
-				cvt -= pwr[digit];
-			}
-
-			if (displayDigit) {
-				showRoom[dig++] = 'A'; //'0' + displayDigit - 1;
-			}
+	for (int digit = 2; digit >= 0; digit--) {
+		showRoom[2 - digit] = '0';
+		int displayDigit = 0;
+		while (cvt >= pwr[digit]) {
+			showRoom[2 - digit]++;
+			cvt -= pwr[digit];
 		}
 
-		// showRoom[0] = '0';
-		dLine = &showRoom[0];
-
-	} break;
-
-		// case 1:
-		// case 2:
-		// 	dLine = displayOption[enableICC];
-		// 	break;
+		// if (displayDigit) {
+		// 	showRoom[dig++] = 1; // displayDigit - 1;
 	}
 
-	if (dLine) {
+	//		drawSmallString(y, smallWord[sline], sline == menuLine ? 0x8 : 0x98);
 
-		//		drawSmallString(y, smallWord[sline], sline == menuLine ? 0x8 : 0x98);
-
-		int colour =
-		    sline == menuLine ? (gameFrame & 4) ? 0x8 : ((++sin << 4) & 0xF0) | 0x18 : 0x04;
-		drawString(3, y - 3, dLine, 7 /*colour*/);
-	}
-
-#if ENABLE_SERIAL_NUMBER
-
-	if (GAME_SELECT_PRESSED && GAME_RESET_PRESSED) {
-
-		// for (int i = 179; i < 190; i++)
-		//     *(RAM + _BUF_MENU_COLUP0 + i) = 0xA;
-
-		char ch;
-		int x = 0;
+	proportionalText("VERSION", 8, 58);
 
 #include "date2.txt"
 
-		while ((ch = *name++))
-			x += halfSize(x, 180, ch, true);
-	}
-#endif
-
-	// static bool b2025 = false;
-	// if (!b2025) {
-	// 	const unsigned char word2025[] = {"2025.0"};
-	// 	drawString(0, 50, "  2025", 0);
-	// 	b2025 = true;
-	// }
+	proportionalText(name, 5, 70);
+	proportionalText(showRoom, 3, 112);
 }
 
 void initCopyrightScreen() {
@@ -580,8 +481,12 @@ void initKernel(int kernel) {
 	waitRelease = true;
 	sound_max_volume = VOLUME_MAX;
 
+	// clear the sprite strip
 	zeroBuffer((int *)(RAM + _BUF_MENU_COLUPF),
 	           12 * _ARENA_SCANLINES / 4); // dubious
+
+	//	clearBoard();
+
 	chooseColourScheme();
 
 	switch (kernel) {
@@ -596,12 +501,14 @@ void initKernel(int kernel) {
 
 	case KERNEL_MENU:
 
+		//		roomUnpack(0, true);
+
 		// rndX = getRandom32();
 
 		for (int i = 0; i < 6; i++)
 			RGB[i] = 0x46;
 
-		initIconPalette();
+		//		initIconPalette();
 		initIconScreen();
 
 		menuLine = 0;
@@ -658,12 +565,9 @@ void initKernel(int kernel) {
 
 void MenuOverscan() {
 
-	// T1TC = 0;
-	// T1TCR = 1; // tmp
-
 	initMenuDatastreams();
 	processCharAnimations();
-	rndX = getRandom32();
+	//	rndX = getRandom32();
 
 #if __ENABLE_ATARIVOX
 	processSpeech();
@@ -671,7 +575,7 @@ void MenuOverscan() {
 
 	playAudio();
 
-	zeroBuffer((int *)(RAM + _BUF_MENU_PF1_LEFT), _ARENA_SCANLINES);
+	//	zeroBuffer((int *)(RAM + _BUF_MENU_PF1_LEFT), _ARENA_SCANLINES); //?
 
 	// zeroBuffer((int *)(RAM + _BUF_MENU_COLUPF), 12 * _ARENA_SCANLINES / 4);
 
@@ -688,15 +592,20 @@ void MenuOverscan() {
 
 	case KERNEL_MENU:
 
+		staticx++;
+
 		if (lastRoom != Room) {
 			lastRoom = Room;
-
+			staticx = 0;
 			roomUnpack(Room, true);
 		}
 
+		staticy = !rangeRandom(staticx >> 3);
+
 		initIconPalette();
-		drawIconScreen(0, 12);
-		handleMenuScreen();
+
+		drawIconScreen(0, 12, staticy);
+		// handleMenuScreen();
 
 		break;
 
@@ -733,7 +642,15 @@ void resetMode() {
 
 void drawICCScreen(const unsigned char *icc) {
 
-	drawPalette(iCC_title_colour);
+	static int col = 0;
+	static int cdelay = 0;
+
+	if (--cdelay < 0) {
+		col = rangeRandom(sizeof(palicc) / sizeof(palicc[0]));
+		cdelay = 500;
+	}
+
+	drawPalette(palicc[col]); // iCC_title_colour);
 
 	unsigned char *pf1L = RAM + _BUF_MENU_PF1_LEFT;
 	for (int line = 0; line < _ARENA_SCANLINES << 2; line += 3) {
@@ -746,6 +663,27 @@ void drawICCScreen(const unsigned char *icc) {
 				roller = 0;
 		}
 		icc += 3;
+	}
+}
+
+void drawRemoteArm(const unsigned char (*icc)[2][51]) {
+
+	for (int col = 0; col < 2; col++) {
+
+		int roll = roller;
+
+		const unsigned char(*iccp) = (*icc)[col];
+		unsigned char *pf =
+		    RAM + _BUF_MENU_PF1_LEFT + (col * _ARENA_SCANLINES) + (37 * 3); // * col + 37 * 3;
+
+		for (int line = 0; line < 17; line++) {
+			for (int i = 0; i < 3; i++) {
+				*pf++ = iccp[roll];
+				if (++roll > 2)
+					roll = 0;
+			}
+			iccp += 3;
+		}
 	}
 }
 
@@ -767,68 +705,73 @@ void handleMenuVB() {
 		waitRelease = true;
 	}
 
+	if (triggerRemote)
+		--triggerRemote;
+
 	drawICCScreen(iCC_title);
+	drawRemoteArm(&iCC_remoteArm[triggerRemote ? 0 : 1]);
+
 	setTitleMarqueeColours();
 
 	roller--;
-	drawIconScreen(12, 22);
+	drawIconScreen(12, 22, staticy);
+	handleMenuScreen();
 
-#if ENABLE_ANIMATING_MAN
-	doMan();
-#endif
+	// #if ENABLE_SERIAL_NUMBER
+
+	// 	if (GAME_SELECT_PRESSED && GAME_RESET_PRESSED) {
+	// 		// for (int i = 179; i < 190; i++)
+	// 		//     *(RAM + _BUF_MENU_COLUP0 + i) = 0xA;
+
+	// 		char ch;
+	// 		int x = 5;
+
+	// #include "date2.txt"
+
+	// 		while ((ch = *name++))
+	// 			x += halfSize(x, 110, ch, true);
+	// 	}
+	// #endif
 
 	// Pulse/colour-change SOKOBAN marquee
 
 	static int lum = 0;
-	static const unsigned int lumOffset[] = {0, 2, 4, 6, 8, 8, 8, 8, 8, 8, 8, 8,
-	                                         8, 8, 8, 8, 8, 8, 8, 8, 6, 4, 2, 0};
+	static const unsigned char lumOffset[] = {
+	    0, 0, 2, 4, 6, 8, 8, 8, 8, 8, 8, 8, 6, 4, 2, 0, 2, 4, 6, 6, 4, 2, 0, 2, 4, 6, 6, 4, 2,
+	};
+
+	static int lumDelay = 0;
 
 	for (int i = 0; i < 6; i++) {
-
-		if (!roller)
-			if (((i >= 3) && !rangeRandom(100)) || (!lum) ||
-			    !rangeRandom(20)) // lumOffset[lum] == 8)
-				RGB[i] = (RGB[i] & 0xF) | (getRandom32() << 4);
+		//		if (!roller)
+		if (((i >= 3) && !rangeRandom(100)) || (!lumOffset[lum >> LUMSHIFT]) || !lumDelay)
+			/*!rangeRandom(20)*/ // lumOffset[lum] == 8)
+			RGB[i] = (RGB[i] & 0xF) | (getRandom32() << 4);
 
 		if (i < 3)
 			RGB[i] = lumOffset[(lum >> LUMSHIFT)] | (RGB[i] & 0xF0);
 	}
 
-	if ((++lum >> LUMSHIFT) >= (int)sizeof(lumOffset) / sizeof(lumOffset[0]))
-		lum = 0;
+	if (!lumDelay) {
+		lumDelay = 1;
+		if ((++lum >> LUMSHIFT) >= (int)sizeof(lumOffset) / sizeof(lumOffset[0]))
+			lum = 0;
+
+		lumDelay = (lumOffset[lum >> LUMSHIFT] == 8 /*|| !lumOffset[lum >> LUMSHIFT]*/) ? 30 : 1;
+	} else
+		lumDelay--;
 
 	int negJoy = (SWCHA >> 4) ^ 0xF;
 
 	if (!waitRelease) {
 
-		int dir = yInc[negJoy];
-
-		if (dir)
-			menuLine = setBounds(menuLine + dir, sizeof(smallWord) / sizeof(smallWord[0]) - 1);
-
-		else {
-
-			dir = xInc[negJoy];
-			if (dir) {
-
-				ADDAUDIO(SFX_SCORE);
-				switch (menuLine) {
-
-				case 0:
-					lastRoom = Room;
-					Room = setBounds(Room + dir, getRoomCount() - 1);
-					clearBoard();
-					break;
-
-				case 1:
-				case 2:
-					enableICC = !enableICC;
-					break;
-				}
-			}
-		}
-
+		int dir = xInc[negJoy];
 		if (dir) {
+
+			ADDAUDIO(SFX_SCORE);
+			Room = setBounds(Room + dir, getRoomCount() - 1);
+			triggerRemote = 30;
+
 			resetMode();
 			mustWatchDelay = MUSTWATCH_MENU;
 			ADDAUDIO(SFX_BLIP);

@@ -18,7 +18,7 @@
 #include "random.h"
 #include "scroll.h"
 #include "sound.h"
-
+#include "swipe.h"
 
 #include "score.h"
 
@@ -457,6 +457,8 @@ bool drawBit(char x, int y, int colour) {
 
 #define ICON_BASE 108
 
+unsigned char rollColours[3];
+
 void initIconPalette() {
 
 #if ENABLE_RAINBOW
@@ -470,8 +472,8 @@ void initIconPalette() {
 
 	unsigned char rollColours[3];
 
-	rollColours[1] = 0x94; // convertColour(fgPalette[0]);
-	rollColours[2] = 0xD4; // convertColour(fgPalette[1]);
+	rollColours[1] = convertColour(0x84); // convertColour(fgPalette[0]);
+	rollColours[2] = convertColour(0xC4); // convertColour(fgPalette[1]);
 
 	roller++;
 	if (roller > 2)
@@ -485,7 +487,7 @@ void initIconPalette() {
 	unsigned char *pal0 = RAM + _BUF_MENU_COLUP0 + ICON_BASE - 1;
 
 	for (int j = 0; j < __BOARD_DEPTH; j++) {
-		rollColours[0] = 0x44; // tmp bgPalette[j];
+		rollColours[0] = convertColour(0x42); // tmp bgPalette[j];
 		for (int i = 0; i < 3; i++) {
 			*pal0++ = rollColours[baseRoller];
 			if (++baseRoller > 2)
@@ -494,7 +496,8 @@ void initIconPalette() {
 	}
 }
 
-unsigned int cc[48];
+// unsigned int cc[48];
+unsigned int *cc = (unsigned int *)swipeMask;
 
 void initIconScreen() {
 
@@ -503,7 +506,7 @@ void initIconScreen() {
 		cc[i] = (i * stepper + (stepper >> 1)) >> 16;
 }
 
-void drawIconScreen(int startRow, int endRow) { // --> 101102 cycles
+void drawIconScreen(int startRow, int endRow, bool staticx) { // --> 101102 cycles
 
 	p = ADDRESS_OF(startRow);
 
@@ -514,32 +517,33 @@ void drawIconScreen(int startRow, int endRow) { // --> 101102 cycles
 	if (!enableICC)
 		br--;
 
-	for (int row = startRow; row < endRow; row++) {
+	if (true) {
+		for (int row = startRow; row < endRow; row++) {
 
-		for (int col = 0; col < _1ROW; col++) {
-			unsigned char p2 = p[col] & 0b00111111;
-			int type = CharToType[p2];
-			if (Animate[type])
-				p2 = *Animate[type];
-			img[col] = charSet[p2].small;
-		}
+			for (int col = 0; col < _1ROW; col++) {
+				unsigned char p2 = p[col] & 0b00111111;
+				int type = CharToType[p2];
+				if (Animate[type])
+					p2 = *Animate[type];
+				img[col] = charSet[p2].small;
+			}
 
-		p += _1ROW;
+			p += _1ROW;
 
-		unsigned char *ppf = RAM + ICON_BASE + row * 3 + _BUF_MENU_GRP0A;
+			unsigned char *ppf = RAM + ICON_BASE + row * 3 + _BUF_MENU_GRP0A;
 
-		for (int col = 0; col < 6; col++) {
+			for (int col = 0; col < 6; col++) {
 
-			unsigned int *p = cc + (col << 3);
+				unsigned int *p = cc + (col << 3);
 
-			for (int segment = 0; segment < 3; segment++) {
+				for (int segment = 0; segment < 3; segment++) {
 
-				if (++br > 2)
-					br = 0;
+					if (++br > 2)
+						br = 0;
 
-				int roll = segment * 3 + br;
+					int roll = segment * 3 + br;
 
-				// clang-format off
+					// clang-format off
                 ppf[segment] = (unsigned char)(img[p[0]][roll] >> m2 << 7) |
                                (unsigned char)(img[p[1]][roll] >> m1 << 7) >> 1 |
                                (unsigned char)(img[p[2]][roll] >> m2 << 7) >> 2 |
@@ -548,12 +552,34 @@ void drawIconScreen(int startRow, int endRow) { // --> 101102 cycles
                                (unsigned char)(img[p[5]][roll] >> m1 << 7) >> 5 |
                                (unsigned char)(img[p[6]][roll] >> m2 << 7) >> 6 |
                                (unsigned char)(img[p[7]][roll] >> m1 << 7) >> 7;
-				// clang-format on
-			}
+					// clang-format on
+				}
 
-			ppf += _ARENA_SCANLINES;
+				ppf += _ARENA_SCANLINES;
+			}
 		}
 	}
+
+	if (staticx)
+		for (int row = startRow; row < endRow; row++) {
+			unsigned char *ppf = RAM + ICON_BASE + row * 3 + _BUF_MENU_GRP0A;
+			for (int col = 0; col < 6; col++) {
+
+				unsigned int *p = cc + (col << 3);
+
+				for (int segment = 0; segment < 3; segment++) {
+
+					if (++br > 2)
+						br = 0;
+
+					int roll = segment * 3 + br;
+
+					ppf[segment] |= getRandom32() & getRandom32();
+				}
+
+				ppf += _ARENA_SCANLINES;
+			}
+		}
 }
 
 // EOF

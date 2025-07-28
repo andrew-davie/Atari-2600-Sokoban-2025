@@ -71,7 +71,7 @@
 #define __Y                       0x0020
 #define _ARENA_COLOUR             0x0007
 #define _ARENA_SCANLINES          0x00c6
-#define _BOARD                    0x019e
+#define _BOARD                    0x01a0
 #define _BUF_AUDC                 0x000a
 #define _BUF_AUDF                 0x000c
 #define _BUF_AUDV                 0x0008

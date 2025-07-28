@@ -1,6 +1,8 @@
 #ifndef __DRAWSCREEN_H
 #define __DRAWSCREEN_H
 
+extern unsigned char rollColours[3];
+
 void drawScreen();
 void drawHalfScreen(int half);
 void drawOverviewScreen(int startRow, int endRow);
@@ -9,7 +11,7 @@ void sparkly();
 void doSparkles();
 bool drawBit(char x, int y, int colour);
 void initIconScreen();
-void drawIconScreen(int startRow, int endRow);
+void drawIconScreen(int startRow, int endRow, bool staticx);
 void initIconPalette();
 
 #endif
