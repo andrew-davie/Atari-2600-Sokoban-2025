@@ -496,17 +496,14 @@ void initIconPalette() {
 	}
 }
 
-// unsigned int cc[48];
-unsigned int *cc = (unsigned int *)swipeMask;
-
-void initIconScreen() {
-
-	const int stepper = 40 * 65536 / 48;
-	for (int i = 0; i < 48; i++)
-		cc[i] = (i * stepper + (stepper >> 1)) >> 16;
-}
+void initIconScreen() {}
 
 void drawIconScreen(int startRow, int endRow, bool staticx) { // --> 101102 cycles
+
+	static const unsigned char cc[48] = {0,  0,  0,  0,  0,  1,  2,  3,  4,  5,  6,  7,
+	                                     8,  9,  10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+	                                     20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31,
+	                                     32, 33, 34, 35, 36, 37, 38, 39, 39, 39, 39, 39};
 
 	p = ADDRESS_OF(startRow);
 
@@ -517,33 +514,32 @@ void drawIconScreen(int startRow, int endRow, bool staticx) { // --> 101102 cycl
 	if (!enableICC)
 		br--;
 
-	if (true) {
-		for (int row = startRow; row < endRow; row++) {
+	for (int row = startRow; row < endRow; row++) {
 
-			for (int col = 0; col < _1ROW; col++) {
-				unsigned char p2 = p[col] & 0b00111111;
-				int type = CharToType[p2];
-				if (Animate[type])
-					p2 = *Animate[type];
-				img[col] = charSet[p2].small;
-			}
+		for (int col = 0; col < _1ROW; col++) {
+			unsigned char p2 = p[col] & 0b00111111;
+			// int type = CharToType[p2];
+			// if (Animate[type])
+			// 	p2 = *Animate[type];
+			img[col] = charSet[p2].small;
+		}
 
-			p += _1ROW;
+		p += _1ROW;
 
-			unsigned char *ppf = RAM + ICON_BASE + row * 3 + _BUF_MENU_GRP0A;
+		unsigned char *ppf = RAM + ICON_BASE + row * 3 + _BUF_MENU_GRP0A;
 
-			for (int col = 0; col < 6; col++) {
+		for (int col = 0; col < 6; col++) {
 
-				unsigned int *p = cc + (col << 3);
+			unsigned char *p = cc + (col << 3);
 
-				for (int segment = 0; segment < 3; segment++) {
+			for (int segment = 0; segment < 3; segment++) {
 
-					if (++br > 2)
-						br = 0;
+				if (++br > 2)
+					br = 0;
 
-					int roll = segment * 3 + br;
+				int roll = segment * 3 + br;
 
-					// clang-format off
+				// clang-format off
                 ppf[segment] = (unsigned char)(img[p[0]][roll] >> m2 << 7) |
                                (unsigned char)(img[p[1]][roll] >> m1 << 7) >> 1 |
                                (unsigned char)(img[p[2]][roll] >> m2 << 7) >> 2 |
@@ -552,34 +548,16 @@ void drawIconScreen(int startRow, int endRow, bool staticx) { // --> 101102 cycl
                                (unsigned char)(img[p[5]][roll] >> m1 << 7) >> 5 |
                                (unsigned char)(img[p[6]][roll] >> m2 << 7) >> 6 |
                                (unsigned char)(img[p[7]][roll] >> m1 << 7) >> 7;
-					// clang-format on
-				}
+				// clang-format on
 
-				ppf += _ARENA_SCANLINES;
+				if (staticx) {
+					ppf[segment] |= getRandom32();
+					ppf[segment] &= getRandom32();
+				}
 			}
+
+			ppf += _ARENA_SCANLINES;
 		}
 	}
-
-	if (staticx)
-		for (int row = startRow; row < endRow; row++) {
-			unsigned char *ppf = RAM + ICON_BASE + row * 3 + _BUF_MENU_GRP0A;
-			for (int col = 0; col < 6; col++) {
-
-				unsigned int *p = cc + (col << 3);
-
-				for (int segment = 0; segment < 3; segment++) {
-
-					if (++br > 2)
-						br = 0;
-
-					int roll = segment * 3 + br;
-
-					ppf[segment] |= getRandom32() & getRandom32();
-				}
-
-				ppf += _ARENA_SCANLINES;
-			}
-		}
 }
-
 // EOF

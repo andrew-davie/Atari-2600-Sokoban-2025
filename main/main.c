@@ -191,7 +191,9 @@ void SystemReset() {
 	startMusic();
 	initMenuDatastreams();
 
+#if ENABLE_SWIPE
 	swipePhase = SWIPE_GROW;
+#endif
 
 	for (int i = 0; i <= 34; i++)
 		QINC[i] = 0x100; // data stream increments -> 1.0
@@ -214,7 +216,9 @@ void initNewGame() {
 
 	initScore();
 
+#if ENABLE_SWIPE
 	swipeType = SWIPE_STAR;
+#endif
 	lifeInit = true;
 }
 
@@ -435,7 +439,11 @@ void drawOverscanThings() {
 
 #endif
 
-	if (exitMode || !swipeComplete)
+	if (exitMode
+#if ENABLE_SWIPE
+	    || !swipeComplete
+#endif
+	)
 		displayMode = DISPLAY_NORMAL;
 
 	if (displayMode == DISPLAY_OVERVIEW) {
@@ -716,9 +724,9 @@ void triggerStuff() {
 
 	if ((!pillCount && !(INPT4 & 0x80)) || (triggerNextLife
 #if ENABLE_SWIPE
-	                                        && swipeComplete)
+	                                        && swipeComplete
 #endif
-	) {
+	                                        )) {
 		initKernel(KERNEL_MENU);
 		triggerNextLife = false;
 		return;

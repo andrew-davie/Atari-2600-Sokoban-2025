@@ -91,7 +91,7 @@ const char *room[] = {
 
 "6#|#4 #|# #@ #|# $* #|# .* #|#4 #|6#",
 
-"  ####|"\
+"==####|"\
 "###  ####|"\
 "#     $ #|"\
 "# #  #$ #|"\
@@ -105,11 +105,11 @@ const char *room[] = {
 "# .**$@#|"\
 "#      #|"\
 "#####  #|"\
-"    ####"\
+"====####"\
 ,
-" #######|"\
-" #     #|"\
-" # .$. #|"\
+"=#######|"\
+"=#     #|"\
+"=# .$. #|"\
 "## $@$ #|"\
 "#  .$. #|"\
 "#      #|"\
@@ -121,7 +121,7 @@ const char *room[] = {
 "# $$     #@#|"\
 "# $ #...   #|"\
 "#   ########|"\
-"#####======="\
+"#####"\
 ,
 
 "#######|"\
@@ -164,15 +164,7 @@ const char *room[] = {
 // "#########|"\
 // ,
 
-"==######|"\
-"==#    #|"\
-"==# ##@##|"\
-"### # $ #|"\
-"# ..# $ #|"\
-"#       #|"\
-"#  ######|"\
-"####"\
-,
+
 "#####|"\
 "#   ##|"\
 "# $  #|"\
@@ -181,6 +173,15 @@ const char *room[] = {
 "==#  .# #|"\
 "==#     #|"\
 "==#######"\
+,
+"==######|"\
+"==#    #|"\
+"==# ##@##|"\
+"### # $ #|"\
+"# ..# $ #|"\
+"#       #|"\
+"#  ######|"\
+"####"\
 ,
 "####|"\
 "#. ##|"\
@@ -199,13 +200,13 @@ const char *room[] = {
 "#   ###|"\
 "#####|"\
 ,
-"     ###|"\
+"=====###|"\
 "######@##|"\
 "#    .* #|"\
 "#   #   #|"\
 "#####$# #|"\
-"    #   #|"\
-"    #####|",
+"====#   #|"\
+"====#####|",
 
 // "      ######|"
 // "      #    #|"
@@ -227,19 +228,19 @@ const char *room[] = {
 
 //"6 6#|6 #4 #|6 # @2 3#|4#2 #6 #|#2 4#2.#.#$5#|# $ $ 2#3.6 #|#5 5.#2$3 #|6# 2#$2# 5#|5 #2 $4 #|5 4# 4#|7 #2 #|7 #2 5#|5 3# $4 #|5 #2 $ $3 #|5 # #$# 4#|5 #5 #|5 7#",
 
-" ####|"\
+"=####|"\
 "##  ###########|"\
 "#@$ .$  $  $  #|"\
 "# $* .$.*.*.*.#|"\
 "## *$  $      #|"\
-" # . ##########|"\
-" # . #|"\
-" #####",
+"=# . ##########|"\
+"=# . #|"\
+"=#####",
 
 
-" ####   |"\
-" #@ ####|"\
-" #  #  #|"\
+"=####|"\
+"=#@ ####|"\
+"=#  #  #|"\
 "## .#$ #|"\
 "# $ $  #|"\
 "#  * #.#|"\
@@ -618,16 +619,16 @@ const char *room[] = {
  #######|",
 
  #endif
-"6 5#|6 #3 #|6 #-$-#|6 #3 #|6 2#-2#|7 #.#|5#-2#-2#-5#|#3 3#-.-3#3 #|#-$5 @5 $-#|#3 3#-.-3#3 #|5#-2#-2#-5#|7 #.#|8#-8#|#-*-*-*3 *-*-*-#|#7 $7 #|2#2 *-*3 *-*2 2#|17#",
-"5#-5#|#3.3#3 #|#3.4 @-#|#.-.3#3 #|3#-#-#-3#|2 #$#-#$#|3#-#-#-3#|#3 #-#3 #|#-$-#-#-$-#|#-$-#-#-$-#|#-$-#-#-$-#|#3 #-#3 #|5#-5#",
-"-4#|-#2 6#|-#-$3 $-#|-#3 #-#-#|2#3*.2*@#|#2 .2 .-2#|#-#-2#$2#|#6 #|8#",
-"3 3#|2 #-@-#|-#-$#$-#|-#-.*.-#|#2 *.*2 #|#2 $-$2 #|4#.-3#|3 #2 #|3 4#",
-"7#|#4.-#|#-3$-#|#-$@$-#|#-3$-#|#-4.#|7#",
-"7#|#-2.2 #|#.3$-#|#.$@$.#|#-3$.#|#2 2.-#|7#",
-"3 #|2 #.#|-#.$.#|#.3$.#|-#-$-#|-#-@-#|-5#",
-"-5#|2#3 2#|#2 #2 #|#.$@$.#|#-3$-#|#.-.-.#|7#",
-"7#|#5 #|#-*-*-#|#*-$-*#|#-*.*-#|#2 @2 #|7#",
-"4 4#5 #|3 #3 #4 #|2 2#-#-5#|-3#2 4.-#-#|6#.3$-2#|5 #.$@$-#|5 #.3$-#-#|5 #4 .2#|5 7#|9 #|7 3#",
+// "6 5#|6 #3 #|6 #-$-#|6 #3 #|6 2#-2#|7 #.#|5#-2#-2#-5#|#3 3#-.-3#3 #|#-$5 @5 $-#|#3 3#-.-3#3 #|5#-2#-2#-5#|7 #.#|8#-8#|#-*-*-*3 *-*-*-#|#7 $7 #|2#2 *-*3 *-*2 2#|17#",
+// "5#-5#|#3.3#3 #|#3.4 @-#|#.-.3#3 #|3#-#-#-3#|2 #$#-#$#|3#-#-#-3#|#3 #-#3 #|#-$-#-#-$-#|#-$-#-#-$-#|#-$-#-#-$-#|#3 #-#3 #|5#-5#",
+// "-4#|-#2 6#|-#-$3 $-#|-#3 #-#-#|2#3*.2*@#|#2 .2 .-2#|#-#-2#$2#|#6 #|8#",
+// "3 3#|2 #-@-#|-#-$#$-#|-#-.*.-#|#2 *.*2 #|#2 $-$2 #|4#.-3#|3 #2 #|3 4#",
+// "7#|#4.-#|#-3$-#|#-$@$-#|#-3$-#|#-4.#|7#",
+// "7#|#-2.2 #|#.3$-#|#.$@$.#|#-3$.#|#2 2.-#|7#",
+// "3 #|2 #.#|-#.$.#|#.3$.#|-#-$-#|-#-@-#|-5#",
+// "-5#|2#3 2#|#2 #2 #|#.$@$.#|#-3$-#|#.-.-.#|7#",
+// "7#|#5 #|#-*-*-#|#*-$-*#|#-*.*-#|#2 @2 #|7#",
+// "4 4#5 #|3 #3 #4 #|2 2#-#-5#|-3#2 4.-#-#|6#.3$-2#|5 #.$@$-#|5 #.3$-#-#|5 #4 .2#|5 7#|9 #|7 3#",
 #if 0
 "15#|#6 @6 #|#-3*5 3*-#|#-*-7$-*-#|#-*-7.-*-#|#-11*-#|#13 #|15#",
 "2 5#|2 #3 #|3#$.$3#|#-$3 $-#|#3.@3.#|#-$3 $-#|3#$.$3#|2 #3 #|2 5#",
@@ -668,16 +669,14 @@ void putObject(bool dryRun, int *x, int y, unsigned char ch, int length) {
 
 		if (ch == CH_PILL_1)
 			pillCount++;
-
-		if (dryRun && ch == CH_BRICKWALL) {
-			if (*x + i < firstX)
-				firstX = *x + i;
-			if (*x + i > lastX)
-				lastX = *x + i;
-		}
 	}
 
 	if (dryRun && ch == CH_BRICKWALL) {
+		if (*x < firstX)
+			firstX = *x;
+		if (*x > lastX)
+			lastX = *x;
+
 		if (y < firstY)
 			firstY = y;
 		if (y > lastY)
@@ -758,7 +757,7 @@ void unpackRoom(BOUNDARY *boundary, bool dryRun, int roomNumber) {
 			manX = x;
 			manY = y;
 
-			setScroll();
+			//			setScroll();
 
 			putObject(dryRun, &x, y, CH_BLANK, unpackLength);
 			break;
@@ -771,9 +770,9 @@ void unpackRoom(BOUNDARY *boundary, bool dryRun, int roomNumber) {
 			manX = x;
 			manY = y;
 
-			setScroll();
-
-			[[fallthrough]];
+			//		setScroll();
+			putObject(dryRun, &x, y, CH_PILL_1, unpackLength);
+			break;
 
 		case TARGET:
 			putObject(dryRun, &x, y, CH_PILL_1, unpackLength);
@@ -817,51 +816,51 @@ void unpackRoom(BOUNDARY *boundary, bool dryRun, int roomNumber) {
 		boundary->height = height < 0 ? 0 : height;
 	}
 
-	else {
+	// else {
 
-		return; // tmp
+	// 	unsigned char *board;
+	// 	for (int y = 0; y < __BOARD_DEPTH; y++) {
 
-		unsigned char *board;
-		for (int y = 0; y < __BOARD_DEPTH; y++) {
+	// 		for (int x = 0; x < __BOARD_WIDTH; x++) {
+	// 			board = ADDRESS_OF(y) + x;
+	// 			if (*board == CH_BLANK)
+	// 				*board = CH_STEELWALL;
+	// 			else
+	// 				break;
+	// 		}
 
-			for (int x = 0; x < __BOARD_WIDTH; x++) {
-				board = ADDRESS_OF(y) + x;
-				if (*board == CH_BLANK)
-					*board = CH_STEELWALL;
-				else
-					break;
-			}
+	// 		for (int x = __BOARD_WIDTH - 1; x >= 0; x--) {
+	// 			board = ADDRESS_OF(y) + x;
+	// 			if (*board == CH_BLANK)
+	// 				*board = CH_STEELWALL;
+	// 			else
+	// 				break;
+	// 		}
+	// 	}
 
-			for (int x = __BOARD_WIDTH - 1; x >= 0; x--) {
-				board = ADDRESS_OF(y) + x;
-				if (*board == CH_BLANK)
-					*board = CH_STEELWALL;
-				else
-					break;
-			}
-		}
+	// 	for (int x = 0; x < __BOARD_WIDTH; x++) {
 
-		for (int x = 0; x < __BOARD_WIDTH; x++) {
+	// 		for (int y = 0; y < __BOARD_DEPTH; y++) {
+	// 			board = ADDRESS_OF(y) + x;
+	// 			if (*board != CH_BRICKWALL) //== CH_BLANK || *board == CH_STEELWALL)
+	// 				*board = CH_STEELWALL;
+	// 			else
+	// 				break;
+	// 		}
 
-			for (int y = 0; y < __BOARD_DEPTH; y++) {
-				board = ADDRESS_OF(y) + x;
-				if (*board != CH_BRICKWALL) //== CH_BLANK || *board == CH_STEELWALL)
-					*board = CH_STEELWALL;
-				else
-					break;
-			}
-
-			for (int y = __BOARD_DEPTH - 1; y >= 0; y--) {
-				board = ADDRESS_OF(y) + x;
-				if (*board != CH_BRICKWALL) //== CH_BLANK || *board == CH_STEELWALL)
-					*board = CH_STEELWALL;
-				else
-					break;
-			}
-		}
-	}
+	// 		for (int y = __BOARD_DEPTH - 1; y >= 0; y--) {
+	// 			board = ADDRESS_OF(y) + x;
+	// 			if (*board != CH_BRICKWALL) //== CH_BLANK || *board == CH_STEELWALL)
+	// 				*board = CH_STEELWALL;
+	// 			else
+	// 				break;
+	// 		}
+	// 	}
+	// }
 
 	//	actualScore = pillCount;
+
+	setScroll();
 }
 
 // EOF
