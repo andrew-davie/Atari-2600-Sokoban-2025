@@ -19,8 +19,11 @@
 #include "scroll.h"
 #include "sound.h"
 #include "swipe.h"
+#include "rooms.h"
 
 #include "score.h"
+extern const unsigned char iCC_title[];
+int startup;
 
 // clang-format on
 
@@ -457,8 +460,6 @@ bool drawBit(char x, int y, int colour) {
 
 #define ICON_BASE 108
 
-unsigned char rollColours[3];
-
 void initIconPalette() {
 
 #if ENABLE_RAINBOW
@@ -472,8 +473,9 @@ void initIconPalette() {
 
 	unsigned char rollColours[3];
 
-	rollColours[1] = convertColour(0x84); // convertColour(fgPalette[0]);
-	rollColours[2] = convertColour(0xC4); // convertColour(fgPalette[1]);
+	int pal[3] = {0x44, 0x94, 0xD4};
+	for (int i = 0; i < 3; i++)
+		rollColours[i] = convertColour(startup ? palicc[menuIconPalette][i] : pal[i]);
 
 	roller++;
 	if (roller > 2)
@@ -487,7 +489,6 @@ void initIconPalette() {
 	unsigned char *pal0 = RAM + _BUF_MENU_COLUP0 + ICON_BASE - 1;
 
 	for (int j = 0; j < __BOARD_DEPTH; j++) {
-		rollColours[0] = convertColour(0x42); // tmp bgPalette[j];
 		for (int i = 0; i < 3; i++) {
 			*pal0++ = rollColours[baseRoller];
 			if (++baseRoller > 2)
@@ -496,50 +497,153 @@ void initIconPalette() {
 	}
 }
 
-void initIconScreen() {}
-
 void drawIconScreen(int startRow, int endRow, bool staticx) { // --> 101102 cycles
 
-	static const unsigned char cc[48] = {0,  0,  0,  0,  0,  1,  2,  3,  4,  5,  6,  7,
-	                                     8,  9,  10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
-	                                     20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31,
-	                                     32, 33, 34, 35, 36, 37, 38, 39, 39, 39, 39, 39};
+	if (startup) {
+		--startup;
 
-	p = ADDRESS_OF(startRow);
+		unsigned char *ppf = RAM + ICON_BASE + _BUF_MENU_GRP0A;
 
-	int m1 = 4 + (startRow & 1);
-	int m2 = m1 ^ 1;
+		unsigned char *pf1l = RAM + _BUF_MENU_PF1_LEFT;
+		unsigned char *pf2l = RAM + _BUF_MENU_PF2_LEFT;
+		unsigned char *pf2r = RAM + _BUF_MENU_PF1_RIGHT;
+		unsigned char *pf1r = RAM + _BUF_MENU_PF2_RIGHT;
 
-	int br = roller;
-	if (!enableICC)
-		br--;
+		int rl = 2; // roller;
 
-	for (int row = startRow; row < endRow; row++) {
+		for (int i = 0; i < 198; i += 3) {
 
-		for (int col = 0; col < _1ROW; col++) {
-			unsigned char p2 = p[col] & 0b00111111;
-			// int type = CharToType[p2];
-			// if (Animate[type])
-			// 	p2 = *Animate[type];
-			img[col] = charSet[p2].small;
+			rl++;
+			if (rl > 2)
+				rl = 0;
+			*ppf = 0;
+			*(ppf + _ARENA_SCANLINES) = pf1l[i + rl];
+			*(ppf + _ARENA_SCANLINES * 2) = BitRev[pf2l[i + rl]];
+			*(ppf + _ARENA_SCANLINES * 3) = pf1r[i + rl];
+			*(ppf + _ARENA_SCANLINES * 4) = BitRev[pf2r[i + rl]];
+			*(ppf + _ARENA_SCANLINES * 5) = 0;
+
+			if (staticx) {
+
+				for (int j = 0; j < 6; j++) {
+					*(ppf + j * _ARENA_SCANLINES) |= getRandom32();
+					*(ppf + j * _ARENA_SCANLINES) &= getRandom32();
+				}
+			}
+			ppf++;
 		}
 
-		p += _1ROW;
+		ppf = RAM + ICON_BASE + _BUF_MENU_GRP0A + 36;
+		for (int i = 0; i < 22; i++) {
+			*(ppf + i + _ARENA_SCANLINES * 3) =
+			    *(ppf + i + _ARENA_SCANLINES * 3) | (getRandom32() & getRandom32());
+			*(ppf + i + _ARENA_SCANLINES * 4) =
+			    *(ppf + i + _ARENA_SCANLINES * 4) & 0xF | (getRandom32() & getRandom32() & 0xF0);
+		}
 
-		unsigned char *ppf = RAM + ICON_BASE + row * 3 + _BUF_MENU_GRP0A;
+	} else {
+#define SHIFT 8
+#define ICON_WIDTH 48
+#define ICON_DEPTH 22
+#define RESCALE(a) ((a << SHIFT) * 360 / 256 / ICON_WIDTH)
 
-		for (int col = 0; col < 6; col++) {
+		static const short rescaleX[] = {
 
-			unsigned char *p = cc + (col << 3);
+		    // converts 0-39 horizontal --> 0-47
 
-			for (int segment = 0; segment < 3; segment++) {
+		    RESCALE(18),
+		    RESCALE(18),
+		    RESCALE(18),
+		    RESCALE(18),
+		    RESCALE(18),
+		    RESCALE(18),
+		    RESCALE(18),
+		    RESCALE(18),
+		    RESCALE(18),
+		    RESCALE(18),
 
-				if (++br > 2)
-					br = 0;
+		    // RESCALE(0),  RESCALE(1),  RESCALE(2),  RESCALE(3),  RESCALE(4),  RESCALE(5),
+		    // RESCALE(6),
+		    // RESCALE(7),  RESCALE(8),  RESCALE(9),
 
-				int roll = segment * 3 + br;
+		    RESCALE(18),
+		    RESCALE(18),
+		    RESCALE(18),
+		    RESCALE(18),
+		    RESCALE(18),
+		    RESCALE(18),
+		    RESCALE(18),
+		    RESCALE(18),
+		    RESCALE(18),
+		    RESCALE(19),
+		    RESCALE(20),
+		    RESCALE(21),
+		    RESCALE(22),
+		    RESCALE(23),
+		    RESCALE(24),
+		    RESCALE(25),
+		    RESCALE(26),
+		    RESCALE(27),
+		    RESCALE(28),
+		    RESCALE(29),
+		    RESCALE(30),
+		    RESCALE(31),
+		    RESCALE(32),
+		    RESCALE(33),
+		    RESCALE(34),
+		    RESCALE(36),
+		    RESCALE(37),
+		    RESCALE(38),
+		    RESCALE(39),
+		};
 
-				// clang-format off
+		int shrunkY = (boundary.height * 14) >> 3;
+		int extreme = boundary.width > shrunkY ? boundary.width : shrunkY;
+		int scale = rescaleX[extreme];
+
+		unsigned char cc[ICON_WIDTH]; // maps icon x (0-47) --> board column (0-39)
+
+		int base = ((__BOARD_WIDTH / 2) << SHIFT) - (ICON_WIDTH / 2) * scale;
+		for (int i = 0; i < ICON_WIDTH; i++) {
+			cc[i] = (base < 0 || base >= ((__BOARD_WIDTH << SHIFT))) ? 0 : base >> SHIFT;
+			base += scale;
+		}
+
+		unsigned char rr[ICON_DEPTH]; // maps icon row (0-21) --> board row (0-21)
+
+		base = ((__BOARD_DEPTH / 2) << SHIFT) - (ICON_DEPTH / 2) * scale;
+		for (int i = 0; i < ICON_DEPTH; i++) {
+			rr[i] = (base < 0 || base >= ((__BOARD_DEPTH << SHIFT))) ? 0 : base >> SHIFT;
+			base += scale;
+		}
+
+		int m1 = 4 + (startRow & 1);
+		int m2 = m1 ^ 1;
+
+		int br = roller;
+		if (!enableICC)
+			br--;
+
+		for (int row = startRow; row < endRow; row++) {
+
+			p = ADDRESS_OF(rr[row]);
+			for (int col = 0; col < _1ROW; col++)
+				img[col] = charSet[p[col]].small;
+
+			unsigned char *ppf = RAM + ICON_BASE + row * 3 + _BUF_MENU_GRP0A;
+
+			for (int col = 0; col < 6; col++) {
+
+				unsigned char *p = cc + (col << 3);
+
+				for (int segment = 0; segment < 3; segment++) {
+
+					if (++br > 2)
+						br = 0;
+
+					int roll = segment * 3 + br;
+
+					// clang-format off
                 ppf[segment] = (unsigned char)(img[p[0]][roll] >> m2 << 7) |
                                (unsigned char)(img[p[1]][roll] >> m1 << 7) >> 1 |
                                (unsigned char)(img[p[2]][roll] >> m2 << 7) >> 2 |
@@ -548,15 +652,16 @@ void drawIconScreen(int startRow, int endRow, bool staticx) { // --> 101102 cycl
                                (unsigned char)(img[p[5]][roll] >> m1 << 7) >> 5 |
                                (unsigned char)(img[p[6]][roll] >> m2 << 7) >> 6 |
                                (unsigned char)(img[p[7]][roll] >> m1 << 7) >> 7;
-				// clang-format on
+					// clang-format on
 
-				if (staticx) {
-					ppf[segment] |= getRandom32();
-					ppf[segment] &= getRandom32();
+					if (staticx) {
+						ppf[segment] |= getRandom32();
+						ppf[segment] &= getRandom32();
+					}
 				}
-			}
 
-			ppf += _ARENA_SCANLINES;
+				ppf += _ARENA_SCANLINES;
+			}
 		}
 	}
 }

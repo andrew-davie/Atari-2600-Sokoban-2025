@@ -64,7 +64,7 @@ const signed char FrameServer_Walk[] = {
     LOOP
 };
 
-Animation autoWalk = {
+ Animation autoWalk = {
     0,
     FRAME_BLANK,
     0,
@@ -132,7 +132,7 @@ const signed char FrameServer_WalkDown[] = {
     LOOP
 };
 
-Animation autoWalkDown = {
+ Animation autoWalkDown = {
     0,
     FRAME_BLANK,
     0,
@@ -216,7 +216,7 @@ const signed char FrameServer_WalkUp[] = {
     LOOP
 };
 
-Animation autoWalkUp = {
+ Animation autoWalkUp = {
     0,
     FRAME_BLANK,
     0,
@@ -294,13 +294,13 @@ const signed char AnimationWalkUp[] = {
 
 
 
-Animation playerUndo = {
+ Animation playerUndo = {
     0, FRAME_SKELETON, 0, AnimationUndo, AnimationUndo
 };
 
 
 
-Animation playerAnim = {
+ Animation playerAnim = {
     0,
     FRAME_BLANK,
     0,
@@ -332,7 +332,7 @@ const signed char FrameServer_Push[] = {
     LOOP
 };
 
-Animation autoPush = {
+ Animation autoPush = {
     0,
     FRAME_BLANK,
     0,
@@ -2389,7 +2389,7 @@ void processAnimation(Animation *animate) {
 
 // see ANIM_* definitions in player.h
 
-Animation *animationList[] = {&playerAnim, &autoWalk, &autoWalkUp, &autoWalkDown, &autoPush};
+Animation *const animationList[] = {&playerAnim, &autoWalk, &autoWalkUp, &autoWalkDown, &autoPush};
 
 void initAnimations() {
 

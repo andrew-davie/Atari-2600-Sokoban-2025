@@ -49,7 +49,7 @@ void initCopyrightScreen();
 void resetMode();
 int triggerRemote = 0;
 
-static int sin = 0;
+// static int sin = 0;
 int lastRoom = -1;
 
 #include "../iCC_title.c"
@@ -76,10 +76,7 @@ bool enableICC = true;
 // int menuLineTVType;
 
 static int mustWatchDelay;
-static int pushFrame;
 int frame;
-static int pushCount;
-static unsigned int menuLine;
 static int RoomUnpackComplete;
 unsigned int detectedPeriod;
 
@@ -419,18 +416,13 @@ void handleMenuScreen() {
 		--gameFrame;
 
 	int cvt = Room;
-	int dig = 0;
 
 	for (int digit = 2; digit >= 0; digit--) {
 		showRoom[2 - digit] = '0';
-		int displayDigit = 0;
 		while (cvt >= pwr[digit]) {
 			showRoom[2 - digit]++;
 			cvt -= pwr[digit];
 		}
-
-		// if (displayDigit) {
-		// 	showRoom[dig++] = 1; // displayDigit - 1;
 	}
 
 	//		drawSmallString(y, smallWord[sline], sline == menuLine ? 0x8 : 0x98);
@@ -439,8 +431,10 @@ void handleMenuScreen() {
 
 #include "date2.txt"
 
-	proportionalText(name, 5, 70);
-	proportionalText(showRoom, 3, 112);
+	proportionalText((char *)name, 5, 70);
+
+	if (!startup)
+		proportionalText(showRoom, 3, 112);
 }
 
 void initCopyrightScreen() {
@@ -508,10 +502,6 @@ void initKernel(int kernel) {
 		for (int i = 0; i < 6; i++)
 			RGB[i] = 0x46;
 
-		//		initIconPalette();
-		initIconScreen();
-
-		menuLine = 0;
 		lastRoom = -1;
 
 		// if (rageQuit) {
@@ -592,15 +582,17 @@ void MenuOverscan() {
 
 	case KERNEL_MENU:
 
-		staticx++;
+		staticx += 50;
+		if (!rangeRandom(1000))
+			staticx = 1000;
 
 		if (lastRoom != Room) {
 			lastRoom = Room;
-			staticx = 0;
+			staticx = 1000;
 			roomUnpack(Room, true);
 		}
 
-		staticy = !rangeRandom(staticx >> 3);
+		staticy = !rangeRandom(staticx >> 10);
 
 		initIconPalette();
 
@@ -636,21 +628,22 @@ void resetMode() {
 
 	gameFrame = 16;
 	waitRelease = true;
-
-	pushCount = (rndX & 31) | 32;
 }
+
+int menuIconPalette = 0;
 
 void drawICCScreen(const unsigned char *icc) {
 
-	static int col = 0;
+	//	static int col = 0;
 	static int cdelay = 0;
 
 	if (--cdelay < 0) {
-		col = rangeRandom(sizeof(palicc) / sizeof(palicc[0]));
-		cdelay = 500;
+		menuIconPalette = rangeRandom(sizeof(palicc) / sizeof(palicc[0]));
+		initIconPalette();
+		cdelay = 240;
 	}
 
-	drawPalette(palicc[col]); // iCC_title_colour);
+	drawPalette(palicc[menuIconPalette]); // iCC_title_colour);
 
 	unsigned char *pf1L = RAM + _BUF_MENU_PF1_LEFT;
 	for (int line = 0; line < _ARENA_SCANLINES << 2; line += 3) {
@@ -754,7 +747,7 @@ void handleMenuVB() {
 
 	if (!lumDelay) {
 		lumDelay = 1;
-		if ((++lum >> LUMSHIFT) >= (int)sizeof(lumOffset) / sizeof(lumOffset[0]))
+		if ((++lum >> LUMSHIFT) >= (int)(sizeof(lumOffset) / sizeof(lumOffset[0])))
 			lum = 0;
 
 		lumDelay = (lumOffset[lum >> LUMSHIFT] == 8 /*|| !lumOffset[lum >> LUMSHIFT]*/) ? 30 : 1;
@@ -769,7 +762,12 @@ void handleMenuVB() {
 		if (dir) {
 
 			ADDAUDIO(SFX_SCORE);
-			Room = setBounds(Room + dir, getRoomCount() - 1);
+
+			if (!startup)
+				Room = setBounds(Room + dir, getRoomCount() - 1);
+			else
+				startup = 1000;
+
 			triggerRemote = 30;
 
 			resetMode();

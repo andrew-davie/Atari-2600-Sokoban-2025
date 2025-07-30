@@ -68,7 +68,6 @@ unsigned char *me;
 int time60ths;
 
 int notifyVisible;
-int notifyCol;
 int notifyY;
 char *notifyString;
 
@@ -110,8 +109,8 @@ int shakeX, shakeY;
 int shakeTime;
 #endif
 
-bool drawNotification();
-bool showNotification(char *text, int y, int colour);
+void drawNotification();
+void showNotification(char *text, int y);
 
 static const int isActive[] = {
 
@@ -190,6 +189,8 @@ void SystemReset() {
 	initAudio();
 	startMusic();
 	initMenuDatastreams();
+
+	startup = 400;
 
 #if ENABLE_SWIPE
 	swipePhase = SWIPE_GROW;
@@ -337,7 +338,7 @@ void GameIdle() {
 	(*scheduleFunc[gameSchedule])();
 }
 
-void drawWord(const char *string, int y, int colour) {
+void drawWord(const char *string, int y) {
 
 	static int wc = 0;
 
@@ -380,11 +381,8 @@ void checkExitWarning() {
 
 		if (triggerOffCounter > BUTTONTIME_EXIT_BOUNDARY) {
 
-			//		if ((triggerPressCounter > BUTTONTIME_EXIT_BOUNDARY)) {
-			if (triggerOffCounter & 24) {
-				drawWord("EXIT", 50, 3);
-				//			drawWord("ROOM", 75, 3);
-			}
+			if (triggerOffCounter & 24)
+				drawWord("EXIT", 50);
 
 			if (triggerOffCounter > BUTTONTIME_EXIT_BOUNDARY + 50) {
 
@@ -822,13 +820,7 @@ void triggerStuff() {
 
 void drawComplete() { // 32k
 
-	//	for (int y = -1; y < 2; y += 2)
-
-	showNotification("LEGEND", 42, 200);
-
-	// drawWord("LEGEND", 42, 0);
-
-	// drawWord("LEGEND", 39, 5);
+	showNotification("LEGEND", 42);
 
 	// 	static const char gameOver[] = "OK";
 
@@ -887,7 +879,7 @@ void GameVerticalBlank() { // ~7500
 
 			if (displayMode == DISPLAY_NORMAL) {
 				if (showRoomCounter) {
-					drawWord("ROOM", 40, 6);
+					drawWord("ROOM", 40);
 					bigStuff(Room);
 					showRoomCounter--;
 				}
@@ -899,13 +891,6 @@ void GameVerticalBlank() { // ~7500
 			}
 
 			drawScore();
-
-			// if (deadlock /*&& displayMode != DISPLAY_OVERVIEW*/) {
-
-			// 	showNotification((char *)deadlockText, 30, 6);
-			// 	// deadlockCounter--;
-			// 	// drawWord("DEADLOCK", 30, 6);
-			// }
 		}
 	}
 
@@ -1019,21 +1004,18 @@ void pulse(unsigned char *cell, int baseChar) {
 	*cell = baseChar + dType;
 }
 
-bool drawNotification() {
+void drawNotification() {
 	if (notifyVisible) {
 		notifyVisible--;
 		if (displayMode != DISPLAY_OVERVIEW)
-			drawWord(notifyString, notifyY, notifyCol);
+			drawWord(notifyString, notifyY);
 	}
 }
 
-bool showNotification(char *text, int y, int colour) {
-	//	if (text != notifyString) {
+void showNotification(char *text, int y) {
 	notifyString = text;
 	notifyVisible = 100;
 	notifyY = y;
-	notifyCol = colour;
-	//	}
 }
 
 bool processType() {
@@ -1172,13 +1154,13 @@ void processBoardSquares() {
 					dl[0] = d10 ? '0' + d10 : ' ';
 					dl[1] = '0' + d;
 
-					showNotification(dl, 30, 7);
+					showNotification(dl, 30);
 				}
 				lastDeadlock = deadlock;
 				deadlock = 0;
 
-				if (!deadlock && deadlockCounter == 1)
-					deadlockCounter = 0;
+				// if (!deadlock && deadlockCounter == 1)
+				// 	deadlockCounter = 0;
 
 				return;
 			}

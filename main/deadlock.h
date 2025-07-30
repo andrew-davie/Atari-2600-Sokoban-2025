@@ -6,7 +6,7 @@
 extern int deadlock;
 extern int lastDeadlock;
 
-extern int deadlockCounter;
+// extern int deadlockCounter;
 
 void checkDeadlocks();
 

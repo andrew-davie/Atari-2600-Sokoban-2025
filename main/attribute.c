@@ -54,16 +54,15 @@ const unsigned char CharToType[CH_MAX] = {
     TYPE_BOX_DEADLOCKED,   // 46 CH_BOX_PADLOCK
     TYPE_BOX_UNDO,         // 47 CH_BOX_UNDO
     TYPE_BOX_UNDO_CORRECT, // 48 CH_BOX_UNDO_CORRECT
-
-    TYPE_BOX,
-    TYPE_BOX,
-    TYPE_BOX,
-    TYPE_BOX,
-    TYPE_BOX,
+    TYPE_BOX,              // 49 CH_BOX_ZOOM1
+    TYPE_BOX,              // 50 CH_BOX_ZOOM2
+    TYPE_BOX,              // 51 CH_BOX_ZOOM3
+    TYPE_BOX,              // 52 CH_BOX_ZOOM4
+    TYPE_BOX,              // 53 CH_BOX_ZOOM5
 
 };
 
-const int Attribute[TYPE_MAX] = {
+const short Attribute[TYPE_MAX] = {
 
 // 1. get character from board (ch)
 // 2. convert to type via CharToType[ch]
@@ -71,68 +70,49 @@ const int Attribute[TYPE_MAX] = {
 // 4. If desired bit is set, then that character is involved in the action the bit represents
 
 // see mnemonic definitions for bits in attribute.h
-// There can be up to 32 attributes defined
+// There can be up to 16 attributes defined (for short type; may be increased to 32/int)
 
 #define _ 0
 
     // clang-format off
 
-// Note: Sokoban - most of these attributes are actually unused/bogus - just a holdover
-// from previous game(s).
+//                                                    s
+//                                           n       k
+//                                          a   e   c
+//                                         M   l   o
+//                                        /   b   l   e           t
+//                                   e   k   a   d   v   k       e
+//                                  s   n   h   a   i   n       g
+//                                 a   a   s   a   t   a   x   r
+//                                h   l   u   e   c   l   o   a
+//                               P   B   P   D   A   B   B   T
+//                               |   |   |   |   |   |   |   |
+//                              PHA BLK PSH DED ACT SPC BOX TRG
 
-//                                     e           k                               e
-//                                    s           n                   e           k
-//                                   i           a               e   l           i
-//                                  o       k   l               l   b           l
-//         g               e       n       c   B               b   a           -
-//        n               k       k       o   h   e           a   d           t
-//       i   e           i       c       l   s   v       k   e   o           e
-//      l   s   t   p   l   h   o   t   d   a   i       n   m   l       1   g
-//     l   a   r   i   n   s   R   i   a   u   t       a   r   p   x   l   r
-//    a   h   i   r   a   u   o   x   e   q   c       l   e   x   o   o   a
-//   F   P   D   D   M   P   N   E   D   S   A       B   P   E   B   R   T
-//   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
-//  FAL PHA DRT DRP RKF PSH QUI XIT DED SQB ACT ___ SPC PER XPD ___ ROL TRG
-
-     _ | _ | _ | _ |RKF| _ |QUI| _ | _ | _ | _ | _ |SPC|PER|XPD| _ | _ | _ ,  // 00 TYPE_SPACE
-     _ | _ | _ |DRP| _ | _ | _ | _ |DED| _ | _ | _ | _ | _ |XPD| _ |ROL| _ ,  // 01 TYPE_BRICKWALL
-     _ | _ | _ |DRP| _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ ,  // 02 TYPE_STEELWALL
-     _ |PH1| _ | _ | _ |PSH| _ | _ |DED| _ |ACT| _ | _ | _ |XPD|BOX|ROL| _ ,  // 03 TYPE_BOX
-     _ |PH1| _ | _ |RKF| _ |QUI| _ | _ |SQB| _ | _ | _ | _ |XPD| _ | _ | _ ,  // 04 TYPE_MAN
-     _ | _ |DRT|DRP| _ | _ | _ | _ | _ | _ | _ | _ |SPC|PER|XPD| _ | _ |TRG,  // 05 TYPE_PILL1
-     _ | _ |DRT|DRP| _ | _ | _ | _ | _ | _ | _ | _ |SPC|PER|XPD| _ | _ |TRG,  // 06 TYPE_PILL2
-     _ |PH1| _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ |XPD| _ | _ | _ ,  // 07 TYPE_BOX_LTOR_LHS
-     _ |PH1| _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ |XPD| _ | _ | _ ,  // 08 TYPE_BOX_LTOR_RHS
-     _ |PH1| _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ ,  // 09 TYPE_BOX_RTOL_LHS
-     _ |PH1| _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ ,  // 10 TYPE_BOX_RTOL_RHS
-     _ |PH1| _ | _ | _ |PSH| _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ ,  // 11 TYPE_BOX_UTOD_TOP
-     _ |PH1| _ | _ | _ |PSH| _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ ,  // 12 TYPE_BOX_UTOD_BOT
-     _ |PH1| _ | _ | _ |PSH| _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ ,  // 13 TYPE_BOX_DTOU_TOP
-     _ |PH1| _ | _ | _ |PSH| _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ ,  // 14 TYPE_BOX_DTOU_BOT
-     _ |PH1| _ | _ | _ |PSH| _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ ,  // 15 TYPE_BOX_LTOR_LEFT
-     _ |PH1| _ | _ | _ |PSH| _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ ,  // 16 TYPE_BOX_LTOR_RIGHT
-     _ |PH1| _ | _ | _ |PSH| _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ ,  // 17 TYPE_BOX_RTOL_LEFT
-     _ |PH1| _ | _ | _ |PSH| _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ ,  // 18 TYPE_BOX_RTOL_RIGHT
-     _ |PH1| _ | _ | _ |PSH| _ | _ |DED| _ | _ | _ | _ | _ |XPD|BOX|ROL|TRG,  // 19 TYPE_BOX_LOCKED
-     _ |PH1| _ | _ | _ |PSH| _ | _ |DED| _ |ACT| _ | _ | _ |XPD|BOX|ROL|TRG,  // 20 TYPE_BOX_CORRECT
-     _ |PH1| _ | _ | _ |PSH| _ | _ |DED| _ |ACT| _ | _ | _ |XPD|BOX|ROL| _ ,  // 21 TYPE_BOX_DEADLOCKED
-     _ |PH1| _ | _ | _ |PSH| _ | _ | _ | _ |ACT| _ | _ | _ |XPD|BOX|ROL| _ ,  // 22 TYPE_BOX_UNDO
-     _ |PH1| _ | _ | _ |PSH| _ | _ | _ | _ |ACT| _ | _ | _ |XPD|BOX|ROL|TRG,  // 23 TYPE_BOX_UNDOCORRECT
-
-
-//  FAL PHA DRT DRP RKF PSH QUI XIT DED SQB ACT  _  SPC PER XPD BOX ROL TRG
-//   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
-//   F   P   D   D   M   P   N   E   D   S   A       B   P   E   B   R   T
-//    a   h   i   r   a   u   o   x   e   q   c       l   e   x   o   o   a
-//     l   a   r   i   n   s   R   i   a   u   t       a   r   p   x   l   r
-//      l   s   t   p   l   h   o   t   d   a   i       n   m   l       1   g
-//       i   e           i       c       l   s   v       k   e   o           e
-//        n               k       k       o   h   e           a   a           t
-//         g               e       n       c   B               b   b           -
-//                                  o       k   l               l   l           l
-//                                   i           a               e   e           i
-//                                    s           n                               k
-//                                     e           k                               e
+     _ | _ | _ | _ | _ | _ | _ | _ |BLK| _ | _ | _ |SPC| _ | _ ,  // 00 TYPE_SPACE
+     _ | _ | _ | _ | _ | _ | _ | _ | _ | _ |DED| _ | _ | _ | _ ,  // 01 TYPE_BRICKWALL
+     _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ ,  // 02 TYPE_STEELWALL
+     _ | _ | _ | _ | _ | _ | _ |PH1| _ |PSH|DED|ACT| _ |BOX| _ ,  // 03 TYPE_BOX
+     _ | _ | _ | _ | _ | _ | _ |PH1|BLK| _ | _ | _ | _ | _ | _ ,  // 04 TYPE_MAN
+     _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ |SPC| _ |TRG,  // 05 TYPE_PILL1
+     _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ |SPC| _ |TRG,  // 06 TYPE_PILL2
+     _ | _ | _ | _ | _ | _ | _ |PH1| _ | _ | _ | _ | _ | _ | _ ,  // 07 TYPE_BOX_LTOR_LHS
+     _ | _ | _ | _ | _ | _ | _ |PH1| _ | _ | _ | _ | _ | _ | _ ,  // 08 TYPE_BOX_LTOR_RHS
+     _ | _ | _ | _ | _ | _ | _ |PH1| _ | _ | _ | _ | _ | _ | _ ,  // 09 TYPE_BOX_RTOL_LHS
+     _ | _ | _ | _ | _ | _ | _ |PH1| _ | _ | _ | _ | _ | _ | _ ,  // 10 TYPE_BOX_RTOL_RHS
+     _ | _ | _ | _ | _ | _ | _ |PH1| _ |PSH| _ | _ | _ | _ | _ ,  // 11 TYPE_BOX_UTOD_TOP
+     _ | _ | _ | _ | _ | _ | _ |PH1| _ |PSH| _ | _ | _ | _ | _ ,  // 12 TYPE_BOX_UTOD_BOT
+     _ | _ | _ | _ | _ | _ | _ |PH1| _ |PSH| _ | _ | _ | _ | _ ,  // 13 TYPE_BOX_DTOU_TOP
+     _ | _ | _ | _ | _ | _ | _ |PH1| _ |PSH| _ | _ | _ | _ | _ ,  // 14 TYPE_BOX_DTOU_BOT
+     _ | _ | _ | _ | _ | _ | _ |PH1| _ |PSH| _ | _ | _ | _ | _ ,  // 15 TYPE_BOX_LTOR_LEFT
+     _ | _ | _ | _ | _ | _ | _ |PH1| _ |PSH| _ | _ | _ | _ | _ ,  // 16 TYPE_BOX_LTOR_RIGHT
+     _ | _ | _ | _ | _ | _ | _ |PH1| _ |PSH| _ | _ | _ | _ | _ ,  // 17 TYPE_BOX_RTOL_LEFT
+     _ | _ | _ | _ | _ | _ | _ |PH1| _ |PSH| _ | _ | _ | _ | _ ,  // 18 TYPE_BOX_RTOL_RIGHT
+     _ | _ | _ | _ | _ | _ | _ |PH1| _ |PSH|DED| _ | _ |BOX|TRG,  // 19 TYPE_BOX_LOCKED
+     _ | _ | _ | _ | _ | _ | _ |PH1| _ |PSH|DED|ACT| _ |BOX|TRG,  // 20 TYPE_BOX_CORRECT
+     _ | _ | _ | _ | _ | _ | _ |PH1| _ |PSH|DED|ACT| _ |BOX| _ ,  // 21 TYPE_BOX_DEADLOCKED
+     _ | _ | _ | _ | _ | _ | _ |PH1| _ |PSH| _ |ACT| _ |BOX| _ ,  // 22 TYPE_BOX_UNDO
+     _ | _ | _ | _ | _ | _ | _ |PH1| _ |PSH| _ |ACT| _ |BOX|TRG,  // 23 TYPE_BOX_UNDOCORRECT
 
 };
 

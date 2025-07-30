@@ -11,7 +11,7 @@
 int deadlock;
 int lastDeadlock;
 
-int deadlockCounter;
+// int deadlockCounter;
 
 // Check if a position is a wall
 bool isWall(unsigned char *p) { return *p == CH_BRICKWALL; }
@@ -116,8 +116,8 @@ void checkDeadlocks() {
 		dead |= validate(block[i]);
 
 	if (dead) {
-		if (deadlockCounter < 1)
-			deadlockCounter = 100;
+		// if (deadlockCounter < 1)
+		// 	deadlockCounter = 100;
 
 		deadlock++;
 

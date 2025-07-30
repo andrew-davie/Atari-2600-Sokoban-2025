@@ -115,7 +115,7 @@ typedef struct Animation {
 	const signed char *loop;
 } Animation;
 
-extern Animation *animationList[];
+extern Animation *const animationList[];
 
 // These are enums giving FRAMESERVER animation IDs
 // Vectoring via animationList[].  Init in initAnimations() !!!

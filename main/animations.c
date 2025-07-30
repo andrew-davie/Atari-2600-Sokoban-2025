@@ -10,30 +10,34 @@ const unsigned char *Animate[TYPE_MAX];
 char AnimCount[TYPE_MAX];
 
 
+// NOTE: using durations that are multiples of *3* allow each frame to be fully drawn by iCC
+//  (and thus reduce banding/shearing effects). It's not a REQUIREMENT, just an advisory.
+
+
 // static const unsigned char Animate_Debug[] = {
 //     CH_BOX,40,
 //     CH_BLANK,40,
 //     ANIM_LOOP,
 // };
 
-static const unsigned char AnimBoxComplete[] = {
+// static const unsigned char AnimBoxComplete[] = {
 
-    // CH_BOX_ZOOM1, 12,
-    // // CH_BOX_ZOOM2, 3,
-    // // CH_BOX_ZOOM3, 3,
-    // CH_BOX_ZOOM4, 12,
-    // CH_BOX_ZOOM3, 3,
-    // CH_BOX_ZOOM2, 3,
-    // CH_BOX_ZOOM1, 3,
-    CH_BOX_DEADLOCK,12,
-    ANIM_LOOP,
-};
+//     // CH_BOX_ZOOM1, 12,
+//     // // CH_BOX_ZOOM2, 3,
+//     // // CH_BOX_ZOOM3, 3,
+//     // CH_BOX_ZOOM4, 12,
+//     // CH_BOX_ZOOM3, 3,
+//     // CH_BOX_ZOOM2, 3,
+//     // CH_BOX_ZOOM1, 3,
+//     CH_BOX_DEADLOCK,12,
+//     ANIM_LOOP,
+// };
 
 
 static const unsigned char Animate_BoxDeadlocked[] = {
 
 
-    CH_BOX_DEADLOCK,99,
+    CH_BOX_DEADLOCK,12,
     CH_BOX_ZOOM1,3,
     CH_BOX_ZOOM2,3,
     CH_BOX_ZOOM3,3,
@@ -244,11 +248,11 @@ const unsigned char AnimMan[] = {
 
 // clang-format on
 
-const unsigned char *const AnimateBase[] = {
+const unsigned char *const AnimateBase[TYPE_MAX] = {
 
     // indexed by object TYPE (def: ObjectType in attribute.h)
     // =0 if object does not auto-animate
-    // NOTE: ALL OBJECTS OF THIS TYPE WILL HAVE THE SAME SHAPE ONSCREEN!
+    // NOTE: ALL OBJECTS OF THIS TYPE WILL HAVE THE SAME SHAPE/ANIMATION ONSCREEN!
 
     0,                     // 00 TYPE_SPACE
     0,                     // 01 TYPE_BRICKWALL

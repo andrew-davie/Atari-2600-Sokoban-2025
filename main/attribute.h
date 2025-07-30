@@ -3,7 +3,7 @@
 
 #include "main.h"
 
-extern const int Attribute[];
+extern const short Attribute[];
 extern const unsigned char CharToType[];
 
 enum ObjectType {
@@ -93,12 +93,11 @@ enum ChName {
 	CH_BOX_PADLOCK,       // 46
 	CH_BOX_UNDO,          // 47
 	CH_BOX_UNDO_CORRECT,  // 48
-
-    CH_BOX_ZOOM1,
-    CH_BOX_ZOOM2,
-    CH_BOX_ZOOM3,
-    CH_BOX_ZOOM4,
-    CH_BOX_ZOOM5,
+	CH_BOX_ZOOM1,         // 49
+	CH_BOX_ZOOM2,         // 50
+	CH_BOX_ZOOM3,         // 51
+	CH_BOX_ZOOM4,         // 52
+	CH_BOX_ZOOM5,         // 53
 
 	CH_MAX
 };
@@ -109,51 +108,34 @@ enum ATTRIBUTE_BITS {
 
     // used in Attribute[] to flag object's action/reaction to situations
 
-    ATT_ROLL                    = 0b00000000000000000000000000000001, // ROL
-    ATT_BOX                     = 0b00000000000000000000000000000010, // BOX
-    ATT_EXPLODABLE              = 0b00000000000000000000000000000100, // XPD
-    ATT_PERMEABLE               = 0b00000000000000000000000000001000, // PER
-    ATT_BLANK                   = 0b00000000000000000000000000010000, // SPC
-    ATT_DIRT                    = 0b00000000000000000000000000100000, // DRT
-    ATT_ACTIVE                  = 0b00000000000000000000000010000000, // ACT
-    ATT_SQUASHABLE_TO_BLANKS    = 0b00000000000000000000000100000000, // SQB
-    ATT_DEADLOCK                = 0b00000000000000000000001000000000, // DED
-    ATT_EXIT                    = 0b00000000000000000000010000000000, // XIT
-    ATT_NOROCKNOISE             = 0b00000000000000000000100000000000, // QUI
-    ATT_PUSH                    = 0b00000000000000000001000000000000, // PSH
-    ATT_MANYBLANK               = 0b00000000000000000010000000000000, // RKF
-    ATT_DRIP                    = 0b00000000000000000100000000000000, // DRP
-    ATT_PHASE1                  = 0b00000000000000001000000000000000, // PH1
-    ATT_PHASE2                  = 0b00000000000000010000000000000000, // PH2
-    ATT_PHASE4                  = 0b00000000000000100000000000000000, // PH4
-    ATT_FALLING                 = 0b00000000000001000000000000000000, // FAL
-    ATT_TARGETLIKE              = 0b00000000000010000000000000000000, // BLD
-
+    ATT_BOX                     = 0b0000000000000001, // BOX
+    ATT_BLANK                   = 0b0000000000000010, // SPC
+    ATT_ACTIVE                  = 0b0000000000000100, // ACT
+    ATT_DEADLOCK                = 0b0000000000001000, // DED
+    ATT_EXIT                    = 0b0000000000010000, // XIT
+    ATT_PUSH                    = 0b0000000000100000, // PSH
+    ATT_PHASE1                  = 0b0000000001000000, // PH1
+    ATT_PHASE2                  = 0b0000000010000000, // PH2
+    ATT_PHASE4                  = 0b0000000100000000, // PH4
+    ATT_TARGETLIKE              = 0b0000001000000000, // TRG
+    ATT_MANYBLANK               = 0b0000010000000000, // BLK
 };
 
 // clang-format on
 
 enum AttributeAlias {
 
-	BOX = (ATT_BOX),                  // box or box on target
-	ROL = (ATT_ROLL),                 // rounded object - things roll off me
-	XPD = (ATT_EXPLODABLE),           // can be destroyed by explosion
-	PER = (ATT_PERMEABLE),            // player can move through object
-	SPC = (ATT_BLANK),                // a literal blank area
-	DRT = (ATT_DIRT),                 // area is dirt
-	ACT = (ATT_ACTIVE),               // object has logic/requires processing
-	SQB = (ATT_SQUASHABLE_TO_BLANKS), // when killed explodes as blanks
-	DED = (ATT_DEADLOCK),             // contributes to a deadlock
-	XIT = (ATT_EXIT),                 //  this is an exit
-	QUI = (ATT_NOROCKNOISE),          // no noise when something falls on this
-	PSH = (ATT_PUSH),                 // can be pushed
-	RKF = (ATT_MANYBLANK),            //  a blank or man
-	DRP = (ATT_DRIP),                 // object can have drips form under it
-	PH1 = (ATT_PHASE1),               // processed in phase 1
-	PH2 = (ATT_PHASE2),               // processed in phase 2
-	PH4 = (ATT_PHASE4),               // processed in phase 4
-	FAL = (ATT_FALLING),              // object is falling
-	TRG = (ATT_TARGETLIKE),           // object contains a target
+	BOX = (ATT_BOX),        // box or box on target
+	SPC = (ATT_BLANK),      // a literal blank area
+	ACT = (ATT_ACTIVE),     // object has logic/requires processing
+	DED = (ATT_DEADLOCK),   // contributes to a deadlock
+	XIT = (ATT_EXIT),       //  this is an exit
+	PSH = (ATT_PUSH),       // can be pushed
+	BLK = (ATT_MANYBLANK),  //  a blank or man
+	PH1 = (ATT_PHASE1),     // processed in phase 1
+	PH2 = (ATT_PHASE2),     // processed in phase 2
+	PH4 = (ATT_PHASE4),     // processed in phase 4
+	TRG = (ATT_TARGETLIKE), // object contains a target
 
 };
 

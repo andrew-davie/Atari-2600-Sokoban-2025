@@ -361,36 +361,36 @@ static const unsigned char char_box_locked[CHAR_HEIGHT] = {
     0b00011111
 };
 
-static const unsigned char char_box_locked2b[CHAR_HEIGHT] = {
+// static const unsigned char char_box_locked2b[CHAR_HEIGHT] = {
 
-    0b00000000,     /*0*/
-    0b00000000,
-    0b00011111,
-    0b00000000,     /*1*/
-    0b00000000,
-    0b00011111,
-    0b00000000,     /*2*/
-    0b00000000,
-    0b00011111,
-    0b00000000,     /*3*/
-    0b00000000,
-    0b00011111,
-    0b00000000,     /*4*/
-    0b00000000,
-    0b00011111,
-    0b00000000,     /*5*/
-    0b00000000,
-    0b00011111,
-    0b00000000,     /*6*/
-    0b00000000,
-    0b00011111,
-    0b00000000,     /*7*/
-    0b00000000,
-    0b00011111,
-    0b00011111,     /*8*/
-    0b00000000,
-    0b00011111
-};
+//     0b00000000,     /*0*/
+//     0b00000000,
+//     0b00011111,
+//     0b00000000,     /*1*/
+//     0b00000000,
+//     0b00011111,
+//     0b00000000,     /*2*/
+//     0b00000000,
+//     0b00011111,
+//     0b00000000,     /*3*/
+//     0b00000000,
+//     0b00011111,
+//     0b00000000,     /*4*/
+//     0b00000000,
+//     0b00011111,
+//     0b00000000,     /*5*/
+//     0b00000000,
+//     0b00011111,
+//     0b00000000,     /*6*/
+//     0b00000000,
+//     0b00011111,
+//     0b00000000,     /*7*/
+//     0b00000000,
+//     0b00011111,
+//     0b00011111,     /*8*/
+//     0b00000000,
+//     0b00011111
+// };
 
 
 
@@ -1303,9 +1303,6 @@ PILL(3);
 PILL(1);
 
 
-#define SMALLVM(n) \
- ((n) | ((n) <<1) | ((n) << 2) | ((n) << 3) | ((n) << 4) | 0xC0)
-
 #define SMALLPILL(mask) \
 static const unsigned char smallchar_pill##mask[] = { \
  (0b00000000) & VM((mask & 4) >> 2),    \
@@ -1331,12 +1328,12 @@ static const unsigned char smallchar_pill##mask[] = { \
 };
 
 SMALLPILL(7);
-SMALLPILL(6);
-SMALLPILL(5);
-SMALLPILL(4);
-SMALLPILL(3);
-SMALLPILL(2);
-SMALLPILL(1);
+// SMALLPILL(6);
+// SMALLPILL(5);
+// SMALLPILL(4);
+// SMALLPILL(3);
+// SMALLPILL(2);
+// SMALLPILL(1);
 
 
 static const unsigned char char_pill2[] = {
