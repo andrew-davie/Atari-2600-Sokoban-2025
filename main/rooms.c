@@ -13,9 +13,13 @@ int pillCount;
 
 // Sokoban level data
 
-// clang-format off
+const struct roomDef room[] = {
 
-const char *room[] = {
+// To add new rooms just place either compressed or uncompressed room here.
+// Add '=' to pad outside-squares that are accidentally blank when drawn
+
+// Format:  ID (or-1), width, height, pushes (or -1), moves (or -1), "... room string"
+// The room string may be compressed or uncompressed. Use tools/compressroom.py to compress
 
 #define NEXTLINE '|'
 #define WALL '#'
@@ -29,125 +33,1466 @@ const char *room[] = {
 #define BOX '$'
 #define STEEL '='
 
-// To add new rooms just place either compressed or uncompressed room here.
-// Rooms are standard-format, represented as a single 0-terminated string
-// tools/compressroom.py will compress a room for you
+    {
 
-// ----------------------------------------------------------------------------------------------
+        /*
 
-#if 1
-//      ###
-// ######@##
-// #    .* #
-// #   #   #
-// #####$# #
-//     #   #
-//     #####
+        ===#####|
+        =###*. #|
+        =#   . ##|
+        =# #    #|
+        ##  #.  #|
+        # $*$   #|
+        #.$  $ ##|
+        #@##   #|
+        ########
+        Collection/Set: Ionic Catalysts
+        Serial Number: 961
+        Name: Ionic Catalysts 961
+        Author: Razorflame
+        Width: 9
+        Height: 9
+        Nb Boxes: 6
+        Pushes: 30
+        Moves: 77
 
-"5=3#|6#@2#|#4 .* #|#3 #3 #|5#$# #|4=#3 #|4=5#",
+        */
+        961,
+        9,
+        9,
+        30,
+        77,
+        "3=5#|=3#*. #|=#3 . 2#|=# #4 #|2#2 #.2 #|# $*$3 #|#.$2 $ 2#|#@2#3 #|8#",
 
-#endif
-// ----------------------------------------------------------------------------------------------
+    },
 
-#if 1
-//   ########
-//  ##  . . #
-//  # *$# # #
-//  #.  #$# ##
-// ##* #  #  #
-// #   # *   #
-// # $#@ .#  #
-// #     $ ###
-// ##  #   #
-//  ########
+    {
 
-"2=8#|=2#2 . . #|=# *$# # #|=#.2 #$# 2#|2#* #2 #2 #|#3 # *3 #|# $#@ .#2 #|#5 $ 3#|2#2 #3 #|=8#",
+        /*
 
-#endif
-// ----------------------------------------------------------------------------------------------
+    ########|
+    #  . ..#|
+    #.$ #  #|
+    # #$$$*#|
+    #.$ @  #|
+    ########
+    Collection/Set: Bugs collection 2
+    Serial Number: 57
+    Name: Bugs collection 2 57
+    Author: Buddy Casamis
+    Width: 8
+    Height: 6
+    Nb Boxes: 6
+    Pushes: 10
+    Moves: 40
 
-#if 1
-//    ####
-//    #  #
-//    #$ #
-//    #  # ####
-// #### ####  #
-// #   .. ..  #
-// #  $*. *.$@##
-// #   #$ $#$  #
-// #####   #   #
-//     #########
+        */
 
-"3=4#|3=#2 #|3=#$ #|3=#2 #=4#|4# 4#2 #|#3 2. 2.2 #|#2 $*. *.$@2#|#3 #$ $#$2 #|5#3 #3 #|4=9#",
+        57,
+        8,
+        6,
+        10,
+        40,
+        "8#|#2 . 2.#|#.$ #2 #|# #3$*#|#.$ @2 #|8#",
 
-#endif
-// ----------------------------------------------------------------------------------------------
+    },
 
-#if 1
-//   ####
-//   #  #
-//   #$ #
-//   #  # ####
-// ### ####  #
-// #  .. ..  ###
-// # $*. *.$@  #
-// ## #$ $#$ # #
-//  # #   #  # #
-//  #  ######  #
-//  ##        ##
-//   ##########
+    {
 
-"2=4#|2=#2 #|2=#$ #|2=#2 #=4#|3# 4#2 #|#2 2. 2.2 3#|# $*. *.$@2 #|2# #$ $#$ # #|=# #3 #2 # #|=#2 6#2 #|=2#8 2#|2=10#",
+        /*
 
-#endif
-// ----------------------------------------------------------------------------------------------
+        "====########|"
+        "#####      #|"
+        "#    #  $  #|"
+        "# $#$ ..#$##|"
+        "#     ..   #|"
+        "####  .. ###|"
+        "===#   #$#|"
+        "===###$@ #|"
+        "=====#   #|"
+        "=====#####"
+        Collection/Set: Spiros 06
+        Serial Number: 14
+        Name: Spiros 06 14
+        Author: Spiros Mantzoukis
+        Width: 12
+        Height: 10
+        Nb Boxes: 6
+        Pushes: 38
+        Moves: 152
 
-#if 1
-//            ######
-//     ####  ##    #
-//   ###  #  #  ## ###
-// ###    #### #   $ #
-// #  $ @ ...*..  $  #
-// # $ $  ## ###   ###
-// ### ###   # #####
-//  #      ###
-//  #   ####
-//  #####
+        */
 
-"11=6#|4=4#2=2#4 #|2=3#2 #2=#2 2# 3#|3#4 4# #3 $ #|#2 $ @ 3.*2.2 $2 #|# $ $2 2# 3#3 3#|3# 3#3 # 5#|=#6 3#|=#3 4#|=5#",
+        14,
+        12,
+        10,
+        38,
+        152,
+        "4=8#|5#6 #|#4 #2 $2 #|# $#$ 2.#$2#|#5 2.3 #|4#2 2. 3#|3=#3 #$#|3=3#$@ #|5=#3 #|5=5#",
 
+    },
 
-#endif
-// ----------------------------------------------------------------------------------------------
+    {
 
-#if 1
-//       ######
-//       #    #
-//       # @  ###
-// ####  #      #
-// #  ####..#.#$#####
-// # $ $ ##...      #
-// #     .....#$$   #
-// ###### ##$## #####
-//      #  $    #
-//      #### ####
-//        #  #
-//        #  #####
-//      ### $    #
-//      #  $ $   #
-//      # #$# ####
-//      #     #
-//      #######
+        /*
+        "####|"
+        "#  #|"
+        "#  #####|"
+        "#  $   #|"
+        "##$* * #|"
+        "#  .# ##|"
+        "#.  @ #|"
+        "#######"
+        Collection/Set: Scoria 2
+        Serial Number: 2
+        Name: Scoria 2 2
+        Author: Thomas Reinke
+        Width: 8
+        Height: 8
+        Nb Boxes: 4
+        Pushes: 35
+        Moves: 152
 
-"6=6#|6=#4 #|6=# @2 3#|4#2=#6 #|#2 4#2.#.#$5#|# $ $ 2#3.6 #|#5 5.#2$3 #|6# 2#$2# 5#|5=#2 $4 #|5=4# 4#|7=#2 #|7=#2 5#|5=3# $4 #|5=#2 $ $3 #|5=# #$# 4#|5=#5 #|5=7#",
+        */
+        2,
+        8,
+        8,
+        35,
+        152,
+        "4#|#2 #|#2 5#|#2 $3 #|2#$* * #|#2 .# 2#|#.2 @ #|7#",
+    },
 
-#endif
-// ----------------------------------------------------------------------------------------------
+    {
 
+        /*
+        #####|
+        #   #|
+        #   #|
+        ##  ########|
+        =#  ..##   #|
+        ##  @.## # #|
+        #        $ #|
+        #  ### $####|
+        #  #=#  #|
+        ####=# $#|
+        =====#  #|
+        =====####
+        Collection/Set: Marko Dzekic
+        Serial Number: 24
+        Name: Marko Dzekic 24
+        Author: Marko Dzekic
+        Width: 12
+        Height: 12
+        Nb Boxes: 3
+        Pushes: 62
+        Moves: 152
+
+        */
+        24,
+        12,
+        12,
+        62,
+        152,
+        "5#|#3 #|#3 #|2#2 8#|=#2 2.2#3 #|2#2 @.2# # #|#8 $ #|#2 3# $4#|#2 #=#2 #|4#=# $#|5=#2 "
+        "#|5=4#",
+    },
+
+    {
+        /*
+        ########|
+        #@ #.  #|
+        #  #   #|
+        #  #   #|
+        # $ #$ #|
+        # $    #|
+        ####.. #|
+        ===#####
+        Collection/Set: TP5_99
+        Serial Number: 57
+        Name: TP5_99 #57
+        Author: Taylor & Parberry AutoGenerated 1of5
+        Width: 8
+        Height: 8
+        Nb Boxes: 3
+        Pushes: 30
+        Moves: 88
+
+        */
+        57,
+        8,
+        8,
+        30,
+        88,
+        "8#|#@ #.2 #|#2 #3 #|#2 #3 #|# $ #$ #|# $4 #|4#2. #|3=5#",
+    },
+
+    {
+        /*
+        =======####|
+        =======#  #|
+        ====####  #|
+        =####     #|
+        =#    .##$#|
+        =#  ##*## #|
+        =## ##@## #|
+        ==# ##$## ##|
+        ### ## ##  #|
+        #.         #|
+        #   ########|
+        #####
+        Collection/Set: Atlas04
+        Serial Number: 3
+        Name: Atlas04 3
+        Author: Eric F Tchong
+        Width: 12
+        Height: 12
+        Nb Boxes: 3
+        Pushes: 46
+        Moves: 88
+
+        */
+
+        3,
+        12,
+        12,
+        46,
+        88,
+        "7=4#|7=#2 #|4=4#2 #|=4#5 #|=#4 .2#$#|=#2 2#*2# #|=2# 2#@2# #|2=# 2#$2# 2#|3# 2# 2#2 #|#.9 "
+        "#|#3 8#|5#",
+
+    },
+
+    {
+
+        /*
+
+"####=####|
+"#  ###  #|
+"#   . $@#|
+"# $ .$$ #|
+"### . ###|
+"==# . #|
+"==#####
+Collection/Set: Li Jin You Collection
+Serial Number: 181
+Name: Li Jin You Collection 181
+Author: Li Jin You
+Width: 9
+Height: 7
+Nb Boxes: 4
+Pushes: 24
+Moves: 89
+
+        */
+
+        181,
+        9,
+        7,
+        24,
+        89,
+        "4#=4#|#2 3#2 #|#3 . $@#|# $ .2$ #|3# . 3#|2=# . #|2=5#",
+
+    },
+
+    {
+
+        /*
+        "########|"
+        "#   # .#|"
+        "#    $*#|"
+        "#   #@ #|"
+        "########"
+        Collection/Set: Mass Remodel
+        Serial Number: 376
+        Name: Mass Remodel 376
+        Author: Many Authors, see each level
+        Width: 8
+        Height: 5
+        Nb Boxes: 2
+        Pushes: 8
+        Moves: 13
+        */
+
+        376,
+        8,
+        5,
+        8,
+        13,
+        "8#|#3 # .#|#4 $*#|#3 #@ #|8#",
+    },
+    {
+        /*
+
+        Collection/Set: Sokogen-990602 Levels
+        Serial Number: 30
+        Name: Sokogen-990602 Levels 30
+        Author: Jacques Duthen
+        Width: 7
+        Height: 6
+        Nb Boxes: 3
+        Pushes: 11
+        Moves: 39
+
+        "#######|"
+        "##.  ##|"
+        "#+$$$ #|"
+        "# #  .#|"
+        "#    ##|"
+        "#######"
+
+        */
+
+        -1, // ID
+        7,  // width
+        6,  // height
+        11, // pushes
+        39, // moves
+
+        "7#|2#.2 2#|#+3$ #|# #2 .#|#4 2#|7#",
+    },
+
+    {
+        //      ###
+        // ######@##
+        // #    .* #
+        // #   #   #
+        // #####$# #
+        //     #   #
+        //     #####
+
+        -1,
+        9,
+        7,
+        -1,
+        -1,
+        "5=3#|6#@2#|#4 .* #|#3 #3 #|5#$# #|4=#3 #|4=5#",
+    },
+
+    {
+
+        // ####
+        // # .#
+        // #  ###
+        // #*@  #
+        // #  $ #
+        // #  ###
+        // ####
+
+        -1,
+        6,
+        7,
+        -1,
+        -1,
+        "4#|# .#|#2 3#|#*@2 #|#2 $ #|#2 3#|4#",
+
+    },
+
+    {
+        // ######
+        // #    #
+        // # #@ #
+        // # $* #
+        // # .* #
+        // #    #
+        // ######
+
+        -1,
+        6,
+        7,
+        -1,
+        -1,
+        "6#|#4 #|# #@ #|# $* #|# .* #|#4 #|6#",
+
+    },
+
+    {
+        //  ####
+        // ##  ###########
+        // #@$ .$  $  $  #
+        // # $* .$.*.*.*.#
+        // ## *$  $      #
+        //  # . ##########
+        //  # . #
+        //  #####
+
+        -1,
+        15,
+        8,
+        -1,
+        -1,
+        "=4#|2#2 11#|#@$ .$2 $2 $2 #|# $* .$.*.*.*.#|2# *$2 $6 #|=# . 10#|=# . #|=5#",
+    },
+
+    {
+        //   ########
+        //  ##  . . #
+        //  # *$# # #
+        //  #.  #$# ##
+        // ##* #  #  #
+        // #   # *   #
+        // # $#@ .#  #
+        // #     $ ###
+        // ##  #   #
+        //  ########
+
+        -1,
+        11,
+        10,
+        -1,
+        -1,
+        "2=8#|=2#2 . . #|=# *$# # #|=#.2 #$# 2#|2#* #2 #2 #|#3 # *3 #|# $#@ .#2 #|#5 $ 3#|2#2 #3 "
+        "#|=8#",
+
+    },
+
+    {
+        /*
+
+        Collection/Set: COSMONOTES
+        Serial Number: 15
+        Name: COSMONOTES #15
+        Author: Aymeric du Peloux
+        Width: 8
+        Height: 7
+        Nb Boxes: 4
+        Pushes: 30
+        Moves: 88
+
+             #####
+             #@. #
+            ##$.$##
+            #  *  ##
+            #  .$  #
+            ####   #
+               #####
+        */
+
+        5001,
+        8,
+        7,
+        30,
+        88,
+        "=5#|=#@. #|2#$.$2#|#2 *2 2#|#2 .$2 #|4#3 #|3=5#",
+
+    },
+
+    {
+
+    }
 
 };
 
-// clang-format on
+/*
+/Users/boo/Documents/software/Atari2600/Sokoban-2025/tools/.venv/bin/python
+/Users/boo/Documents/software/Atari2600/Sokoban-2025/tools/scrape.py
+===########|
+=###      #|
+##@$ $#$# #|
+# $#....* #|
+#     # ###|
+#####   #|
+====#####
+Collection/Set: Kevin 18
+Serial Number: 50
+Name: Kevin 18 50
+Author: Kevin B. Reilly
+Width: 11
+Height: 7
+Nb Boxes: 5
+Pushes: 22
+Moves: 77
+
+----------------------------------------
+######|
+#.*  ##|
+#**$  #|
+# *.  #|
+#  $  #|
+#  #  #|
+#######
+Collection/Set: Revenge Collection 10
+Serial Number: 48
+Name: Revenge Collection 10 48
+Author: Marcus Hof
+Width: 7
+Height: 7
+Nb Boxes: 6
+Pushes: 22
+Moves: 77
+
+----------------------------------------
+=#########|
+##   *   ##|
+#  # # #  #|
+# #.$.$.# #|
+#  $.$.$  #|
+#*#.$@$.#*#|
+#  $.$.$  #|
+# #.$.$.# #|
+#  # # #  #|
+##   *   ##|
+=#########
+Collection/Set: Skinner
+Serial Number: 116
+Name: Skinner #116
+Author: David W. Skinner
+Width: 11
+Height: 11
+Nb Boxes: 16
+Pushes: 22
+Moves: 77
+
+----------------------------------------
+#####|
+#   #|==####|
+#   #####  #|
+#          #|
+## ####### #|
+=#      ##.#|
+=#   #  ####|
+####    #|
+# $   # #|
+#   #   #|
+#   #  ##|
+########
+Collection/Set: Spiros 01
+Serial Number: 28
+Name: Spiros 01 28
+Author: Spiros Mantzoukis
+Width: 12
+Height: 12
+Nb Boxes: 1
+Pushes: 23
+Moves: 77
+
+----------------------------------------
+########|
+# # #  #|
+# $ $  #|
+#. $   #|
+#..#  ##|
+#  @ ##|
+######
+Collection/Set: Spiros 01
+Serial Number: 120
+Name: Spiros 01 120
+Author: Spiros Mantzoukis
+Width: 8
+Height: 7
+Nb Boxes: 3
+Pushes: 23
+Moves: 77
+
+----------------------------------------
+=####|
+=#  #|
+##  ###|
+#   @ ##|
+# $**. #|
+#  #   #|
+#####  #|
+====####
+Collection/Set: Maps After All
+Serial Number: 57
+Name: Maps After All 57
+Author: Martí Homs Caussa
+Width: 8
+Height: 8
+Nb Boxes: 3
+Pushes: 23
+Moves: 77
+
+----------------------------------------
+===####|
+####  #|
+# $   #|
+# # # ##|
+#.*.#  #|
+#   $ @#|
+#  ##  #|
+########
+Collection/Set: Monry Collection
+Serial Number: 38
+Name: Monry Collection 38
+Author: monry
+Width: 8
+Height: 8
+Nb Boxes: 3
+Pushes: 23
+Moves: 77
+
+----------------------------------------
+####|
+#  ###|
+#    ###|
+# $$   #|
+##$ #. ##|
+=#  ..@ #|
+=####   #|
+====#####
+Collection/Set: Maps After All
+Serial Number: 117
+Name: Maps After All 117
+Author: Martí Homs Caussa
+Width: 9
+Height: 8
+Nb Boxes: 3
+Pushes: 23
+Moves: 77
+
+----------------------------------------
+########|
+#.   @ #|
+#.#$$$ #|
+#.   $ #|
+#.# # ##|
+#.  $ #|
+# # ###|
+#   #|
+#####
+Collection/Set: Roger Delaporte
+Serial Number: 9
+Name: Roger Delaporte 9
+Author: Roger Delaporte
+Width: 8
+Height: 9
+Nb Boxes: 5
+Pushes: 23
+Moves: 77
+
+----------------------------------------
+====####|
+=####  #|
+=#  $  ###|
+=#  #    #|
+=#@ #    #|
+##### ####|
+#     . #|
+#  #    #|
+#  #### ##|
+#        #|
+#  ### # #|
+####|#   #|
+=====#####
+Collection/Set: SokoStation
+Serial Number: 111
+Name: CHEMIN DE CAMPAGNE
+Author: Ghislain Martin
+Width: 10
+Height: 13
+Nb Boxes: 1
+Pushes: 24
+Moves: 77
+
+----------------------------------------
+====####|
+=####  #|
+=#  $  ###|
+=#  #    #|
+=#@ #    #|
+##### ####|
+#     . #|
+#  #    #|
+#  #### ##|
+#        #|
+#  ### # #|
+####|#   #|
+=====#####
+Collection/Set: SokoStation
+Serial Number: 111
+Name: CHEMIN DE CAMPAGNE
+Author: Ghislain Martin
+Width: 10
+Height: 13
+Nb Boxes: 1
+Pushes: 24
+Moves: 77
+
+----------------------------------------
+====####|
+=####  #|
+=#  $  ###|
+=#  #    #|
+=#@ #    #|
+##### ####|
+#     . #|
+#  #    #|
+#  #### ##|
+#        #|
+#  ### # #|
+####|#   #|
+=====#####
+Collection/Set: Monde
+Serial Number: 21
+Name: Monde 21
+Author: Ghislain Martin
+Width: 10
+Height: 13
+Nb Boxes: 1
+Pushes: 24
+Moves: 77
+
+----------------------------------------
+####|
+#  #######|
+#        #|
+#.$*$.   #|
+#  #  ####|
+#######
+Collection/Set: Funny Template Levels
+Serial Number: 76
+Name: Funny Template Levels 76
+Author: Martí Homs Caussa
+Width: 10
+Height: 6
+Nb Boxes: 3
+Pushes: 24
+Moves: 77
+
+----------------------------------------
+=####|
+=#  #|
+=#@$#|
+##$ ####|
+# . .  #|
+#  $ . #|
+###  ###|
+==####
+Collection/Set: Homz Levels
+Serial Number: 124
+Name: Homz Levels 124
+Author: Martí Homs Caussa
+Width: 8
+Height: 8
+Nb Boxes: 3
+Pushes: 24
+Moves: 77
+
+----------------------------------------
+########|
+#  .#  #|
+# .$ . #|
+#  #$  #|
+# @$ ###|
+###  #|
+==#  #|
+==####
+Collection/Set: Mass Remodel
+Serial Number: 2111
+Name: Mass Remodel 2111
+Author: Many Authors, see each level
+Width: 8
+Height: 8
+Nb Boxes: 3
+Pushes: 24
+Moves: 77
+
+----------------------------------------
+#####|
+#   ######|
+#    #   #|
+## *$# # #|
+=#@.*    #|
+=#  ######|
+=#  #|
+=####
+Collection/Set: Maps After All
+Serial Number: 67
+Name: Maps After All 67
+Author: Martí Homs Caussa
+Width: 10
+Height: 8
+Nb Boxes: 3
+Pushes: 24
+Moves: 77
+
+----------------------------------------
+########|
+##  $..#|
+##$@####|
+#   ##|
+#$$ ####|
+# $ $..#|
+#.  $..#|
+########
+Collection/Set: Marko Dzekic
+Serial Number: 6
+Name: Marko Dzekic 6
+Author: Marko Dzekic
+Width: 8
+Height: 8
+Nb Boxes: 7
+Pushes: 24
+Moves: 77
+
+----------------------------------------
+########|
+#     ##|
+# .*.$##|
+# * .  #|
+#* . $##|
+#.$$ $ #|
+#@$  . #|
+########
+Collection/Set: SokEvo/SokHard
+Serial Number: 40
+Name: SokEvo/SokHard #40
+Author: Lee J Haywood
+Width: 8
+Height: 8
+Nb Boxes: 9
+Pushes: 24
+Moves: 77
+
+----------------------------------------
+=====####|
+=####****#|
+#********##|
+#****   ***#|
+#**   $  **#|
+#** $ $  **#|
+#**  **$.**#|
+#** $**..**#|
+#** @**..**#|
+#****  ****#|
+#****  ****#|
+=##########
+Collection/Set: Sokomania
+Serial Number: 82
+Name: Sokomania 82
+Author: Thomas Reinke
+Width: 12
+Height: 12
+Nb Boxes: 66
+Pushes: 24
+Moves: 77
+
+----------------------------------------
+=######|
+##@ ..#|
+#     #|
+#   ####|
+#  #   #|
+#      #|
+##     #|
+# $  ###|
+# #  $ #|
+#      #|
+########
+Collection/Set: TP3_100
+Serial Number: 110
+Name: TP3_100 #110
+Author: Taylor & Parberry AutoGenerated 1of5
+Width: 8
+Height: 11
+Nb Boxes: 2
+Pushes: 25
+Moves: 77
+
+----------------------------------------
+=====###|
+====##.#|
+===## .#|
+####  .#|
+#@$    #|
+#  $$ ##|
+###   #|
+==#####
+Collection/Set: Choriban Levels
+Serial Number: 41
+Name: Choriban Levels 41
+Author: Martí Homs Caussa
+Width: 8
+Height: 8
+Nb Boxes: 3
+Pushes: 25
+Moves: 77
+
+----------------------------------------
+=#####|
+=#.. ###|
+###.   #|
+#  .$  #|
+# $ $###|
+###$ #|
+##  ##|
+#@ ##|
+####
+Collection/Set: Revenge 13
+Serial Number: 48
+Name: Revenge 13 48
+Author: Marcus Hof
+Width: 8
+Height: 9
+Nb Boxes: 4
+Pushes: 25
+Moves: 77
+
+----------------------------------------
+#######|
+#.$. .#|
+#.$ $ #|
+# $$  #|
+### .##|
+==#  #|
+==####
+Collection/Set: Serg Belyaev 2
+Serial Number: 26
+Name: Serg Belyaev 2 26
+Author: Serg Belyaev
+Width: 7
+Height: 7
+Nb Boxes: 5
+Pushes: 25
+Moves: 77
+
+----------------------------------------
+#####|
+#.@.#|
+#$$$#|
+# $ #|
+# # ###|
+# $  .#|
+# #.# #|
+#    .#|
+#######
+Collection/Set: Mass Remodel
+Serial Number: 1469
+Name: Mass Remodel 1469
+Author: Many Authors, see each level
+Width: 7
+Height: 9
+Nb Boxes: 5
+Pushes: 25
+Moves: 77
+
+----------------------------------------
+#####|
+#   ######|
+# $ .. $ #|
+# $ ..$$@#|
+### .. $ #|
+==########
+Collection/Set: Thinking Rabbit Arranged
+Serial Number: 385
+Name: Thinking Rabbit Arranged 385
+Author: Thinking Rabbit
+Width: 10
+Height: 6
+Nb Boxes: 6
+Pushes: 25
+Moves: 77
+
+----------------------------------------
+#####|
+#  .####|
+#  .   ##|
+#.**#$$ #|
+# $.$   #|
+#####   #|
+====#####
+Collection/Set: Kevin 16
+Serial Number: 80
+Name: Kevin 16 80
+Author: Kevin B. Reilly
+Width: 9
+Height: 7
+Nb Boxes: 6
+Pushes: 25
+Moves: 77
+
+----------------------------------------
+#######|
+#. $@.#|
+#   $ #|
+#. # ##|
+#$##$ #|
+# .   #|
+####  #|
+===####
+Collection/Set: TP3_100
+Serial Number: 137
+Name: TP3_100 #137
+Author: Taylor & Parberry AutoGenerated 1of5
+Width: 7
+Height: 8
+Nb Boxes: 4
+Pushes: 26
+Moves: 77
+
+----------------------------------------
+#######|
+#. $@.#|
+#   $ #|
+#. # ##|
+#$##$ #|
+# .   #|
+####  #|
+===####
+Collection/Set: TP3_100
+Serial Number: 137
+Name: TP3_100 #137
+Author: Taylor & Parberry AutoGenerated 1of5
+Width: 7
+Height: 8
+Nb Boxes: 4
+Pushes: 26
+Moves: 77
+
+----------------------------------------
+########|
+#    *.#|
+# $  $.#|
+#  $$#.#|
+#    #.#|
+########
+Collection/Set: Revenge Collection 01
+Serial Number: 72
+Name: Revenge Collection 01 72
+Author: Marcus Hof
+Width: 8
+Height: 6
+Nb Boxes: 5
+Pushes: 26
+Moves: 77
+
+----------------------------------------
+#########|
+#...#...#|
+#   $  @#|
+## $*$ ##|
+# $ $ $ #|
+#   #   #|
+##  #  ##|
+=#######
+Collection/Set: Garcia_100
+Serial Number: 36
+Name: garcia_100 #36
+Author: Alberto García
+Width: 9
+Height: 8
+Nb Boxes: 7
+Pushes: 26
+Moves: 77
+
+----------------------------------------
+##########|
+# .* $ .##|
+# $  .$. #|
+# $*. $# #|
+#@$   .# #|
+##########
+Collection/Set: Revenge Collection 03
+Serial Number: 41
+Name: Revenge Collection 03 41
+Author: Marcus Hof
+Width: 10
+Height: 6
+Nb Boxes: 8
+Pushes: 26
+Moves: 77
+
+----------------------------------------
+###########|
+#    .. $ #|
+# $ $$ *# #|
+#    ##. .#|
+##$###.*$ #|
+##.## ##@##|
+###########
+Collection/Set: Revenge Collection 04
+Serial Number: 45
+Name: Revenge Collection 04 45
+Author: Marcus Hof
+Width: 11
+Height: 7
+Nb Boxes: 8
+Pushes: 26
+Moves: 77
+
+----------------------------------------
+######|
+#.#. #|
+#*.$ #|
+#@ $ ##|
+### $ #|
+==#   #|
+==##  #|
+===####
+Collection/Set: Revenge 23
+Serial Number: 23
+Name: Revenge 23 23
+Author: Marcus Hof
+Width: 7
+Height: 8
+Nb Boxes: 4
+Pushes: 27
+Moves: 77
+
+----------------------------------------
+=#####|
+=#   #|
+##   ##|
+#.....#|
+#$#$# #|
+# $  $#|
+#   $ #|
+#    ##|
+######
+Collection/Set: Kevin 16
+Serial Number: 53
+Name: Kevin 16 53
+Author: Kevin B. Reilly
+Width: 7
+Height: 9
+Nb Boxes: 5
+Pushes: 27
+Moves: 77
+
+----------------------------------------
+##############|
+#####.@ $..  #|
+#  $   $ $ # #|
+#   ##. .$   #|
+##############
+Collection/Set: Bugs1005 collections
+Serial Number: 726
+Name: Bugs1005 collections 726
+Author: Buddy Casamis
+Width: 14
+Height: 5
+Nb Boxes: 5
+Pushes: 27
+Moves: 77
+
+----------------------------------------
+########|
+###   ##|
+# . $$ #|
+#. .$ *#|
+# * $  #|
+##.#$# #|
+##   . #|
+########
+Collection/Set: SokEvo/SokHard
+Serial Number: 41
+Name: SokEvo/SokHard #41
+Author: Lee J Haywood
+Width: 8
+Height: 8
+Nb Boxes: 7
+Pushes: 27
+Moves: 77
+
+----------------------------------------
+=######|
+=#    #|
+=#    #|
+###$ ##|
+# .*.##|
+#  $  #|
+####  #|
+===#  #|
+===####
+Collection/Set: Funny Template Levels
+Serial Number: 7
+Name: Funny Template Levels 7
+Author: Martí Homs Caussa
+Width: 7
+Height: 9
+Nb Boxes: 3
+Pushes: 28
+Moves: 77
+
+----------------------------------------
+#########|
+#  . .$.###|
+# ##$.  $@#|
+#  # $  ###|
+#     ###|
+#    ##|
+######
+Collection/Set: Classic
+Serial Number: 26
+Name: Classic 26
+Author: Jorge Gloria
+Width: 11
+Height: 7
+Nb Boxes: 4
+Pushes: 28
+Moves: 77
+
+----------------------------------------
+===###|
+####.#|
+# $@ #|
+#    #|
+## ###|
+=# #  ####|
+=# #### .#|
+=#     $ #|
+=# ####  #|==###|
+=#$#|=####|==#.#|
+=# #|========# #|
+=# #|========# #|
+=# #|========#$#|
+## #|========# #|
+#  ########### ###|
+#               .#|
+##################
+Collection/Set: Spiros 02
+Serial Number: 24
+Name: Spiros 02 24
+Author: Spiros Mantzoukis
+Width: 18
+Height: 17
+Nb Boxes: 4
+Pushes: 28
+Moves: 77
+
+----------------------------------------
+########|
+#       #|
+# $ #.   ##|
+#  ## .   #|
+# $@ $ .$ #|
+#  ## .   #|
+# $ #.   ##|
+#       #|
+########
+Collection/Set: Aruba5
+Serial Number: 42
+Name: Aruba5 42
+Author: Eric F Tchong
+Width: 11
+Height: 9
+Nb Boxes: 5
+Pushes: 28
+Moves: 77
+
+----------------------------------------
+#########|
+## # *  #|
+#  ***. #|
+##.***.##|
+# $. *$ #|
+#   $$@##|
+####  ###|
+####  ###|
+#########
+Collection/Set: Revenge Collection 01
+Serial Number: 60
+Name: Revenge Collection 01 60
+Author: Marcus Hof
+Width: 9
+Height: 9
+Nb Boxes: 12
+Pushes: 28
+Moves: 77
+
+----------------------------------------
+=######|
+=# .. #|
+=#$.#$#|
+=#  # ##|
+##  #  #|
+#    $@#|
+#   ####|
+#####
+Collection/Set: Homz Levels
+Serial Number: 87
+Name: Homz Levels 87
+Author: Martí Homs Caussa
+Width: 8
+Height: 8
+Nb Boxes: 3
+Pushes: 29
+Moves: 77
+
+----------------------------------------
+===#####|
+=###*. #|
+=#   . ##|
+=# #    #|
+##  #.  #|
+# $*$   #|
+#.$  $ ##|
+#@##   #|
+########
+Collection/Set: Ionic Catalysts
+Serial Number: 961
+Name: Ionic Catalysts 961
+Author: Razorflame
+Width: 9
+Height: 9
+Nb Boxes: 6
+Pushes: 30
+Moves: 77
+
+----------------------------------------
+=####|
+##  #|
+#. $#|
+#.$ #|
+#.$ #|
+#.$ #|
+#. $##|
+#   @#|
+##   #|
+=#####
+Collection/Set: Skinner
+Serial Number: 635
+Name: Skinner #635
+Author: David W. Skinner
+Width: 6
+Height: 10
+Nb Boxes: 5
+Pushes: 31
+Moves: 77
+
+----------------------------------------
+====####|
+=####  #|
+##@##  ##|
+# $*.*  ###|
+#  ** $   #|
+###..$    #|
+==#########
+Collection/Set: Revenge Collection 05
+Serial Number: 15
+Name: Revenge Collection 05 15
+Author: Marcus Hof
+Width: 11
+Height: 7
+Nb Boxes: 7
+Pushes: 31
+Moves: 77
+
+----------------------------------------
+===#####|
+===#   #|
+####$..#|
+#   $$.#|
+#   # ##|
+####  #|
+===#  #|
+===#  #|
+===####
+Collection/Set: Funny Template Levels
+Serial Number: 20
+Name: Funny Template Levels 20
+Author: Martí Homs Caussa
+Width: 8
+Height: 9
+Nb Boxes: 3
+Pushes: 35
+Moves: 77
+
+----------------------------------------
+====####|
+==###  #|
+==#    #|
+==#    #|
+==## ###|
+#### $.##|
+#    .$@#|
+#   #$.##|
+##### ##|
+==#    #|
+==#    #|
+==#  ###|
+==####
+Collection/Set: LOMA
+Serial Number: 02-03
+Name: LOMA #02-03
+Author: Sven Egevad
+Width: 9
+Height: 13
+Nb Boxes: 3
+Pushes: 35
+Moves: 77
+
+----------------------------------------
+#############|
+#@          #|
+# ****#**** #|
+# *       * #|
+# *** # *** #|
+#   * # *   #|
+# #** # **# #|
+# #   #   # #|
+# #** # **# #|
+#   * # *   #|
+# *** # *** #|
+# *   #   * #|
+# *** # *** #|
+#   * # *   #|
+# *** # *** #|
+# *       * #|
+# ***.$**** #|
+#           #|
+#############
+Collection/Set: Dushi 06
+Serial Number: 30
+Name: Dushi 06 30
+Author: Eric F Tchong
+Width: 13
+Height: 19
+Nb Boxes: 60
+Pushes: 3
+Moves: 78
+
+----------------------------------------
+=#######|
+##     #|
+#   ## #|
+# #*@* ##|
+# # #   #|
+# #   # #|
+# ##### #|
+#       #|
+#########
+Collection/Set: Escapology
+Serial Number: 5
+Name: Escapology 5
+Author: niwa
+Width: 9
+Height: 9
+Nb Boxes: 2
+Pushes: 8
+Moves: 78
+
+----------------------------------------
+======####|===########|
+=====##  #|==##      ###|
+=====# $.##|=#  ####   #|
+######    #|=#   # ##  #|
+#        ##### #$##### #|
+# ### ##           # # #|
+#  ## ### #### # # # # #|
+##  # ##  ####  .  # # #|
+=###         # # # # # #|
+===#  ###  @    $# ### #|
+===#  #########   .#   #|
+===##  ####|==##### $  #|
+====##    #|====#.     #|
+=====######|====########
+Collection/Set: Warehouse
+Serial Number: 159
+Name: Warehouse 159
+Author: Iroh
+Width: 24
+Height: 14
+Nb Boxes: 4
+Pushes: 11
+Moves: 78
+
+----------------------------------------
+
+Process finished with exit code 0
+
+
+*/
 
 static short firstX = 999;
 static short firstY = 999;
@@ -156,30 +1501,17 @@ static short lastY = 0;
 
 short unpackLength;
 
-void putObject(bool dryRun, int *x, int y, unsigned char ch, int length) {
+void putObject(int *x, int y, unsigned char ch, int length) {
 
 	if (!length)
 		length = 1;
 
 	unsigned char *board = ADDRESS_OF(y) + *x;
 	for (int i = 0; i < length; i++) {
-		if (!dryRun)
-			*board++ = ch;
+		*board++ = ch;
 
 		if (ch == CH_PILL_1)
 			pillCount++;
-	}
-
-	if (dryRun && ch == CH_BRICKWALL) {
-		if (*x < firstX)
-			firstX = *x;
-		if (*x > lastX)
-			lastX = *x;
-
-		if (y < firstY)
-			firstY = y;
-		if (y > lastY)
-			lastY = y;
 	}
 
 	*x += length;
@@ -219,72 +1551,66 @@ void clearBoard() {
 	//    zeroBuffer((int *)ADDRESS_OF(0), __BOARD_SIZE / 4); }
 }
 
-void unpackRoom(BOUNDARY *boundary, bool dryRun, int roomNumber) {
+void unpackRoom(int roomNumber) {
 
 	pillCount = 0;
 
-	firstX = 999;
-	firstY = 999;
-	lastX = 0;
-	lastY = 0;
+	int left = (__BOARD_WIDTH - room[roomNumber].width) >> 1;
 
-	int x = boundary->x, y = boundary->y;
+	int x = left;
+	int y = (__BOARD_DEPTH - room[roomNumber].height) >> 1;
 
 	unpackLength = 0;
 
-	if (!dryRun)
-		clearBoard();
+	clearBoard();
 
-	const char *p = room[roomNumber];
+	const char *p = room[roomNumber].design;
 	while (*p) {
 
 		switch (*p) {
 		case NEXTLINE:
 			y += unpackLength ? unpackLength : 1;
-			x = boundary->x;
+			x = left;
 			break;
 
 		case STEEL:
-			putObject(dryRun, &x, y, CH_STEELWALL, unpackLength);
+			putObject(&x, y, CH_STEELWALL, unpackLength);
 			break;
 
 		case WALL:
-			putObject(dryRun, &x, y, CH_BRICKWALL, unpackLength);
+			putObject(&x, y, CH_BRICKWALL, unpackLength);
 			break;
 
 		case PLAYERONNORMAL:
 			manX = x;
 			manY = y;
 
-			//			setScroll();
-
-			putObject(dryRun, &x, y, CH_BLANK, unpackLength);
+			putObject(&x, y, CH_BLANK, unpackLength);
 			break;
 
 		case BOXONTARGET:
-			putObject(dryRun, &x, y, CH_BOX_LOCKED, unpackLength);
+			putObject(&x, y, CH_BOX_LOCKED, unpackLength);
 			break;
 
 		case PLAYERONGOAL:
 			manX = x;
 			manY = y;
 
-			//		setScroll();
-			putObject(dryRun, &x, y, CH_PILL_1, unpackLength);
+			putObject(&x, y, CH_PILL_1, unpackLength);
 			break;
 
 		case TARGET:
-			putObject(dryRun, &x, y, CH_PILL_1, unpackLength);
+			putObject(&x, y, CH_PILL_1, unpackLength);
 			break;
 
 		case GAP:
 		case GAP2:
 		case GAP3:
-			putObject(dryRun, &x, y, CH_BLANK, unpackLength);
+			putObject(&x, y, CH_BLANK, unpackLength);
 			break;
 
 		case BOX:
-			putObject(dryRun, &x, y, CH_BOX, unpackLength);
+			putObject(&x, y, CH_BOX, unpackLength);
 			break;
 
 		case '0':
@@ -306,58 +1632,6 @@ void unpackRoom(BOUNDARY *boundary, bool dryRun, int roomNumber) {
 
 		p++;
 	}
-
-	if (dryRun) {
-		int width = lastX - firstX + 1;
-		boundary->width = width < 0 ? 0 : width;
-
-		int height = lastY - firstY + 1;
-		boundary->height = height < 0 ? 0 : height;
-	}
-
-	// else {
-
-	// 	unsigned char *board;
-	// 	for (int y = 0; y < __BOARD_DEPTH; y++) {
-
-	// 		for (int x = 0; x < __BOARD_WIDTH; x++) {
-	// 			board = ADDRESS_OF(y) + x;
-	// 			if (*board == CH_BLANK)
-	// 				*board = CH_STEELWALL;
-	// 			else
-	// 				break;
-	// 		}
-
-	// 		for (int x = __BOARD_WIDTH - 1; x >= 0; x--) {
-	// 			board = ADDRESS_OF(y) + x;
-	// 			if (*board == CH_BLANK)
-	// 				*board = CH_STEELWALL;
-	// 			else
-	// 				break;
-	// 		}
-	// 	}
-
-	// 	for (int x = 0; x < __BOARD_WIDTH; x++) {
-
-	// 		for (int y = 0; y < __BOARD_DEPTH; y++) {
-	// 			board = ADDRESS_OF(y) + x;
-	// 			if (*board != CH_BRICKWALL) //== CH_BLANK || *board == CH_STEELWALL)
-	// 				*board = CH_STEELWALL;
-	// 			else
-	// 				break;
-	// 		}
-
-	// 		for (int y = __BOARD_DEPTH - 1; y >= 0; y--) {
-	// 			board = ADDRESS_OF(y) + x;
-	// 			if (*board != CH_BRICKWALL) //== CH_BLANK || *board == CH_STEELWALL)
-	// 				*board = CH_STEELWALL;
-	// 			else
-	// 				break;
-	// 		}
-	// 	}
-	// }
-
-	//	actualScore = pillCount;
 
 	setScroll();
 }

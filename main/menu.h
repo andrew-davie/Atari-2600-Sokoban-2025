@@ -18,7 +18,8 @@ void zeroBuffer(int *buffer, int size);
 void initMenuDatastreams();
 
 
-extern unsigned char palicc[][3];
+extern unsigned char palicc[8][3];
 extern int menuIconPalette;
+extern int micp;
 
 #endif

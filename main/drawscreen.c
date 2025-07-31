@@ -475,11 +475,10 @@ void initIconPalette() {
 
 	int pal[3] = {0x44, 0x94, 0xD4};
 	for (int i = 0; i < 3; i++)
-		rollColours[i] = convertColour(startup ? palicc[menuIconPalette][i] : pal[i]);
+		rollColours[i] = convertColour(startup ? palicc[micp][i] : pal[i]);
 
-	roller++;
-	if (roller > 2)
-		roller = 0; // tmp
+	if (++roller > 2)
+		roller = 0;
 
 	int baseRoller = roller;
 
@@ -495,6 +494,13 @@ void initIconPalette() {
 				baseRoller = 0;
 		}
 	}
+
+	// pal0 = RAM + _BUF_MENU_COLUP0 + ICON_BASE - 1;
+	// unsigned char *sourcePal = RAM + _BUF_MENU_COLUPF;
+
+	// for (int j = 0; j < 15; j++) {
+	// 	*pal0++ = *sourcePal++;
+	// }
 }
 
 void drawIconScreen(int startRow, int endRow, bool staticx) { // --> 101102 cycles
@@ -509,13 +515,10 @@ void drawIconScreen(int startRow, int endRow, bool staticx) { // --> 101102 cycl
 		unsigned char *pf2r = RAM + _BUF_MENU_PF1_RIGHT;
 		unsigned char *pf1r = RAM + _BUF_MENU_PF2_RIGHT;
 
-		int rl = 2; // roller;
+		int rl = 0;
 
 		for (int i = 0; i < 198; i += 3) {
 
-			rl++;
-			if (rl > 2)
-				rl = 0;
 			*ppf = 0;
 			*(ppf + _ARENA_SCANLINES) = pf1l[i + rl];
 			*(ppf + _ARENA_SCANLINES * 2) = BitRev[pf2l[i + rl]];
@@ -531,6 +534,9 @@ void drawIconScreen(int startRow, int endRow, bool staticx) { // --> 101102 cycl
 				}
 			}
 			ppf++;
+
+			if (++rl > 2)
+				rl = 0;
 		}
 
 		ppf = RAM + ICON_BASE + _BUF_MENU_GRP0A + 36;
@@ -538,75 +544,38 @@ void drawIconScreen(int startRow, int endRow, bool staticx) { // --> 101102 cycl
 			*(ppf + i + _ARENA_SCANLINES * 3) =
 			    *(ppf + i + _ARENA_SCANLINES * 3) | (getRandom32() & getRandom32());
 			*(ppf + i + _ARENA_SCANLINES * 4) =
-			    *(ppf + i + _ARENA_SCANLINES * 4) & 0xF | (getRandom32() & getRandom32() & 0xF0);
+			    (*(ppf + i + _ARENA_SCANLINES * 4) & 0xF) | (getRandom32() & getRandom32() & 0xF0);
 		}
 
 	} else {
 #define SHIFT 8
 #define ICON_WIDTH 48
 #define ICON_DEPTH 22
-#define RESCALE(a) ((a << SHIFT) * 360 / 256 / ICON_WIDTH)
 
-		static const short rescaleX[] = {
+		int scaleX = 0;
+		int det = room[Room].width << SHIFT;
+		while (det > 0) {
+			scaleX++;
+			det -= ICON_WIDTH;
+		}
 
-		    // converts 0-39 horizontal --> 0-47
+		scaleX = (scaleX * (0x500 / 3)) >> 8;
 
-		    RESCALE(18),
-		    RESCALE(18),
-		    RESCALE(18),
-		    RESCALE(18),
-		    RESCALE(18),
-		    RESCALE(18),
-		    RESCALE(18),
-		    RESCALE(18),
-		    RESCALE(18),
-		    RESCALE(18),
+		int scaleY = 0;
+		det = room[Room].height << SHIFT;
+		while (det > 0) {
+			scaleY++;
+			det -= ICON_DEPTH - 4;
+		}
 
-		    // RESCALE(0),  RESCALE(1),  RESCALE(2),  RESCALE(3),  RESCALE(4),  RESCALE(5),
-		    // RESCALE(6),
-		    // RESCALE(7),  RESCALE(8),  RESCALE(9),
-
-		    RESCALE(18),
-		    RESCALE(18),
-		    RESCALE(18),
-		    RESCALE(18),
-		    RESCALE(18),
-		    RESCALE(18),
-		    RESCALE(18),
-		    RESCALE(18),
-		    RESCALE(18),
-		    RESCALE(19),
-		    RESCALE(20),
-		    RESCALE(21),
-		    RESCALE(22),
-		    RESCALE(23),
-		    RESCALE(24),
-		    RESCALE(25),
-		    RESCALE(26),
-		    RESCALE(27),
-		    RESCALE(28),
-		    RESCALE(29),
-		    RESCALE(30),
-		    RESCALE(31),
-		    RESCALE(32),
-		    RESCALE(33),
-		    RESCALE(34),
-		    RESCALE(36),
-		    RESCALE(37),
-		    RESCALE(38),
-		    RESCALE(39),
-		};
-
-		int shrunkY = (boundary.height * 14) >> 3;
-		int extreme = boundary.width > shrunkY ? boundary.width : shrunkY;
-		int scale = rescaleX[extreme];
+		int scale = scaleX > scaleY ? scaleX : scaleY;
 
 		unsigned char cc[ICON_WIDTH]; // maps icon x (0-47) --> board column (0-39)
 
-		int base = ((__BOARD_WIDTH / 2) << SHIFT) - (ICON_WIDTH / 2) * scale;
+		int base = ((__BOARD_WIDTH / 2) << SHIFT) - (ICON_WIDTH / 2) * ((scale * (0x300 / 5)) >> 8);
 		for (int i = 0; i < ICON_WIDTH; i++) {
 			cc[i] = (base < 0 || base >= ((__BOARD_WIDTH << SHIFT))) ? 0 : base >> SHIFT;
-			base += scale;
+			base += (scale * (0x300 / 5)) >> 8;
 		}
 
 		unsigned char rr[ICON_DEPTH]; // maps icon row (0-21) --> board row (0-21)
@@ -617,15 +586,14 @@ void drawIconScreen(int startRow, int endRow, bool staticx) { // --> 101102 cycl
 			base += scale;
 		}
 
-		int m1 = 4 + (startRow & 1);
-		int m2 = m1 ^ 1;
+		int m1 = 0;  //(startRow & 1);
+		int m2 = m1; // ^ 1;
 
 		int br = roller;
 		if (!enableICC)
 			br--;
 
 		for (int row = startRow; row < endRow; row++) {
-
 			p = ADDRESS_OF(rr[row]);
 			for (int col = 0; col < _1ROW; col++)
 				img[col] = charSet[p[col]].small;
@@ -644,20 +612,20 @@ void drawIconScreen(int startRow, int endRow, bool staticx) { // --> 101102 cycl
 					int roll = segment * 3 + br;
 
 					// clang-format off
-                ppf[segment] = (unsigned char)(img[p[0]][roll] >> m2 << 7) |
-                               (unsigned char)(img[p[1]][roll] >> m1 << 7) >> 1 |
-                               (unsigned char)(img[p[2]][roll] >> m2 << 7) >> 2 |
-                               (unsigned char)(img[p[3]][roll] >> m1 << 7) >> 3 |
-                               (unsigned char)(img[p[4]][roll] >> m2 << 7) >> 4 |
-                               (unsigned char)(img[p[5]][roll] >> m1 << 7) >> 5 |
-                               (unsigned char)(img[p[6]][roll] >> m2 << 7) >> 6 |
-                               (unsigned char)(img[p[7]][roll] >> m1 << 7) >> 7;
+                    ppf[segment] = (unsigned char)(img[p[0]][roll] /*>> m2*/ << 7) |
+                                (unsigned char)(img[p[1]][roll] /*>> m1*/ << 7) >> 1 |
+                                (unsigned char)(img[p[2]][roll] /*>> m2*/ << 7) >> 2 |
+                                (unsigned char)(img[p[3]][roll] /*>> m1*/ << 7) >> 3 |
+                                (unsigned char)(img[p[4]][roll] /*>> m2*/ << 7) >> 4 |
+                                (unsigned char)(img[p[5]][roll] /*>> m1*/ << 7) >> 5 |
+                                (unsigned char)(img[p[6]][roll] /*>> m2*/ << 7) >> 6 |
+                                (unsigned char)(img[p[7]][roll] /*>> m1*/ << 7) >> 7;
 					// clang-format on
 
-					if (staticx) {
-						ppf[segment] |= getRandom32();
-						ppf[segment] &= getRandom32();
-					}
+					// if (staticx) {
+					// 	ppf[segment] |= getRandom32();
+					// 	ppf[segment] &= getRandom32();
+					// }
 				}
 
 				ppf += _ARENA_SCANLINES;

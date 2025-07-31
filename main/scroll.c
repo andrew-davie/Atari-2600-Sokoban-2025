@@ -114,9 +114,9 @@ void Scroll() {
 			scrollY[mode] += speedY[mode];
 
 			if (mode == DISPLAY_HALF) {
-				if (boundary.width < 14)
+				if (room[Room].width < 14)
 					scrollX[mode] = 76 << SHIFT_SCROLLX;
-				if (boundary.height < 10)
+				if (room[Room].height < 10)
 					scrollY[mode] = 66 << SHIFT_SCROLLY;
 			}
 		}

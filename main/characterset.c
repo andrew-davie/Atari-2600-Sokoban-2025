@@ -398,14 +398,14 @@ static const unsigned char char_box_locked[CHAR_HEIGHT] = {
 static const unsigned char smallchar_box[CHAR_HEIGHT_HALF] = {
 
     0b11111111,
-    0b11111111,
-    0b11111111,
-    0b11111111,
-    0b00000000,
-    0b00000000,
+    0b11111110,
+    0b11111110,
     0b11111111,
     0b00000000,
-    0b00100111,
+    0b00000000,
+    0b11111111,
+    0b00000000,
+    0b00100110,
     0b11111100,
     0b00000000,
     0b00000000,
@@ -1424,61 +1424,60 @@ const CSET charSet[CH_MAX] = {
 
     // LARGE CHARACTER        MEDIUM+SMALL CHARACTER PAIRS
 
-    { C(char_parallaxBlank),  C(char_parallaxBlank),       }, // 00
-    { C(__CHAR_BRICKWALL),    C(__SMALLCHAR_BRICKWALL),    }, // 01
-    { C(__CHAR_STEELWALL),    C(__SMALLCHAR_STEELWALL),    }, // 02
-    { char_pill1,             smallchar_pill7,             }, // 03
-    { char_pill1,             smallchar_pill7,             }, // 04
-    { char_box_UtoD_top_0,    smallchar_box,               }, // 05
-    { char_PlayerCell,        char_PlayerCell,             }, // 06
-    { char_box_UtoD_top_0,    smallchar_box,               }, // 00 _UtoD_top_0,    },// 07
-    { char_box_UtoD_top_1,    smallchar_box_UtoD_top_1,    }, // 00 _UtoD_top_0,    },// 08
-    { char_box_UtoD_top_2,    smallchar_box_UtoD_top_1,    }, // 00 _UtoD_top_1,    },// 09
-    { char_box_UtoD_top_3,    smallchar_box_UtoD_top_2,    }, // 00 _UtoD_top_1,    },// 10
-    { char_box_UtoD_top_4,    smallchar_box_UtoD_top_3,    }, // 00 _UtoD_top_2,    },// 11
-    { char_box_UtoD_top_5,    smallchar_box_UtoD_top_3,    }, // 00 _UtoD_top_2,    },// 12
-    { char_box_UtoD_top_6,    smallchar_box_UtoD_top_4,    }, // 00 _UtoD_top_3,    },// 13
-    { char_box_UtoD_top_7,    smallchar_box_UtoD_top_4,    }, // 00 _UtoD_top_3,    },// 14
-    { char_box_UtoD_top_8,    smallchar_box_UtoD_top_5,    }, // 00 _UtoD_top_4,    },// 15
-    { char_box_UtoD_bottom_0, char_parallaxBlank,          }, // 00 _UtoD_bottom_0, },// 16
-    { char_box_UtoD_bottom_1, smallchar_box_UtoD_bottom_5, }, // 00 _UtoD_bottom_0, },// 17
-    { char_box_UtoD_bottom_2, smallchar_box_UtoD_bottom_5, }, // 00 _UtoD_bottom_1, },// 18
-    { char_box_UtoD_bottom_3, smallchar_box_UtoD_bottom_4, }, // 00 _UtoD_bottom_1, },// 19
-    { char_box_UtoD_bottom_4, smallchar_box_UtoD_bottom_3, }, // 00 _UtoD_bottom_2, },// 20
-    { char_box_UtoD_bottom_5, smallchar_box_UtoD_bottom_3, }, // 00 _UtoD_bottom_2, },// 21
-    { char_box_UtoD_bottom_6, smallchar_box_UtoD_bottom_2, }, // 00 _UtoD_bottom_3, },// 22
-    { char_box_UtoD_bottom_7, smallchar_box_UtoD_bottom_2, }, // 00 _UtoD_bottom_3, },// 23
-    { char_box_UtoD_bottom_8, smallchar_box_UtoD_bottom_1, }, // 00 _UtoD_bottom_4, },// 24
-    { char_box_LtoR_left_0,   smallchar_box,               }, // 00 _LtoR_left_0,   },// 25
-    { char_box_LtoR_left_1,   smallchar_box_LtoR_left_1,   }, // 00 _LtoR_left_1,   },// 26
-    { char_box_LtoR_left_2,   smallchar_box_LtoR_left_1,   }, // 00 _LtoR_left_2,   },// 27
-    { char_box_LtoR_left_3,   smallchar_box_LtoR_left_2,   }, // 00 _LtoR_left_3,   },// 28
-    { char_box_LtoR_left_4,   smallchar_box_LtoR_left_2,   }, // 00 _LtoR_left_4,   },// 29
-    { char_box_LtoR_right_0,  char_parallaxBlank,          }, // 00 _LtoR_right_0,  },// 30
-    { char_box_LtoR_right_1,  smallchar_box_LtoR_right_1,  }, // 00 _LtoR_right_1,  },// 31
-    { char_box_LtoR_right_2,  smallchar_box_LtoR_right_1,  }, // 00 _LtoR_right_2,  },// 32
-    { char_box_LtoR_right_3,  smallchar_box_LtoR_right_2,  }, // 00 _LtoR_right_3,  },// 33
-    { char_box_LtoR_right_4,  smallchar_box_LtoR_right_2,  }, // 00 _LtoR_right_4,  },// 34
-    { char_pill1,             smallchar_pill7,             }, // 35
-    { char_pill2,             smallchar_pill7,             }, // 36
-    { char_pill3,             smallchar_pill7,             }, // 37
-    { char_pill4,             smallchar_pill7,             }, // 38
-    { char_pill5,             smallchar_pill7,             }, // 39
-    { char_pill6,             smallchar_pill7,             }, // 40
-    { char_pill7,             smallchar_pill7,             }, // 41
-    { char_box_locked,        smallchar_box_locked,        }, // 42
-    { char_box_locked2,       smallchar_box_locked2,       }, // 43
-    { char_box_correct,       smallchar_box_correct,       }, // 44
-    { char_box_deadlocked,    smallchar_box_deadlocked,    }, // 46
-    { char_box_UtoD_top_0,    smallchar_box,               }, // 47 padlock
-    { char_box_UtoD_top_0,    smallchar_box,               }, // 48 undo
-    { char_box_UtoD_top_0,    smallchar_box,               }, // 49 undo_correct
-
-    { char_box_zoom1,    smallchar_box_deadlocked,               }, // 49 undo_correct
-    { char_box_zoom2,    smallchar_box_deadlocked2,               }, // 49 undo_correct
-    { char_box_zoom3,    smallchar_box_deadlocked3,               }, // 49 undo_correct
-    { char_box_zoom4,    smallchar_box_deadlocked4,               }, // 49 undo_correct
-    { char_box_zoom5,    C(char_parallaxBlank),               }, // 49 undo_correct
+    { C(char_parallaxBlank),  C(char_parallaxBlank),       }, // 00 CH_BLANK,             
+    { C(__CHAR_BRICKWALL),    C(__SMALLCHAR_BRICKWALL),    }, // 01 CH_BRICKWALL,         
+    { C(__CHAR_STEELWALL),    C(__SMALLCHAR_STEELWALL),    }, // 02 CH_STEELWALL,         
+    { char_pill1,             smallchar_pill7,             }, // 03 CH_PILL1,             
+    { char_pill1,             smallchar_pill7,             }, // 04 CH_PILL2,             
+    { char_box_UtoD_top_0,    smallchar_box,               }, // 05 CH_BOX,               
+    { char_PlayerCell,        char_PlayerCell,             }, // 06 CH_MAN,               
+    { char_box_UtoD_top_0,    smallchar_box,               }, // 07 CH_BOX_UTOD_TOP_0,    
+    { char_box_UtoD_top_1,    smallchar_box_UtoD_top_1,    }, // 08 CH_BOX_UTOD_TOP_1,    
+    { char_box_UtoD_top_2,    smallchar_box_UtoD_top_1,    }, // 09 CH_BOX_UTOD_TOP_2,    
+    { char_box_UtoD_top_3,    smallchar_box_UtoD_top_2,    }, // 10 CH_BOX_UTOD_TOP_3,    
+    { char_box_UtoD_top_4,    smallchar_box_UtoD_top_3,    }, // 11 CH_BOX_UTOD_TOP_4,    
+    { char_box_UtoD_top_5,    smallchar_box_UtoD_top_3,    }, // 12 CH_BOX_UTOD_TOP_5,    
+    { char_box_UtoD_top_6,    smallchar_box_UtoD_top_4,    }, // 13 CH_BOX_UTOD_TOP_6,    
+    { char_box_UtoD_top_7,    smallchar_box_UtoD_top_4,    }, // 14 CH_BOX_UTOD_TOP_7,    
+    { char_box_UtoD_top_8,    smallchar_box_UtoD_top_5,    }, // 15 CH_BOX_UTOD_TOP_8,    
+    { char_box_UtoD_bottom_0, char_parallaxBlank,          }, // 16 CH_BOX_UTOD_BOTTOM_0, 
+    { char_box_UtoD_bottom_1, smallchar_box_UtoD_bottom_5, }, // 17 CH_BOX_UTOD_BOTTOM_1, 
+    { char_box_UtoD_bottom_2, smallchar_box_UtoD_bottom_5, }, // 18 CH_BOX_UTOD_BOTTOM_2, 
+    { char_box_UtoD_bottom_3, smallchar_box_UtoD_bottom_4, }, // 19 CH_BOX_UTOD_BOTTOM_3, 
+    { char_box_UtoD_bottom_4, smallchar_box_UtoD_bottom_3, }, // 20 CH_BOX_UTOD_BOTTOM_4, 
+    { char_box_UtoD_bottom_5, smallchar_box_UtoD_bottom_3, }, // 21 CH_BOX_UTOD_BOTTOM_5, 
+    { char_box_UtoD_bottom_6, smallchar_box_UtoD_bottom_2, }, // 22 CH_BOX_UTOD_BOTTOM_6, 
+    { char_box_UtoD_bottom_7, smallchar_box_UtoD_bottom_2, }, // 23 CH_BOX_UTOD_BOTTOM_7, 
+    { char_box_UtoD_bottom_8, smallchar_box_UtoD_bottom_1, }, // 24 CH_BOX_UTOD_BOTTOM_8, 
+    { char_box_LtoR_left_0,   smallchar_box,               }, // 25 CH_BOX_LTOR_LEFT_0,   
+    { char_box_LtoR_left_1,   smallchar_box_LtoR_left_1,   }, // 26 CH_BOX_LTOR_LEFT_1,   
+    { char_box_LtoR_left_2,   smallchar_box_LtoR_left_1,   }, // 27 CH_BOX_LTOR_LEFT_2,   
+    { char_box_LtoR_left_3,   smallchar_box_LtoR_left_2,   }, // 28 CH_BOX_LTOR_LEFT_3,   
+    { char_box_LtoR_left_4,   smallchar_box_LtoR_left_2,   }, // 29 CH_BOX_LTOR_LEFT_4,   
+    { char_box_LtoR_right_0,  char_parallaxBlank,          }, // 30 CH_BOX_LTOR_RIGHT_0,  
+    { char_box_LtoR_right_1,  smallchar_box_LtoR_right_1,  }, // 31 CH_BOX_LTOR_RIGHT_1,  
+    { char_box_LtoR_right_2,  smallchar_box_LtoR_right_1,  }, // 32 CH_BOX_LTOR_RIGHT_2,  
+    { char_box_LtoR_right_3,  smallchar_box_LtoR_right_2,  }, // 33 CH_BOX_LTOR_RIGHT_3,  
+    { char_box_LtoR_right_4,  smallchar_box_LtoR_right_2,  }, // 34 CH_BOX_LTOR_RIGHT_4,  
+    { char_pill1,             smallchar_pill7,             }, // 35 CH_PILL_1,            
+    { char_pill2,             smallchar_pill7,             }, // 36 CH_PILL_2,            
+    { char_pill3,             smallchar_pill7,             }, // 37 CH_PILL_3,            
+    { char_pill4,             smallchar_pill7,             }, // 38 CH_PILL_4,            
+    { char_pill5,             smallchar_pill7,             }, // 39 CH_PILL_5,            
+    { char_pill6,             smallchar_pill7,             }, // 40 CH_PILL_6,            
+    { char_pill7,             smallchar_pill7,             }, // 41 CH_PILL_7,            
+    { char_box_locked,        smallchar_box_locked,        }, // 42 CH_BOX_LOCKED,        
+    { char_box_locked2,       smallchar_box_locked2,       }, // 43 CH_BOX_LOCKED2,       
+    { char_box_correct,       smallchar_box_correct,       }, // 44 CH_BOX_CORRECT,       
+    { char_box_deadlocked,    smallchar_box_deadlocked,    }, // 45 CH_BOX_DEADLOCK,      
+    { char_box_UtoD_top_0,    smallchar_box,               }, // 46 CH_BOX_PADLOCK,       
+    { char_box_UtoD_top_0,    smallchar_box,               }, // 47 CH_BOX_UNDO,          
+    { char_box_UtoD_top_0,    smallchar_box,               }, // 48 CH_BOX_UNDO_CORRECT,  
+    { char_box_zoom1,    smallchar_box_deadlocked,         }, // 49 CH_BOX_ZOOM1,         
+    { char_box_zoom2,    smallchar_box_deadlocked2,        }, // 50 CH_BOX_ZOOM2,         
+    { char_box_zoom3,    smallchar_box_deadlocked3,        }, // 51 CH_BOX_ZOOM3,         
+    { char_box_zoom4,    smallchar_box_deadlocked4,        }, // 52 CH_BOX_ZOOM4,         
+    { char_box_zoom5,    C(char_parallaxBlank),            }, // 53 CH_BOX_ZOOM5,         
 };
 
 // clang-format on

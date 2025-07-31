@@ -30,7 +30,7 @@ int halfSize(int x, int y, int letter, bool render);
 
 #define LUMSHIFT 1              /* speed of title pulsing -- 0 = fast, 1 is slower, etc. */
 
-unsigned char palicc[][3] = {
+unsigned char palicc[8][3] = {
 
 {0xf8, 0x78, 0x38},
 {0x28, 0xa8, 0x18},
@@ -582,17 +582,19 @@ void MenuOverscan() {
 
 	case KERNEL_MENU:
 
-		staticx += 50;
+		if (staticx < 4 << 10)
+			staticx += 50;
+
 		if (!rangeRandom(1000))
-			staticx = 1000;
+			staticx = 2000;
 
 		if (lastRoom != Room) {
 			lastRoom = Room;
-			staticx = 1000;
+			staticx = 6000;
 			roomUnpack(Room, true);
 		}
 
-		staticy = !rangeRandom(staticx >> 10);
+		staticy = !rangeRandom(staticx >> 9);
 
 		initIconPalette();
 
@@ -631,6 +633,7 @@ void resetMode() {
 }
 
 int menuIconPalette = 0;
+int micp = 0;
 
 void drawICCScreen(const unsigned char *icc) {
 
@@ -638,6 +641,7 @@ void drawICCScreen(const unsigned char *icc) {
 	static int cdelay = 0;
 
 	if (--cdelay < 0) {
+		micp = menuIconPalette;
 		menuIconPalette = rangeRandom(sizeof(palicc) / sizeof(palicc[0]));
 		initIconPalette();
 		cdelay = 240;

@@ -72,7 +72,6 @@ int notifyY;
 char *notifyString;
 
 bool waitRelease;
-BOUNDARY boundary; // TODO : incomplete implementation
 
 #if ENABLE_FIREWORKS
 FIREWORKS fireworks[SPLATS];
@@ -277,20 +276,9 @@ void roomUnpack(int roomNumber, int center) {
 	// Decode the room data
 	// First dummy-unpack to get dimensions of room, then center and unpack
 
-	boundary.x = 0;
-	boundary.y = 0;
-
 	showRoomCounter = 100;
 
-	if (center) {
-
-		unpackRoom(&boundary, true, roomNumber);
-
-		boundary.x = (__BOARD_WIDTH - boundary.width) >> 1;
-		boundary.y = (__BOARD_DEPTH - boundary.height) >> 1;
-	}
-
-	unpackRoom(&boundary, false, roomNumber);
+	unpackRoom(roomNumber);
 }
 
 // void clearBoard() {
