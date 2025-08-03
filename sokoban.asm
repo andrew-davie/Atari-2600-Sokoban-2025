@@ -1082,7 +1082,7 @@ __DIGIT_SHAPE
        dc BXXX_XXX_
        dc BXXX_XXX_
        dc BXXX_XXX_
-       dc BX_X_X_X_
+       dc B__X_X_X_
        dc B__X___X_
        dc B__X___X_
        dc B_XX___X_
@@ -1091,7 +1091,7 @@ __DIGIT_SHAPE
        dc B_XX_XX__
        dc B__X_X___
        dc B__X_X___
-       dc BX_X_X_X_
+       dc B__X_X_X_
        dc BXXX_XXX_
        dc BXXX_XXX_
        dc BXXX_XXX_
@@ -1211,20 +1211,20 @@ __DIGIT_SHAPE
        dc BX_X_____
        dc BX_X_____
        dc BX_X_____
+       dc BX_X__X__
+       dc BX_X__X__
+       dc BX_X__X__
+       dc BX_X__X__
        dc BX_X_____
-       dc BX_X_X_X_
-       dc BX_X_X_X_
-       dc BX_X_X_X_
-       dc BX_X_X_X_
-       dc BX_X__X__
-       dc BX_X__X__
-       dc BX_X__X__
-       dc BX_X__X__
+       dc BX_X_____
+       dc BX_X_____
+       dc BX_X_____
+       dc BX_X_____
+       dc B________
        dc B_____X__
-       dc B____X_X_
-       dc B____X_X_
-       dc B____X_X_
-       dc BX_X_X_X_
+       dc B_____X__
+       dc B_____X__
+       dc BX_X__X__
        dc BX_X_____
        dc BX_X_____
        dc BX_X_____
@@ -1544,27 +1544,27 @@ __CHAR_A_TO_Z
    dc B________
    dc B________
 
-   dc BXXX_____
-   dc BXXX_____
-   dc BXXX_____
-   dc BXX______
-   dc BXX______
+   dc B________
+   dc B__XXX___
+   dc B__XXX___
+   dc B__XXX___
    dc B________
    dc B________
-   dc B________
-   dc B________
+   dc B__XXX___
+   dc B__XXX___
+   dc B__XXX___
    dc B________
 
-   dc B___XXX__
-   dc B__X___X_
-   dc B_X_XX__X
-   dc B_X_X_X_X
-   dc B_X_X_X_X
-   dc B_X_XX__X
-   dc B_X_X_X_X
-   dc B_X_X_X_X
-   dc B__X___X_
-   dc B___XXX__
+   dc BXX______
+   dc BXX__XX__
+   dc B___XX___
+   dc B___XX___
+   dc B__XX____
+   dc B__XX____
+   dc B_XX_____
+   dc BXX______
+   dc BXX__XX__
+   dc B____XX__
 
    dc B__XXX___
    dc B_XXXXX__
@@ -1863,16 +1863,16 @@ __CHAR_A_TO_Z
    dc BXXXXXXX_
    dc B_XXXXX__
 
-   dc B___XX___
-   dc B__XXX___
-   dc B__XXX___
-   dc B__XXX___
-   dc B___XX___
-   dc B___XX___
-   dc B___XX___
-   dc B__XXXX__
-   dc B__XXXX__
-   dc B__XXXX__
+   dc B____XXX_
+   dc B___XXXX_
+   dc B___XXXX_
+   dc B___XXXX_
+   dc B____XXX_
+   dc B____XXX_
+   dc B____XXX_
+   dc B___XXXXX
+   dc B___XXXXX
+   dc B___XXXXX
 
    dc B_XXXXX__
    dc BXXXXXXX_

@@ -16,6 +16,8 @@ void clearBuffer(int *buffer, int size);
 void zeroBuffer(int *buffer, int size);
 
 void initMenuDatastreams();
+void binaryToDecimalPrint(char *dest, int value);
+void removeLeadingZero(char *p);
 
 
 extern unsigned char palicc[8][3];

@@ -46,9 +46,9 @@
 void setJumpVectors(int midKernel, int exitKernel);
 void InitializeNewGame();
 void roomUnpack(int roomNumber, int center);
-void clearBoard();
+void clearBoard(char ch);
 
-void drawWord(const char *string, int y);
+void drawWord(const char *string, int y, bool wobble, int colour);
 
 enum DisplayMode { DISPLAY_NORMAL, DISPLAY_HALF, DISPLAY_OVERVIEW, DISPLAY_NONE };
 
@@ -168,6 +168,7 @@ void initNewGame();
 void checkButtonRelease();
 void requestKernel(int kernel);
 void bigStuff(int amount);
+void bigStuff2(int amount);
 
 int halfSize(int x, int y, int letter, bool render);
 

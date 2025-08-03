@@ -473,7 +473,7 @@ void initIconPalette() {
 
 	unsigned char rollColours[3];
 
-	int pal[3] = {0x44, 0x94, 0xD4};
+	int pal[3] = {0x34, 0x94, 0xD6};
 	for (int i = 0; i < 3; i++)
 		rollColours[i] = convertColour(startup ? palicc[micp][i] : pal[i]);
 
@@ -541,10 +541,9 @@ void drawIconScreen(int startRow, int endRow, bool staticx) { // --> 101102 cycl
 
 		ppf = RAM + ICON_BASE + _BUF_MENU_GRP0A + 36;
 		for (int i = 0; i < 22; i++) {
-			*(ppf + i + _ARENA_SCANLINES * 3) =
-			    *(ppf + i + _ARENA_SCANLINES * 3) | (getRandom32() & getRandom32());
+			*(ppf + i + _ARENA_SCANLINES * 3) = *(ppf + i + _ARENA_SCANLINES * 3) | (getRandom32());
 			*(ppf + i + _ARENA_SCANLINES * 4) =
-			    (*(ppf + i + _ARENA_SCANLINES * 4) & 0xF) | (getRandom32() & getRandom32() & 0xF0);
+			    (*(ppf + i + _ARENA_SCANLINES * 4) & 0xF) | (getRandom32() & 0xF0);
 		}
 
 	} else {
@@ -556,7 +555,7 @@ void drawIconScreen(int startRow, int endRow, bool staticx) { // --> 101102 cycl
 		int det = room[Room].width << SHIFT;
 		while (det > 0) {
 			scaleX++;
-			det -= ICON_WIDTH;
+			det -= ICON_WIDTH - 8;
 		}
 
 		scaleX = (scaleX * (0x500 / 3)) >> 8;
@@ -565,10 +564,12 @@ void drawIconScreen(int startRow, int endRow, bool staticx) { // --> 101102 cycl
 		det = room[Room].height << SHIFT;
 		while (det > 0) {
 			scaleY++;
-			det -= ICON_DEPTH - 4;
+			det -= ICON_DEPTH - 3;
 		}
 
 		int scale = scaleX > scaleY ? scaleX : scaleY;
+
+		//		scale = (scale * 35) >> 4;
 
 		unsigned char cc[ICON_WIDTH]; // maps icon x (0-47) --> board column (0-39)
 
@@ -586,8 +587,8 @@ void drawIconScreen(int startRow, int endRow, bool staticx) { // --> 101102 cycl
 			base += scale;
 		}
 
-		int m1 = 0;  //(startRow & 1);
-		int m2 = m1; // ^ 1;
+		// int m1 = 0;  //(startRow & 1);
+		// int m2 = m1; // ^ 1;
 
 		int br = roller;
 		if (!enableICC)
@@ -631,6 +632,14 @@ void drawIconScreen(int startRow, int endRow, bool staticx) { // --> 101102 cycl
 				ppf += _ARENA_SCANLINES;
 			}
 		}
+	}
+
+	unsigned char *ppf = RAM + ICON_BASE + _BUF_MENU_GRP0A;
+	for (int i = 0; i < 3; i++) {
+		ppf[i] &= 0xF;
+		ppf[i + 21 * 3] &= 0xF;
+		ppf[i + 5 * _ARENA_SCANLINES] &= 0xF0;
+		ppf[i + 21 * 3 + 5 * _ARENA_SCANLINES] &= 0xF0;
 	}
 }
 // EOF

@@ -13,8 +13,18 @@ struct roomDef {
 extern const struct roomDef room[];
 extern int pillCount;
 
+struct stats {
+
+	short time;
+	unsigned short pushCount;
+	unsigned short moveCount;
+};
+
+extern struct stats roomStats[];
+
 void unpackRoom(int room);
 int getRandomRoomNumber();
 int getRoomCount();
+void initRooms();
 
 // EOF

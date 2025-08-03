@@ -188,6 +188,7 @@ void SystemReset() {
 	initAudio();
 	startMusic();
 	initMenuDatastreams();
+	initRooms();
 
 	startup = 400;
 
@@ -236,6 +237,9 @@ void initNextLife() {
 	boxLocation = 0;
 	deadlock = 0;
 	lastDeadlock = 0;
+
+	pushingMoves = 0;
+	moves = 0;
 
 	exitMode = 0;
 	sparkleTimer = 0;
@@ -326,13 +330,8 @@ void GameIdle() {
 	(*scheduleFunc[gameSchedule])();
 }
 
-void drawWord(const char *string, int y) {
-
-	static int wc = 0;
-
-	if (!roller)
-		if (++wc >= 8 << 2)
-			wc = 1 << 2;
+static int wc = 0;
+void drawWord(const char *string, int y, bool wobble, int colour) {
 
 	unsigned char ch;
 
@@ -351,10 +350,13 @@ void drawWord(const char *string, int y) {
 			else if (ch >= '0')
 				ch = ch - '0';
 
-			drawBigDigit(ch, x, y + EXTERNAL(__sinoid)[(x + (frame >> 2)) & 15] - 3, 7);
-			drawBigDigit(ch, x, y + EXTERNAL(__sinoid)[(x + (frame >> 2)) & 15] + 3, 0);
-			drawBigDigit(ch, x, y + EXTERNAL(__sinoid)[(x + (frame >> 2)) & 15],
-			             wc >> 2 /*colour*/);
+			int wob = y;
+			if (wobble)
+				wob += EXTERNAL(__sinoid)[(x + (frame >> 2)) & 15];
+
+			drawBigDigit(ch, x, wob - 3, 7);
+			drawBigDigit(ch, x, wob + 3, 0);
+			drawBigDigit(ch, x, wob, colour /*colour*/);
 		}
 		x--;
 	}
@@ -370,7 +372,7 @@ void checkExitWarning() {
 		if (triggerOffCounter > BUTTONTIME_EXIT_BOUNDARY) {
 
 			if (triggerOffCounter & 24)
-				drawWord("EXIT", 50);
+				drawWord("EXIT", 50, true, 6);
 
 			if (triggerOffCounter > BUTTONTIME_EXIT_BOUNDARY + 50) {
 
@@ -403,7 +405,16 @@ void checkExitWarning() {
 	}
 }
 
+void incWordColour() {
+
+	if (!roller)
+		if (++wc >= 8 << 5)
+			wc = 1 << 5;
+}
+
 void drawOverscanThings() {
+
+	incWordColour();
 
 	extern int lastSpriteY;
 	// zap sprite buffers (expensive!)
@@ -508,6 +519,21 @@ void initGameDataStreams() {
 #endif
 }
 
+void bigStuff2(int amount) {
+
+	unsigned char decimalString[6];
+	*drawDecimal2(decimalString, 0, 0, amount) = 0xFF;
+
+	int digitPos = 2;
+	for (int digit = 0; decimalString[digit] <= 9; digit++, digitPos -= 2) {
+
+		int y = 129;
+		doubleSizeScore(digitPos, y - 3, decimalString[digit], 7);
+		doubleSizeScore(digitPos, y + 3, decimalString[digit], 0);
+		doubleSizeScore(digitPos, y, decimalString[digit], 6);
+	}
+}
+
 void bigStuff(int amount) {
 
 	unsigned char decimalString[6];
@@ -570,7 +596,7 @@ void handleRoomCompletion() {
 
 	if (exitMode) {
 
-		setScoreCycle(SCORELINE_SCORE);
+		// setScoreCycle(SCORELINE_SCORE);
 
 		switch (exitPhase) {
 
@@ -581,7 +607,7 @@ void handleRoomCompletion() {
 
 		case PHASE_GEMS: {
 
-			setScoreCycle(SCORELINE_TIME);
+			// setScoreCycle(SCORELINE_TIME);
 
 			exitPhase = PHASE_SWIPE;
 
@@ -808,7 +834,44 @@ void triggerStuff() {
 
 void drawComplete() { // 32k
 
-	showNotification("LEGEND", 42);
+	int completePhase = sparkleTimer >> 10;
+
+	switch (completePhase) {
+
+	case 0:
+		drawWord("LEGEND", 42, true, 6);
+
+		if (!roomStats[Room - 1].pushCount || pushingMoves < roomStats[Room - 1].pushCount) {
+			roomStats[Room - 1] = (struct stats){12345, pushingMoves, moves};
+		}
+		drawWord("BEST", 80, true, 6);
+
+		break;
+
+	default:
+	case 1: {
+
+		drawWord("1:23:12", 40, false, 1);
+
+		char moveCount[] = "         ";
+		binaryToDecimalPrint(moveCount + 4, pushingMoves);
+		removeLeadingZero(moveCount + 4);
+		drawWord(moveCount, 80 - 5, true, 1);
+		drawWord("WALK    ", 80, false, 6);
+
+		char pushCount[] = "         ";
+		binaryToDecimalPrint(pushCount + 4, 123);
+		removeLeadingZero(pushCount + 4);
+		drawWord(pushCount, 110 - 5, true, 1);
+		drawWord("PUSH    ", 110, false, 6);
+
+		char roomCount[] = "         ";
+		binaryToDecimalPrint(roomCount + 4, Room - 1);
+		removeLeadingZero(roomCount + 4);
+		drawWord(roomCount, 160 - 5, true, 1);
+		drawWord("ROOM    ", 160, false, 6);
+	} break;
+	}
 
 	// 	static const char gameOver[] = "OK";
 
@@ -867,7 +930,7 @@ void GameVerticalBlank() { // ~7500
 
 			if (displayMode == DISPLAY_NORMAL) {
 				if (showRoomCounter) {
-					drawWord("ROOM", 40);
+					drawWord("ROOM", 40, true, 6);
 					bigStuff(Room);
 					showRoomCounter--;
 				}
@@ -878,23 +941,30 @@ void GameVerticalBlank() { // ~7500
 				drawHalfScreen(1);
 			}
 
-			drawScore();
+			//			drawScore();
 		}
-	}
 
-	if (!pillCount) {
+		if (!pillCount) {
 
-		if (!sparkleTimer)
-			ADDAUDIO(SFX_EXTRA);
+			if (!sparkleTimer) {
+				ADDAUDIO(SFX_EXTRA);
+				clearBoard(CH_STEELWALL);
+				//				scoreCycle = SCORELINE_STATS;
+				// TODO: clearscreen?
+			}
 
-		sparkleTimer += 10;
-		displayMode = DISPLAY_NORMAL;
+			sparkleTimer += 10;
+			displayMode = DISPLAY_NORMAL;
 
-		if (sparkleTimer < 1500)
+			// if (sparkleTimer == 1500)
+			//     "room"();
+
+			//		if (sparkleTimer < 1500)
 			drawComplete();
-	}
+		}
 
-	Scroll();
+		Scroll();
+	}
 
 #if ENABLE_FIREWORKS
 	for (int i = 0; i < SPLATS; i++) {
@@ -996,7 +1066,7 @@ void drawNotification() {
 	if (notifyVisible) {
 		notifyVisible--;
 		if (displayMode != DISPLAY_OVERVIEW)
-			drawWord(notifyString, notifyY);
+			drawWord(notifyString, notifyY, true, 6);
 	}
 }
 

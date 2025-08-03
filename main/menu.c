@@ -345,7 +345,7 @@ void drawCharacter(int x, int y, int ch) {
 	unsigned char *col = RAM + _BUF_MENU_GRP0A + _ARENA_SCANLINES * x + y;
 
 	for (int i = 0; i < LETTER_HEIGHT; i++)
-		*col++ = *p++;
+		*col++ |= *p++;
 }
 
 void drawString(int x, int y, const char *text, int colour) {
@@ -370,7 +370,7 @@ void drawSmallString(int y, const unsigned char *smallText, int colour) {
 	drawSmallProxy(convertColour(colour), y, smallText);
 }
 
-char showRoom[4] = {'0', '2', '7', 0};
+char showRoom[6] = {'0', '0', '2', '7', '1', 0};
 
 const char displayOption[][6] = {
     {"OFF>>>"},
@@ -406,24 +406,36 @@ void setTitleMarqueeColours() {
 
 void proportionalText(char *s, int x, int y) {
 	char ch;
-	while ((ch = *s++))
-		x += halfSize(x, y, ch, true);
+	while ((ch = *s++)) {
+		if (ch == ' ')
+			x += 2;
+		else
+			x += halfSize(x, y, ch, true);
+	}
+}
+
+void binaryToDecimalPrint(char *dest, int value) {
+
+#define DIG 4
+	for (int digit = DIG; digit >= 0; digit--) {
+		dest[DIG - digit] = '0';
+		while (value >= pwr[digit]) {
+			dest[DIG - digit]++;
+			value -= pwr[digit];
+		}
+	}
+}
+
+void removeLeadingZero(char *p) {
+
+	while (*p == '0' && *(p + 1))
+		*p++ = ' ';
 }
 
 void handleMenuScreen() {
 
 	if (gameFrame)
 		--gameFrame;
-
-	int cvt = Room;
-
-	for (int digit = 2; digit >= 0; digit--) {
-		showRoom[2 - digit] = '0';
-		while (cvt >= pwr[digit]) {
-			showRoom[2 - digit]++;
-			cvt -= pwr[digit];
-		}
-	}
 
 	//		drawSmallString(y, smallWord[sline], sline == menuLine ? 0x8 : 0x98);
 
@@ -433,8 +445,45 @@ void handleMenuScreen() {
 
 	proportionalText((char *)name, 5, 70);
 
-	if (!startup)
+	if (!startup) {
+
+		binaryToDecimalPrint(showRoom, room[Room].id);
 		proportionalText(showRoom, 3, 112);
+
+		if (roomStats[Room].moveCount && (frame & (24 * 4))) {
+
+			// Index = extra pushes, Value = score %
+			const unsigned char score_table[21] = {100, 95, 90, 85, 80, 75, 70, 65, 60, 55, 50,
+			                                       45,  40, 35, 30, 25, 20, 15, 10, 5,  0};
+
+			int over = pushingMoves - room[Room].pushes;
+			over = (over <= 0) ? 100 : (over >= 20) ? 0 : score_table[over];
+			char overt[] = "     @";
+			binaryToDecimalPrint(overt, over);
+			removeLeadingZero(overt);
+			proportionalText(overt, 28, 112);
+
+			proportionalText("21?23?45", 8, 112 + 12 + 4);
+
+			char wno[] = "     ";
+			binaryToDecimalPrint(wno, roomStats[Room].moveCount);
+			removeLeadingZero(wno);
+			proportionalText(wno, 27, 112 + 24 + 12 + 8);
+			proportionalText("WALK", 3, 112 + 24 + 12 + 8);
+
+			char pno[] = "     ";
+			binaryToDecimalPrint(pno, roomStats[Room].pushCount);
+			removeLeadingZero(pno);
+			proportionalText(pno, 27, 112 + 24 + 8);
+			proportionalText("PUSH", 3, 112 + 24 + 8);
+
+			// char overt2[] = "100@";
+			// drawString(1, 140, overt2, 7);
+		}
+	}
+	// bigStuff2(23);
+	// drawString(4, 132, "@", 7);
+	// drawString(4, 133, "@", 7);
 }
 
 void initCopyrightScreen() {
@@ -663,6 +712,30 @@ void drawICCScreen(const unsigned char *icc) {
 	}
 }
 
+void blink() {
+
+	static const char eyelid[] = {3, 3, 6, 6, 6, 6, 6, 3, 3, 3};
+	static int blinkx = 0;
+
+	if (--blinkx < -20 && !rangeRandom(200))
+		blinkx = sizeof(eyelid) / sizeof(eyelid[0]) - 1;
+
+	if (blinkx > 0) {
+
+		unsigned char *pf = RAM + _BUF_MENU_PF1_LEFT + 78;
+
+		for (int i = 0; i < eyelid[blinkx]; pf++, i++) {
+
+			if (++roller > 2)
+				roller = 0;
+
+			if (roller != 2) {
+				*(pf + _ARENA_SCANLINES) |= 0x2;
+				*pf |= 0x01;
+			}
+		}
+	}
+}
 void drawRemoteArm(const unsigned char (*icc)[2][51]) {
 
 	for (int col = 0; col < 2; col++) {
@@ -686,7 +759,7 @@ void drawRemoteArm(const unsigned char (*icc)[2][51]) {
 
 void handleMenuVB() {
 
-	if (!waitRelease && !(INPT4 & 0x80)) {
+	if (!startup && !waitRelease && !(INPT4 & 0x80)) {
 
 		ADDAUDIO(SFX_UNCOVERED);
 
@@ -707,6 +780,7 @@ void handleMenuVB() {
 
 	drawICCScreen(iCC_title);
 	drawRemoteArm(&iCC_remoteArm[triggerRemote ? 0 : 1]);
+	blink();
 
 	setTitleMarqueeColours();
 
@@ -765,18 +839,22 @@ void handleMenuVB() {
 		int dir = xInc[negJoy];
 		if (dir) {
 
+			startup = 0;
+
 			ADDAUDIO(SFX_SCORE);
 
 			if (!startup)
 				Room = setBounds(Room + dir, getRoomCount() - 1);
-			else
-				startup = 1000;
+			// else
+			// 	startup = 1000;
 
 			triggerRemote = 30;
 
 			resetMode();
 			mustWatchDelay = MUSTWATCH_MENU;
 			ADDAUDIO(SFX_BLIP);
+
+			waitRelease = true;
 		}
 	}
 }

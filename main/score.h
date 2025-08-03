@@ -2,9 +2,9 @@
 #define __SCORELINE_H
 
 #define DIGIT_SIZE 20 /* displayed lines */
-#define SCOREVISIBLETIME                                                       \
-  200 /* # frames to show changed scoreline item before reverting to defaults  \
-       */
+#define SCOREVISIBLETIME                                                                           \
+	200 /* # frames to show changed scoreline item before reverting to defaults                    \
+	     */
 
 #define DIGIT_SPACE (DIGIT_ALPHABET + 26)
 // #define DIGIT_LIVES     10
@@ -17,12 +17,13 @@
 #define ENABLE_COLOUR_SCORE 1
 
 enum SCORE_MODE {
-  SCORELINE_START,
-  SCORELINE_TIME,
-  SCORELINE_SCORE,
-  SCORELINE_LIVES,
-  SCORELINE_END,
-  SCORELINE_UNDO,
+	SCORELINE_START,
+	SCORELINE_TIME,
+	SCORELINE_SCORE,
+	SCORELINE_LIVES,
+	SCORELINE_END,
+	SCORELINE_UNDO,
+	SCORELINE_STATS,
 };
 
 #define LETTER(a) ((a) - 'A' + DIGIT_ALPHABET)

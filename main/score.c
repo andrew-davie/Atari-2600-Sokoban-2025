@@ -194,6 +194,14 @@ void drawMoves() {
 	drawDecimal2(scoreLineNew + 2, scoreLineColour + 2, colour, pushingMoves);
 }
 
+void drawStatus() {
+
+	for (int i = 0; i < 10; i++) {
+		scoreLineNew[i] = LETTER('A'); // LETTER("  STATS   "[i]);
+		scoreLineColour[i] = 1;
+	}
+}
+
 void drawTime() {
 	//	time = 0x65000;
 
@@ -270,7 +278,7 @@ void drawScore() {
 		scoreLineNew[i] = DIGIT_SPACE;
 	}
 
-	//  scoreCycle = SCORELINE_TIME; // tmp
+	//	scoreCycle = SCORELINE_STATS; // tmp TIME; // tmp
 
 	switch (scoreCycle) {
 	case SCORELINE_TIME:
@@ -284,6 +292,10 @@ void drawScore() {
 	case SCORELINE_LIVES:
 		drawTime();
 		drawLives();
+		break;
+
+	case SCORELINE_STATS:
+		drawStatus();
 		break;
 
 	case SCORELINE_UNDO: {
@@ -302,6 +314,8 @@ void drawScore() {
 	default:
 		break;
 	}
+
+	//	drawStatus();
 
 	unsigned char *p = RAM + _BUF_PF0_LEFT;
 	for (int line = 0; line < SCORE_SCANLINES; p++, line++)

@@ -2161,6 +2161,7 @@ void startBoxMoving(int dir) {
 	    (Attribute[CharToType[GET(*to)]] & ATT_BLANK)) {
 
 		pushingMoves++;
+		moves++;
 		ADDAUDIO(SFX_DIRT);
 
 		pillFlagTo = *to;
@@ -2282,6 +2283,8 @@ void processAnimation(Animation *animate) {
 			break;
 
 		case ACTION_NEXTSQUARE: {
+
+			moves++;
 
 			int x = *++animate->animation * (manFaceDirection < 0 ? -1 : 1);
 			int y = *++animate->animation;
