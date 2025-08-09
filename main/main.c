@@ -55,7 +55,7 @@ bool triggerNextLife;
 int pushingMoves;
 int moves;
 
-// int showRoomCounter;
+int showRoomCounter;
 
 // int trig;
 
@@ -280,7 +280,7 @@ void roomUnpack(int roomNumber, int center) {
 	// Decode the room data
 	// First dummy-unpack to get dimensions of room, then center and unpack
 
-	// showRoomCounter = 100;
+	showRoomCounter = 100;
 
 	unpackRoom(roomNumber);
 }
@@ -839,32 +839,37 @@ void drawComplete() { // 32k
 	switch (completePhase) {
 
 	case 0:
-		drawWord("COMPLETE", 42, true, 6);
+		drawWord("LEGEND", 42, true, 6);
 
 		if (!roomStats[Room - 1].pushCount || pushingMoves < roomStats[Room - 1].pushCount) {
-			roomStats[Room - 1] = (struct stats){pushingMoves, moves};
+			roomStats[Room - 1] = (struct stats){12345, pushingMoves, moves};
 		}
-		drawWord("NEW BEST", 80, true, 6);
+		drawWord("BEST", 80, true, 6);
 
 		break;
 
 	default:
 	case 1: {
 
-		drawWord("ROOM", 30, false, 2);
+		drawWord("1:23:12", 40, false, 1);
 
-		char sroom[] = "     ";
-		binaryToDecimalPrint(sroom, room[Room - 1].id);
-		drawWord(sroom, 55, false, 2);
+		char moveCount[] = "         ";
+		binaryToDecimalPrint(moveCount + 4, pushingMoves);
+		removeLeadingZero(moveCount + 4);
+		drawWord(moveCount, 80 - 5, true, 1);
+		drawWord("WALK    ", 80, false, 6);
 
-		char swk[] = "WALK       ";
-		binaryToDecimalPrint(swk + 5, moves);
-		drawWord(swk, 125, false, 6);
+		char pushCount[] = "         ";
+		binaryToDecimalPrint(pushCount + 4, 123);
+		removeLeadingZero(pushCount + 4);
+		drawWord(pushCount, 110 - 5, true, 1);
+		drawWord("PUSH    ", 110, false, 6);
 
-		char sps[] = "PUSH       ";
-		binaryToDecimalPrint(sps + 5, pushingMoves);
-		drawWord(sps, 100, false, 6);
-
+		char roomCount[] = "         ";
+		binaryToDecimalPrint(roomCount + 4, Room - 1);
+		removeLeadingZero(roomCount + 4);
+		drawWord(roomCount, 160 - 5, true, 1);
+		drawWord("ROOM    ", 160, false, 6);
 	} break;
 	}
 
@@ -923,10 +928,20 @@ void GameVerticalBlank() { // ~7500
 					time60ths -= 0xC4; // magic!  - (-256+60)
 			}
 
-			if (displayMode != DISPLAY_NORMAL)
-				drawHalfScreen(1);
+			if (displayMode == DISPLAY_NORMAL) {
+				if (showRoomCounter) {
+					drawWord("ROOM", 40, true, 6);
+					bigStuff(Room);
+					showRoomCounter--;
+				}
 
-			drawScore();
+			}
+
+			else {
+				drawHalfScreen(1);
+			}
+
+			//			drawScore();
 		}
 
 		if (!pillCount) {

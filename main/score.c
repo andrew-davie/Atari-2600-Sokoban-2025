@@ -159,11 +159,11 @@ void doubleSizeScore(int x, int y, int letter, int col) {
 	drawBigDigit(0x81, x + 1, y + DIGIT_SIZE, /*0x40 | */ col);
 }
 
-unsigned char *drawDecimal2(char *buffer, unsigned char *colour_buffer, unsigned int colour,
-                            int cvt) {
+unsigned char *drawDecimal2(unsigned char *buffer, unsigned char *colour_buffer,
+                            unsigned int colour, int cvt) {
 
 	int forced = 0;
-	for (int digit = 5; digit >= 0; digit--) {
+	for (int digit = 3; digit >= 0; digit--) {
 
 		int displayDigit = 0;
 		while (cvt >= pwr[digit]) {
@@ -175,7 +175,6 @@ unsigned char *drawDecimal2(char *buffer, unsigned char *colour_buffer, unsigned
 
 		if (forced || !digit) {
 			*buffer++ = displayDigit;
-			// *(buffer + 1) = 0;
 
 			if (colour_buffer)
 				*colour_buffer++ = colour;
@@ -197,9 +196,9 @@ void drawMoves() {
 
 void drawStatus() {
 
-	for (int i = 0; i < 5; i++) {
-		scoreLineNew[i + 3] = LETTER("STATS"[i]);
-		scoreLineColour[i + 3] = 1;
+	for (int i = 0; i < 10; i++) {
+		scoreLineNew[i] = LETTER('A'); // LETTER("  STATS   "[i]);
+		scoreLineColour[i] = 1;
 	}
 }
 
@@ -248,8 +247,6 @@ void drawTheScore(int score) {
 }
 
 void drawScore() {
-
-	//	FLASH(0xD2, 2);
 
 	if (!--guaranteedViewTime) {
 

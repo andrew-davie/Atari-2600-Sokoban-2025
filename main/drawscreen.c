@@ -468,17 +468,12 @@ void initIconPalette() {
 		rollRainbow();
 		doRainbowBackground();
 	}
+
 #endif
 
-	// chooseColourScheme();
-	// setBackgroundPalette(EXTERNAL(__COLOUR_POOL) + currentPalette);
-
 	unsigned char rollColours[3];
-	int *pal = roomStats[Room].moveCount ? (int[]){0x06, 0x02, 0x04} : (int[]){0x34, 0x94, 0xD6};
-	pal[1] = bgPalette[0];
-	pal[0] = fgPalette[0];
-	pal[2] = fgPalette[1];
 
+	int pal[3] = {0x34, 0x94, 0xD6};
 	for (int i = 0; i < 3; i++)
 		rollColours[i] = convertColour(startup ? palicc[micp][i] : pal[i]);
 
@@ -492,10 +487,12 @@ void initIconPalette() {
 
 	unsigned char *pal0 = RAM + _BUF_MENU_COLUP0 + ICON_BASE - 1;
 
-	for (int j = 0; j < __BOARD_DEPTH * 3; j++) {
-		*pal0++ = rollColours[baseRoller];
-		if (++baseRoller > 2)
-			baseRoller = 0;
+	for (int j = 0; j < __BOARD_DEPTH; j++) {
+		for (int i = 0; i < 3; i++) {
+			*pal0++ = rollColours[baseRoller];
+			if (++baseRoller > 2)
+				baseRoller = 0;
+		}
 	}
 
 	// pal0 = RAM + _BUF_MENU_COLUP0 + ICON_BASE - 1;
@@ -550,9 +547,6 @@ void drawIconScreen(int startRow, int endRow, bool staticx) { // --> 101102 cycl
 		}
 
 	} else {
-
-		// regular small-view of room
-
 #define SHIFT 8
 #define ICON_WIDTH 48
 #define ICON_DEPTH 22
@@ -564,7 +558,7 @@ void drawIconScreen(int startRow, int endRow, bool staticx) { // --> 101102 cycl
 			det -= ICON_WIDTH - 8;
 		}
 
-		scaleX = (scaleX * (0x500 / 3)) >> 8; // aspect ratio
+		scaleX = (scaleX * (0x500 / 3)) >> 8;
 
 		int scaleY = 0;
 		det = room[Room].height << SHIFT;
@@ -574,6 +568,8 @@ void drawIconScreen(int startRow, int endRow, bool staticx) { // --> 101102 cycl
 		}
 
 		int scale = scaleX > scaleY ? scaleX : scaleY;
+
+		//		scale = (scale * 35) >> 4;
 
 		unsigned char cc[ICON_WIDTH]; // maps icon x (0-47) --> board column (0-39)
 
@@ -590,6 +586,9 @@ void drawIconScreen(int startRow, int endRow, bool staticx) { // --> 101102 cycl
 			rr[i] = (base < 0 || base >= ((__BOARD_DEPTH << SHIFT))) ? 0 : base >> SHIFT;
 			base += scale;
 		}
+
+		// int m1 = 0;  //(startRow & 1);
+		// int m2 = m1; // ^ 1;
 
 		int br = roller;
 		if (!enableICC)
@@ -614,16 +613,20 @@ void drawIconScreen(int startRow, int endRow, bool staticx) { // --> 101102 cycl
 					int roll = segment * 3 + br;
 
 					// clang-format off
-                    ppf[segment] =
-                        (unsigned char)(img[p[0]][roll] << 7) |
-                        (unsigned char)(img[p[1]][roll] << 7) >> 1 |
-                        (unsigned char)(img[p[2]][roll] << 7) >> 2 |
-                        (unsigned char)(img[p[3]][roll] << 7) >> 3 |
-                        (unsigned char)(img[p[4]][roll] << 7) >> 4 |
-                        (unsigned char)(img[p[5]][roll] << 7) >> 5 |
-                        (unsigned char)(img[p[6]][roll] << 7) >> 6 |
-                        (unsigned char)(img[p[7]][roll] << 7) >> 7;
+                    ppf[segment] = (unsigned char)(img[p[0]][roll] /*>> m2*/ << 7) |
+                                (unsigned char)(img[p[1]][roll] /*>> m1*/ << 7) >> 1 |
+                                (unsigned char)(img[p[2]][roll] /*>> m2*/ << 7) >> 2 |
+                                (unsigned char)(img[p[3]][roll] /*>> m1*/ << 7) >> 3 |
+                                (unsigned char)(img[p[4]][roll] /*>> m2*/ << 7) >> 4 |
+                                (unsigned char)(img[p[5]][roll] /*>> m1*/ << 7) >> 5 |
+                                (unsigned char)(img[p[6]][roll] /*>> m2*/ << 7) >> 6 |
+                                (unsigned char)(img[p[7]][roll] /*>> m1*/ << 7) >> 7;
 					// clang-format on
+
+					// if (staticx) {
+					// 	ppf[segment] |= getRandom32();
+					// 	ppf[segment] &= getRandom32();
+					// }
 				}
 
 				ppf += _ARENA_SCANLINES;
@@ -631,7 +634,6 @@ void drawIconScreen(int startRow, int endRow, bool staticx) { // --> 101102 cycl
 		}
 	}
 
-	// corners of TV
 	unsigned char *ppf = RAM + ICON_BASE + _BUF_MENU_GRP0A;
 	for (int i = 0; i < 3; i++) {
 		ppf[i] &= 0xF;

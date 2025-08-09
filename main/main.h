@@ -158,7 +158,7 @@ enum FaceDirection {
 
 extern int currentPalette;
 extern unsigned int availableIdleTime;
-// extern int showRoomCounter;
+extern int showRoomCounter;
 
 void GameIdle();
 void processBoardSquares();

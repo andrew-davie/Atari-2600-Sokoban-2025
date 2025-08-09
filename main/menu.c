@@ -370,19 +370,21 @@ void drawSmallString(int y, const unsigned char *smallText, int colour) {
 	drawSmallProxy(convertColour(colour), y, smallText);
 }
 
-// const char displayOption[][6] = {
-//     {"OFF>>>"},
-//     {"ON>>>>"},
-// };
+char showRoom[6] = {'0', '0', '2', '7', '1', 0};
+
+const char displayOption[][6] = {
+    {"OFF>>>"},
+    {"ON>>>>"},
+};
 
 // const char word2025[] = {"2025.0"};
 
 // clang-format on
 
-// const unsigned char *smallWord[] = {
-//     wordStartAt, wordDisplay
-//     //    wordTvType0,
-// };
+const unsigned char *smallWord[] = {
+    wordStartAt, wordDisplay
+    //    wordTvType0,
+};
 
 void SchedulerMenu() {}
 
@@ -415,18 +417,11 @@ void proportionalText(char *s, int x, int y) {
 void binaryToDecimalPrint(char *dest, int value) {
 
 #define DIG 4
-
 	for (int digit = DIG; digit >= 0; digit--) {
-
-		*dest = '0';
-		*(dest + 1) = 0;
-
-		if (value >= pwr[digit]) {
-			while (value >= pwr[digit]) {
-				(*dest)++;
-				value -= pwr[digit];
-			}
-			dest++;
+		dest[DIG - digit] = '0';
+		while (value >= pwr[digit]) {
+			dest[DIG - digit]++;
+			value -= pwr[digit];
 		}
 	}
 }
@@ -452,23 +447,35 @@ void handleMenuScreen() {
 
 	if (!startup) {
 
-		char sroom[] = "     ";
-		binaryToDecimalPrint(sroom, room[Room].id);
-		proportionalText(sroom, 2, 113);
+		binaryToDecimalPrint(showRoom, room[Room].id);
+		proportionalText(showRoom, 3, 112);
 
 		if (roomStats[Room].moveCount && (frame & (24 * 4))) {
 
+			// Index = extra pushes, Value = score %
+			const unsigned char score_table[21] = {100, 95, 90, 85, 80, 75, 70, 65, 60, 55, 50,
+			                                       45,  40, 35, 30, 25, 20, 15, 10, 5,  0};
+
+			int over = pushingMoves - room[Room].pushes;
+			over = (over <= 0) ? 100 : (over >= 20) ? 0 : score_table[over];
+			char overt[] = "     @";
+			binaryToDecimalPrint(overt, over);
+			removeLeadingZero(overt);
+			proportionalText(overt, 28, 112);
+
+			proportionalText("21?23?45", 8, 112 + 12 + 4);
+
 			char wno[] = "     ";
-			binaryToDecimalPrint(wno, moves); // roomStats[Room].moveCount);
-			// removeLeadingZero(wno);
-			proportionalText(wno, 27, 112 + 24 + 12 + 11);
-			proportionalText("WALK", 3, 112 + 24 + 12 + 11);
+			binaryToDecimalPrint(wno, roomStats[Room].moveCount);
+			removeLeadingZero(wno);
+			proportionalText(wno, 27, 112 + 24 + 12 + 8);
+			proportionalText("WALK", 3, 112 + 24 + 12 + 8);
 
 			char pno[] = "     ";
-			binaryToDecimalPrint(pno, pushingMoves); // roomStats[Room].pushCount);
-			// removeLeadingZero(pno);
-			proportionalText(pno, 27, 112 + 24 + 10);
-			proportionalText("PUSH", 3, 112 + 24 + 10);
+			binaryToDecimalPrint(pno, roomStats[Room].pushCount);
+			removeLeadingZero(pno);
+			proportionalText(pno, 27, 112 + 24 + 8);
+			proportionalText("PUSH", 3, 112 + 24 + 8);
 
 			// char overt2[] = "100@";
 			// drawString(1, 140, overt2, 7);
@@ -563,9 +570,6 @@ void initKernel(int kernel) {
 
 		resetMode();
 
-		chooseColourScheme();
-		setBackgroundPalette(EXTERNAL(__COLOUR_POOL) + currentPalette);
-
 		mustWatchDelay = MUSTWATCH_MENU;
 
 		break;
@@ -630,14 +634,14 @@ void MenuOverscan() {
 		if (staticx < 4 << 10)
 			staticx += 50;
 
-		if (!rangeRandom(100))
+		if (!rangeRandom(1000))
 			staticx = 2000;
 
-		// if (lastRoom != Room) {
-		// 	lastRoom = Room;
-		// 	staticx = 6000;
-		// 	roomUnpack(Room, true);
-		// }
+		if (lastRoom != Room) {
+			lastRoom = Room;
+			staticx = 6000;
+			roomUnpack(Room, true);
+		}
 
 		staticy = !rangeRandom(staticx >> 9);
 
@@ -685,20 +689,11 @@ void drawICCScreen(const unsigned char *icc) {
 	//	static int col = 0;
 	static int cdelay = 0;
 
-	if (!roller) {
-
-		if (!rangeRandom(200)) {
-			chooseColourScheme();
-			setBackgroundPalette(EXTERNAL(__COLOUR_POOL) + currentPalette);
-		}
-
-		if (--cdelay < 0) {
-			micp = menuIconPalette;
-			menuIconPalette = rangeRandom(sizeof(palicc) / sizeof(palicc[0]));
-			initIconPalette();
-
-			cdelay = 240;
-		}
+	if (--cdelay < 0) {
+		micp = menuIconPalette;
+		menuIconPalette = rangeRandom(sizeof(palicc) / sizeof(palicc[0]));
+		initIconPalette();
+		cdelay = 240;
 	}
 
 	drawPalette(palicc[menuIconPalette]); // iCC_title_colour);
@@ -820,11 +815,9 @@ void handleMenuVB() {
 
 	for (int i = 0; i < 6; i++) {
 		//		if (!roller)
-		if (!roller && ((i >= 3) && !rangeRandom(100)) || (!lumOffset[lum >> LUMSHIFT]) ||
-		    !lumDelay) {
+		if (((i >= 3) && !rangeRandom(100)) || (!lumOffset[lum >> LUMSHIFT]) || !lumDelay)
 			/*!rangeRandom(20)*/ // lumOffset[lum] == 8)
 			RGB[i] = (RGB[i] & 0xF) | (getRandom32() << 4);
-		}
 
 		if (i < 3)
 			RGB[i] = lumOffset[(lum >> LUMSHIFT)] | (RGB[i] & 0xF0);
@@ -850,10 +843,8 @@ void handleMenuVB() {
 
 			ADDAUDIO(SFX_SCORE);
 
-			if (!startup) {
+			if (!startup)
 				Room = setBounds(Room + dir, getRoomCount() - 1);
-				//				chooseColourScheme();
-			}
 			// else
 			// 	startup = 1000;
 
