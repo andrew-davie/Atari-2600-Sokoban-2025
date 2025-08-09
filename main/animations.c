@@ -37,11 +37,18 @@ char AnimCount[TYPE_MAX];
 static const unsigned char Animate_BoxDeadlocked[] = {
 
 
-    CH_BOX_DEADLOCK,12,
+    CH_BOX_DEADLOCK,9,
+    CH_BLANK,6,
+    CH_BOX_DEADLOCK,9,
+    CH_BLANK,6,
+    CH_BOX_DEADLOCK,9,
+    CH_BLANK,6,
+
+//    CH_BOX_DEADLOCK,12,
     CH_BOX_ZOOM1,3,
     CH_BOX_ZOOM2,3,
     CH_BOX_ZOOM3,3,
-    CH_BOX_ZOOM4,6,
+    CH_BOX_ZOOM4,3,
     CH_BOX_ZOOM3,3,
     CH_BOX_ZOOM2,3,
     CH_BOX_ZOOM1,3,
