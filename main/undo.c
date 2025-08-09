@@ -43,6 +43,43 @@ bool findBox(int *x, int *y) {
 	return found;
 }
 
+void circleBox(int boxX, int boxY, int duration, int colour) {
+
+	typedef struct {
+		signed char x;
+		signed char y;
+	} Point;
+
+	static const Point circlePoints[] = {
+	    {4, 0},   {4, 1},   {4, 2},   {4, 3},   {3, 4},   {3, 5},   {3, 6},   {2, 6},
+	    {2, 7},   {1, 8},   {0, 8},   {-1, 8},  {-2, 7},  {-2, 6},  {-3, 6},  {-3, 5},
+	    {-3, 4},  {-4, 3},  {-4, 2},  {-4, 1},  {-4, 0},  {-4, -1}, {-4, -2}, {-4, -3},
+	    {-3, -4}, {-3, -5}, {-3, -6}, {-2, -6}, {-2, -7}, {-1, -8}, {0, -8},  {1, -8},
+	    {2, -7},  {2, -6},  {3, -6},  {3, -5},  {3, -4},  {4, -3},  {4, -2},  {4, -1},
+	};
+
+	// Calculate trixel coordinates
+	// x: (char blocks * pixels per char block) + centering + (direction * pixel offset)
+	// / 4 pixels per PF y: char blocks * tr8xels per char + centering + pixel offset
+	// converted to trixels (i.e. /3)
+
+	int x = (boxX * PIXELS_PER_CHAR + 2);     // + ((manFaceDirection * frameAdjustX) >> 2));
+	int y = ((boxY * (CHAR_HEIGHT / 3) + 4)); // - ((frameAdjustY * (0X100 / 3)) >> 8)));
+
+	if (y < 0)
+		FLASH(0x99, 9);
+
+	static const char cplay[] = {7, 7, 7, 7, 7, 7, 0, 0, 0, 7, 7, 7, 7, 7, 7, 0, 0, 0,
+	                             7, 7, 7, 7, 7, 7, 6, 6, 6, 6, 6, 6, 0, 0, 0, 0, 0, 0};
+	static char col = 0;
+	if (++col >= sizeof(cplay) / sizeof(cplay[0]))
+		col = 0;
+
+	for (int i = 0; i < sizeof(circlePoints) / sizeof(circlePoints[0]); i++)
+		addLocalPixel(x + circlePoints[i].x, y + circlePoints[i].y, colour ? colour : cplay[col],
+		              duration);
+}
+
 void highlightUndo() {
 
 	if (!undoing && scoreCycle == SCORELINE_UNDO) {
@@ -54,38 +91,7 @@ void highlightUndo() {
 
 		if (findBox(&boxX, &boxY)) {
 
-			typedef struct {
-				signed char x;
-				signed char y;
-			} Point;
-
-			static const Point circlePoints[] = {
-			    {4, 0},   {4, 1},   {4, 2},   {4, 3},   {3, 4},   {3, 5},   {3, 6},   {2, 6},
-			    {2, 7},   {1, 8},   {0, 8},   {-1, 8},  {-2, 7},  {-2, 6},  {-3, 6},  {-3, 5},
-			    {-3, 4},  {-4, 3},  {-4, 2},  {-4, 1},  {-4, 0},  {-4, -1}, {-4, -2}, {-4, -3},
-			    {-3, -4}, {-3, -5}, {-3, -6}, {-2, -6}, {-2, -7}, {-1, -8}, {0, -8},  {1, -8},
-			    {2, -7},  {2, -6},  {3, -6},  {3, -5},  {3, -4},  {4, -3},  {4, -2},  {4, -1},
-			};
-
-			// Calculate trixel coordinates
-			// x: (char blocks * pixels per char block) + centering + (direction * pixel offset)
-			// / 4 pixels per PF y: char blocks * tr8xels per char + centering + pixel offset
-			// converted to trixels (i.e. /3)
-
-			int x = (boxX * PIXELS_PER_CHAR + 2); // + ((manFaceDirection * frameAdjustX) >> 2));
-			int y = ((boxY * (CHAR_HEIGHT / 3) + 4)); // - ((frameAdjustY * (0X100 / 3)) >> 8)));
-
-			if (y < 0)
-				FLASH(0x99, 9);
-
-			static const char cplay[] = {7, 7, 7, 7, 7, 7, 0, 0, 0, 7, 7, 7, 7, 7, 7, 0, 0, 0,
-			                             7, 7, 7, 7, 7, 7, 6, 6, 6, 6, 6, 6, 0, 0, 0, 0, 0, 0};
-			static char col = 0;
-			if (++col >= sizeof(cplay) / sizeof(cplay[0]))
-				col = 0;
-
-			for (int i = 0; i < sizeof(circlePoints) / sizeof(circlePoints[0]); i++)
-				addLocalPixel(x + circlePoints[i].x, y + circlePoints[i].y, cplay[col], 1);
+			circleBox(boxX, boxY, 1, 0);
 		}
 	}
 }
@@ -176,6 +182,8 @@ bool undoLastMove() {
 				*from = CH_BOX_UNDO;
 				startCharAnimation(TYPE_BOX_UNDO, AnimateBase[TYPE_BOX_UNDO] + 2);
 			}
+
+			circleBox(oldX, oldY, 30, 1);
 		}
 
 		else {
@@ -185,6 +193,7 @@ bool undoLastMove() {
 	}
 
 	if (!undoTop) {
+		killAudio(SFX_MAGIC);
 		scoreCycle = SCORELINE_TIME; // exit undo mode
 		hackStartAnimation(animationList[ANIM_PLAYER], ID_Stand);
 		repeat = false;

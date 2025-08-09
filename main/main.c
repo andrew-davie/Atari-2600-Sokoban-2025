@@ -384,11 +384,13 @@ void checkExitWarning() {
 				if (findBox(0, 0)) {
 
 					if (scoreCycle != SCORELINE_UNDO) {
+						ADDAUDIO(SFX_MAGIC);
 						scoreCycle = SCORELINE_UNDO;
 						displayMode = DISPLAY_NORMAL;
 						startAnimation(animationList[ANIM_PLAYER], ID_Undo);
 
 					} else {
+						killAudio(SFX_MAGIC);
 
 						scoreCycle = SCORELINE_TIME;
 						hackStartAnimation(animationList[ANIM_PLAYER], ID_Stand);
@@ -727,6 +729,7 @@ void triggerStuff() {
 #define TOOLONG 30
 
 	if (scoreCycle == SCORELINE_UNDO && SWCHA != 0xFF) {
+		killAudio(SFX_MAGIC);
 		scoreCycle = SCORELINE_TIME; // exit undo mode
 		hackStartAnimation(animationList[ANIM_PLAYER], ID_Stand);
 		ARENA_COLOUR = 1;
@@ -833,11 +836,11 @@ void triggerStuff() {
 
 void drawComplete() { // 32k
 
-	int completePhase = sparkleTimer >> 10;
+	int completePhase = sparkleTimer >> 8;
 
 	switch (completePhase) {
 
-	case 0:
+	case 1:
 		drawWord("COMPLETE", 42, true, 6);
 
 		if (!roomStats[Room - 1].pushCount || pushingMoves < roomStats[Room - 1].pushCount) {
@@ -848,7 +851,7 @@ void drawComplete() { // 32k
 		break;
 
 	default:
-	case 1: {
+	case 0: {
 
 		char rm[] = "ROOM     ";
 		binaryToDecimalPrint(rm + 5, Room);
@@ -934,19 +937,17 @@ void GameVerticalBlank() { // ~7500
 
 			if (!sparkleTimer) {
 				ADDAUDIO(SFX_EXTRA);
-				clearBoard(CH_STEELWALL);
-				//				scoreCycle = SCORELINE_STATS;
-				// TODO: clearscreen?
+				sparkleTimer = 768;
+				displayMode = DISPLAY_NORMAL;
 			}
 
-			sparkleTimer += 10;
-			displayMode = DISPLAY_NORMAL;
+			if (sparkleTimer == 1)
+				triggerNextLife = true;
 
-			// if (sparkleTimer == 1500)
-			//     "room"();
-
-			//		if (sparkleTimer < 1500)
-			drawComplete();
+			if (sparkleTimer < 512) {
+				clearBoard(CH_STEELWALL);
+				drawComplete();
+			}
 		}
 
 		Scroll();

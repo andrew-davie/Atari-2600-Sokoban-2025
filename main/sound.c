@@ -454,6 +454,7 @@ void processSoundEffects() {
 			case SFX_MAGIC2:
 			case SFX_MAGIC:
 				audF = getRandom32() & 0xF;
+				audV = 2;
 				break;
 
 			case SFX_COUNTDOWN2:

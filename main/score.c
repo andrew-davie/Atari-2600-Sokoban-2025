@@ -18,7 +18,7 @@
 #define RGB_RED 1
 #define RGB_BLUE 2
 // #define RGB_PURPLE      3
-// #define RGB_GREEN 4
+#define RGB_GREEN 4
 #define RGB_YELLOW 5
 #define RGB_AQUA 6
 // #define RGB_WHITE       7
@@ -189,8 +189,8 @@ void drawMoves() {
 	// 	return;
 
 	int colour = /*deadlock ? RGB_RED :*/ RGB_YELLOW;
-	drawDecimal2(scoreLineNew + 7, scoreLineColour + 7, colour, pillCount);
-	drawDecimal2(scoreLineNew + 2, scoreLineColour + 2, colour, pushingMoves);
+	drawDecimal2(scoreLineNew + 7, scoreLineColour + 7, RGB_GREEN, pushingMoves);
+	drawDecimal2(scoreLineNew + 2, scoreLineColour + 2, RGB_BLUE, moves);
 }
 
 void drawStatus() {
