@@ -4,15 +4,10 @@
 #include <stdbool.h>
 
 #include "colour.h"
-#include "deadlock.h"
 #include "main.h"
-#include "man.h"
-#include "menu.h"
-#include "random.h"
 #include "rooms.h"
 #include "score.h"
 #include "sound.h"
-#include "undo.h"
 
 // #define RGB_BLACK       0
 #define RGB_RED 1
@@ -184,11 +179,6 @@ char *drawDecimal2(char *buffer, unsigned char *colour_buffer, unsigned int colo
 }
 
 void drawMoves() {
-
-	// if (deadlock && !(frame & 16))
-	// 	return;
-
-	int colour = /*deadlock ? RGB_RED :*/ RGB_YELLOW;
 	drawDecimal2(scoreLineNew + 7, scoreLineColour + 7, RGB_GREEN, pushingMoves);
 	drawDecimal2(scoreLineNew + 2, scoreLineColour + 2, RGB_BLUE, moves);
 }

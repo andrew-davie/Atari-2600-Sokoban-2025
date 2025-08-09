@@ -43,7 +43,7 @@ bool findBox(int *x, int *y) {
 	return found;
 }
 
-void circleBox(int boxX, int boxY, int duration, int colour) {
+void circleBox(int boxX, int boxY, int duration, char colour) {
 
 	typedef struct {
 		signed char x;
@@ -75,9 +75,9 @@ void circleBox(int boxX, int boxY, int duration, int colour) {
 	if (++col >= sizeof(cplay) / sizeof(cplay[0]))
 		col = 0;
 
-	for (int i = 0; i < sizeof(circlePoints) / sizeof(circlePoints[0]); i++)
-		addLocalPixel(x + circlePoints[i].x, y + circlePoints[i].y, colour ? colour : cplay[col],
-		              duration);
+	for (unsigned int i = 0; i < sizeof(circlePoints) / sizeof(circlePoints[0]); i++)
+		addLocalPixel(x + circlePoints[i].x, y + circlePoints[i].y,
+		              colour ? colour : cplay[(int)col], duration);
 }
 
 void highlightUndo() {

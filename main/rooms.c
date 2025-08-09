@@ -78,8 +78,8 @@ void clearBoard(char ch) {
 }
 
 void initRooms() {
-	for (int i = 0; i < sizeof(roomStats) / sizeof(roomStats[0]); i++)
-		roomStats[i] = (struct stats){0, 0, 0};
+	for (unsigned int i = 0; i < sizeof(roomStats) / sizeof(roomStats[0]); i++)
+		roomStats[i] = (struct stats){0, 0};
 }
 
 void unpackRoom(int roomNumber) {

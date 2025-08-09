@@ -61,7 +61,6 @@ bool enableICC = true;
 
 static int mustWatchDelay;
 int frame;
-static int RoomUnpackComplete;
 unsigned int detectedPeriod;
 
 int thumbnailSpeed;
@@ -501,8 +500,6 @@ void handleMenuScreen() {
 			proportionalText(channel, 3, 112, true);
 		}
 
-		extern int wave;
-
 		if (displayRoomInfo /*&& wave < 0*/) {
 
 			displayRoomInfo = false;
@@ -595,8 +592,6 @@ void initKernel(int kernel) {
 
 	case KERNEL_MENU:
 
-		//		roomUnpack(0, true);
-
 		// rndX = getRandom32();
 
 		for (int i = 0; i < 6; i++)
@@ -634,7 +629,6 @@ void initKernel(int kernel) {
 		//     p[i] = 0;
 
 		mustWatchDelay = MUSTWATCH_STATS;
-		RoomUnpackComplete = false;
 		thumbnailSpeed = -10;
 
 		// decode(Room);
@@ -692,7 +686,7 @@ void MenuOverscan() {
 
 		if (lastRoom != Room) {
 			lastRoom = Room;
-			roomUnpack(Room, true);
+			unpackRoom(Room);
 			displayRoomInfo = true;
 		}
 
@@ -825,7 +819,7 @@ void drawArmWaving(int wave) {
 
 void handleMenuVB() {
 
-	static int whatToSay = 0;
+	//	static int whatToSay = 0;
 
 	if (!startup && !waitRelease && !(INPT4 & 0x80)) {
 

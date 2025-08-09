@@ -271,20 +271,6 @@ void initNextLife() {
 	gameSchedule = SCHEDULE_UNPACK_Room;
 }
 
-void roomUnpack(int roomNumber, int center) {
-
-	// Decode the room data
-	// First dummy-unpack to get dimensions of room, then center and unpack
-
-	unpackRoom(roomNumber);
-}
-
-// void clearBoard() {
-// 	unsigned int *b = (unsigned int *)ADDRESS_OF(0);
-// 	for (int i = 0; i < __BOARD_SIZE / 4; i++)
-// 		b[i] = 0;
-// }
-
 void scheduleUnpackRoom() {
 
 	if (KERNEL != KERNEL_GAME)
@@ -292,7 +278,7 @@ void scheduleUnpackRoom() {
 
 	setupBoard();
 
-	roomUnpack(Room, true);
+	unpackRoom(Room);
 
 #if ENABLE_SWIPE
 
@@ -1023,7 +1009,7 @@ void setLocalPixel(int x, int y, int colour, int age, int pos) {
 	fireworks[pos].colour = colour;
 }
 
-int addLocalPixel(int x, int y, int colour, int age) {
+int addLocalPixel(int x, int y, char colour, int age) {
 
 	for (int i = 0; i < SPLATS; i++)
 		if (!fireworks[i].age) {

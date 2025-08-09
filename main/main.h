@@ -45,7 +45,6 @@
 
 void setJumpVectors(int midKernel, int exitKernel);
 void InitializeNewGame();
-void roomUnpack(int roomNumber, int center);
 void clearBoard(char ch);
 
 void drawWord(const char *string, int y, bool wobble, int colour);
@@ -112,7 +111,7 @@ typedef struct {
 extern FIREWORKS fireworks[SPLATS];
 
 int addFirework(int x, int y);
-int addLocalPixel(int x, int y, int colour, int age);
+int addLocalPixel(int x, int y, char colour, int age);
 void setLocalPixel(int x, int y, int colour, int age, int pos);
 
 #endif
