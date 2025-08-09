@@ -10,7 +10,7 @@ void getShakenCoords(int *x, int *y);
 void sparkly();
 void doSparkles();
 bool drawBit(char x, int y, int colour);
-void drawIconScreen(int startRow, int endRow, bool staticx);
+void drawIconScreen(int startRow, int endRow);
 void initIconPalette();
 
 extern int startup;

@@ -1126,7 +1126,7 @@ __DIGIT_SHAPE
        dc BXXX_XXX_
        dc BXXX_XXX_
        dc BXXX_XXX_
-       dc BX_X_X_X_
+       dc BX_X_X___
        dc B__X_X___
        dc B__X_XX__
        dc B__X_XXX_
@@ -1211,20 +1211,20 @@ __DIGIT_SHAPE
        dc BX_X_____
        dc BX_X_____
        dc BX_X_____
-       dc BX_X__X__
-       dc BX_X__X__
-       dc BX_X__X__
-       dc BX_X__X__
+       dc BX_X_____
+       dc BX_X_____
+       dc BX_X_____
+       dc BX_X_____
        dc BX_X_____
        dc BX_X_____
        dc BX_X_____
        dc BX_X_____
        dc BX_X_____
        dc B________
-       dc B_____X__
-       dc B_____X__
-       dc B_____X__
-       dc BX_X__X__
+       dc B________
+       dc B________
+       dc B________
+       dc BX_X_____
        dc BX_X_____
        dc BX_X_____
        dc BX_X_____
@@ -1289,7 +1289,7 @@ __DIGIT_SHAPE
        dc BXXX_XXX_
        dc BXXX_XXX_
        dc BXXX_XXX_
-       dc BXXX_XXX_
+       dc BXX__XXX_
        dc BXX___XX_
        dc B________
 
@@ -1533,434 +1533,435 @@ __DIGIT_SHAPE
 
 __CHAR_A_TO_Z
 
-   dc B________
-   dc B________
-   dc B________
-   dc B________
-   dc B________
-   dc B________
-   dc B________
-   dc B________
-   dc B________
-   dc B________
-
-   dc B________
-   dc B__XXX___
-   dc B__XXX___
-   dc B__XXX___
-   dc B________
-   dc B________
-   dc B__XXX___
-   dc B__XXX___
-   dc B__XXX___
-   dc B________
-
-   dc BXX______
-   dc BXX__XX__
-   dc B___XX___
-   dc B___XX___
    dc B__XX____
    dc B__XX____
-   dc B_XX_____
-   dc BXX______
-   dc BXX__XX__
+   dc B__XX____
+   dc B__XX____
+   dc B__XX____
+   dc B__XX____
+   dc B________
+   dc B________
+   dc B__XX____
+   dc B__XX____
+
+
+   dc B_XXXXX__
+   dc BXXXXXXX_
+   dc BXX___XX_
+   dc B_____XX_
    dc B____XX__
+   dc B___XX___
+   dc B__XX____
+   dc B________
+   dc B__XX____
+   dc B__XX____
+
+   dc B________
+   dc B________
+   dc B_XX_____
+   dc B_XX_____
+   dc B_XX_____
+   dc B________
+   dc B_XX_____
+   dc B_XX_____
+   dc B_XX_____
+   dc B________
 
    dc B__XXX___
    dc B_XXXXX__
    dc BXXX__XX_
-   dc BXXX__XX_
-   dc BXXX__XX_
+   dc BXX___XX_
+   dc BXX___XX_
    dc BXXXXXXX_
    dc BXXXXXXX_
-   dc BXXX__XX_
-   dc BXXX__XX_
-   dc BXXX__XX_
+   dc BXX___XX_
+   dc BXX___XX_
+   dc BXX___XX_
 
    dc BXXXXXX__
    dc BXXXXXXX_
-   dc BXXX__XX_
-   dc BXXXXXXX_
+   dc BXX___XX_
+   dc BXX___XX_
    dc BXXXXXX__
-   dc BXXX__XX_
-   dc BXXX__XX_
    dc BXXXXXXX_
+   dc BXX___XX_
+   dc BXX___XX_
    dc BXXXXXXX_
    dc BXXXXXX__
 
    dc B__XXXXX_
    dc B_XXXXXX_
-   dc BXXXX____
    dc BXXX_____
+   dc BXX______
+   dc BXX______
+   dc BXX______
+   dc BXX______
    dc BXXX_____
-   dc BXXX_____
-   dc BXXXX____
-   dc BXXXXXXX_
    dc B_XXXXXX_
    dc B__XXXXX_
 
    dc BXXXXX___
    dc BXXXXXX__
-   dc BXXX_XXX_
-   dc BXXX__XX_
-   dc BXXX__XX_
-   dc BXXX__XX_
-   dc BXXX_XXX_
-   dc BXXXXXXX_
+   dc BXX__XXX_
+   dc BXX___XX_
+   dc BXX___XX_
+   dc BXX___XX_
+   dc BXX___XX_
+   dc BXX__XXX_
    dc BXXXXXXX_
    dc BXXXXXX__
 
    dc BXXXXXXX_
    dc BXXXXXXX_
-   dc BXXX_____
+   dc BXX______
+   dc BXX______
    dc BXXXXX___
    dc BXXXXX___
-   dc BXXX_____
-   dc BXXX_____
-   dc BXXXXXXX_
+   dc BXX______
+   dc BXX______
    dc BXXXXXXX_
    dc BXXXXXXX_
 
    dc BXXXXXXX_
    dc BXXXXXXX_
-   dc BXXX_____
-   dc BXXX_____
+   dc BXX______
+   dc BXX______
    dc BXXXXX___
    dc BXXXXX___
-   dc BXXXXX___
-   dc BXXX_____
-   dc BXXX_____
-   dc BXXX_____
+   dc BXX______
+   dc BXX______
+   dc BXX______
+   dc BXX______
 
    dc B__XXXXX_
    dc B_XXXXXX_
-   dc BXXXX____
    dc BXXX_____
-   dc BXXX__XX_
-   dc BXXX__XX_
-   dc BXXXX_XX_
-   dc BXXXXXXX_
-   dc B_XXXXXX_
+   dc BXX______
+   dc BXX__XXXX
+   dc BXX__XXXX
+   dc BXX____XX
+   dc BXXX___XX
+   dc B_XXXXXXX
    dc B__XXXXX_
-
-   dc BXXX__XX_
-   dc BXXX__XX_
-   dc BXXX__XX_
-   dc BXXXXXXX_
-   dc BXXXXXXX_
-   dc BXXXXXXX_
-   dc BXXX__XX_
-   dc BXXX__XX_
-   dc BXXX__XX_
-   dc BXXX__XX_
-
-   dc B_XXXXX__
-   dc B_XXXXX__
-   dc B_XXXXX__
-   dc B__XXX___
-   dc B__XXX___
-   dc B__XXX___
-   dc B__XXX___
-   dc B_XXXXX__
-   dc B_XXXXX__
-   dc B_XXXXX__
-
-   dc B____XXX_
-   dc B____XXX_
-   dc B____XXX_
-   dc B____XXX_
-   dc B____XXX_
-   dc B____XXX_
-   dc BXXX_XXX_
-   dc BXXXXXXX_
-   dc BXXXXXXX_
-   dc B_XXXXX__
-
-   dc BXXX___X_
-   dc BXXX__XX_
-   dc BXXX_XXX_
-   dc BXXXXXX__
-   dc BXXXXX___
-   dc BXXXXX___
-   dc BXXXXXX__
-   dc BXXXXXXX_
-   dc BXXX_XXX_
-   dc BXXX__XX_
-
-   dc BXXX_____
-   dc BXXX_____
-   dc BXXX_____
-   dc BXXX_____
-   dc BXXX_____
-   dc BXXX_____
-   dc BXXX_____
-   dc BXXXXXXX_
-   dc BXXXXXXX_
-   dc BXXXXXXX_
 
    dc BXX___XX_
-   dc BXXX_XXX_
+   dc BXX___XX_
+   dc BXX___XX_
+   dc BXX___XX_
+   dc BXXXXXXX_
+   dc BXXXXXXX_
+   dc BXX___XX_
+   dc BXX___XX_
+   dc BXX___XX_
+   dc BXX___XX_
+
+   dc B_XXXXXX_
+   dc B_XXXXXX_
+   dc B___XX___
+   dc B___XX___
+   dc B___XX___
+   dc B___XX___
+   dc B___XX___
+   dc B___XX___
+   dc B_XXXXXX_
+   dc B_XXXXXX_
+
+   dc B_____XX_
+   dc B_____XX_
+   dc B_____XX_
+   dc B_____XX_
+   dc B_____XX_
+   dc B_____XX_
+   dc B_____XX_
+   dc B_____XX_
+   dc BXXXXXXX_
+   dc B_XXXXX__
+
+   dc BXX____X_
+   dc BXX___XX_
+   dc BXX__XX__
+   dc BXX_XX___
+   dc BXXXX____
+   dc BXXXX____
+   dc BXX_XX___
+   dc BXX_XXX__
+   dc BXX__XXX_
+   dc BXX___XX_
+
+   dc BXX______
+   dc BXX______
+   dc BXX______
+   dc BXX______
+   dc BXX______
+   dc BXX______
+   dc BXX______
+   dc BXX______
+   dc BXXXXXXX_
+   dc BXXXXXXX_
+
+   dc BX____XX_
+   dc BXX__XXX_
    dc BXXXXXXX_
    dc BXXXXXXX_
    dc BXX_X_XX_
-   dc BXXX__XX_
-   dc BXXX__XX_
-   dc BXXX__XX_
-   dc BXXX__XX_
-   dc BXXX__XX_
+   dc BXX___XX_
+   dc BXX___XX_
+   dc BXX___XX_
+   dc BXX___XX_
+   dc BXX___XX_
 
+   dc BXX___XX_
    dc BXX___XX_
    dc BXXX__XX_
    dc BXXXX_XX_
    dc BXXXXXXX_
-   dc BXXXXXXX_
-   dc BXXXXXXX_
    dc BXX_XXXX_
-   dc BXXX_XXX_
-   dc BXXX__XX_
-   dc BXXX__XX_
+   dc BXX__XXX_
+   dc BXX___XX_
+   dc BXX___XX_
+   dc BXX___XX_
 
    dc B_XXXXX__
    dc BXXXXXXX_
-   dc BXXX__XX_
-   dc BXXX__XX_
-   dc BXXX__XX_
-   dc BXXX__XX_
-   dc BXXX__XX_
-   dc BXXXXXXX_
+   dc BXX___XX_
+   dc BXX___XX_
+   dc BXX___XX_
+   dc BXX___XX_
+   dc BXX___XX_
+   dc BXX___XX_
    dc BXXXXXXX_
    dc B_XXXXX__
 
    dc BXXXXX___
    dc BXXXXXX__
-   dc BXXX__XX_
-   dc BXXX__XX_
-   dc BXXX__XX_
+   dc BXX___XX_
+   dc BXX___XX_
+   dc BXX___XX_
    dc BXXXXXXX_
    dc BXXXXXX__
-   dc BXXX_____
-   dc BXXX_____
-   dc BXXX_____
+   dc BXX______
+   dc BXX______
+   dc BXX______
 
    dc B_XXXXX__
    dc BXXXXXXX_
-   dc BXXX__XX_
-   dc BXXX__XX_
-   dc BXXX__XX_
-   dc BXXX__XX_
-   dc BXXX_XXX_
-   dc BXXXXXX__
+   dc BXX____XX
+   dc BXX____XX
+   dc BXX____XX
+   dc BXX____XX
+   dc BXX__XXXX
+   dc BXX___XX_
    dc BXXXXXXXX
    dc B_XXX_XXX
 
    dc BXXXXX___
    dc BXXXXXX__
-   dc BXXX__XX_
-   dc BXXX__XX_
-   dc BXXX_XXX_
+   dc BXX___XX_
+   dc BXX___XX_
+   dc BXX__XXX_
    dc BXXXXXX__
    dc BXXXXX___
-   dc BXXXXXX__
-   dc BXXX_XXX_
-   dc BXXX__XX_
-
-   dc B__XXXXX_
-   dc B_XXXXXX_
-   dc BXXX_____
-   dc BXXX_____
-   dc B_XXXXX__
-   dc B___XXXX_
-   dc B___XXXX_
-   dc BXXXXXXX_
-   dc BXXXXXXX_
-   dc BXXXXX___
-
-   dc BXXXXXXX_
-   dc BXXXXXXX_
-   dc B__XXX___
-   dc B__XXX___
-   dc B__XXX___
-   dc B__XXX___
-   dc B__XXX___
-   dc B__XXX___
-   dc B__XXX___
-   dc B__XXX___
-
-   dc BXXX__XX_
-   dc BXXX__XX_
-   dc BXXX__XX_
-   dc BXXX__XX_
-   dc BXXX__XX_
-   dc BXXX__XX_
-   dc BXXX__XX_
-   dc BXXXXXXX_
-   dc B_XXXXXX_
-   dc B__XXXX__
-
-   dc BXXX__XX_
-   dc BXXX__XX_
-   dc BXXX__XX_
-   dc BXXX__XX_
-   dc BXXX__XX_
-   dc BXXXX_XX_
-   dc B_XXXXX__
-   dc B_XXXXX__
-   dc B__XXX___
-   dc B__XXX___
-
-   dc BXXX__XX_
-   dc BXXX__XX_
-   dc BXXX__XX_
-   dc BXXX__XX_
-   dc BXXX__XX_
-   dc BXX_X_XX_
-   dc BXXXXXXX_
-   dc BXXXXXXX_
-   dc BXXX_XXX_
+   dc BXX_XXX__
+   dc BXX__XXX_
    dc BXX___XX_
 
-   dc BXXX__XX_
-   dc BXXX__XX_
-   dc BXXX_XXX_
-   dc BXXXXXX__
-   dc B_XXXX___
-   dc B__XXXX__
    dc B_XXXXXX_
-   dc BXXX_XXX_
-   dc BXX__XXX_
-   dc BXX__XXX_
-
-   dc BXXX__XX_
-   dc BXXX__XX_
-   dc BXXX__XX_
-   dc BXXX__XX_
-   dc BXXXXXXX_
-   dc B_XXXXX__
-   dc B__XXX___
-   dc B__XXX___
-   dc B__XXX___
-   dc B__XXX___
-
-   dc BXXXXXXX_
-   dc BXXXXXXX_
-   dc B____XXX_
-   dc B___XXXX_
-   dc B__XXXX__
+   dc BXXXXXXXX
+   dc BXX___XXX
+   dc BXXX_____
    dc B_XXXX___
-   dc BXXXX____
-   dc BXXXXXXX_
-   dc BXXXXXXX_
-   dc BXXXXXXX_
-
-   dc B_XXXXX__
-   dc BXXXXXXX_
-   dc BXXX__XX_
-   dc BXXX__XX_
-   dc BXXX__XX_
-   dc BXXX__XX_
-   dc BXXX__XX_
-   dc BXXXXXXX_
-   dc BXXXXXXX_
-   dc B_XXXXX__
-
-   dc B____XXX_
    dc B___XXXX_
-   dc B___XXXX_
-   dc B___XXXX_
-   dc B____XXX_
-   dc B____XXX_
-   dc B____XXX_
-   dc B___XXXXX
-   dc B___XXXXX
-   dc B___XXXXX
+   dc B_____XXX
+   dc BXX____XX
+   dc BXXXXXXXX
+   dc B_XXXXXX_
 
-   dc B_XXXXX__
+   dc BXXXXXXXX
+   dc BXXXXXXXX
+   dc B___XX___
+   dc B___XX___
+   dc B___XX___
+   dc B___XX___
+   dc B___XX___
+   dc B___XX___
+   dc B___XX___
+   dc B___XX___
+
+   dc BXX___XX_
+   dc BXX___XX_
+   dc BXX___XX_
+   dc BXX___XX_
+   dc BXX___XX_
+   dc BXX___XX_
+   dc BXX___XX_
+   dc BXX___XX_
    dc BXXXXXXX_
+   dc B__XXXX__
+
+   dc BXX___XX_
+   dc BXX___XX_
+   dc BXX___XX_
+   dc BXX___XX_
+   dc BXX___XX_
+   dc BXX___XX_
+   dc B_XX_XX__
+   dc B_XXXXX__
+   dc B__XXX___
+   dc B__XXX___
+
+   dc BXX___XXX
+   dc BXX___XXX
+   dc BXX___XXX
+   dc BXX_X_XXX
+   dc BXX_X_XXX
+   dc BXXXXXXXX
+   dc BXXXXXXXX
+   dc BXXXXXXXX
+   dc BXXX__XXX
+   dc BXX____XX
+
+   dc BXX___XX_
+   dc BXX___XX_
    dc BXXX_XXX_
+   dc B_XX_XX__
+   dc B__XXX___
+   dc B__XXX___
+   dc B_XX_XX__
+   dc BXXX_XXX_
+   dc BXX___XX_
+   dc BXX___XX_
+
+   dc BXX____XX
+   dc BXX____XX
+   dc BXX____XX
+   dc B_XX__XX_
+   dc B_XXXXXX_
+   dc B__XXXX__
+   dc B___XX___
+   dc B___XX___
+   dc B___XX___
+   dc B___XX___
+
+   dc BXXXXXXX_
+   dc BXXXXXXX_
    dc B____XXX_
    dc B___XXX__
    dc B__XXX___
    dc B_XXX____
-   dc BXXXXXXX_
-   dc BXXXXXXX_
-   dc BXXXXXXX_
-
-   dc BXXXXXXX_
-   dc BXXXXXXX_
-   dc B____XXX_
-   dc B___XXX__
-   dc B__XXXX__
-   dc B____XXX_
-   dc BXXX__XX_
-   dc BXXXXXXX_
-   dc BXXXXXXX_
-   dc B_XXXXX__
-
-   dc B___XXX__
-   dc B__XXXX__
-   dc B_XXXXX__
-   dc BXXX_XX__
-   dc BXX__XX__
-   dc BXXXXXXX_
-   dc BXXXXXXX_
-   dc BXXXXXXX_
-   dc B____XX__
-   dc B____XX__
-
-   dc BXXXXXXX_
-   dc BXXXXXXX_
    dc BXXX_____
+   dc BXX______
+   dc BXXXXXXX_
+   dc BXXXXXXX_
+
+   dc B__XXX___
+   dc B_XXXXX__
+   dc BXX___XX_
+   dc BXX___XX_
+   dc BXX___XX_
+   dc BXX___XX_
+   dc BXX___XX_
+   dc BXX___XX_
+   dc B_XXXXX__
+   dc B__XXX___
+
+   dc B____XX__
+   dc B__XXXX__
+   dc B__XXXX__
+   dc B____XX__
+   dc B____XX__
+   dc B____XX__
+   dc B____XX__
+   dc B____XX__
+   dc B__XXXXX_
+   dc B__XXXXX_
+
+   dc B_XXXXX__
+   dc BXXXXXXX_
+   dc BXX___XX_
+   dc B_____XX_
+   dc B____XX__
+   dc B___XX___
+   dc B__XX____
+   dc B_XX_____
+   dc BXXXXXXX_
+   dc BXXXXXXX_
+
+   dc B_XXXXX__
+   dc BXXXXXXX_
+   dc BXX___XX_
+   dc B_____XX_
+   dc B___XXX__
+   dc B___XXXX_
+   dc B_____XX_
+   dc BXX___XX_
+   dc BXXXXXXX_
+   dc B_XXXXX__
+
+   dc B____XX__
+   dc B___XXX__
+   dc B__XXXX__
+   dc B_XX_XX__
+   dc BXX__XX__
+   dc BXX__XX__
+   dc BXXXXXXXX
+   dc BXXXXXXXX
+   dc B____XX__
+   dc B____XX__
+
+   dc BXXXXXXX_
+   dc BXXXXXXX_
+   dc BXX______
    dc BXXXXXX__
    dc BXXXXXXX_
    dc B_____XX_
-   dc BXXX__XX_
-   dc BXXXXXXX_
-   dc BXXXXXXX_
-   dc B_XXXXX__
-
-   dc B_XXXXX__
-   dc BXXXXXX__
-   dc BXXX_____
-   dc BXXXXXX__
-   dc BXXXXXXX_
-   dc BXXX__XX_
-   dc BXXX__XX_
-   dc BXXXXXXX_
+   dc B_____XX_
+   dc BXX___XX_
    dc BXXXXXXX_
    dc B_XXXXX__
 
-   dc BXXXXXXX_
-   dc BXXXXXXX_
-   dc BXXXXXXX_
-   dc B____XXX_
    dc B___XXX__
-   dc B___XXX__
-   dc B__XXX___
-   dc B__XXX___
-   dc B__XXX___
-   dc B__XXX___
-
-   dc B_XXXXX__
+   dc B__XXXX__
+   dc B_XX_____
+   dc BXX______
+   dc BXXXXXX__
    dc BXXXXXXX_
-   dc BXXX__XX_
-   dc B_XXXXX__
-   dc BXXXXXXX_
-   dc BXXX__XX_
-   dc BXXX__XX_
-   dc BXXXXXXX_
+   dc BXX___XX_
+   dc BXX___XX_
    dc BXXXXXXX_
    dc B_XXXXX__
 
+   dc BXXXXXXX_
+   dc BXXXXXXX_
+   dc B_____XX_
+   dc B_____XX_
+   dc B____XX__
+   dc B___XX___
+   dc B__XX____
+   dc B__XX____
+   dc B__XX____
+   dc B__XX____
+
    dc B_XXXXX__
    dc BXXXXXXX_
-   dc BXX__XXX_
-   dc BXX__XXX_
-   dc BXX__XXX_
+   dc BXX___XX_
+   dc BXX___XX_
+   dc B_XXXXX__
+   dc BXXXXXXX_
+   dc BXX___XX_
+   dc BXX___XX_
+   dc BXXXXXXX_
+   dc B_XXXXX__
+
+   dc B_XXXXX__
+   dc BXXXXXXX_
+   dc BXX___XX_
+   dc BXX___XX_
    dc BXXXXXXX_
    dc B_XXXXXX_
-   dc B____XXX_
-   dc B_XXXXX__
+   dc B_____XX_
+   dc B____XX__
    dc B_XXXX___
+   dc B_XXX____
 
 
 

@@ -94,7 +94,7 @@ extern int gameSpeed;
 extern int gameFrame;
 
 #if ENABLE_FIREWORKS
-#define SPLATS 20
+#define SPLATS 40
 #define SPLAT_LIFESPAN 40
 #define SPLAT_MIN 0x10
 #define SPLAT_RANGE 0x90
@@ -102,7 +102,7 @@ extern int gameFrame;
 typedef struct {
 	// unsigned char row, column;
 	short int x;  // 8.8 fixed point
-	short int y;  // 8.8 fixed point
+	int y;        // 8.8 fixed point
 	short int dX; // 8.8 fixed point
 	short int dY; // 8.8 fixed point
 	unsigned char age;
@@ -113,6 +113,8 @@ extern FIREWORKS fireworks[SPLATS];
 
 int addFirework(int x, int y);
 int addLocalPixel(int x, int y, int colour, int age);
+void setLocalPixel(int x, int y, int colour, int age, int pos);
+
 #endif
 
 enum KERNEL_TYPE {
@@ -158,7 +160,6 @@ enum FaceDirection {
 
 extern int currentPalette;
 extern unsigned int availableIdleTime;
-extern int showRoomCounter;
 
 void GameIdle();
 void processBoardSquares();
@@ -168,7 +169,7 @@ void initNewGame();
 void checkButtonRelease();
 void requestKernel(int kernel);
 void bigStuff(int amount);
-void bigStuff2(int amount);
+// void bigStuff2(int amount);
 
 int halfSize(int x, int y, int letter, bool render);
 

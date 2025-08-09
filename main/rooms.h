@@ -15,7 +15,6 @@ extern int pillCount;
 
 struct stats {
 
-	short time;
 	unsigned short pushCount;
 	unsigned short moveCount;
 };

@@ -1,443 +1,29 @@
 #if 0
 {
 /*
-################# 
-#               # 
-# #$. #$#$# $*$ # 
-# # .$# # . . * # 
-# #$*$. . *  *$ # 
-# . * . . . . * # 
-# * . *$*$*$* $ # 
-#  # # # # # #  # 
-#  # # # # # # ## 
-##.$.$.$.$.$.$.## 
-#               # 
-# .#.#.#.#.#.#. # 
-# ##.#.#.#....# # 
-# # .$.$.$.$*$. # 
-# $$ $ $ $ $@$$ # 
-#  $ $ $ $ $ $  # 
-##             ## 
-#################
+ ####          #### 
+ #  ############  # 
+## . $         $$@# 
+# .*.### ##$####  # 
+#.* .#  ....  # $ # 
+# ..##$$#$#.#$#  ## 
+##$###  . #.  #  # 
+#    $$$* #.#$# $# 
+#  ...... #.  #  # 
+##$#####  #.#$# $# 
+#    $ ####.  #  # 
+# $$          ##$## 
+#  ####### #$ $   # 
+####     #   #    # 
+         ##########
 */
 
-37742,
-17,18,471,2286,
-"17#=|#15 #=|# #$. #$#$# $*$ #=|# # .$# # . . * #=|# #$*$. . *2 *$ #=|# . * . . . . * #=|# * . *$*$*$* $ #=|#2 # # # # # #2 #=|#2 # # # # # # 2#=|2#.$.$.$.$.$.$.2#=|#15 #=|# .#.#.#.#.#.#. #=|# 2#.#.#.#4.# #=|# # .$.$.$.$*$. #=|# 2$ $ $ $ $@2$ #=|#2 $ $ $ $ $ $2 #=|2#13 2#=|17#",
-},
-#endif
+37994,
+19,15,435,2445,
+"=4#10=4#=|=#2 12#2 #=|2# . $9 2$@#=|# .*.3# 2#$4#2 #=|#.* .#2 4.2 # $ #=|# 2.2#2$#$#.#$#2 2#=|2#$3#2 . #.2 #2 #=|#4 3$* #.#$# $#=|#2 6. #.2 #2 #=|2#$5#2 #.#$# $#=|#4 $ 4#.2 #2 #=|# 2$10 2#$2#=|#2 7# #$ $3 #=|4#5=#3 #4 #=|9=10#",
 
-#if 0
-{
-/*
-    ####  ###### 
-  ###  ####    # 
-###@$  #  # ## # 
-#  $# $#$ # ## # 
-# $ #  $  #    # 
-#   # $ $ #### ### 
-# $$   # $ ..... # 
-#  $   #$ #..... # 
-###$##  $ #.....##### 
- #  ##### #.....#   # 
- #   # $ $#.....# # ### 
- #  $# $$ ##### # #   # 
- # $$ $   ##          # 
- #  #   #### ##       # 
- # $ $  #  # ## ## # ## 
- #  #####  #       # # 
- ####      #######   # 
-                 #####
-*/
+// solution: dlDruuulDLLLLLLrDDDDuullluullLLddldlDDldRuuururuurrrrddrrruurrrrrrddllddddddrDuluuuuuurruullllllddddDDrrDDlldlddrrUrRlldlluullllllullUUUdddrrdrrrrrrrurruulluuuullDDDuuuluullllddldlluurDldRurruuLulDDldRRluRurrrrrddrrruulLLLLLLLulDrddlluRurrrrrrrrrrrrrrrddlUruLLLLLLLrrrrrrddlddrUUlddddrUUlddddrUUluuuurruullllllddddddrrddlldlddrrurrdrrUUUluuuuuurruullllllddddrrDDuulluuuurrrrrrddllddddddrdddllulldlluuruUUddrrDulluurruulluuuurrrrrrddllddddddrdddlluLuulluurrDDuuuulluurrDDDDllUdddrrDulldRllddrrUdlluuruuurruuuulldDrrddllddrrUUUUddlldddlddrruUluuurrddLdlUUdrruuuulluuuurrrrrrddllddddddrdddlluLrdrruuuluuuuuurruullllllddddrrddddlldlddrrUUdrrdrruuuluuuuuurruullllllddddrrddddLdlUrddrrdrruLLLrrruuluuuuuurruullllllddddrrddddlldlddrrUdlluururruuuulluurrDDDDuuuulluurrrrrrddllddddddrddlllldlluururrDulldlddrruRRluuUUUUlluurrDDDDDDuuuuuullllluulllllldddDDrrdrrrrdrUUUUdddlllllulluuuuurrrrrrddRRRddrruuLrddddddlldlddrrurrdrruuuluuuuuurruulllllldDDullddllDurrddlLLLrruulDrdLrrruuuullDDlddrUluRRluuruulllllldddddrrRllluuuuurrrrrrddlddlDruuurrrrrrddddddlldlllllllulluUUrrrrrurDldRulllllldddrrdrruLLrrdrrrrddrrurrdrruuuluuuuuurUdlddrUUruuLLLLrrrrddllddddddrdddllulldlluururruuuuuullllllddldlllldddRRlluuuUUluurDDDDrrrrruuurrrrrrddddddlldlllllllulluUluRRRRRuruurrrruulLLLLLLLulDDDDuuurrrrrrddlddldlllldddrrdrruLLrrdrrrrrurruuuuuulluulllllllllddrUluRRRRRRddrrruulLLLLLLLulDDrdLruurrrrrrrrddrrddddddlldlddrrurrdrruuuluuuuruuruullllLLLrddllllddldllllUUUUdddddddlddrUUUUUddddRRuLrrrdrrrrrurruuuuuullllllddldllllddDldRuuuurrrruruuruullllldlddDDDDDuuuuuuruuulDDDDDDrrrruruurrrrrrddddddlldlllllulllluUluRuuuruurrrrrddrrruulLLLLLLrrrrrrrddrrddddddlldlllllulllluuuuuuuuurDrrrrrddlddrdrUUdlluurRllddldllLrrruruuruurrrddrrddddddlldlllllulllluuUrrrrurrruuRlluurrrdDllddlddlUluRRdrUUdlluurRlllDDruuruurrrddrrddddddlldlllllulllluuurrrRRdrUluRlldlllldddrrrrdrrrrddrruUdrrdrruuuluuuuruuruullllllddrrddddddLruuuuuulluulllddrRlllddrdrUUdlluurRluulllllldddDuuuurrrrrrrrrrrrrrrddllddddddrdddllullullllllulllluuluRRRRRurrddlUUUluRddrdddrUUUUdllldlllldddlddrUUUUluRRRRRurrddlUUldlllldddrrdLullddrUUUUluRRRRRRurDlllllluuuuurrrrrrrrrrrrrrrddlUruLLLLLLLLLLLLLLulDDDDDDDDDlddrUUUUluRRRRRRuluurDldRldlllluuuuurrrrrrrrrrrrrrddlddddrUUUUUruLLLLLLLLLLLLLLulDDurrrrrrrrrrrrrrddlddddddrUUUUUUUruLLLLLLLLLLLLLLulDrrrrrrrrrrrrrrdddddddddddllullullllllLLLullddrUUUUUUddddrrrrdrrrrrrdrrRdrUUUUUUUUUUruLLLLLLLLLLLLLrrrrrrrrrrrrddddddddddlllluurDldRRdrruLLLulllddrrUruLLLLLLLLLLullddrUUUUluRRRRRurD
 
-37743,
-23,18,769,2287,
-"4=4#2=6#=|2=3#2 4#4 #=|3#@$2 #2 # 2# #=|#2 $# $#$ # 2# #=|# $ #2 $2 #4 #=|#3 # $ $ 4# 3#=|# 2$3 # $ 5. #=|#2 $3 #$ #5. #=|3#$2#2 $ #5.5#=|=#2 5# #5.#3 #=|=#3 # $ $#5.# # 3#=|=#2 $# 2$ 5# # #3 #=|=# 2$ $3 2#10 #=|=#2 #3 4# 2#7 #=|=# $ $2 #2=# 2# 2# # 2#=|=#2 5#2=#7 # #=|=4#6=7#3 #=|17=5#",
-},
-#endif
-
-#if 0
-{
-/*
-        ########### 
-#########         # 
-#       # . $ . . # 
-# #$#$# # #$#$#$# # 
-# .   . * . . . . # 
-# #$#$# # #$#$#$# # 
-# . . .   . . . . # 
-# #$#$# # #$#$#$# # 
-#       #         # 
-############### ### 
-#@      #         # 
-# #$#$# # #$#$#$# # 
-# . . .   . . . . # 
-# #$#$# # #$#$#$# # 
-# .   . * . . . . # 
-# #$#$# # #$#$#$# # 
-#       # . $ . . # 
-#########         # 
-        ###########
-*/
-
-37744,
-19,19,394,2288,
-"8=11#=|9#9 #=|#7 # . $ . . #=|# #$#$# # #$#$#$# #=|# .3 . * . . . . #=|# #$#$# # #$#$#$# #=|# . . .3 . . . . #=|# #$#$# # #$#$#$# #=|#7 #9 #=|15# 3#=|#@6 #9 #=|# #$#$# # #$#$#$# #=|# . . .3 . . . . #=|# #$#$# # #$#$#$# #=|# .3 . * . . . . #=|# #$#$# # #$#$#$# #=|#7 # . $ . . #=|9#9 #=|8=11#",
-},
-#endif
-
-#if 0
-{
-/*
-    ####### 
-   #       # 
-  #  $ $$$  # 
- #    ##     # 
- # ### $$$$$$# 
-#      #      # 
-# # ## # $$ $ # 
- ##...  ##  $# 
- # .#..   #  # 
- # ..#..#$$  # 
-  # ..#.# # # 
-  #  ...    # 
-   #  #@#  # 
-    #######
-*/
-
-37745,
-15,14,415,2288,
-"4=7#=|3=#7 #=|2=#2 $ 3$2 #=|=#4 2#5 #=|=# 3# 6$#=|#6 #6 #=|# # 2# # 2$ $ #=|=2#3.2 2#2 $#=|=# .#2.3 #2 #=|=# 2.#2.#2$2 #=|2=# 2.#.# # #=|2=#2 3.4 #=|3=#2 #@#2 #=|4=7#",
-},
-#endif
-
-#if 0
-{
-/*
-  ####  ####  #### 
-  #  #  #  #  #  # 
-###.$####$ ####* ### 
-#@$          $   $ # 
-# $**.$.*.*....*.. # 
-### ###.$..### $ ### 
-  #. . #$#. .  #*#### 
-  ## $     $ $   #  # 
-   ##.$###* ###$ $$ # 
-    #  # #  # #   $ # 
-    #### #### ###   # 
-                #####
-*/
-
-37746,
-21,12,489,2289,
-"2=4#2=4#2=4#=|2=#2 #2=#2 #2=#2 #=|3#.$4#$ 4#* 3#=|#@$10 $3 $ #=|# $2*.$.*.*4.*2. #=|3# 3#.$2.3# $ 3#=|2=#. . #$#. .2 #*4#=|2=2# $5 $ $3 #2 #=|3=2#.$3#* 3#$ 2$ #=|4=#2 #=#2 #=#3 $ #=|4=4#=4#=3#3 #=|16=5#",
-},
-#endif
-
-#if 0
-{
-/*
-       ########## ######### 
-       #        # #       # 
-    #### #$#$#  # # $ $#  # 
-    #  #       ## # $# $  # 
-#####    $ $ $ #  # $  # ## 
-#  ##  # ##### ## # $  $ # 
-#      #        ######   # 
-#    ### $ $ $           # 
-#### # ####### $ $ $ ### # 
-   # #       #######  $  # 
-   # #####         ####  # 
-  ##  ...#            #### 
-  #   ...# 
-  #   ...# 
-  ##.....# 
-   #.....# 
-   #######
-*/
-
-37747,
-27,17,769,2289,
-"7=10#=9#=|7=#8 #=#7 #=|4=4# #$#$#2 #=# $ $#2 #=|4=#2 #7 2#=# $# $2 #=|5#4 $ $ $ #2=# $2 # 2#=|#2 2#2 # 5# 2#=# $2 $ #=|#6 #8 6#3 #=|#4 3# $ $ $11 #=|4# #=7# $ $ $ 3# #=|3=# #7=7#2 $2 #=|3=# 5#9=4#2 #=|2=2#2 3.#12=4#=|2=#3 3.#=|2=#3 3.#=|2=2#5.#=|3=#5.#=|3=7#",
-},
-#endif
-
-#if 0
-{
-/*
-##################### 
-#@        #         # 
-# * * * * # * * * * # 
-#  * * *  #  * * *  # 
-# * * * * # * * * * # 
-#  * $ *  #  * $ *  # 
-# * * * * # * * * * # 
-#  * * *  #$ * * *  # 
-# * * * * #.* * * * # 
-#      $..*.        # 
-#########*#*######### 
-#        .*..$      # 
-# * * * *.# * * * * # 
-#  * * * $#  * * *  # 
-# * * * * # * * * * # 
-#  * $ *  #  * $ *  # 
-# * * * * # * * * * # 
-#  * * *  #  * * *  # 
-# * * * * # * * * * # 
-#         #         # 
-#####################
-*/
-
-37748,
-21,21,300,2291,
-"21#=|#@8 #9 #=|# * * * * # * * * * #=|#2 * * *2 #2 * * *2 #=|# * * * * # * * * * #=|#2 * $ *2 #2 * $ *2 #=|# * * * * # * * * * #=|#2 * * *2 #$ * * *2 #=|# * * * * #.* * * * #=|#6 $2.*.8 #=|9#*#*9#=|#8 .*2.$6 #=|# * * * *.# * * * * #=|#2 * * * $#2 * * *2 #=|# * * * * # * * * * #=|#2 * $ *2 #2 * $ *2 #=|# * * * * # * * * * #=|#2 * * *2 #2 * * *2 #=|# * * * * # * * * * #=|#9 #9 #=|21#",
-},
-#endif
-
-#if 0
-{
-/*
-    ####### 
-   ##      # 
-  ### $$$$  # 
- #### .# $$$## 
- ####..#   $ # 
-## ....#  $$ ## 
-## ##...##   ## 
- #   ##...## # 
- # $$  #.... # 
- # $   #..#### 
-  #$$$ #. ### 
-  #  $$$$ ### 
-   #   @  ## 
-    #######
-*/
-
-37749,
-15,14,308,2291,
-"4=7#=|3=2#6 #=|2=3# 4$2 #=|=4# .# 3$2#=|=4#2.#3 $ #=|2# 4.#2 2$ 2#=|2# 2#3.2#3 2#=|=#3 2#3.2# #=|=# 2$2 #4. #=|=# $3 #2.4#=|2=#3$ #. 3#=|2=#2 4$ 3#=|3=#3 @2 2#=|4=7#",
-},
-#endif
-
-#if 0
-{
-/*
-    ############# 
-    #       #   # 
-    #  $ $$$# # # 
-    #  # # $  # ### 
-    #  #   ## # $ # 
-    ##$$$ ##  #   # 
-     #      $## # # 
-############ ##   # 
-#.........    # # # 
-#.###.###.### $ $ # 
-#.###.###.###$# ### 
-#.........$ $ #$  # 
-# ### ### # # $   # 
-#  ##    @# # #$$ # 
-##    #####    $  # 
- ###### $ $ ## $$ # 
-      #         ### 
-      ###########
-*/
-
-37750,
-19,18,419,2291,
-"4=13#=|4=#7 #3 #=|4=#2 $ 3$# # #=|4=#2 # # $2 # 3#=|4=#2 #3 2# # $ #=|4=2#3$ 2#2 #3 #=|5=#6 $2# # #=|12# 2#3 #=|#9.4 # # #=|#.3#.3#.3# $ $ #=|#.3#.3#.3#$# 3#=|#9.$ $ #$2 #=|# 3# 3# # # $3 #=|#2 2#4 @# # #2$ #=|2#4 5#4 $2 #=|=6# $ $ 2# 2$ #=|6=#9 3#=|6=11#",
-},
-#endif
-
-#if 0
-{
-/*
-####################### 
-#..#        #         # 
-#.. ## ## #$#  #$ $$$ # 
-#..     #   ## $  # $ # 
-## ###$ ##$$# $#      # 
-#  #  $  $  #   ####### 
-## #   # #..*.#  #    # 
-#  ##### $  # $  $ $$ # 
-# .#   ### $# $#$# #..# 
-# .#     ## #      #*## 
-# .# # $@#  # ######..# 
-# .    # #.... $  # ..# 
-#   #    #  # $   $ ..# 
-#######################
-*/
-
-37751,
-23,14,472,2292,
-"23#=|#2.#8 #9 #=|#2. 2# 2# #$#2 #$ 3$ #=|#2.5 #3 2# $2 # $ #=|2# 3#$ 2#2$# $#6 #=|#2 #2 $2 $2 #3 7#=|2# #3 # #2.*.#2 #4 #=|#2 5# $2 # $2 $ 2$ #=|# .#3 3# $# $#$# #2.#=|# .#5 2# #6 #*2#=|# .# # $@#2 # 6#2.#=|# .4 # #4. $2 # 2.#=|#3 #4 #2 # $3 $ 2.#=|23#",
-},
-#endif
-
-#if 0
-{
-/*
-  ####       ##### 
- ##  ###   ###   # 
- #  $$ ## ##  $  # 
- #  $   ###  $$  # 
- # #   $ ## $ $$ # 
-## ## $$   $ $ #### 
-#  $ #   $$ $ #   # 
-#     # $ @$#     # 
-#  $  # $    #.   # 
-#### #  $$$# #.#  # 
-   # $ #   .#.. ### 
-  ##  $ ###....$### 
-  #  $............# 
-  #   ##........  # 
-  #################
-*/
-
-37752,
-19,15,858,2292,
-"2=4#7=5#=|=2#2 3#3=3#3 #=|=#2 2$ 2#=2#2 $2 #=|=#2 $3 3#2 2$2 #=|=# #3 $ 2# $ 2$ #=|2# 2# 2$3 $ $ 4#=|#2 $ #3 2$ $ #3 #=|#5 # $ @$#5 #=|#2 $2 # $4 #.3 #=|4# #2 3$# #.#2 #=|3=# $ #3 .#2. 3#=|2=2#2 $ 3#4.$3#=|2=#2 $12.#=|2=#3 2#8.2 #=|2=17#",
-},
-#endif
-
-#if 0
-{
-/*
-############### 
-#       # #   # 
-# $$$$$$$ $ $## 
-#  $ $ $  #   # 
-#  $   $$ #   # 
-#    $        # 
-# $ $ $  ## # # 
-# $$$## #   # # 
-#      #  $@$ # 
-###### #  ##### 
-#..... #  $...# 
-#....... #  $ # 
-#.......  #   # 
-#....  #      # 
-###############
-*/
-
-37753,
-15,15,648,2293,
-"15#=|#7 # #3 #=|# 7$ $ $2#=|#2 $ $ $2 #3 #=|#2 $3 2$ #3 #=|#4 $8 #=|# $ $ $2 2# # #=|# 3$2# #3 # #=|#6 #2 $@$ #=|6# #2 5#=|#5. #2 $3.#=|#7. #2 $ #=|#7.2 #3 #=|#4.2 #6 #=|15#",
-},
-#endif
-
-#if 0
-{
-/*
-  ####      ######## 
-  #  ########   #  # 
-  #    $  ## $  $  # 
-  #  $$#  $    $   #### 
-  ###  #  # #####$#   # 
-##### $###  ####  #   # 
-#   #    $ ## .. ##$$ # 
-#  $$   #*.*.        ## 
-##  # $##. ####$#$#### 
-### #  ##*$###..#..# 
-#   ###... # ...**.### 
-#   #  *.### #  #.*  # 
-##$$#  *.##  # $#..  # 
- #@$   ...####  ###  # 
- ######   #  # $     # 
-      #####  ##$   ### 
-              #  ### 
-              ####
-*/
-
-37754,
-23,18,574,2295,
-"2=4#6=8#=|2=#2 8#3 #2 #=|2=#4 $2 2# $2 $2 #=|2=#2 2$#2 $4 $3 4#=|2=3#2 #2 # 5#$#3 #=|5# $3#2 4#2 #3 #=|#3 #4 $ 2# 2. 2#2$ #=|#2 2$3 #*.*.8 2#=|2#2 # $2#. 4#$#$4#=|3# #2 2#*$3#2.#2.#=|#3 3#3. # 3.2*.3#=|#3 #2 *.3# #2 #.*2 #=|2#2$#2 *.2#2 # $#2.2 #=|=#@$3 3.4#2 3#2 #=|=6#3 #2=# $5 #=|6=5#2=2#$3 3#=|14=#2 3#=|14=4#",
-},
-#endif
-
-#if 0
-{
-/*
-##############  ######### 
-#....        ####       # 
-#.$$$$$      #   $$$$$$@# 
-#.... $    $ #   $     ## 
-###.. $    $ #   $ ##### 
-  #.. $ ###$ ### $ # 
-  #.. $ #  $  #  $ # 
-  #.. $ #  $  #  $ # 
-  #.. $ #  $     $ ## 
-  #.. $$$$$$$$$$$$  .# 
-  #......  $        .# 
-  ######...$$$$$$$  .# 
-       ###..     $  .# 
-         ##..    $  .# 
-          ##.    $  .# 
-           #..   $ ..# 
-            #... $..## 
-             ##....## 
-              ######
-*/
-
-37755,
-25,19,939,2295,
-"14#2=9#=|#4.8 4#7 #=|#.5$6 #3 6$@#=|#4. $4 $ #3 $5 2#=|3#2. $4 $ #3 $ 5#=|2=#2. $ 3#$ 3# $ #=|2=#2. $ #2 $2 #2 $ #=|2=#2. $ #2 $2 #2 $ #=|2=#2. $ #2 $5 $ 2#=|2=#2. 12$2 .#=|2=#6.2 $8 .#=|2=6#3.7$2 .#=|7=3#2.5 $2 .#=|9=2#2.4 $2 .#=|10=2#.4 $2 .#=|11=#2.3 $ 2.#=|12=#3. $2.2#=|13=2#4.2#=|14=6#",
-},
-#endif
-
-#if 0
-{
-/*
-    ########### 
-#####    .    ##### 
-#   # #$# #$# #   # 
-# #$$$#. . .#$$$# # 
-#   # #.#.#.# #   # 
-##     $#.#$    ### 
- ## # #.#.#.# # # 
-  #$$$#..@..*$$$# 
-  # # #.#.#.# # ## 
-###    $#.#$     ## 
-#   # #.#.#.# #   # 
-# #$$$*. . .#$$$# # 
-#   # #$# #$# #   # 
-#####    .    ##### 
-    ###########
-*/
-
-37756,
-19,15,390,2296,
-"4=11#=|5#4 .4 5#=|#3 # #$# #$# #3 #=|# #3$#. . .#3$# #=|#3 # #.#.#.# #3 #=|2#5 $#.#$4 3#=|=2# # #.#.#.# # #=|2=#3$#2.@2.*3$#=|2=# # #.#.#.# # 2#=|3#4 $#.#$5 2#=|#3 # #.#.#.# #3 #=|# #3$*. . .#3$# #=|#3 # #$# #$# #3 #=|5#4 .4 5#=|4=11#",
-},
-#endif
-
-#if 0
-{
-/*
-#################### 
-#        @         # 
-# $.$.$.$.$.$.$.$. # 
-# .$.$.$.$.$.$.$.$ # 
-# $.$.$.$.$.$.$.$. # 
-#                  # 
-################## # 
-#            ....# # 
-# #  $ $ $ $ *...# # 
-# # $ $ $ $ $....# # 
-# #  $ $ $ $ $...# # 
-# #                # 
-# ################## 
-# #         #......# 
-#  #  $ $ $  #.....# 
-#   #  $ # $  #....# 
-#  $ #  $ # $  ##$ # 
-#  $ $$  $ # $  $  # 
-#           #      # 
-####################
-*/
-
-37757,
-20,20,525,2296,
-"20#=|#8 @9 #=|# $.$.$.$.$.$.$.$. #=|# .$.$.$.$.$.$.$.$ #=|# $.$.$.$.$.$.$.$. #=|#18 #=|18# #=|#12 4.# #=|# #2 $ $ $ $ *3.# #=|# # $ $ $ $ $4.# #=|# #2 $ $ $ $ $3.# #=|# #16 #=|# 18#=|# #9 #6.#=|#2 #2 $ $ $2 #5.#=|#3 #2 $ # $2 #4.#=|#2 $ #2 $ # $2 2#$ #=|#2 $ 2$2 $ # $2 $2 #=|#11 #6 #=|20#",
 },
 #endif
 
@@ -445,119 +31,350 @@
 {
 /*
 ################### 
-#        #        # 
-# $ $ $ ### $ $ $ # 
-# $####  #  ####$ # 
-#  #     #     #  # 
-# $# $  .#.  $ #$ # 
-#  # $ #.#.# $ #  # 
-# $# $ #.#.# $ #$ # 
-#  # $ #.#.# $ #  # 
-# $# $ #.#.# $ #$ # 
-#  # $.#.#.#.$ #  # 
-# $# $.#.#.#.$ #$ # 
-#  # $# .#. #$ #@ # 
-# #. $ $ $ $ $ .# # 
-##...............## 
- #################
+##########  #..   # 
+###    ###  *...# # 
+##   $ ###  #..   # 
+##   ###### ## # ## 
+## #       $#    ## 
+## # ##$##  # $  ## 
+## $ ##     #### ## 
+## # ## ## $#  #$## 
+## #$# $@##.#.   ## 
+## #   $$# ...#$ ## 
+## ### # # ...#  ## 
+#  #  $  ######  ## 
+#    $         $ ## 
+##############  ### 
+###################
 */
 
-37758,
-19,16,585,2296,
-"19#=|#8 #8 #=|# $ $ $ 3# $ $ $ #=|# $4#2 #2 4#$ #=|#2 #5 #5 #2 #=|# $# $2 .#.2 $ #$ #=|#2 # $ #.#.# $ #2 #=|# $# $ #.#.# $ #$ #=|#2 # $ #.#.# $ #2 #=|# $# $ #.#.# $ #$ #=|#2 # $.#.#.#.$ #2 #=|# $# $.#.#.#.$ #$ #=|#2 # $# .#. #$ #@ #=|# #. $ $ $ $ $ .# #=|2#15.2#=|=17#",
+37996,
+19,16,392,2446,
+"19#=|10#2 #2.3 #=|3#4 3#2 *3.# #=|2#3 $ 3#2 #2.3 #=|2#3 6# 2# # 2#=|2# #7 $#4 2#=|2# # 2#$2#2 # $2 2#=|2# $ 2#5 4# 2#=|2# # 2# 2# $#2 #$2#=|2# #$# $@2#.#.3 2#=|2# #3 2$# 3.#$ 2#=|2# 3# # # 3.#2 2#=|#2 #2 $2 6#2 2#=|#4 $9 $ 2#=|14#2 3#=|19#",
+
+// solution: DLUlDllUUUUUUdrrrrrrdrUUUddlllllllulldddddddddrrurRdrrrrrrrrdrUruuuuUUUdddllldlluUluurDDDuuuulllllllulldddddddddrrurrdrrrrrrrrrruuuullldldlluRdrruurrrddddlllllllluLLrrdrrrrrrrruuuulllddlluuuuuulllllllulldddddddddrrRRlllluuuuuuuuurrdrrrrrrddlllDurrruulllllluluurDurrdLLulDlddddddddddrrrrurrdrrrrrrrruuuulllddlluuuuuulllllllUdrrrrrrrddddddrruurrrddddllllllllulldlllluuuuuuuuuurRddrrrrrrrddddddrruurrrddlDruuulllddlluuuuuuuuluurDDDDuuuRRRurDlllldddllllllluullddddddddddrrrrurrdrrrrrrdrUruuuulllddlluuuullllUdrrrrddddrruurrrddddllllllllulldlllluuuuuuuuuurrddrrRddrrruuruuurrrrurrddlLLddrdrUUdlluuruurrddLLrddlluUruLLLrrdddldRRurDDDDlllddlluuuulllluullluullddddddddddrrrrurrdrrrrrrrruuUUUUUUUdlluuruurrddLLulDDurrddldlluRdrrdddlllddlluuuuluuruuluRRRurDDDDldRRluuuullldddlddrddddrruurrruuUlluuuullldddlddllluulllddLruurrrddrrrrddddrruurrrddddllllllllulldlllluuuuuUUUddddddddrrrrurrdrrrrrrrruulUruuuulluuuullldddlddrddddrruurRllddlluuuuluuruuurrrddddrrddDDDuuuuuUUddlluuuruurrddLLrdddlluuUruLLLrrrdrddddddlllddlluuuulllluulllddllddddddrrrrurrdrrrrrrrUUUdddlllllllulldlllluuuuuurruurrrddrrrrddddrruurRdrUUUUUUddlluuuruurrddLLrdddlluuUruLLrrdrddddddlddddlllllllulldRRRRRRRRdrUUUUdddllllllllllllluuuuuurruurrrddrrrrddddrruurRdrUUUUUUddlluuuruurrddLLrdddlluuUruulldRdrrddddddlllddlluuuulllluullldddddrrrrDDldRRRRRRRdrUUUUdddllllllluuulllluuuuurrrddrrrrddddrruurRdrUUUUUUddlluuuuurrrddLLrdddlluuUUdrrruullLddrrddddddlllddlluuuulllluullluullDDDDDDDDDldRRRRRRRRRRRRRdrUUUUdddllllllluuulllluuuuurrrddrrrrddddrruurRdrUUUUUUddlluuuuurrrddLLrdddlluuUUdrrddddddlddddllllllllllluRRRllldlluuuuuurrdddrrrrdDldRRRRRRRdrUUUUdddllllllluuulllluuuuurrrddrrrrddddrruurRdrUUUUdddlllddlluuuulllluullluLulDDDDDDDDDldRRRRRRRRRRRRRdrUUUUruLLulDDurrruuulluuurrruullDlddddrrdddlddddllllllluuulllluuuuuuuurrdLLulDrdLulDDDDDDDDDldRRRRRRRRRRRRRdrUUUUruLLulDrrddddllllllluuulllluuuuurrrddrrruurDDDDDldRuuuuuuuuluurDDDDDDDDDuuulllluullldddddrrrrdddrrrrrrruuruuuuulluuuulLrrddddrrdddlddddllllllluuulllluuuuurrrddrrrruuuuluurDDDDDuuuurrrrurrddlLulllldddlddllluullldddddrrrrdddrrrrrrruuruuuuulluuUruLLLrrddddrrUUddlluuuruurrddLLrdddlluuUruLLrrdrddddddlddddrUUUUUUUUUddlluuuruurrddLLulDDurrddddddlddddllllllluuulllluuuuurrrddrrruruuuluurDDuRRRdrrddddddlddddllllllluuulllluuuuurrrddrrruruUUluRRldddlddllluullldddddrrrrdddrrrrrrrruuuuuuullUUUrrddLdlUUdrrddddlddddllllllluuulllluuuuurrrRRRdrUUUluRddddDDDuuuullllllldddddrrrUUUUdddldlluuuuurrRRRRdrUUUluurDDDDDDDullllddldDDldRRRRRRRRRdrUUUUruLL
+
 },
 #endif
 
 #if 0
 {
 /*
-      ######## 
-  #####  #   # 
-###     $# $ # 
-# $ # $ $    # 
-# # ##$ $$# ####### 
-#  $    #   #     # 
-### ######### # # ## 
-#   ......... # #  # 
-# #$#########@#    # 
-# $ ######### # #  # 
-### .........     ## 
-#  $######### ##  # 
-# # $ $  #        # 
-# $  $ $ #       ## 
-##$ #    ######### 
- #      ## 
- ########
+############################# 
+#   #   ###      ####      ## 
+# $   # ### #. # #### # $#$## 
+####  # ### #$ # #### #  $ ## 
+##### # ###   ##$ ### ### $ # 
+#     # ### *$ #  ###  $    # 
+# ###     # .# #$ ###  # $### 
+#   #  ## ##    . ###     $ # 
+###    ## ##.# ## ### $###  # 
+### ##@## ##$       #  $  $ # 
+##   #$##    # #$## # ##    # 
+## # $ #### ## #  # #   $#### 
+#       ### ## #  # # #     # 
+# $  ## ### ## #. #   # # # # 
+### ### ### ## $  #####  .  # 
+###.#   ### ##.## ###   #.#.# 
+###.# # ###  .    ### .  ...# 
+###.# # ############### $.#.# 
+###.. $ ###############  ...# 
+#############################
 */
 
-37759,
-20,17,523,2297,
-"6=8#=|2=5#2 #3 #=|3#5 $# $ #=|# $ # $ $4 #=|# # 2#$ 2$# 7#=|#2 $4 #3 #5 #=|3# 9# # # 2#=|#3 9. # #2 #=|# #$9#@#4 #=|# $ 9# # #2 #=|3# 9.5 2#=|#2 $9# 2#2 #=|# # $ $2 #8 #=|# $2 $ $ #7 2#=|2#$ #4 9#=|=#6 2#=|=8#",
+37997,
+29,20,434,2446,
+"29#=|#3 #3 3#6 4#6 2#=|# $3 # 3# #. # 4# # $#$2#=|4#2 # 3# #$ # 4# #2 $ 2#=|5# # 3#3 2#$ 3# 3# $ #=|#5 # 3# *$ #2 3#2 $4 #=|# 3#5 # .# #$ 3#2 # $3#=|#3 #2 2# 2#4 . 3#5 $ #=|3#4 2# 2#.# 2# 3# $3#2 #=|3# 2#@2# 2#$7 #2 $2 $ #=|2#3 #$2#4 # #$2# # 2#4 #=|2# # $ 4# 2# #2 # #3 $4#=|#7 3# 2# #2 # # #5 #=|# $2 2# 3# 2# #. #3 # # # #=|3# 3# 3# 2# $2 5#2 .2 #=|3#.#3 3# 2#.2# 3#3 #.#.#=|3#.# # 3#2 .4 3# .2 3.#=|3#.# # 15# $.#.#=|3#2. $ 15#2 3.#=|29#",
+
+// solution: uuurrrddddrrddddddrrruuuuuuurrrrrddddrruuuurRRdDldddrruuLulDDDDldRRluurrdDDullddrRuuuuuuluuullluurrruurrruLdllddlllddddddlluuuulluuuulUUdrdddddrrddddrruuuuuurrruurruuLrddllLrddlllddddddlluuuulllDDrddldLrrddllluUUUUdddddllluuuuuulluuuullldddDDuuulllddrddlddddddrruuurruuuLLLuullddRdrUrruuuuuuluuuullulldRRRdrdddrruuuuullDDDDDDuullllddrrdrRurDDDDuuulllddlddrddddddrruuurruuuLuuuuuurrrddddrrddddddrrrrrruuuuuluurrrddddrruuuurUUlddddddlluuuulluulUrdddrrddddrruurrrurrULLddlddddddRdrUUUdlluurRRlddrruUlluululllddlluuuulluuuuulDrddddrrddddrruurrrurrruuuLDDrdLLulDDldddrruuLulDDDDDuuuuulluurRRRdrruulDrdLLulDDldddrruuLulDDDDldRRdrUUUlluuullddlluuuulluulUrdddrrddddrruuuuruurrRlllddrrdddrDDrrddllUdrruulLuululllddlluuuulluuuuulDrddddrrddddrruurrdddddrddlUruLulldRRRdrUUUddlluuuuullddlluuuulluuuulDrdLrddllluulluluurDuluuurrrrrDDDrdddddlddrddldllddllluuuuuurUrruuuuLrddddrrrrrddddrruurrrdrDDDDDuuuuululllddlluuuulluulLrruuuluuullllldddrrdrdDDurrrddlddrddldllddllluuuuuururRRluurruUUUdrdddddrrddddrruurrrdrddLruulldDDDuuuuulluuuuuuRDDDldRRRRdrruulDrdLLulDDldddrruuLulDDDDldRRdrUUdrruulLuuluuulluurruuLrddllddrrrrruuLLLLrrrddlllluluurDDldRRRRdrruulDrdLLulDDldddddrruuuuLulDDDDldRRdrUUUddlluuuuullddlluuuulluullluuluUddrddrrrddrrddddrruurrdddddrddlUruLulldRRRdrUrruullDDlluuuuullddlluuuulluulllddlldlddddddrrrrrruuuuulDrddlllddllluuuuuururruuuuluuruurrDDDDDrdddrrddddrruurrrdrDDuuluurruuulluurDldllddrrrruuLLLrrrddlllluluurDDldRRRRdrruulDrdLLulDDldddddrrrruulluuLulDDDDldRRRRllluuuurrddrrdDDuuulluuluurruuuluuruulDDDldllddrrrruuLLLrrrddlllluluurDDldRRRRdrruulDrdLLulDDldddddrrrruulluuLulDDDDldRRRRllluuuurrddrrdDuulluurrDDuulllulllddlluuuulluuuuuluuullddlddrddddlldllluuuullllddllddlddldRurDDDDDuuuuuluuruurrruurrrddddrrrurrDDDDDDurrrddllLuuuuuuuuuuuluuruurrdddrdddddLLrruuuuuluuullddlddrdddDDDDDDuuuuurrrrrddddrruuuuuuuuRRRRurrdLulDDldllddrrrruuLLLruulldDDldRRRRdrruulDrdLLulDDldRRddrruuLLLulDDDDldRRRRllluuuuulluuuuuuuuuurrrrrDDDrdLulDDldllddrrrruuLLLruulldDDldRRRRdrruulDrdLLulDDldRRddrruuLLLulDDDDldRRRlluuuuulluuuuuuuuuurrddRRlluurrrdDDrdLulDDldllddrrrruuLLLruulldDDldRRRRdrruulDrdLLulDDldRRddrruuLLLulDDDDldRRluuuuulluuuuuuuuuurrrDldRRluurrdDDrdLulDDldllddrrrruuLLLruulldDDldRRRRdrruulDrdLLulDDldRRddrruuLLLulDDDDDrddlUruLuuuuullddlluuuullllllldllluuuulllddddddLLLrrruuuulllddldDldRurDDDDuuuuluurrDuluurrrddddlLLruulldDldRurDDDuururruLdllluurrDrdLLruulldDldRurDDururruuuuuurrrddddrrrurrrrrrrddddrruurrdddRluuullddlluuuullllllldllluuuulllddddddrddddddLL
+
 },
 #endif
 
 #if 0
 {
 /*
-  ###### 
-  #    ###### 
-  #   $  @# #### 
-####$#  $ # $. # 
-#.#..#$ $ # $ .# 
-#. ..#  $ # $#.## 
-#.#..#  $ # $  .# 
-#.# ### $ # $# .## 
-#.#   # $ # $   .# 
-#.#  $# $   $## .### 
-#.# $ # $ # $    ..# 
-#    $# $ # $    ..# 
-# $#    $ # $   ...# 
-#  #  # $ # $ # ...# 
-#..   $ $ # $ #.#### 
-#..# $$ $ # $   # 
-#..#  # $ # $#.## 
-#...### $ # $ .# 
-######  $ # $. # 
-     # $#   #### 
-     #  ##### 
+  ######## 
+  # .....###### 
+  # .#.#.  @  # 
+  ##.#.#.## #$# 
+   #.#...     # 
+ ###***.###$ $## 
+ # $ ..##      # 
+##   $ # $ $ $ # 
+#  $  #   ## ### 
+#  # $  $$   # 
+# $###   # ### 
+#  #  $  $ # 
+#  #   ##### 
+#  ## $  # 
+# $   $  # 
+######  ## 
      ####
 */
 
-37760,
-20,22,640,2297,
-"2=6#=|2=#4 6#=|2=#3 $2 @# 4#=|4#$#2 $ # $. #=|#.#2.#$ $ # $ .#=|#. 2.#2 $ # $#.2#=|#.#2.#2 $ # $2 .#=|#.# 3# $ # $# .2#=|#.#3 # $ # $3 .#=|#.#2 $# $3 $2# .3#=|#.# $ # $ # $4 2.#=|#4 $# $ # $4 2.#=|# $#4 $ # $3 3.#=|#2 #2 # $ # $ # 3.#=|#2.3 $ $ # $ #.4#=|#2.# 2$ $ # $3 #=|#2.#2 # $ # $#.2#=|#3.3# $ # $ .#=|6#2 $ # $. #=|5=# $#3 4#=|5=#2 5#=|5=4#",
+37998,
+16,17,473,2446,
+"2=8#=|2=# 5.6#=|2=# .#.#.2 @2 #=|2=2#.#.#.2# #$#=|3=#.#3.5 #=|=3#3*.3#$ $2#=|=# $ 2.2#6 #=|2#3 $ # $ $ $ #=|#2 $2 #3 2# 3#=|#2 # $2 2$3 #=|# $3#3 # 3#=|#2 #2 $2 $ #=|#2 #3 5#=|#2 2# $2 #=|# $3 $2 #=|6#2 2#=|5=4#",
+
+// solution: lllddllDuuuulldddDuuuurrrrdrrrddrddlllDldldddLdlddRdrUlUUUruuururrurruuluulllullllddddRdDlllddDDDuuuuurrUUUUUluRRRllddddddlluRdrruulDrdLLulDDDDuuurruuuuuurrdddrrrrrrddllldldldddldddrruLLuuruuururrurruulllllluuulldddddllddlddddddRRRRRuuuruuururrurruullllldLLruuuulldddDDrdLLulDDurrdLruruurrurrrrrddlUruLLLLLdllluuuurrddDrdLLruuuulldddDDrdLLrrrUluluuuurrdddrdLLruuuulldddDrddlluRdddRluurruururrrrddlldldDuurruruullllldllddddrUluuurrddLLrruururrrrddlldldldddldddllllluuuuuuRRRurruururrrrrdddddllLLulDruurrRlllddrrrruUUrrdLulllldlddrrrruUruLLuullllldlldddlllddddddrrrrruuurrUUrrrruullllDldRRRlluurrruuullllldlldlDrdLrurruururrrrrrDullddrdrruLLdlUUdrruulLuulllddrRRuurrDDuulldddddlllddrUluRRRRuluullllldllddddrRRurrurruuuuurrddLLLLLLdllluuuurrddDrdLLruuuulldddDDDrruururrrrddrUluuurrddLLLLLLdllluuuurrddDrdLLrddlluUUdrrdLulDldRurrururrrrdddllldldlllUUluRdddrrrurrdLLLrrruurruuullllldddLLddRUluuurrrurrrrdddlllddddlldddllllluuuuuuRRRdrRRlllulllddddddrrrrruuurruUlllluuulDrdLruuurrddLruulldDrruLdlluRdrUruuuuulldDDDuuuurrdddddldlluRdrruuLruuuulldddDrrrurrrrdddlluRdrUUruLLLLLdllluuuurrddDuuullddddrRddllUUUdddrUruuuuulldDDDuuuurrdddddldlluRdrruuurrrrrddlldddlllllUluuruuuuurrddddddlLrruuurruuuLLLrrrdrrrddrddrrdLLLruuurDlddrruLLdlUUUUdrruulLLLrrddllllluuurrDullddddddlluuuuuluRRRRldddrrrrrddlldRRRddLLLLLLruRdrUluRRRllddrrruUluurrdLLuullllldddllddRRRRRRluuuRdrUUruLLLLLrrrrddlldldldllluurruuUUUdddddlluuuuuurRllddddddddrrrrddllUdrruuruurruuullllldddllddrRRlddrruUluRdrUluRldldldRdrUUluRururrrdddLLLLulDruurRRlllddrrrruUUUruLLLLLLrrrrddlldldldllluuuuuuuurrddDDLrurrrrrddlldldldllluuuUUUUluRddddrrurrrrrrrddrdLulllldlddrrrruUUUruLLLLLLrrrrddlldldldllluuuurrUUUdddllddddrrdddddllllluuuuuuRRllddddddrrrrruuuuullUUUUUUUdddddddrrrrrUluRRRllddrrruUUUruLLLLLLrrrrddlldldldllluuuurrUUddllddddrrdddlluRdrUUddddllllluuuuuurrrdrRRlddrruUluRdrUluRRRllddrrruUUUruLLLLLLrrrrddlldldldllluuuurrUdllddrUluRlddddrrdddddlUruuuulUUUlddlllddrUluRRRdrUUddrddddddrUruLLuuuuluulullDDlddrUluRRluurrdrddlUUUUUUdddlldRdrUUUUdddrddrrDrdLulDDDuuuulullllddddddrrrrRllllluurUUUluRRurrddlUUUUddrddrrrrrddLLLuullullllddddddrrrrruuUUddddllllluuruuuurrrdRRdrUluRdrUluRRRllddrrruUUUruLdlUUdrruulLLLrrddddlldldldlddlldRuruulullllddddddrrrrruUUUddddllllluuruuuurrrdRRdrUluRdrUluRRRllddrrruUUUruLLLLLLrrrrddlldldldldddddllllUUUUUluRRurrddlUUUdrddrdddddlUUluRdrUUdldddllluuuuuurrrdRRdrUluRdrUluRRRllddrrruUUUruLLLLLrrrddlldldldlddddrrdLdlUUUUUdldddllluuuuuurrrdRRdrUluRdrUluRRRllddrrruUUUruLLLL
+
 },
 #endif
 
 #if 0
 {
 /*
-#######         ####### 
-#   ###         ###   # 
-# $   ##       ##   $ # 
-# $$$  ##     ##  $$$ # 
-# $  $  #######  $  $ # 
-# #   $  ##.##  $   # # 
-#  #   $   .   $   #  # 
-#   #   $  .  $   #   # 
-#... # # $#.#$ # # ...# 
-# .   #   $.$   #   . # 
-# .........*......... # 
-# .   #   $.$   #   . # 
-#... # # $#.#$ # # ...# 
-#   #   $  .  $   #   # 
-#  #   $   .   $   #  # 
-# #   $  ##.##  $   # # 
-# $  $  #######  $  $ # 
-# $$$  ##     ##  $$$ # 
-# $   ##       ##   $ # 
-#   ###         ###   # 
-#######         #######
+############################ 
+##     ..#     ..#   #@  ### 
+##$ $ #..$$ $ #..$   $$$ ### 
+## ###  ## ###..## ###     # 
+##  #.  .#   ....#$#  $### # 
+##  #.$$.#   .**.#     $ $ # 
+##  #.$ .#   .*..# # # $ $ # 
+##$ ##  ##$  #..   $ #$#   # 
+## ##    #    .. $#  #  #$## 
+# $   $   $   $    $ #  # ## 
+#   #####    #   ##  #    ## 
+############################
 */
 
-37761,
-23,21,698,2297,
-"7#9=7#=|#3 3#9=3#3 #=|# $3 2#7=2#3 $ #=|# 3$2 2#5=2#2 3$ #=|# $2 $2 7#2 $2 $ #=|# #3 $2 2#.2#2 $3 # #=|#2 #3 $3 .3 $3 #2 #=|#3 #3 $2 .2 $3 #3 #=|#3. # # $#.#$ # # 3.#=|# .3 #3 $.$3 #3 . #=|# 9.*9. #=|# .3 #3 $.$3 #3 . #=|#3. # # $#.#$ # # 3.#=|#3 #3 $2 .2 $3 #3 #=|#2 #3 $3 .3 $3 #2 #=|# #3 $2 2#.2#2 $3 # #=|# $2 $2 7#2 $2 $ #=|# 3$2 2#5=2#2 3$ #=|# $3 2#7=2#3 $ #=|#3 3#9=3#3 #=|7#9=7#",
+37999,
+28,12,557,2448,
+"28#=|2#5 2.#5 2.#3 #@2 3#=|2#$ $ #2.2$ $ #2.$3 3$ 3#=|2# 3#2 2# 3#2.2# 3#5 #=|2#2 #.2 .#3 4.#$#2 $3# #=|2#2 #.2$.#3 .2*.#5 $ $ #=|2#2 #.$ .#3 .*2.# # # $ $ #=|2#$ 2#2 2#$2 #2.3 $ #$#3 #=|2# 2#4 #4 2. $#2 #2 #$2#=|# $3 $3 $3 $4 $ #2 # 2#=|#3 5#4 #3 2#2 #4 2#=|28#",
+
+// solution: rrddrrddddlluuLLdDDuuuLulDllddllddrrRllluuuuuluurRRurrdLLLLulDDldllddddrrrruuuuLLLLdldddddllululuuruuluuulllllDDDrddlDruuuluururrrrdddrddlddrdrdrrrururrrdrrruruLLLLulDldRurDldRRluurruuUUddddlluuuluurrRurrdLLLLulDrrrdddrrrrrrddrruuuullllDurrrrddddlluulLulldllddlllldlllddlluRdrUUldllullldRRRRRdrUllluluuruulDDDlddrruLuuuulldRRddddlllldlluRRRRRRRRRRdrUUUUruLddddlllluluuuuuuullllldddrddldDuruuuluururrrrddddddddlllldlluRRRRRRRRRRdrUUdllllululUUluRdrUUUdddddddllllluuruuuluururrrRddddddddlluRdrUUluRuuuuullllldddDDDDuuuuuururrrrddldddddldlldlluRRRRRRRRRRRurrrddlUUlldlllluluuuuuuulldLLulDDDDDDDuuuuuurrrurrddldddddldlldlluRRRRRRRRRdrruurrrruuuullllddlluuRlddrrruurrrddlddllldLLLLLLLLLdlUUUddrrrrrrrrrrurrrruuuullldldlluurDldRRururrrddlddllldlllllllllluuruulDDDuuuuuurrrurrddldddddldlldlluRRRRRRRRRdrruLLLLLrrrrrurrrrurruuuuullullllllDDDuuLLrrddrdrrurrrddlddllldllllullldllluuuuuuurrrurrDDldRdddddLLLLdlUUUUruuluurrrurrdrrrddrddlUUUdrdrrurrrdddrruuuuullullllldLLLrrddrdrrurrrddlddllldlllllllllluuruuuluurrrurrDDDDDDlddrruLdlUUUUruLruurrrddrdrruLLdlUUdrrrrrrdddrruuuuullullllldLLLrrddrrrrrrddlddllldlllllllllluuruuuluurrrurrDDDDDDlddrruLdlUUUruLruuurrrrurrrrdDurrrdddddlluuuLLLLLdlUUdrrrrruuulllldLLLrrddrrrrrrddlddllldlllllllllluuruuuluurrrurrDDDDDDlddrruLdlUUruLruuuuullllldddDDDDuuuuuurrrurrddldddddldlldlluRRRRRRRRRdrruLLLLLrrrrrurrrrurruurrurrurruullDLLLLLLulDDurrrdddddlluuuLLLLLdlUUdrrrrruuulllldLLLrrddrrrrrrddlddllldlllluluuuuuUrrrrurrrrrdrrdddrrurrdLLLrrrrrddrruuuulluulldlllllllddrdddrruUUUddddlluuuluurrRurrdLLLLulDDurrrdddddlluuuLLLLLdlUUdrrrrruuulllldLLLrrrurrrrrdrrrrrrDDurrrrddddlluulLLLLrrruuulllllllddrdddrruUUUddrrrruuulllLLLulDDurrrdddddlluuuLLLLLdlUUdrrrrruuulllldLLrddrrrrrrddlddllldRurrddlUrruurrrrUdlluurRurrdLLLrddlluUUUddrrrruuulllLLLrrdddddlluuuluUdldlllluururrrRdddrddlUUUUdldldRurrddlUUdddddllulUUluRRRllddddlluRdrUUUluurDDDDldRRRdrUUUddllullUUUluRRRdrUrrdddddrUluRRuurrddLLLdlldlluluuurrurrddDDrdLLLLLdlUUUUluRRRurrrdddrrrddLLLLLLLdlUUUUluRRurrrrdddrrrruurruurruLLLLLulDDDDDurrddlLLdlldlluluuuurrrrddDDrdLLLLLdlUUUUUluRRRRllllddDDrddlluRRdrUUUUUluRRlddddrdrrrrrrdrUUUUdlluurRurrdLLLrrruuullllddDDurrddlLLdlUUUddrrrruurruurrrrddLLLLLLLrrruuullllddDDurrddlLLdlUUdlddlluluuuulluururrdLLulDDDDDDDrddlluRRdrUUUUUluRddddrdrrrrrrruuuurrdRurrrddllUdrruulLLLLLLrrruuullllddDDurrddlLLLdldlllllllullldRRRRRRRRRdrUrrrrruuuurrrrddrUruLLLdlUUUruLLLLLLLrrrrrrddddddrddrruUUUruLLLdlUUUruLLLLLLrrrrrddddddrddlUUUUUUUruLLLLulDDDDDurrddlLLdlU
+
+},
+#endif
+
+#if 0
+{
+/*
+####### ##### 
+#     # #   ##### 
+# ### ###$$   $ ## 
+# #  $##    $    # 
+#   $$    $ ###$ # 
+#    ###$#  # #  # 
+# $##... #### #  # 
+##@# .#.#######$## 
+# $$ *#.     ##  # 
+#  ...#.##   $   # 
+#####*#.## $$##  # 
+   # .#.##    $$ # 
+   # *#.## # ##  # 
+   # ...########## 
+   # *..# 
+   ######
+*/
+
+38000,
+18,16,614,2450,
+"7#=5#=|#5 #=#3 5#=|# 3# 3#2$3 $ 2#=|# #2 $2#4 $4 #=|#3 2$4 $ 3#$ #=|#4 3#$#2 # #2 #=|# $2#3. 4# #2 #=|2#@# .#.7#$2#=|# 2$ *#.5 2#2 #=|#2 3.#.2#3 $3 #=|5#*#.2# 2$2#2 #=|3=# .#.2#4 2$ #=|3=# *#.2# # 2#2 #=|3=# 3.10#=|3=# *2.#=|3=6#",
+
+// solution: UUddDRdrrUUddllulldRuuuurrURRRRurrrurrdrrrddldDDuuruuulllulldllldlllUdrrrurrrddlUruurrdLulDLdLLLrrrurrrrruLLdllldlluRRRRRllllldlLLrrrrrurrrurrdrddldddrddlUUdlLLullllldddddllluurUUUdlLulldRRuluuuruRRRRRurrrrrurrdrddldDDrddlUUdlllullllldddddllluuruuuLLdlUUUluuRDDDuurrurrrrurrrrrurrdrddldDDrdLLruuuruuululldllllldllllLdlddDuuurrurrrrurrrrrurrdDDDDDuuuuuulldRurDDulllllddrUluRRRllllldRRllllllldldddrrrdddlddrrruuuuuuurUdldddddddllluuruuullluuurrurrrRllllldldddrrrdddDldRRdrUUUUUUUddddddlluuuuullluuurrurrrrddLruullllldlluuuurrrrDDuullllddddrrruRlluRdrUllddldddrdRurDDDuuulllldRurrrdddlddrrruuuuuuuruulLLrrrurrrrrurrdLLLLuRRlldLdLLLruRRRurrdLLLdlluRRRllldddldddddddllluuruulLulldRRuluuuruurrdRRRlllLulDrdLrurrrrddldddddddllluuruuullluuluuRRlDDDuuruurrdrrrddldddddddllluuruuulldlluRuuuruurrdrrrddldddddddllluurDldRRdrUUUUUUUddddddlluuuuulLdlluRdrRurDDDDldRRdrUUUUdddlluuuullluuuuruurrdLulDrdLulDDurrurrrrurrdLLLLLLulDrdLrurrrrrruruullDDrdLLLLLLulDrrrrrrrdrUlllllllllluuurrrrDDldRRRRurrdLLLLLLLrruuulllldddddrDDldRRRurDDDuullluuuluuuuurrrrdddrrrruuurrdDurrdLLLdlUldllluuulllldddddrdddrrrddlddrrruuuUUdddddllluuruullluuuluuuuurrrrdddrrrrrurrrrrrdddlUUruLLLLLLdlluRRRurrdrrdddddrddlUUUUUruulllulldllldllluuulllldddddrdddrrrddlddrrruuuuurrrrrdRRllullllldddddllluuruullluuuluuuuurrrrdddrrrrrururrdrrrddldddrddlUUdlllullllldddddllluurDldRRdrUUUUdddlluuuullluuuluuuuurrrrdddrrrrrururrdrrrddldDDuuruuulllulldllldllluuulllldddRRRRRRRllllllDDDDldRRRurDDDDldRRdrUUUddlluuuullluuuuurrdLulDDDDldRRRurDDDDldRRdrUUdlluuuullluuuurrurrrrurrdLLLLLLulDrdLulDDDDldRRRurDDDDldRRdrUllldRRuluuuullluuuurrurrrrrruruullDDrdLLLLLLulDrdLulDDDDldRRRurDDDDldRRluuuullluuuurrurrrrrrururrdLLLruulldDrdLLLLLLulDrdLulDDDDldRRRurDDDDldRuuuullluuuurrurrrrrrurrrrrrddlUruLLLLLLruulldDrdLLLLLLulDrdLulDDDDldRRRurDDDDDldRuuuuullluuuurrurrrrrrurrrrrdddddrddlUUUUUUruLLLLLLruulldDrdLLLLLLulDrdLulDDDDldRRRurDDDDDuuuullluuuurrurrrrrrurrrrrdddddrddddlUUUUUUUUruLLLLLLruulldDrdLLLLLLulDrdLulDDDDldRRRurDDDDuuullluuuurrurrrrrrurrrrrddddddlllulldddrrrRlllluuurrdrrrrdddlUUUUUUUUruLLLLLLruulldDrdLLLLLLulDrdLulDDDDldRRRurDDDuullluuuurrurrrrrrdrUluRurrdLLLruulldDrdLLLLLLulDrdLulDDDDldRRRurDDullluuuurrurrrrruuurDDrdLLLLLLLulDrdLulDDDDldRRRurDllluRRlluuurrurrrrrrrurrrruLLLLLulDDrdLLLLLLulDrdLulDDDDldRRRulluuurrurrrrrrrurrrrddddddlllLrrrrddllllluUruLLLrrdddrUluRRRRlllddrrrruUUUUUUruLLLLLLulDrdLLLLLLulDrdLulDDDDldRRuluuurrurrrrrrrurrrrddddddddlllUluRRRllddrrruUUUUUUruLLLLLLulDrdLLLLLLulDrdLulDDDDldR
+
+},
+#endif
+
+#if 0
+{
+/*
+     ####### 
+#### #     # 
+#  ### $$$ # 
+# .....$  ##### 
+#  ..# $  #  @# 
+###$##$#### # # #### 
+ #.*....*  $$ ###  ##### 
+ # ..#####  ##   $ $   # 
+ #....*.... #  $$  # $ # 
+ ########## #$$ ## #   # 
+    # $.###        $  ## 
+    #       $###$# #  # 
+    ##### $ $    $ #### 
+        ####    #### 
+           ######
+*/
+
+38001,
+24,15,652,2450,
+"5=7#=|4#=#5 #=|#2 3# 3$ #=|# 5.$2 5#=|#2 2.# $2 #2 @#=|3#$2#$4# # #=4#=|=#.*4.*2 2$ 3#2 5#=|=# 2.5#2 2#3 $ $3 #=|=#4.*4. #2 2$2 # $ #=|=10# #2$ 2# #3 #=|4=# $.3#8 $2 2#=|4=#7 $3#$# #2 #=|4=5# $ $4 $ 4#=|8=4#4 4#=|11=6#",
+
+// solution: lldDlddlllLLLLrrrrrrrrddrrrruUluRdddrrrRRlllllllllddRluurrrrrrruuuRRlldddllluuRRllddrrrrruuullDDuurrdddlLuulllddlllluuluulLLLrrrrddrddrrrruurrrurrddrruuLLddrUldddrUUldlluulllddlllluullllllluuRlddrrrrrrrddrrrruurrrddddLLrruuuulllddlllluullllllluurRllddrrrrrrrddrrrrrRRRRllddllUdrruuuulllddRlllllddrdrruRRlldlluRRllluurDldRuuluuluullLLrrrrrDDDDuuuuuurrddLruulldDlddlllllluuRRRRRRRllllllldlluRUUruLdlluurDldRurDDDldRuuururruurrDullddllldddddrrrrrrruulllllLrrrrrrddllllllluUUUruLdlluurDldRRurrrdDuullldddddrrrrrrruulllLLLrrrrrrddllllllluUUUddrrruuullLdddrDldRRRlluuluulluurDrrrrdddrrrrruurrddLLLLLLLLLdlUrrrrrrrddrUUlllllllddrrRRRllllluurruuullldDDldRurDldRRRRRlllluuluuulldRurDDDldRurDldRRRRllluurrrrrrrrruullDurrddlLLLLLLLLrruuulllddDldRurDldRRRlluurrrrrrrddddrddlUUUUUluRuurrddLLLLLLLLLrruuulllddDldRurDldRRluurrrrrrrdddddlllllluRdrrrrruuuuullllluuuuurrdLulDDDDuullldddrrRRRRRRuurrddLLLLLLLLLrruuulllddDldRurDldRuurruuuurrurrdLLLulDDDDuullldddrrRRRRRRuurrddLLLLLLLLLrruuulllddDldRurDurruuuurrrddlUruLLulDDDDuullldddrrRRRRRRuurrddLLLLLLLLLrruuulllddDDrurruuuurrddLruulldllldddrrruUUdddrrrrrddddrrrruullDurrddlLLdlUUUUluRuurrddLLLLLLLLLdlUUUddrrruuullLdlluurDrrrrRRuullDrddlddllluuurrRRdrUluRlldllllldRurrrrdddllluUluRRRRdrUldddrrrrrddddrdddrruLdlUUluRRuurrddLLLdlUUUUluRuurrddLLLLLLLLLdlUUUluRRRRdrruLdlUrruulDulDDDDuullldddrrRRRRRRuurrddLLLLLLLLLdlUUUddrrruuullLdlluurDrrrrurrurrdLLdLdlUrrdrUlllllllldRurrrrdddllluUluRRRRdddrrrrrddddrrrruurrruulDrdLLLrruLdlddlluuRRRlllddlluuuullllluurruuurDlddllddrrrrrddddrrrruururrdddLLLLLLdlUUUUluRuurrddLLLLLLLLLdlUUUddrrruuullLdlluurDrrrrdddrrrrrddddrrrruurRllddrrruUllllDldRRRllllluuuullllluurrrUldlluRRllllllldRurrrrdddllluUluRRRRdddrrrrrdddddlldRRRdrruLdlUUluRRurrdLLLdlUUUUluRuurrddLLLLLLLLLdlUUUddrrruuullLdlluurDrrrrdddrrrrrddddrrrruurrrddLLLLLLdlUUUUluRuurrddLLLLLLLLLrruuulllddDldRurrrrrrrrddddrrrrrddLLLdlUUdrrrruulllLdlUUUUluRuurrddLLLLLLLLLrruuulllddDuuulldRurrrrdrruLLLLLrrrrruullDurrddlLLLrruurDrdLLLrrruurrdLLLulDrdLrrdrUluurrdLLLulDrddlddrrrrrddddrrrrrrrddLLLLLdlUUdrrrruulllLdlUUUUluRuurrddLLLLLLLLLLrrrrrrrrddddrrrruurruurDDDDuulllluRRdrruulDrdLLLulDDrdLLLdlUUUUluRuurrddLLLLLLLLLrrrrrrrddddrrrrrrrrruuuLLulDrdLLLulDDrdLLLdlUUUUluRuurrddLLLLLLLLrrrrrrddddrrrrrrrrrurruuLLLLulDrdLLLulDDrdLLLdlUUUUluRuurrddLLLLLLLrrrrrddddrrrrrrrrrurUruLLLLulDrdLLLulDDrdLLLdlUUUUluRuurrddLLLLLLrrrrddddrrrrrrrrrdrUUruLulDDrdLLLLLLLLLdlUUUUluRuurrddLLLLLrrrddddrrrrrddrrUdlluurRuuurrdddLLLLLLLLdlUUUUluRuurrddLLLL
+
+},
+#endif
+
+#if 0
+{
+/*
+########################### 
+#                         # 
+# ***** ****$ # * # ***** # 
+# $@# . *   *  **   . # $ # 
+# $ # . *   *   *   .   $ # 
+# ***** *   *  $*$  ***** # 
+# .   # *   *   *   #   . # 
+# .   # *   *   *   #   . # 
+# ***** $**** ***** ***** # 
+#                         # 
+###########################
+*/
+
+38002,
+27,11,406,2451,
+"27#=|#25 #=|# 5* 4*$ # * # 5* #=|# $@# . *3 *2 2*3 . # $ #=|# $ # . *3 *3 *3 .3 $ #=|# 5* *3 *2 $*$2 5* #=|# .3 # *3 *3 *3 #3 . #=|# .3 # *3 *3 *3 #3 . #=|# 5* $4* 5* 5* #=|#25 #=|27#",
+
+// solution: dDDldRllddrrrrrruuuuuRRRurDlllldddddrrrrrrrrrrrrrrrrUUruLrruuuuullllllllllllllllDDuulldddrRurDDuuluurrrrrrrrrrrrrrrrdddLLLLLLdlUruLdlUrruurrrrDDuurrdddlLLLLullddrUUldddldLLulldRRRRRlllllddrrrrrruUUUUruLrrdrrrrddlldlluUddrrrruuulllLLrrruuullllllllllllllddddddrruRRurDuuuluulllDDuurrrrrrrrrrrrrrrdLulDullllllllllllllddddddLrrrurrdddlllllluUUUUrruuulldDldRRluuurrddDDulldddddrUluRddrrrrrrrrUdllluuurrdRluluuuluullllllllllDDDuuurrrrrrrrrrrrrrrrrrDulllllllllllddrRllldlldddrddrrrrrrrrrrruuuululDrrddddlUUddlluululuurRRdrrddddrrrrrUruLdldlllllllllllllllllllllUluuuuuuurrrrrDDldRuruurrrddrdRRRllulluurrDDuullllldRRurDurrrrrrrrrrrrrrrdddddlddldllUUUdddrrrruuuuuuuullllllllllllllldRRlllddlUluRRRullllllllldddddddrdrrrrruuuuRRuuururrrrrrrrrrrdDldRuuurrrrdddddlddldlluuuUUdddddllllluululllldRurDurrdrddlllllllluuRRRlllluurDldRuuuulldRurDDlddrddrrrrrUUUlldRurDurrdrddlllllllluuRRRlllddrUluluuuuuullDulldRRRRurDullllllldRRRRRRlddlUruulldRurDDulllllddddrrrrUUUruulldRRurDDllddRRddddllUUddllluUluRRldddrrruuLLrrdRRRlllulluUUUdddlluuuurRRRllllddRluurrdDlUluRurrrrrddDDuulluRurDDuullllldRRRdddrrDDrdLuuulluurrDDuulluRurDDullllllddddrUUUluRRRRurrrrrrrrrrrrrrrrrrrrdddllUdrUrdddlddldlluuuuuRldddddllllllllllllllllllluUUrdrrddrrrrrrrrrrrrrrrruurRdrUlllddlllllllllllllllluullulluurDDDuuuruurrurrrrrrrdLrurrrrrrrrrrrrrddddddllllddllllluulullllUUUdddrrrrdrddrruuLrrddrrrrrruuuuuuuulllllllllllllddlddddlLrruuuuruurrrrrrrrrrrrrddddddllllddlluuuulluuRRDrrdddddlllllllllllllulLrrdrrrrrrrrrrrrruRRlldlluRRRdrUluRlldllldlluRRRRRRdrrruuuuuuuullllllllllllllllllllddddrUluuurrrrrrrrrrrrrrrrdDDDDDrddlUUUUUUddddrddrrruuuuuuuullllllllllllllllddddLLrruuuullllllldddddrUUUluurrdLulDDDDDruuuurrurrdLLLLulDDDDruuurrddrUruLLLLulDDDldddddrrrrrrrrrrrrrrrrrrrruuuuullullddDDrddlluRRRRRuuuullDDDlddrruLLLdlllllllllllllllluuuuurrdddrrUUUUruLLLulDDrurrrrurrdddlLLuullldddddrruuUUruLLLrrrrurrddLLLdlUruLLrrrurrrrrrrrrrDDDDDDuuuuuulllllddlLLLLLdlUruLrrdrrrrdddrrruuuLLLLLLLdlUrrrrrruurDldldddrrruuuLLLLLLLrrrrdddrrUUruLLLLLrrrruurrrrdddlLLdlUruLLLLrruullllldddrrUrrrrrdrrrdddrddlllllllllluluUUruLLruuullllllddrrddddrruuUUdrrrrurrrruurrrrrrrrrrrrddldLLLddddlluuullulllulllddLLrrdrrrrUluRlullldLLLrrruruulllllddDDDDuuuuuullllllddddddddrrrrrrruLrdrrrrrrrrrruuluRurDDldRRluuuuulluulllllddlddddllUUruLLLrrrrurruurrrrrrDDDDDDldRuuuuulDDDDuuuuluulllllddldddLdlUUruLrruruulllllllllllddrrdddRdrUlluuulldRurDlldddddrrrrrrrrrrrrUUUUUruLrdrdddLuuuuluurrrrrrddddddddlllllluUruLuuuuurrrrrrrrrrrrddlldlldddrruLdlU
+
+},
+#endif
+
+#if 0
+{
+/*
+##################### 
+#.  #.  #.$.#  .#  .# 
+# #   #   #   #   # # 
+#  .#   . $ .   #.  # 
+# #  .#$$ # $$#.  # # 
+#  .#   # $ #   #.  # 
+# #   #$$ # $$#   # # 
+#  .#   # $ #   #.  # 
+#@#   #$$$*$$$#   # # 
+#  ..   # $ #   ..  # 
+# #   #$$ # $$#   # # 
+#  .#   # $ #   #.  # 
+# #  .#$$ # $$#.  # # 
+#  .#   # $ #   #.  # 
+# #   #$  #  $#   # # 
+#.  #.  #.$.#  .#  .# 
+#####################
+*/
+
+38003,
+21,17,598,2452,
+"21#=|#.2 #.2 #.$.#2 .#2 .#=|# #3 #3 #3 #3 # #=|#2 .#3 . $ .3 #.2 #=|# #2 .#2$ # 2$#.2 # #=|#2 .#3 # $ #3 #.2 #=|# #3 #2$ # 2$#3 # #=|#2 .#3 # $ #3 #.2 #=|#@#3 #3$*3$#3 # #=|#2 2.3 # $ #3 2.2 #=|# #3 #2$ # 2$#3 # #=|#2 .#3 # $ #3 #.2 #=|# #2 .#2$ # 2$#.2 # #=|#2 .#3 # $ #3 #.2 #=|# #3 #$2 #2 $#3 # #=|#.2 #.2 #.$.#2 .#2 .#=|21#",
+
+// solution: urrurruuurrrrRRurrdLLLLLLLruulldDDDDDDDuuuurrUdlluurRRRRRRRRluurrdDDDDDDDuuuuuullllllllllddddrrUUUUlluurrDrdLLruulldDDDDDullddrdrrrUUUUUUlluurrDrdLLrddlluUUllddddddddddrrurrUUUUUUUdlluurRurrdLLLrddllulluurrDDllddddddddrrdrrUUUUUUUUUdddllulluurrurRRRRRRRRlllllllddddddddllddddrrUUUUUUUUUUUdddllulluurrurRurruRlddrrddddDuuuuullulldddddllDurrddlLLLLruulldDDDDDDurruuuuuuuuurrDDDDurrddlLLdlUUUUUUrrurrurrdLLLrddllulldlluuuurrdrrDDDDDDurrddlLLdlUUUUrrdrrdddddddrruuLrddlluUUUUUUUUUdlluurRurrdLLLrddlldlldlluuuuuurrdrrDDDDDDurrddlLLLLruulldDrrrrrrdddrruuLrddlluUUUUUUUdlluurRurrdLLLrddlldlldlluuuuuurrdrrDDDDDDurrddlLLulDDDururrrdrruUUUUUddddddlluuuuuuurRRRurrdLLLLLLLrddlldlldlluuuuuurrdrrDDDDDDurrddlLLdlUrrrruuuuuurrrrddddLruuuulllldddddddrruuUUUUdddrruuuulLLLLrddlldlldlluuuuuurrdrrDDDDDDurrddlLulDrrruRlddrruUUUUUdddrruuuulLLLLrddlldlldlluuuuuurrdrrDDDDDDldRuurrdrrurruuLrddlluUUdrruulLLLLrddlldlldlluuuuuurrdrrDDDDDrruRlddrruUUUdrruulLLLLrddlldlldlluuuuuurrdrrDDurrdRlddrruUdrruulLulldddddllulldllddrrrrDDDDDurrurruuuuurruuuurruurrdrrddlldllUdrrurruullulldldRddrrddllUUdLrurrurruullulldlldllddddrrUUUdlldlldllDDuurruuuulldDDDrrurruuuLLLrddlldlldlluuuuuurrdrrDDurrrrrRurrdLLLLrrdddrrdrrddllUUrrurruuuullDDDDDDullddrRRRRluurrdDDDDDDuuuuuuuuuuullullullddRluurrdDDDDDDullddrRRdrUUUUUUllullllllulldRRRRRRRluurrdDDDDDDullddrRRdrUUUUlluuulllldddddLulDllddrrUUUUUUluRRRRRRluurrdDDDDDDullddrRRRRluurrdDlllllluLLLulDllddrrUUUUUUluRRRRRRluurrdDDDDDDullddrRRurDDDuuuuullullUUrruullDldRRluurrdDDDDDDullddrRRdrUlulullUUUddlluuurRRluurrdDDDDDDullddrRurDrddrrddlldlluuullUUUUUUUddlluuurRRluurrdDDDDDDrdLuullddddrrddllUUUUUUUUUddlluuurRRlddddddddrrddddllUUUUUUUUUUUddlluuurRdddddddddddlluuuLrdddrruuuuuullllllddddrrUUUUUUUUdrruulLddddddddrrddLruulldllddrrUUUUUdlluurRurruuuRldllddddddrrddddLrurruuuuuullDDDuuurrddLruullullddddrrUrruuurrddDDDDDuuuuuuullulluururuurrdDDDDDDDDuuuuuuuuullddRllldddrrurruUUdddllUluRRlddrrdrrdrruuuuuulldllDDDDDlldddllUUUUUUdlluurRRRRlddrrdrrdrruuuuuulldllDDulllllldlldddllulldllddrrrrDulllluurrurrdrrurrurrdrrdrrurrdrrddllUdddrrddlldllulluuuuRRllullullulldllulldllddrrUdddllddrrdrrurruuuuLLrrurrurrddLruulldDDDDurrurrddddlluUUUUUUUUUdlluurRdrrdddddddddrrdrrurruuUUUUUUUUUdddddddllddDlldlluuuurrdRlullddddrrurrurruullDllulldlldlldlldlldllulluuUUUUUUUUUdddddddrrddDrrdrrurrurrurrurrRllluurrDullddrRllullulldlldlldLrurrddddllullulluurrDrruLrrruulluUddDurrddlLrrurrurrurrdrruUlldlldlldlldlldDrrurrurrurrdrrdDlldLruulldDDDuuulldllddrrUUUUUUUUUUUU
+
+},
+#endif
+
+#if 0
+{
+/*
+          ####### 
+      #####     ## 
+#######  #  $    # 
+#     #     $ $  ## 
+# $   #  ##### $  # 
+## $  #      ## $ # 
+ ###$ #.......# $ # 
+   # $ .......# $ # 
+   #$@#......## $ # 
+   # $##....##  $ # 
+  ##$  ######   $ # 
+  #              ## 
+  ## $$ $$ $ $ $ # 
+   ##     ######## 
+    #######
+*/
+
+38004,
+19,15,651,2452,
+"10=7#=|6=5#5 2#=|7#2 #2 $4 #=|#5 #5 $ $2 2#=|# $3 #2 5# $2 #=|2# $2 #6 2# $ #=|=3#$ #7.# $ #=|3=# $ 7.# $ #=|3=#$@#6.2# $ #=|3=# $2#4.2#2 $ #=|2=2#$2 6#3 $ #=|2=#14 2#=|2=2# 2$ 2$ $ $ $ #=|3=2#5 8#=|4=7#",
+
+// solution: UlUUrDldRRRurDllluuuulldRurDDDldRRRuruuurrruurrrrddDDDDDDldldllllllddrrUdlluululUUUUUddrruruuurrruurrddLLLLrrrrurrdddddddldldllldldlluululuuurruuuuurDDDldRurDuluurrruurDrdLLLLrrrrurrdddddddldldllldldlluululuuurruuuuurDDDldRRurDDDrdLLruuuulluurrrrrurrdLLLLLLrrrrrrddddddldldllldldlluululuuurruuuuurDDDldRRurDDrdLuuulluurrrrrrrrdrdLuulllllllllddddlldddrdrddrrururrrruuruuuUUruLLLLLLLrrrrrrddddddldldllldldlluululuuurruuuuurDDDldRRurDDDrdLuuuulluurrrrrrrrdrddLuuulllllllllddddlldddrdrddrrururrrruuruuUUUruLLLLLLLrrrrrrddddddldldllldldlluululuuurruuuuurDDDldRRurDDDuuulluurrrrrrrrdrdddLuuuulllllllllddddlldddrdrddrrururrrruuruUUUUruLLLLLLLrrrrrrddddddldldllldldlluululuuurruuuuurDDDldRRurDulluurrrrrrrrdrddddLuuuuulllllllllddddlldddrdrddrrururrrruurUUUUUruLLLLLLLrrrrrrddddddldldllldldlluululuuurruuuuurDDDldRRRurDDrdLuuullluurrrrrrrddddddlddrUUUUUUUruLLLLLLLrrrrrrddddddldldllldldlluululuuurruuuuurDDDldRRRurDDDuuullluurrrrrrrrdrdddddLulDlddrUUUUUUUruLLLLLLLrrrrrrddddddldldllldldlluululuuurruuuuurDDDldRRRurDDuullluurrrrrrrrdrddddddLdlUUUUUUUruLLLLLLLrrrrrrddddddldldllldldlluululuuurruuuuurDDDldRRRRurDldRullllldlluuluullldRurrrDDDDDDlUUUUrddrruruuurrrrrrrddddddldldllldldlluurRRRRRRlldLLulllddrrUdlluurRRdrrurrdLLLLulllddrrUdlluRRRRRllllldllUluRRlUUluurDDDuuurruruuurrrrrrrddddddldldldllllldlluluRddrrrrurrrurrdLLLLLrrrrruurrdLullddrUluRdrUUUUUUUruLLLLLLLrrrrrrddddddldldldllldlllluuuuuurruuuuurDDDldRRRurDlllldllddddddrrrruruRRRdrUluRdrUUUUUUUruLLLLLLLrrrrrrddddddldldllldldlllluuuuuurruuuuurDDDldRRRRurDDullllldllddddddrruRRRRRlllluRRRRlllldldlluuuuuurruruuurrrrrrrddddddldddLLLLullddrUluRRdrruRdrUluRdrUUUUUUUruLLLLLLLrrrrrrddddddldldldllllldlluuuuuurruuuuurDDDldRRRRurDllllldllddddddrrrruruRRRdrUluRdrUUUUUUUruLLLLLLLrrrrrrddddddldldllllldldlluuuuuurruuuuurDDDldRRRRRllllldlldddddRRRdrUluRRRRRdrUluRdrUUUUUUUruLLLLLLLrrrrrrddddddldldllllldllluuuuurruuuuurDDDldRRRRlllldlldddrDldRRRdrUluRRRRRdrUluRdrUUUUUUUruLLLLLLLrrrrrrddddddldldllllldlluuluuurruuuuurDDDldRRRllldlluuuulllddRRlluurrrdDDDDDDDldRRRRdrUluRRRRRdrUluRdrUUUUUUUruLLLLLLLrrrrrrddddddldldllllldlluuluuurruuuuurDDDldRRlldlluuuulDullddrRurDDDDDDDldRRRRdrUluRRRRRdrUluRdrUUUUUUUruLLLLLLLrrrrrrddddddldldllllldlluuluuurruuuuurDDDldRldlluullluRRurDDDDDDDDldRRRRdrUluRRRRRdrUluRdrUUUUUUUruLLLLLLLrrrrrrddddddldldllllldlluuluuurruuuuurDDDlddlldddrdRRRRRRRdrUluRdrUUUUUUUruLLLLLLLLulDDDDDllddddlUUUUUUluRurDDDDDDDldRRRRRRRRRdrUluRdrUUUUUUUruLLLLLLLLulDDDruurrrrrrrrdddddddddLLLLLLLLLLdlUUUUUluRR
+
+},
+#endif
+
+#if 0
+{
+/*
+#################### 
+#        . .       # 
+#.$## $$@$ $ $$##$.# 
+#  ##$ #$##  # ##  # 
+#.$#  #   #$#.  #$.# 
+#  # .$$. # . . #  # 
+#.$#  # * ### $.#$.# 
+#  #### . ### . #  # 
+#.$####$. ###$$ #$.# 
+#  #### . ### . #  # 
+#.$#### * ###$.$#$.# 
+#  $ $ $* $ $.. .  # 
+#  . . .. . .   $  # 
+####################
+*/
+
+38005,
+20,14,343,2453,
+"20#=|#8 . .7 #=|#.$2# 2$@$ $ 2$2#$.#=|#2 2#$ #$2#2 # 2#2 #=|#.$#2 #3 #$#.2 #$.#=|#2 # .2$. # . . #2 #=|#.$#2 # * 3# $.#$.#=|#2 4# . 3# . #2 #=|#.$4#$. 3#2$ #$.#=|#2 4# . 3# . #2 #=|#.$4# * 3#$.$#$.#=|#2 $ $ $* $ $2. .2 #=|#2 . . 2. . .3 $2 #=|20#",
+
+// solution: urrrrrrDDDldRurDllddrrUdddlddrrrruulDrdLLLrrruuuuuuuuuulllldddldddrrddldDrdLLLLrrruuuruulluuruuuullllllllldDDurUluRRRRRRRRRdddldddrrddlddrrrruuuulDDDrdLLLdlluRRRRllluuruulluuruuuulllllllllllllddddddddddrdrrrrrrrRRRRurrrruruuuuulDrddldddllluuruulluuruuuulldRurDDDuuulllllllllllllddrUluRRRRRRRRRRRlllllllllllddddrUUlddddddddrdrrrrrrruuulldDldRllllluluuuurUUlddddddrdrrrrruuuruulDDDDuurruuuuullDDDDDruuUluRdrddddddrrrruruuruulluuuruullullllllldddlddrUUUruulllllddddddddddrdrrrrurRlldlllluluuuuuuuuuurrrrrrrrrrrdrrddldddrrddlddldllllUlUUluRdddlldlllluluuuuuuuuuurrrrrddlddRRurDDrdLulDrddddrdrrrrurrdLLruuuruulluuuruullulllllllllllddddddddrUldddrUddrrrrurrrdrruRRdrUllldlluRRRRdrruLLdLLulldRRRRllullluuuuuullluuruurrdDDuuurrdLulDrrurrdLLullllddlddrrurDDDDDuuuullluuruurrrrrrdrrddldllUUddrrddrrddllUUUUlluuruullllllddlddrrrddddrDuluuuullluuruullllldddddddddrddrrrrurrRdrrrruUUrruuuLdlUrrdddlldddlllluuuluuuullluuruurrrrrrdrrddDuuullullllllddlddrrrddddlUUUrdddrddllldlllluuluuuuuuuuurrrrrddlddrRurDDDDuuullluuruurrrrrrdrrdddLddrrddlldddllllullUUddldlluLLdlUUUUrDDlddrruLdlUUrdrrdrrurrrdrrrruuurruulluuruuullulllllllllllddddrdDDDDlddrruLuuulUUrddddlUUrddddlUUrdrrdrruLLrrrrrdrrrruuurruulluuruuullulllllllllllddrDDDDDDDDldRRRuLLuuuuuuuuluurrrrrrrrrrrdrruLLrrddddlddrrddllddrrrruruuuuuuuuullLLddddlddrrddlldddlluLLLLLLLrrrrrrrdrrurrrrdrUUUUldddlllluurruulluuruuuurrrrddddldDDDDuuuuruuuuullllddddlddrrddllddrrrRdrUUldlllluurrDullddrRRRlluuuulDuluurDrdddddlldllullllllldlluuuuuuuuuluurrrrrrrrrdRRRlllulllllllllddrdddddddddrrurrrrrrrdrrurrrruuuuuruuuuullllDDDuullllulldDDuuurrdrrrrurrrrddddldddrUUldddddlllldllullllllldlluuuuuuuuuluurrrrrrrrrdLulDrrrruLLdllullddlddrrurDDDuullluuruulllllddrdddddddddrrurrrrrrrdrrurrrrurUUlddddrUUldlllldllullllllldlluuuuuuuuuluurrrrrrrdrrrrrrurrrrddlDDDDDDDuuuuuuruuulllldllllllulllllllddrdddddddddrrurrrrrrrdrrurrrRlllldllullllllldlluuuuuulUUUrdddddlUUUrdddddlUUUrdddddrrurrruuUUUdddddrrrrdrrurrrruuuuuuuruuulllldllllllullddlddrRurDDldddddrrrrdrrurrrruuuuurUUUldddddrUUUldddddrUUUlddddlllldllullllllldlllUUUrdddrrurrrrrrrdrrurrrrdrUUUlddlllldllulllluuuuuulluuruurrdrrrrrrurrrDDDDDDDDDuuuuuuuuullldllllllullddlddrrddddddrrrrdrrurrrRdrUllllldlluRRRRdLLLLulllluuuuurrdDDDuuuulldddddrRRRRRlllluuuuuluurDDDDDDuuuulldddddrRRRdrruLLLLrrrruuUrruullDDDDuurrddddlllullluuuuuulllluuruurrdrrrrrruLLrrdddrDuluullllllulllDDDuruurrdDDDuuuulldRurDDDuuullllllDDDDDDDDDDldRuuuuuuuuuuurrrrrrdddldddddddlllLLdlUrrrrrruuuuuuuruurrrrrrurrrdddddddddddLLLL
+
+},
+#endif
+
+#if 0
+{
+/*
+    #### 
+#####  ###### 
+#   #       ####### 
+# # # ## $ $      # 
+#.     #  $ ####  # 
+#.#.## #   $      # 
+#.#.## $ $ $####$## 
+###.####    #     # 
+#.#.#@ ######   $ # 
+#.#.#       ##$$$###### 
+#. .###$#$#    #      # 
+#... #    $$$$$# #### # 
+#... #   #     $    # # 
+#...###    ### ##   # # 
+######   ### #$###### # 
+     #  ##   #        # 
+     ####    ##########
+*/
+
+38006,
+23,17,702,2453,
+"4=4#=|5#2 6#=|#3 #7 7#=|# # # 2# $ $6 #=|#.5 #2 $ 4#2 #=|#.#.2# #3 $6 #=|#.#.2# $ $ $4#$2#=|3#.4#4 #5 #=|#.#.#@ 6#3 $ #=|#.#.#7 2#3$6#=|#. .3#$#$#4 #6 #=|#3. #4 5$# 4# #=|#3. #3 #5 $4 # #=|#3.3#4 3# 2#3 # #=|6#3 3#=#$6# #=|5=#2 2#3=#8 #=|5=4#4=10#",
+
+// solution: rdrrrrrdrrrUUrurUUruulllllLrrrrrrddlddldlddlllullllDDDrdrrurrrrRRRllllllldlluuluurrrrdrrruururuullllLuuullldddddrUluuuulllddrddRRRluuuurrrddLLrruullllllddrddrruUUdrrruullLLLulDDurrrddddlluuLLLuullddRluurrdDDDDDDDDrdLLdlUUUUdrruuuuuurruurrrddrUdrruulLLLLulDDurrrddddlluuLLLuullddRluurrdDDDDDDDDrdLLdlUUUrruuuuuurruurrrrddrUruLLLLLulDDurrrddddlluuLLLuullddRluurrdDDDDDDDlddrruLLruuuuuuurruurrrrrrdddrrrrrUruLLLLLLLLdlUruLLLulDDurrrddddlluuLLLuullddRluurrdDDDDDDDDrdLdlUUruLruuuuuurrrddrrrUUUruLLLLulDDurrrddddlluuLLLuullddRluurrdDDDDDDDDrdLulDrdLruuuuuuuuurruurrrrrrdddLLdlUUUruLLLulDDurrrddddlluuLLLuullddRluurrdDDDDDDDDrdLulDruuuuuuuurrrddrrrdrUUUUruLLLLLulDDurrrddddlluuLLLuullddRluurrdDDDDDDDlddrruLuuuuuuurrrddrrrrdrUUUdrrrrruullllLLLdlUruLLLulDDurrrddddlluuLLLuullddRluurrdDDDDDDDDDuuuuuuuurrrddrrrrrurrrrrddldlddlllullllddrddrrurUdrrrrruurrrrrdddddlllllllUUddrrrrrrruuuuulllllddlLLLLuLLLdlluRuurrrrDDurrrDDuullldllLdlUrrrruullDurrddlLLrrrurrrddllUdrruulLdllluurrDrdLuullddRRurrrddllUdrruulLrruururrdLDDrrrrrdddddllllllluUUlluurruuluRRldddllddrrdddrrrrrrruuuuullllluuUUUUruLLLLLLLLdlUruLLLulDDurrrddddlluuLLLuullddRluurrdDDDDDDDDrdLLruuuuuuuurrrddrrrrrurrrrrddlldddllddrrrrUUUUUUUUruLLLLLLLLdlUruLLLulDDurrrddddlluuLLLuullddRluurrdDDDDDDDDrdLuuuuuuuurrrddrrrrrurrrrrdddddddllUUUUluRRldddddrruuuuUUUUruLLLLLLLLdlUruLLLulDDurrrddddlluuLLLuullddRluurrdDDDDDDDDuuuuuuurrrddrrrrrurrrrrddlldRlddddrruuuUUUUUruLLLLLLLLdlUruLLLulDDurrrddddlluuLLLuullddRluurrdDDDDDDDuuuuuurrrddrrrrrurrrrrddllddRldddrruuUUUUUUruLLLLLLLLdlUruLLLulDDurrrddddlluuLLLuullddRluurrdDDDDDDuuuuurrrddrrrrrurrrrrddlldddlldRdrUUUUluRRdrUUUUruLLLLLLLLdlUruLLLulDDurrrddddlluuLLLuullddRluurrdDDDDDuuuurrrddrrrrrurrrrrddlldddlldllllddrrUdlluurRRRRdrUUUUluRRdrUUUUruLLLLLLLLdlUruLLLulDDurrrddddlluuLLLuullddRluurrdDDDDuuurrrddrrrrrurrrrrddlldddlldlllldlluRRRRRRRdrUUUUluRRdrUUUUruLLLLLLLLdlUruLLLulDDurrrddddlluuLLLuullddRluurrdDDDuurrrddrrrrrurrrrrddlldddlldllluurrDullddrRRRdrUUUUluRRdrUUUUruLLLLLLLLdlUruLLLulDDurrrddddlluuLLLuullddRluurrdDDurrrddrrrrrurrrrrddlldddllddLulllddrrUdlluurRRRRdrUUUUluRRdrUUUUruLLLLLLLLdlUruLLLulDDurrrddddlluuLLLuullddRluurrdDrrrddrrrrrurrrrrddlldddlllullllDurrddldlluRRRRRRRdrUUUUluRRdrUUUUruLLLLLLLLdlUruLLLulDDurrrddddlluuLLLLruulldDDurrrrrddrrrrrurrrrrdddddddrdrruLLLLruurrrrrdddddllllllluuUUUUUluRRdrUUUUruLLLLLLLLdlUruLLLulDDurrrddddlluuLLLLruulldDrrrrrddrrrrrurrrrrddlldddllldllldddlUUluRRRRRRRdrUUUUluRRdrUUUUruLLLLLLLLdlUruLLLulDDurrrddddlluuLLLL
+
+},
+#endif
+
+#if 0
+{
+/*
+######################### 
+#   .   .         .     # 
+# $$*$$$*$$ # .$ $$$.$. # 
+#.....*.....#*$.$...*.$*# 
+# $$*$$$*$$ # .$.$$$ $. # 
+#   .   .         .     # 
+# ##########@########## # 
+#  .     .       .$.    # 
+# .$.$$$.$. #.$  $.$  $.# 
+#.$$$.*.$$$.#$.*** ***.$# 
+# .$.$$$.$. #.$  $.$  $.# 
+#  .     .       .$.    # 
+#########################
+*/
+
+38007,
+25,13,250,2454,
+"25#=|#3 .3 .9 .5 #=|# 2$*3$*2$ # .$ 3$.$. #=|#5.*5.#*$.$3.*.$*#=|# 2$*3$*2$ # .$.3$ $. #=|#3 .3 .9 .5 #=|# 10#@10# #=|#2 .5 .7 .$.4 #=|# .$.3$.$. #.$2 $.$2 $.#=|#.3$.*.3$.#$.3* 3*.$#=|# .$.3$.$. #.$2 $.$2 $.#=|#2 .5 .7 .$.4 #=|25#",
+
+// solution: uluuuurrrrrrrrrdDuulllllldDuulllddddrddlddddrruUddrrrrRRllllllllllllllluUUdddrrrrrrruuuullllllLLrddrRlluurrrrrrrruurrrrrrrrrrrdddLdDuuruuulllllllllllluuuurrrrrrrrrddllUdrruulLLLLLLLLddddlllllllllluurrDullddrRRRlllldddddrdrrrrrrrrruuuuruuluuuurrrrrrrrrrrrdDuullllllllllllddddrddllllllllddrrUdllddrrrrrrruuuuruurrrrrrrrrrrddldddldLLLLLrrrrruruuruuulllllllllluUddlddlldDuulldRRdrddllllllluurruRurrrrruurrrrrrrrrrrddldddllUdrrrdLuuuruuulllllllllllddllllldldllddlluluurRurDllluuuuuuurDlddddddddrdrrrrrrrrruuluurruuruuruurrdLrurDrurDrurrdLullllllddllddrrrrrrrrruUddllllllllllddllllldlLrrurrrrruurrrrrrrrrrrddldddlldllllulLrrdrrrrurrrUUUldddlldllllulldlllllllllllluluuuuuuuururrrrrrrRRRRRRRRllllllddllUdrrddrddllllldllulldlluuuuuururrrrrrRRRRRRRllllddlUlullllllllddddrruurrRRRRllllllddrrUdlllluuururrrrrrrddlllLrrrrurrdddllllUdrrrruuullullllllllddddrrrruurRddLLLLrrrUrdrrrruuullullllllllddddRRRRurrdrrrrrddrrrrdRulllllllllldRRllllulldllddrdrrrrrrrrruulUluRRRRRRlllllddrddllluUddrrruulLrrddllllllllluRdrrUdlluRllluuuuuuuururrrrrrrddRurDuurrrrddllddlllllluuRRllddrUdrrrrddllddrddrrrurrdrrrruuRdrUllddlluuRRdrrruuullllDLdddllulldllluuluurrrrrdrRRdddrruuLrdrrruuullllDllllullluullllullldlllluuururDDDuuurrrrrrdrrurrrrddllddlllllullldlLuuullddRlddddrrurrdrrurrrrruullllullldllUUddrrurrrdrUlllldllulluururDllddrrdrrRRllllulluurrurrDDDuuulllldddrrdrRllullddddrruLdlUUUUddddddrUluurrdDDuuurrdLrrrurrrrrrrrdrruRldllulllllddrddrrrurrdrrrrurrruuulllDlllllulllllllldRRdrrddllllllluUddrrrrrrruulluurrruurrrrrrrrrrrDDDDlUruuulllllllllllddrrrdrrrrrurRlldlllllullluurrrrrrrrrrrdDllldllllluRdrrrrurrruulllUdllUdlllllllUdllulllluuurrDulldddrrrrdrrrrrrUrdrrrrrrrUldllllllllllddlDuruurrrrrrrruRldlluRdrruuuulldlllDDldRRluuurrrurrddddllulLrrdrrrrddldddlldllllulldlllllluUddrrrrrrurrdrruUddrrurruuulldlLLLulllllllddlddllURdrrrrrrrurrdrruuullulllluuluLLrrdrddrrrrdrrdddllulldlllllUUUdddllllluullluurrrrdrrurRRRRRRllllllldllullDDrdLrdrruLrrdrrrrrrrurrRdrrrurruuulldlldDuurrurrdddlldlLulllldllllluuuulldllulllluuurrdrrurrdLLuuuurrrrdrrurrrrdrrrrurrddddrrddldddllLLLLrrrrrruuuruullllulldlllllddrrDulluurrrrrurrdrruuuulldllllulllldllulldLulDrrurrdrrurrDurrdrrrrurrddddllulldlllllddllllldllulllluuurrdLulDDDDurrrrdrrurrrrruurrrrrurrdrrrrddllldllddlldLLLLLLrrrrrrurrrrrruuuruulluuuulldllllullllLLLLLLrrrrrrrrrrdrruLLLLLLLLrrrrrrrrdrrurrddddrrddllldllddlldlluRRRRdrruLrrrdLLrruuuuruulllluRdrUlllldlllllddlllllLLLrrrrrrrruurrrrrurrrrdrrddllldlllluLLLLLLrrrrdRRRlulllluurrrrrurrrrdrrddllldRurD
+
 },
 #endif
 
@@ -565,86 +382,30 @@
 {
 /*
 ####################### 
-####  #     ##   #   ## 
-#### $# $ $ ##...*  $ # 
-####  $  ####....# $  # 
-#### ## $ ##....##  $ # 
-#### $    #....## $   # 
-#### $##  #...#       # 
-####   $$$##$##  ### ## 
-#### # #  #  ##  #    # 
-#  #      $   #       # 
-# $# $ $     .$  $    # 
-#  $  ####....# $  #### 
-# ## $ ##....#   $ #### 
-# $    #....## $   #### 
-# $##  #...#       #### 
-#   $$$##$##  ### ##### 
-# # #  #  ##  #    #### 
-# $ #  $  ##       #### 
-#   ##    #@       #### 
-#######################
+#          @          # 
+# $ ############### $ # 
+#  $ ############# $  # 
+##  $ ########### $  ## 
+ ##  $ ######### $  ## 
+  ##  $ ####### $  ## 
+   ##  $ ##### $  ## 
+    ##  $ ### $  ## 
+     ##  $ # $  ## 
+      ##  $#$  ## 
+       ### # ### 
+       ##  #  ## 
+       #... ...# 
+       #...#...# 
+       #...#...# 
+       #########
 */
 
-37762,
-23,20,800,2297,
-"23#=|4#2 #5 2#3 #3 2#=|4# $# $ $ 2#3.*2 $ #=|4#2 $2 4#4.# $2 #=|4# 2# $ 2#4.2#2 $ #=|4# $4 #4.2# $3 #=|4# $2#2 #3.#7 #=|4#3 3$2#$2#2 3# 2#=|4# # #2 #2 2#2 #4 #=|#2 #6 $3 #7 #=|# $# $ $5 .$2 $4 #=|#2 $2 4#4.# $2 4#=|# 2# $ 2#4.#3 $ 4#=|# $4 #4.2# $3 4#=|# $2#2 #3.#7 4#=|#3 3$2#$2#2 3# 5#=|# # #2 #2 2#2 #4 4#=|# $ #2 $2 2#7 4#=|#3 2#4 #@7 4#=|23#",
-},
-#endif
+38008,
+23,17,262,2454,
+"23#=|#10 @10 #=|# $ 15# $ #=|#2 $ 13# $2 #=|2#2 $ 11# $2 2#=|=2#2 $ 9# $2 2#=|2=2#2 $ 7# $2 2#=|3=2#2 $ 5# $2 2#=|4=2#2 $ 3# $2 2#=|5=2#2 $ # $2 2#=|6=2#2 $#$2 2#=|7=3# # 3#=|7=2#2 #2 2#=|7=#3. 3.#=|7=#3.#3.#=|7=#3.#3.#=|7=9#",
 
-#if 0
-{
-/*
- ############ 
- #          ## 
- #  *******  ###### 
- # **     ** #   .## 
- # $  $$$  **# *   # 
-##          *  *** # 
-#  ******  **    *## 
-# ** @   ***  # **## 
-# *    ###    # *  # 
-# * ####      #**  # 
-# *    ******  *  ## 
-#. ****     ***   # 
-#..            ### 
-################
-*/
+// solution: llllllllllddrdrUlluurrrrrrrrrrrrrrrrrrrrddldlUrruullllllllllllllllllllddrrrDrDrDrDrDrDrDDDldRRRurDDldRuullluuuululululululullluurrrrrrrrrrrrrrrrrrrrddlllDlDlDlDlDlDlDDDDDulluuuululululululldRuullluurrrrrrrrrrrrrrrrrrrrddllddLrururuullllllllllllllllllllddrrrdddRluuullluurrrrrrrrrrrrrrrrrrrrddllldddLrurururuullllllllllllllllllllddrrrdddrdRluluuullluurrrrrrrrrrrrrrrrrrrrddllldddldLrururururuullllllllllllllllllllddrrrdddrdrdRlululuuullluurrrrrrrrrrrrrrrrrrrrddllldddldldLrurururururuullllllllllllllllllllddrrrdddrdrdrdRlulululuuullluurrrrrrrrrrrrrrrrrrrrddllldddldldldLrururururururuullllllllllllllllllllddrrrdddrdrdrdrdRlululululuurDrDrDrDrDrDDDldRRRurDldRullluuuululululululullluurrrrrrrrrrrrrrrrrrrrddllldddldldldldLrururururuulDlDlDlDlDlDDDDlluuuulululululldRuulullluurrrrrrrrrrrrrrrrrrrrddllldddLrurururuullllllllllllllllllllddrrrdrdddRluuulullluurrrrrrrrrrrrrrrrrrrrddllldldddLrururururuullllllllllllllllllllddrrrdrdddrdRluluuulullluurrrrrrrrrrrrrrrrrrrrddllldldddldLrurururururuullllllllllllllllllllddrrrdrdddrdrdRlululuuulullluurrrrrrrrrrrrrrrrrrrrddllldldddldldLrururururururuullllllllllllllllllllddrrrdrdddrdrdrdRlulululuurDrDrDrDrDDDDDuuuuululululululullluurrrrrrrrrrrrrrrrrrrrddllldldddldldldLrurururuulDlDlDlDlDDDrdLLLulDrdLulDrruuuuululululldRuululullluurrrrrrrrrrrrrrrrrrrrddllldldddLrururururuullllllllllllllllllllddrrrdrdrdddRluuululullluurrrrrrrrrrrrrrrrrrrrddllldldldddLrurururururuullllllllllllllllllllddrrrdrdrdddrdRluluuululullluurrrrrrrrrrrrrrrrrrrrddllldldldddldLrururururururuullllllllllllllllllllddrrrdrdrdddrdrdRlululuurDrDrDrDDDldRRRRuluuuRuRldlddddlluuuulululldRuulululullluurrrrrrrrrrrrrrrrrrrrddllldldldddLrurururururuullllllllllllllllllllddrrrdrdrdrdddRdRluluurDrDrDDDldRRRurDDullluuuululldRuululululullluurrrrrrrrrrrrrrrrrrrrddllldldldddldLrururururururuullllllllllllllllllllddrrrdrdrdrdrdddRluurDrDDDldRRRurDllluuuululululululullluurrrrrrrrrrrrrrrrrrrrddllldldldddldldLrururuulDlDlDlDDDrdLLLulDrdLruuuuulldRurDDDDuuuululululululullluurrDDldRurDldRurDldRurDldRurDldRurDldRurDldRurDDDuuulululululululuurrrrrrrrrrrrrrrrrrddllldldldldldldlddddlLulDDurrruuuurururrdLdLdLruruulDlDlDDDrdLLLulDrrruuuururrdLdLruulDlDDDrdLLLLrrruuuurrdLulDDDrdLLLrruuurrurururururururuullDDrdLulDrdLulDrdLulDrdLulDrdLulDrdLulDrdLulDDDuurrurururururuuuullllllllllllllllddrdrdrdrdrdrdrddddrRlluuuululululululullluRurDDldRurDldRurDldRurDldRurDldRurDldRurDldRurDDDuuulululululululuurrrrrrrrrrrrrrrrrDrdLulDrdLulDrdLulDrdLulDrdLulDrdLulDrdLulDrdLulDDD
 
-37763,
-20,14,297,2298,
-"=12#=|=#10 2#=|=#2 7*2 6#=|=# 2*5 2* #3 .2#=|=# $2 3$2 2*# *3 #=|2#10 *2 3* #=|#2 6*2 2*4 *2#=|# 2* @3 3*2 # 2*2#=|# *4 3#4 # *2 #=|# * 4#6 #2*2 #=|# *4 6*2 *2 2#=|#. 4*5 3*3 #=|#2.12 3#=|16#",
-},
-#endif
-
-#if 0
-{
-/*
-########## 
-#  #  #  ## 
-# $   #   # 
-#  #$ $$ $###### 
-# $$  #   #....## 
-#  #  #$ $##....## 
-# $##$#  $ ##....# 
-#           ##...# 
-##$#$###  ####...### 
-#     # $ $ @#...### 
-# $ $ #      ##...## 
-# # # ##$## ## ....# 
-#   $ #   $$$  ....# 
-###$### $$  ### ##.# 
-#     $  #    # #### 
-#  $  #  ###  # #  # 
-## #$##    $  $$   # 
-#   $ ##   #  # #  # 
-#     #    #  #    # 
-####################
-*/
-
-37764,
-20,20,735,2299,
-"10#=|#2 #2 #2 2#=|# $3 #3 #=|#2 #$ 2$ $6#=|# 2$2 #3 #4.2#=|#2 #2 #$ $2#4.2#=|# $2#$#2 $ 2#4.#=|#11 2#3.#=|2#$#$3#2 4#3.3#=|#5 # $ $ @#3.3#=|# $ $ #6 2#3.2#=|# # # 2#$2# 2# 4.#=|#3 $ #3 3$2 4.#=|3#$3# 2$2 3# 2#.#=|#5 $2 #4 # 4#=|#2 $2 #2 3#2 # #2 #=|2# #$2#4 $2 2$3 #=|#3 $ 2#3 #2 # #2 #=|#5 #4 #2 #4 #=|20#",
 },
 #endif
 
@@ -652,49 +413,248 @@
 {
 /*
 ############### 
-####..*.... . # 
-####  ###..$. # 
-##  $ ####.#.## 
-##  $ ## $$#.## 
-#   # ## @ #.## 
-# $$$ $ # ##.## 
-# $  $  # ##.## 
-#  #$# ##$##.## 
-# $    $  $  ## 
-## ######  #### 
-#        $ #### 
-#   ####  ##### 
-###############
+#@#   #       ##### 
+#     #$ #### $ $ # 
+##..# # $   $ #   # 
+ #..     #### # # # 
+ #..# ######    $ # 
+ #.. $        #$# # 
+ #..# # # # #   $ # 
+ #..  ###$#$###$# # 
+ #..####  $    $  # 
+ # ####   # #   ### 
+ #      ######### 
+ ########
 */
 
-37765,
-15,14,417,2300,
-"15#=|4#2.*4. . #=|4#2 3#2.$. #=|2#2 $ 4#.#.2#=|2#2 $ 2# 2$#.2#=|#3 # 2# @ #.2#=|# 3$ $ # 2#.2#=|# $2 $2 # 2#.2#=|#2 #$# 2#$2#.2#=|# $4 $2 $2 2#=|2# 6#2 4#=|#8 $ 4#=|#3 4#2 5#=|15#",
+38009,
+19,13,368,2454,
+"15#=|#@#3 #7 5#=|#5 #$ 4# $ $ #=|2#2.# # $3 $ #3 #=|=#2.5 4# # # #=|=#2.# 6#4 $ #=|=#2. $8 #$# #=|=#2.# # # # #3 $ #=|=#2.2 3#$#$3#$# #=|=#2.4#2 $4 $2 #=|=# 4#3 # #3 3#=|=#6 9#=|=8#",
+
+// solution: drrrrdddDrrrrrrrrurruurrddddddlLrruuuuuullddllldllllllluurrrUldllddrrrrrrrruuuuullllllDDrdLLLLrddlluUUluRldddddddddrrrrrurruUUddldldllllluuruuurruurruuurrrrrrddddldllLLLLLLruullldddrUUUUdrrddrrrrrrrrurruurrddddddlldllullLrrrdrrurruuuuuullddllldlllllllllldddddrrrrrurrUUUddrrrrdrrurruuuuuullddllldllLLLLLLruullldddrUUluRRRddrrrrdddrrrrdrruLLLLLrrrrrrruuuuuullddllldlllllllllldddddrrrrrurrUUUddrrrrrrrruuuuuullddllldllLLLLLLruullldddrUUluRddrrrrrrrrrrdrrDullulllldddrrrrrRuulluurrDDuuuurrddLruulldDrrddLruullllldllllllluuLrddlluluurDDurrddrrrrrrrruuuuulllllldddLLddrrrrrrrrurruuuLrdddllldllllllluurruuurrrrrrDDDuuulllllldddllddrrrrrrrrdrRUUUdddllulllllllluurruuurrrrrrdddDldllldddldldllllluuuuuuruRRllldddrUUluRddrrrrrrdddrrrrrrUUddlllllluuurrruruuLLLLLdlUrrrrrrddldllllllluuLrddlluluurDDurrddrrrrrrruruulllllldLLrrrurrrrruulllllDurrrrrddddldllllllluurruRRRRlllldllddrrrrdddldldllllluuuuuuruRRllldddrUUluRddrrrrrrrrrurrrrrddddLLLLLLLrrrrrrruuuullDDDuuurrddddlLdlluRRuuuullldlllllllllldddddrrrrrurrUUUddrrrrrruuuullldllLLLLLLrrrrrrrrurrrrrddLruulldDrrddLLLLrrrruullDurrddlLdlluRRuuuullldllldddrrRRdrruuuuulluuurrDDDDDllUluRRlddrruUUdllldllldddldldllllluuuuuRRRRRRRRRRllldddrrrrdrruUUrruullllldllllllluuuuullDDDDuuuurrdddddlLdlUUUrddrruuRlddllddrrUdllldddrrrrrurruuuulllLLLdlUUrdrrrrrrdddrrrrdrruLLLLLrrrrruurruullllldlllllllllldddddrrrrrurrUUUddrrrrrruurruullllldllLLLLLLLdlUrrrrrrrrrrurrrrrddddLLLLLLLrrrrrrruuuullllldlllllllllldddddrrrrrurrUUUddrrrrrrrruuuullllldllLLLLLLLrrrrrrrrrurrrDDDurrddlLLLLLLrrrrruuuullldllllllllldlddddrrrrrurrUUUddrrrrrruuuullldllLLLLLLruuuuullddddDDldRuurrrrrrrrruruuurrDDDDDDurrddlLLLLLLrrrrruuuullldllllllllldlddddrrrrrurrUUUddrrrrrruuuullldllLLLLLLruuuuullddddDDurrrrrrrrruruuuullllldddLLrruuurrrrrddddldllllllllluuuuurrddDrrruuurrrrrdrrdrruLLLrdddllldllllllllluuuuurrdddrrruuurrrrrDDDuurrdddddddlllllluuurrruRRluuurrddDDDDurrddlLLLLLLrrrrruuuullldllllllllldlddddrrrrrurrUUUddrrrrrruuuullldllLLLLLrrrrrrrurrrddllUluRRluuurrddDDDDurrddlLLLLLLrrrrruuuuuuullulllllddldlluuullddddddlddddrrrrrurrUldldllllluurUUUUUdddlddddrrrrrurrurrrrrruullullllllllddLLulDDrurruurrrrrrrruuuuulllllddldlluuulldDDDDDuuuuuurrdddrrruuurrrrrddddldlllllllddlLdlUruuuuuuurrdddLruuullddDDDDuuurrrrruuurrrrrddddldlllllllddlLrruuUdrrrrrrrruuuuulllllddldlLLruuullddDDDDDrruuLruulldDDurrrrrrrrrrdrrddllllllUUddrrrrrruullulllLLLLLLruulldDrruurrruuulDDrdLLLLruuullddDrruuLulDrrddrrruuurrrrrddLLLLLulDrdLLLLrddrrrrdddrrUUddrrrruullulLLLLLLLLrrrrrdddldldlllllU
+
 },
 #endif
 
 #if 0
 {
 /*
-   ############ 
-   #..*.... . # 
- ###  ###..$. # 
- #  $ #  #.#.## 
-##  $ #  $$#.# 
-#   # ## @ #.# 
-# $$$ $ # ##.# 
-# $  $  # ##.# 
-#  #$# ##$##.# 
-# $    $  $  # 
-## ######  ### 
-#        $ # 
-#   ####  ## 
-#####  ####
+               #### 
+          ######  ##### 
+    #######       #   # 
+    #      $ $ ## # # # 
+    #  #### $  #     .# 
+    #      $ # # ##.#.# 
+    ##$####$ $ $ ##.#.# 
+    #     #    ####.### 
+    # $   ######  #.#.# 
+######$$$##      @#.#.# 
+#      #    #$#$###. .# 
+# #### #$$$$$    # ...# 
+# #    $     #   # ...# 
+# #   ## ##     ###...# 
+# ######$######  ###### 
+#        #    #  # 
+##########    ####
 */
 
-37766,
-15,14,417,2300,
-"3=12#=|3=#2.*4. . #=|=3#2 3#2.$. #=|=#2 $ #2 #.#.2#=|2#2 $ #2 2$#.#=|#3 # 2# @ #.#=|# 3$ $ # 2#.#=|# $2 $2 # 2#.#=|#2 #$# 2#$2#.#=|# $4 $2 $2 #=|2# 6#2 3#=|#8 $ #=|#3 4#2 2#=|5#2=4#",
+38010,
+23,17,696,2454,
+"15=4#=|10=6#2 5#=|4=7#7 #3 #=|4=#6 $ $ 2# # # #=|4=#2 4# $2 #5 .#=|4=#6 $ # # 2#.#.#=|4=2#$4#$ $ $ 2#.#.#=|4=#5 #4 4#.3#=|4=# $3 6#2 #.#.#=|6#3$2#6 @#.#.#=|#6 #4 #$#$3#. .#=|# 4# #5$4 # 3.#=|# #4 $5 #3 # 3.#=|# #3 2# 2#5 3#3.#=|# 6#$6#2 6#=|#8 #4=#2 #=|10#4=4#",
+
+// solution: lllllldlllUUlulUUluurrrrrRllllllddrddrdrddrrrurrrrDDlddllullllLLLrrrrrrrdrruuruulllldllluululuuluurrrrrrurrrddddLdlUrruulLrruurrrddlddLLuullUluRRRRRurDDulllddddrruuRRRuurrddLruulldDDDDDDDDldRRdrUUUUdlluuuuuulluulllllldllllllddrUluRRRRRRurrrddllUluRRRRRurDDulllddddrruuRRRuurrddLruulldDDDDDDDDldRRdrUUUlluuuuuulluulllddlUluRRRRurDDulllddddrruuRRRuurrddLruulldDDDDDDDrddlluRRuluuuuuulllddlldlluUUUluRRRRRurDDulllddddrruuRRRuurrddLruulldDDDDDDDDldRdrUUluRluuuuuulluulllllldlllllddrrrrRllllluurrrrrrrrddddlluUUUluRRRRRurDDulllddddrruuRRRuurrddLruulldDDDDDDDDldRurDldRuuuluuuuuulluullllldddlUdllllluurrrrRRRdrUluRRRurDDulllddddrruuRRRuurrddLruulldDDDDDDDDldRurDuuluuuuuulllddllLdlUUUUluRRRRRurDDulllddddrruuRRRuurrddLruulldDDDDDDDrddlluRuuuuuuulllddlllldlUUUdllllluurrrrRRRdrUluRRRurDDulllddddrruuRRRuurrddLruulldDDDDDDDDDuuuuuuuulllddllllullllllddrdrddrrrurrrrddlddllullllllldlluRRRRRRRRdrrruuruulllldlllDurrrurrrrddlddlllullLLLLrrrrrrUdllUluRddrruLdlluurDldRurrRllluluululldRDDllllldddddrrrrrrrUUUruuluuruLLrdddrddldddllllllluuuuurrrrruuUUUUluRRRRRRRRdrUluRRRurDDulllddddrruuRRRuurrddLruulldDDDDDDDDldRRluuuuuuuulllddllllullllllddrrdddrddlllUUUUUUUUluRRRRRRRRdrUluRRRurDDulllddddrruuRRRuurrddLruulldDDDDDDDDldRuuuuuuuulllddllllulllllldddddddrrUUUUruLLrdddddlluuuuUUUUluRRRRRRRRdrUluRRRurDDulllddddrruuRRRuurrddLruulldDDDDDDDDuuuuuuulllddllllullllllddrrdddrdrrddrrruuLLLLLdlUUUUruLLrdddddlluuuuUUUUluRRRRRRRRdrUluRRRurDDulllddddrruuRRRuurrddLruulldDDDDDDDuuuuuulllddllllullllllddrrdddrdrrrrrruullllDurrrrddlllLLLdlUUUUruLLrdddddlluuuuUUUUluRRRRRRRRdrUluRRRurDDulllddddrruuRRRuurrddLruulldDDDDDDuuuuulllddllllullllllddrrdLrddddlluuuUUUUUluRRRRRRRRdrUluRRRurDDulllddddrruuRRRuurrddLruulldDDDDDuuuulllddllllullllllddrrddLrdddlluuUUUUUUluRRRRRRRRdrUluRRRurDDulllddddrruuRRRuurrddLruulldDDDDuuulllddllllullllllddrrdddrdrruLLdlUUUruLLdlUUUUluRRRRRRRRdrUluRRRurDDulllddddrruuRRRuurrddLruulldDDDuulllddllllullllllddrrdddrddRurrrrddlllUdrrruullLLLdlUUUUruLLdlUUUUluRRRRRRRRdrUluRRRurDDulllddddrruuRRRRluurrdDDulllllddllllulllllldddddddldlluRRRRluullllldddddrrrrrrruuUUUUUruLLdlUUUUluRRRRRRRRdrUluRRRurDDulllddddrruuRRRuurrddLruulldDDulllddllllullllllddrrdddrrrdrrrddrUUlllluurrDullddddrrruuLLLLLdlUUUUruLLdlUUUUluRRRRRRRRdrUluRRRurDDulllddddrruuRRRuurrddLruulldDlllddllllullllllddrrdddrrrurrrrDDrdLdlUruLLLLLLdlUUUUruLLdlUUUUluRRRRRRRRdrUluRRRurDDulllddddrruuRRRRluurrdDlllllddllllullllllddrrdddrrrdddrUdrruulLLLLdlUUUUruLLdlUUUUluRRRRRRRRdrUluRRRurDDulllddddrruuRRRR
+
+},
+#endif
+
+#if 0
+{
+/*
+ #################### 
+ # #   #   #   #    # 
+ # $ # $ # $ # $ #  # 
+ #   #   #   #   #$ # 
+ #$ $#$ $#$ $#$ $#  # 
+ #   #   #   #   #$## 
+ #$#*#$#*#$#*#$#.#. # 
+##...........*...** # 
+#*.............*..* # 
+# #*# #*#$#*# #.#.# # 
+##  # # # # # # $ # # 
+ #    #   #   #$$#  # 
+ ##$ $#$ $#$ $#  # ## 
+ #    #   #   # $#  # 
+ #  $ # $ # $ #  ## # 
+ #  # # # # # # $#  # 
+ #  #   #   #       # 
+ ####################
+*/
+
+38012,
+21,18,220,2458,
+"=20#=|=# #3 #3 #3 #4 #=|=# $ # $ # $ # $ #2 #=|=#3 #3 #3 #3 #$ #=|=#$ $#$ $#$ $#$ $#2 #=|=#3 #3 #3 #3 #$2#=|=#$#*#$#*#$#*#$#.#. #=|2#11.*3.2* #=|#*13.*2.* #=|# #*# #*#$#*# #.#.# #=|2#2 # # # # # # $ # #=|=#4 #3 #3 #2$#2 #=|=2#$ $#$ $#$ $#2 # 2#=|=#4 #3 #3 # $#2 #=|=#2 $ # $ # $ #2 2# #=|=#2 # # # # # # $#2 #=|=#2 #3 #3 #7 #=|=20#",
+
+// solution: lulldldddlddrdddrruuuuUUddddddlluuuluuruuulllllllldddllDDDuruuruuurrrrrrrrrurrdLLLLLLLLLLLLrrrrrrrrrdddlddrdddrrrrrruuuluuruuuLLLLLLLLLLLLLrrrrrrrdddlddldddlluuulldddlluuuluuruuUrrrrrrrrrrruuuluuluullddlddrDDldRRRurrdLLLLLLLLrrrrrdddlddldddlluuuluuruUUrrruuuluuluullddlluullddlddlDDrrdrrurrdrrrrrdddlddrdddrruuuuuuUdddddddlluuuluuruuururrdLLLLrrrrrddLruurrdddlddrddldllluuuuuUUUddddrUluuurrddLdlUddddrUluuuUdddddddlluuuluuruuurRRRluuuluuruurrrdddlUruulllddlddrdddldddddrUUluuurrddLdlUUdddddddrUUUUUldddddlluuuluuruuuluuuluuruurrddrddrdddrddLdlUrddddddrrruuuluuruuuLruulDrddddlddrddldllllluuuluuruuuluuuluuruurrddrddrddRDuluuluuluullddlddrdddrdddlddrdddrrrrrruuuluuruuuuLrddddlddrddldllllluuuluuruuuluuuluuruurrddrruurrrddldDDuuruuulllddlluullddlddrddlldlluRRlllldllulluuruuruurrddrddrDuluuluullddlddlddrrdrrurRuuluuruurrddrrDDDuuuuurrddrrDDDuuulluRlullddlluullddlddrdddrdddlddrdddrruuurrdddrrrrrruuuluuruuuuuluuruuulllDDullullddlluRlullddlddrdddrdddlddrdddrruuurrdddrrrrrruuuluuruuuuuluuruuullldllullDDullullddlddrdddrdddlddrdddrruuuruuruuurRRllldddlddrdddrrrrrruuuluuruuuuuluuruuullldldddlDDuuruuruurrrddldddrdddddlddrddldllllluuuluuruuuRRlldddlddldddlluuuluuruuurRRRRldddlluUddrddldddlluuuluuruuurRRRdddlddlUUUUdddddddlluuuluuruuurRlllulldRRRRldddlluUddrruuulLdddrddlUUUUddrddrdLuuuruuuluuuluuluullddlddlddrrdrdddlddrdddrruUUUUUddddddlluuuluuruuuluRRRllllluuruuruurrddrddrdDuuluurDDDuuulluRlullddlddlddrrrddddlddrdddrruurrddrruuurrdddrrrrrruuuluuruuuuuluuruuullldllulldllullDDDDuuullullddlddrDDuuluurDDDuuuuurrdrrurrdrrurrdrrurrrddldddrdddddlddrddldllllluuulldddlluullddlluuuluuruuuuLrddddlddrdddrruurrddrruuurrdLrddrrrrrruuuluuruuuuuluuruuullldllulldllulldllullddddddrddddlddrdddrruurrddrruUUUUUddddddlluullddlluuuluuruuuuluuuulluRdrddddrddddlddrdddrruurrddrruurrddrrrrrruuuluuruuuuuluuruuullldllulldllulldllullDDDDuuuurrdrdddlDurruuuurrdrrurrdrrurrrddldddrdddddlddrddldllllluullddlluullddlluuuluuruuuuRlddddlddrUUUUUddddddddrruurrddrruurrddrrrrrruuuluuruuuuuluuruuullldllulldllulldldddlddLruuruuululldlldDDDurruuuurrdrrurrdrdddlDDuuruuruurrdrrdDDuuullulldlldDDDuruurDDuuuurrddDDDuuuuulldllulldldddlddldddddddddrruurruUUUUdddddddrruurruUUUUddlldddddlluullddlluuulldRuruuuuuuruurruuuurrdrrurrdrrurrrddldddrdddddlddrddldllllluullddlluullddlluUUUUUUUddddddddrruurrddrruurrddrrrrrruuuluuruuuuuluuruuullldllulldllulldlldDDDurruuuurrdrrurrdrrurrrddldddrdddddlddrddldllllluullddlluullddlluulllddrUUluRRdrUUUUUdddddddrruurrddrruurrddrrrrrruuuluuruuuuuluuruuulDDDD
+
+},
+#endif
+
+#if 0
+{
+/*
+    ################### 
+#####@       ##    #  # 
+#   ##$  $ #   $    $ # 
+# $  #  ######  $ #   # 
+# $  #$##    ### ###### 
+#  $$ $    $        # 
+###$ # $  $#$ $ #$  # 
+ #   ####..#..##   ## 
+ #  $  ##.....##$  # 
+ #  $  #...#...#   # 
+ ##$#  $..###..  $## 
+  #    #...#...#  # 
+  # $$ #.......#  # 
+  #  ######$####$ # 
+  #   $   $ $  $  # 
+  #####       ##### 
+      #########
+*/
+
+38013,
+23,17,460,2458,
+"4=19#=|5#@7 2#4 #2 #=|#3 2#$2 $ #3 $4 $ #=|# $2 #2 6#2 $ #3 #=|# $2 #$2#4 3# 6#=|#2 2$ $4 $8 #=|3#$ # $2 $#$ $ #$2 #=|=#3 4#2.#2.2#3 2#=|=#2 $2 2#5.2#$2 #=|=#2 $2 #3.#3.#3 #=|=2#$#2 $2.3#2.2 $2#=|2=#4 #3.#3.#2 #=|2=# 2$ #7.#2 #=|2=#2 6#$4#$ #=|2=#3 $3 $ $2 $2 #=|2=5#7 5#=|6=9#",
+
+// solution: rrrrrrrdrrRurrddLddllllullldllLrrrddddldLLdlUUddllUUluurruULrddllddrddddrdrRRllluluurrrurrruuuuururrdDDrdLLLulDDldllldlluuluurruuRRRRdrdrdrruuuulllDDulllllluurDDrrrrrrurrddddllldldllldllddrdrrrdrrrruUddllllullluluurrrurrurrurrrdddldLLLrrdddrruLdlUUddllllullluluurrrurrurrurrrdddldLLrrrruurrdrdddlLLLLdlUUddllllullluluurrrurrdrrdRRuruuuuuurrdLullddrUluRdrrurrrddlUdddldlluluuurrurRlldlllddllldldllldllddrUluuuluurUUrrrrrrrurrddddllldldllddLLrruurrurrurruuuullldllllllddlddrddDrrruurrurrurrruurruruuruulldlllulllllddlDurururrrrdrrrurrddlddldlllddllldldlllddlluuuluuruurrRRRlluurururrrrdrrrurrddlddldllululldDDuuurrdrddddrdrrdrUllluluuuulullddllulllllddDDuuuurrruurururrrrdrrrurrdLdddldllulullddllulluurururrrrdrrdRlullulllllddlddrrdrruurrdrdrruruUllullulllllddlddlllddddRluurDuluurrrrrdrruurrdrddddddldllullulluuLLrrddlUruLrddrrdrrdrruruuuuuulullddllulllllddlddrRRurDDulllluurrDrdLuullddRRurrddlUluuluurDDDuuurrrrdrruurrdrddddddldllullullulLuuuuuululldddRRlluuurrdrdDrrrrdrruLLLLLLLddrddrrdrruruUUruurrddddlLdlUrrrrdrdrrrUruullDDuRuuullLLdlddlluuuurrDDDuuullddddrRdrUUluRulullddllulldRRRlulluurururrrrdrrdrrddllllulldDDullulllllddrddrrdrruruRRRdrUUldllldldllulluuUluRRRlluulDDrrrdrrrrddlUddldllulluuuurrdrrRdrdrruuuulldDDullllulluulullddRRurDDrrdrrrdddldllulluulUUUrdrrdrrrruurrdrrrrrddddddlUUdllldldllulluurDldRullllddlddrrrdrruRdrUUdrrrrrruuuulllldldLruruuullLulDDDururruuuLulDDDldRRRurDDDrdLrdLuuuullluulluRurDDDldRRRurDDDDuuullluulllluRRRurDDDldRRRurDDDuuuluurDDDDrdrrruuulDDrdLLrruuuuullllddddrDDurrrddddlUUUruLLrruuuuullllddddrDrrruuuuuluuruulDDDullullulllllddlddrrrrrrrddddrdrrruuuuuLLLLLLulDDDldRRRurDldRuuuurrruulluRurDDDuullllulllllddlddlllddrddrdddlddrrrdrrrrrrurrrruuuuuuuuuLLLLLLulDDDldRRRurDuuurrrrdrruLLLLLLLLulDDDldRRRllldldllulluuUluRRRRRRurDDDldRldldlllddrUluRRlulluuuurrrrrddddlDruuuuullluuruulDDDurururrrrdrrrrdddlllllllddddldllulluuuurRRRdrruulDDDDrdLuuuulllllullluurrDullddrRurDldRRRRRRurDDDDuuurrrrrruururrdrruLLLLulDDDuullllullllllddddrrrrrrrrrRRdrruLLLLLLLLulDDDuullllllullldRRRRRRRRRRurDDDDuruurrdLulDullllllllllddldRuruurrrrrdddddlllullUUUluRRRRRRRRurDDDuulllllllluululDDldRRRRRRRdrruulDDDDDuuuullluurururrdLLLulDDDururrrurrdrrrrdddlllllllllLLLulldRRRRRRdrruulDDDDuuulllllddddrruLdlUUUluRRRRRdrruulDDDuullllllddlddRRurrddlUruLdlUUUluRRRRRdrruulDDullllldddrddddlluUUUluRdrUUluRRRRRRurDDurrrrrrrddddrUUluurrdLulDDDrdLulDrdLLrddddllllllldllullluuruLdlUUUUluRdrUUluRRRRRRRRurDDulllllllldddrdddldddlUUUUUluRurDldRRurDldRRlldldddrrrRRRdrUU
+
+},
+#endif
+
+#if 0
+{
+/*
+######################### 
+###   #   ############### 
+### $$#$# ############### 
+### * $.. ###   ###   ### 
+###  . .*     $     $  ## 
+### $ $$$$*$$*$$*$$*$# ## 
+##  ## .. .* ..*.. ..$  # 
+## ###$#.$.. .. .# *.$# # 
+##         $ $  * $*$$. # 
+## ###### ##### .. ..$ ## 
+## ###### ##### .#$*.. ## 
+## ######      @$.   $ ## 
+## ##########..$###.## ## 
+## ##########.. ## ..$ ## 
+#  ###### $  $ $   $$$.## 
+# ####### ###..*..$*.  ## 
+#  ###### ##.#. #....# ## 
+## ###### ##$$*$$$$$$# ## 
+##           #   . $   ## 
+############   ###   #### 
+#########################
+*/
+
+38014,
+25,21,292,2460,
+"25#=|3#3 #3 15#=|3# 2$#$# 15#=|3# * $2. 3#3 3#3 3#=|3#2 . .*5 $5 $2 2#=|3# $ 4$*2$*2$*2$*$# 2#=|2#2 2# 2. .* 2.*2. 2.$2 #=|2# 3#$#.$2. 2. .# *.$# #=|2#9 $ $2 * $*2$. #=|2# 6# 5# 2. 2.$ 2#=|2# 6# 5# .#$*2. 2#=|2# 6#6 @$.3 $ 2#=|2# 10#2.$3#.2# 2#=|2# 10#2. 2# 2.$ 2#=|#2 6# $2 $ $3 3$.2#=|# 7# 3#2.*2.$*.2 2#=|#2 6# 2#.#. #4.# 2#=|2# 6# 2#2$*6$# 2#=|2#11 #3 . $3 2#=|12#3 3#3 4#=|25#",
+
+// solution: ururrrrdrrddddddddlldllulllldlluUddrrurrrrdrrurruuuuuuuullulllllddlddddlUUruurururrrrddlddldllLullddrUUrdrrruruururruuruuluululldllllulldllllulldRRRRllllllllddlddrrrrrrrdddrrrrrrDDuuururrrrddlddldllLullddrUrrrruruulUdrruulLLLdldlllllluuururrrrrdDDDDDuuururrddrddldllLLdlUrrrrddrrrurrdddlldllulllldllullluuuuRRRRRRuuuuuuurDDuulllldRRurrddlUruLdllullldRRRRRurDldRulllulllullllDurrrrdrrrdrrddddddllllllddddllllllluuluuruuuuuurrrRRRRRRRRRllllldddrrrrrruuUllllllllllllluuruurrrrrrDullllllddlddrrrrrrrruuLuulllllluuurrDDuulldddrRllddlddddddddlddrddrrrrrrrrrrdrrurrrrdrrurruuuuuuuuuuruuluululldlllDDLLrruurrrurrdrddrddlddlldlddrRlluururrddDuuuuLdldRllddrrruUlllddldlddrrrurrdddlldllullllUUrUUUUUUUruLLLulldRRRRRlddddddddldddlluuRlddrruUlldllluuuurrrrrrdrrdDurrrurrdddlldlluUluuururuuluurDldRddldldlluuuuuuullulllLuuuuuullDurrddldlDurrdLrurDDlddllllllluuruurrRRRurDldRurDuluuulldDrrdddddllluuUdddrrrrrrrrrdddddddrrururuuuulLrrdrrururuuluululldlllddrrdDDrddlUruLuuulUdrdddrddddldldllullllllddddrrrurrdrUllldllluuuurrrrrrdrrddLruulluuuuuuulluluRRRllddrrdddddddrrururuuuuluuululululldDDuuurrdrdrdrdddrdrrururuuluululldlLddrdddrddddldldlluuuuuuulllllluRluurDlddrrruuruuLLLdlluurDldRurDurrrddlULrdddrrrdddddddrrururuuuuluuulLLLrUrrurrurrdrddLLLLLrdddrddddldldlluuuuRRRurrrdrddllluUluRuluuululldDDDDuulllllldddrrrrrRuuullluuuruurrDDDurrdrrrrrrddldlLULrdrddrddllluuuluUUdrrdrruruuluululldllddRRlddrrdrruLrruullDDrdLddrddlllldlddRluurDlddrddrrurruuullLLulDllLrrrruurDlldllullllllddddrrrurrdrrurrddrrurruuullLLLLLrrrrrrUdlluuuuuluuuuluurrurrdrddldddddrddLruulLruuuuuruululldllddrddddrDrrrddlddlllllluRRdrruulDrdLLrrrruLdlUrrdrdddlldlluuUdddrrurruuulllLrrruuruullluluurDuluurDDuulluurrDDuuurrdrddlLrdddddrddlddrdddllUUddrruuulLruuruulllluuuuululldDDDDDDDuuuuulllllllllllllddddddlddrddrrrrrrruuuurrrrrRRRRRRllllluuuuuuuuurrdrdddddrrrrddlDlddddrruuuLulllllluuuuuuuuuuLulDrDrdddllllllllluuuRRlldddrrruuUdddrrruuululLdlllluuRRlldlldRldlddrrrrrrrrrrrrruuurrurrdLulDrruurrdLulDrrrddldddddrUUluuurrddLruulldDDuuuruullllldlldddllllllllllllluuruuuuRurDDrruurrdddrrdrdddrrruuurrrddddddlLrrrrrrddldlllllluuUUUUUdddddddrrrdddlldlluRRRllllldllluuuurrrrrrrrrrrrdrdddlldlluUddrrurruuuluuruuuuuruuluullDulldddddddllluuullluuuluRRRurDldRRRurDDDDDDuuuuuurrrrddrddldddlllLuuurRRllluuulllulllllldlllUddddlllluuruuuurrdRddrrrurrrrrrdrruLdlluurDldRulllddddrrrrRRdddrrrrddlddrdddlldlluulllUdllldlllllllllluuluuruuuuuuuururRluluurrdrdDDDuullldlddrrrRRRRRRRRRRddddddrrrrrrdrdddlldlluuRlddrruUdLdlUruLLLL
+
+},
+#endif
+
+#if 0
+{
+/*
+ ########### 
+ #     #   ## 
+ # $ $ $ #  ##### 
+ ###  #####     # 
+ #....#     ### # 
+ #.####  ####   # 
+ #....    #  $ ## 
+ # ...#   # $$$##### 
+###.#######  $@$   # 
+# $   ##### $ ##   # 
+# #.# $      $###$ # 
+# #.########  #  $ # 
+# #...       ## $$ # 
+#   ####### $ # #  # 
+#####     #       ## 
+          #########
+*/
+
+38015,
+20,16,398,2460,
+"=11#=|=#5 #3 2#=|=# $ $ $ #2 5#=|=3#2 5#5 #=|=#4.#5 3# #=|=#.4#2 4#3 #=|=#4.4 #2 $ 2#=|=# 3.#3 # 3$5#=|3#.7#2 $@$3 #=|# $3 5# $ 2#3 #=|# #.# $6 $3#$ #=|# #.8#2 #2 $ #=|# #3.7 2# 2$ #=|#3 7# $ # #2 #=|5#5=#7 2#=|10=9#",
+
+// solution: LLrrRRllllUdrrUdrrdrrddddldlllluLullllllllluuuuuuluurruuurDlddllddrddddddrrrrrrrrrurUldddrdrrrruruuuullullllDDuurrrrdrrddLrddldllllulullllllllldlluuuuRlddddrruuuUUUluRRRRRdrUllllldddrrdRRRRRlllllulluurrurruurrrruululldLLLulDrrrrurrdrddllllddllllluurrrUdlllddrrrrruurrrruululldllulldDrdLuuurDrrrurrdrddllllddllllddddddrrrrrrrrrdrdrrrruruuuullulllDldDDllllllllluuurrdrrrrrRurDDrUluurrrrdrrddddldllllllUdrruLULLLLLLLLrrrrrrrrdrdrrrruruuuullulllldldllllllullllddddrrUUUUUUluRRRRRlllldddrrdrrrrrrruurrrrdrrddlDruuullulllldldllllllulldddrrrrrrrrrdrdrruuuRldddrrUdllllllUruLLLLLLLLrrrrrrrrdrdrrrruruuuullulllldldllllllullllddddrrUUUddrrrrrrrrrdrdrrrruruuuullulllldldllllllulLrrdrrrrrrruurrrrdrruLLLLrrrrdddLrddldllllulullllllllluuurrdrrrrrrrDDlddrruLuuuuuulDDrdddllllllllluuurrdrrrrrRurDuuRRRRdrruLLLLLLrrrrrrdddlDuUUlulllldldllllllulldddrrrrrrrrrdrdrruuuRldddllulullllllllluuurrdrrrrrrruurrrrdrrdddlUruullulllldldllllllulluurrurruurrrrurrrrddlDDuuruulllldllllddllllddddddrrrrrrrrrdrdrruuurrruullulLuuuruulllldllllddlllldddrrdrrrrrrruuuRlddldllllllulldddrrrrrrrrrdrdrruuurrruullullUdrrdrrddllldddllllUruLLLLLLLrrrrrrrdrdrruuurrruullullulldddDDlddrruLuuuuuurrdLulDDDlllllllulluurrurruurrrrurrrrddllDDlddldllllllullddddlluuuuRlddddrruuuUUdrrdrrrrrrruuuruurruulllldllllddllllldRurrrruurrrruululldllllddrUluurrdLrrrurrdrddllllddlllldRurrruurrrruululldllullDDrurrrurrdrdrrrrddllddrdrrdrrddllldddllululllllllLrrrrrrrrdrdrruuurrruullullullddldllllllullllddddrrUUUUUUruLdlUUdrddddddrrrrrrrrrddlUruLLLLLLLLrrrrrrrrdrdrruuurrruullullullddldllllllullllddddrrUUUUUUruLdlUrdddrrdrrrrrrrDDlddrruLdlUruLLLLLLLLrrrrrrrruulllllllullllddddrrUUUUUdrrdrrrrrrruuuruurruulllldllllddllllldRurrrruurrrruululldllulllldRRurDDurrrurrdrdrrrrddllddllDDrdddllllllllluuurrdrrrrrRurDDDlddrruLdlUruLLLLLLLLrrrrrrrruulllllllullllddddrrUUUUUUddrrdrrrrrrruuuruurruulllldllllddlllLrrrrdrruLLLLrruurDlddrruLLLrruurrrurrrrddllddrdLulDDDDDlddrruLdlUruLLLLLLLLrrrrrrrruulllllllullllddddrrUUUUUUddrrdrrrrrrruuruuurDDllddddddrdrruuurrruullulLLulDDDDDlddrruLdlUruLLLLLLLLrrrrrrrruulllllllullllddddrrUUUUUdrrdrrrrrruuuuRdrruulDDrdLulDDDDDlddrruLdlUruLLLLLLLLrrrrrrrruulllllllullllddddrrUUUUrrdrrrrrrruurrrrdrruLLLLLulDDDDDlddrruLdlUruLLLLLLLLrrrrrrrruulllllllullllddddrrUUdrrrrrrrrruruUUruLulDDDDDDlddrruLdlUruLLLLLLLLrrrrrrrruulllllllullllddddrrUrrrrrrrrrdrdrruuurrUUruLLLLLulDDDDDlddrruLdlUruLLLLLLLLrrrrrrrrdrdrrrrUUUUUruLLLLLulDDDDDlddrruLdlUruLLLLLLLrrrrrrrdrdrruuRurrddlUUUUruLLLLLulDDDDDlddrruLdlUruLLLLLL
+
+},
+#endif
+
+#if 0
+{
+/*
+############### 
+#@            # 
+# ### ##* ### # 
+# ## $. .$ ## # 
+# # *.$.$.$ # # 
+#  $.$. .$.$  # 
+# #.$. * .$.# # 
+# $ #$###$# $ # 
+# #.$. # .$.# # 
+#  $.$. .$.$  # 
+# # $.$.$.* # # 
+# ## $. .$ ## # 
+# ### ### ### # 
+#             # 
+###############
+*/
+
+38016,
+15,15,232,2462,
+"15#=|#@12 #=|# 3# 2#* 3# #=|# 2# $. .$ 2# #=|# # *.$.$.$ # #=|#2 $.$. .$.$2 #=|# #.$. * .$.# #=|# $ #$3#$# $ #=|# #.$. # .$.# #=|#2 $.$. .$.$2 #=|# # $.$.$.* # #=|# 2# $. .$ 2# #=|# 3# 3# 3# #=|#13 #=|15#",
+
+// solution: ddddrRlluuuurrrrrrrrrrrrddddddddlLrrddddlllllllluUddrrrrrrrruuuuuuuuuuuulllldDuurrrrddddddddddddlllllllluulUdrddrrrrrrrruuuuuuuuuuuullllddrDuluullllllllddddrruRldlluuuurrrrrrrrrrrrddddddddlldLrurrddddlllllllluurruurDldllddrrrrrrrruuuulldlLLrDrururruuuuuuuullllddllddlUrurruullllllllddddrrurRRlURRllldldlluuuurrrrDDrdLrddlULLrrruullDurDuuurrrrddLLLrrruulllldDrddrrUdlluuluurrrrddrdLuuullllddrddrrdrUUUddllluurRDullluurrrrrrrrddddddddlldllluurUUddlddrrrurruuuuuuuullllllllddrdddRuluurDullldRRuluurrrrrrrrddddddddlldllluuruuRlddlddrrrurruuuuuuuullllllllddrrrdrrDRulllullluurrrrrrrrddddddddlluuUddddlllullulLrrdrrdrrrurrddddlllllllluuluURlLrddrddlllluuuuuuuuuuuurrrrddldldddDuuuurruuurrrrrrrrddddddddlldlllulLLDDrrUruLrdrrrurruuuuuuuullllllllddrdddlUruuluurrrrrrrrddddddddlldlllldlluuuUUdddddrruruurDldRlldlluuuuuruuuluurrrrrrrrddddddddllLLdlldlluuuuuruuulldlddddRluuuururuurrrrrrrrddddddddlllldlldlluuUlluuuururrdLuuurrrrrrrrddddddddlllluuuUddddrruuuLrdddlluuUrrdddrruuLrddlllluuurrDDuulldddrRlldlldlluRdrUrrurruurruuuuuullllllllddrdddlDDDuuuruuuluurrrrrrrrddddddllddlldllldlluRuuuuruulDDuuuuurrrrrrrrddddddlluluuuLLLLrrrrdddrdrruuuuuulllllllldDDrurrdRurDDuullllluurrrrrrrrddddddllddlluuuUUdddddrrdLdlUUUUUddddlldlluRRRRurruurruuuuuullllllllddrdddlDDDuuuruuuluurrrrrrrrddddddllddlldllldlluRuuuuruulDDuuuuurrrrrrrrddddddllddlldlldlluuulluuuuRurDuuullllddddddRluuuuuurrrrrrrrrrrrddddddllddlldlldlluuullUUddrrddlUrddrruLLdlUrrrrrurruurruuuuuullllllllddldlDurrrddlDDDuuuruuuluurrrrrrrrddddddllddlldllldlluRuuuuruulDDuulldRurrddlUruLuuullllddddRRRlllddrrUdlluurRlluuuurrrrddrdddlULLrrruulDrdLuuuullllddddddrruuuRurDrurrdrruLLLLdllldddlluuuuuurrrrdDrdLuuurrrrrrrrddddddllddlluuuUddddrrdLdlUUUUUddddlldlluRRRRlllluurDlddrrurrurruurruuuuuullllllllddrrrdRurDullllluurrrrrrrrddddddllddlluuuUUddddddlldlUrrruulDrdLLrrdrUruLdlUUUUddlddldlluRRRRlllluurDRdrruLLrrrruurruuuuuullllllllddrrrdrDDDDuuuulullluurrrrrrrrddddddllddlLrruuuLrdddlluuUrrdrruuuuuullllllllddrrrdrrDullullluurrrrrrrrddddddllddlluuuUdLUrddddrruurruuuuuullllllllddrdddlUruuluurrrrrrrrddddddlluLrdrruuuuuullllllllddrddldDDDDldRuuuuuruuuluurrrrrrrrddddddlldLruuluurDDDrruuLrddlluluurDrruuuullllllllddrddldddddRluuuuruuuluullllddddddddddddrrrrUUddrrrrrrrruuuuLLrruuuuuuuullllllllddrddRRRllluuluullllddddddrruuRRllddlluuRRlluuuurrrrrrrrrrrrddddlluluLLLrrrdrdrruuuullllllllllllddddrrdddRluuRlulluuuurrrrrrrrrrrrddddllulullDurrdrdrruuuullllDurrrrddddlluluLrdrdrrddddddddlllllllluululUUUllddRlddddrrrruululUdrdrddrrrrUU
+
+},
+#endif
+
+#if 0
+{
+/*
+      ################# 
+      #               # 
+      # .############ # 
+      # $#   ######## # 
+     ### #####.##   # # 
+     # *     #$   . # # 
+###### # $ #. $$.## # # 
+#    # # #$.   * $  # # 
+# ## # #  **$*#* #  # # 
+#    # #       * # *$ # 
+## .** ** *   ** * *  # 
+ # #.   **##### ####### 
+ # # ###   #### # 
+ # #@#          # 
+ # ###****##### # 
+ #            # ## 
+ #####*######**  # 
+     # #    #  # ## 
+     #.#    #  $ .# 
+     ###    #######
+*/
+
+38017,
+23,20,261,2462,
+"6=17#=|6=#15 #=|6=# .12# #=|6=# $#3 8# #=|5=3# 5#.2#3 # #=|5=# *5 #$3 . # #=|6# # $ #. 2$.2# # #=|#4 # # #$.3 * $2 # #=|# 2# # #2 2*$*#* #2 # #=|#4 # #7 * # *$ #=|2# .2* 2* *3 2* * *2 #=|=# #.3 2*5# 7#=|=# # 3#3 4# #=|=# #@#10 #=|=# 3#4*5# #=|=#12 # 2#=|=5#*6#2*2 #=|5=# #4=#2 # 2#=|5=#.#4=#2 $ .#=|5=3#4=7#",
+
+// solution: uuUlldddddrrrrrrUUruUddlddllDDuurrrrrrrDullllluuruuLUUUUdrdrrULUddllddrddlddlllllluuuuurrdrruuuuuuRRRluUddllddddddllulldddddrrrrrruuruuluurrrrrULuurDrRUrurrrddldddLruuruuullldldlllddrrRllluuuulLLLrrrrddddrrrUdllluuruRURRRllldlldddlluuRRRlllddllddrUluRRRluurrdDlllddddlddlllllluuuuurrdrruRRurDDDuuurrdLullddrUluRldlldllulldddddrrrrrruuUdllDurruruullldllulldddddrrrRuurruruurruruulldRdrrdLLLLddldllddlllluuuuurrdrrurRlldllulldddddrrrruurruruUrrrruUdlldllllldllululluurrrdDllddddddrrrruurruruurrrrurrDLLulluururDDullddrRuuururrrurrdddldddlLLrrruuruuuulldllldlldDlddllluuRRRddllUldlldllUdrrurrrrruuurrdddLLLLddldllddlllluuuuurrdrrurRlldllulldddddrrrruurruruUrrrruuuururrrurrdddldddlllLLuuuululllluuluurrrrrrrrrrrrrrdddddddddlLLLLLrrruuruuuulldldLLLrrrururrdddldddllluuUdddrrruuruuuulldllldldlldddllddrdrrrrruUUUUrDlddddllllluluurruuurrururrrurrdddldddlLrruuruuuulldllldldlldddllddrdrrrrruuUdddllllluluullldllululluurrrdDllddddddrrrruurrurrdrrrrruuurrrrUdrruLLdlUdllldddllllluluurruuurrururrrurrdddDuuuulldllldldlldddllddrdrrrrruuurrruRuuuuulldllldlddddRRRllluuuururrrurrddddddrruuuuuuuuullllllllllllllddrddrrrrDrddddrrdddllllluluurruuuRurDDuururrdLLLdlldddllddrdrrrrruuuruulUdrddlUUdddddllllluluurruuurrururrrurrdddddldLLrrruuuuuulldllldldlldddllddrdrrrrruuUdddllllluluullldllUdrruLLLulluurrrdDldRdrrurrrddldllddlllluuuuUrruuulllddRdrrdrrurrrddldddrrrrrdRddRRuuLuuuuuuruuURldddldddllllluluulllLLrrrrrddrdrrrrruuullLLuuurrururrDDDDuuuururrdddddldlLLLLrrruuuuulldldlldddLLLLLrrrrruuurrururrdLrddlUrdddldddllllluluurruuurrRRdrddrrruuuuuulldldDllllldddllllldlluuuulllddrRlddddddrrrruurruruullldlluUddrruLrrrrddlUruLLLdRRdrrdrrrrruuurrrrrruuuuuuuuullllllllllllllddrddDDDDuuuuuuluurrrrrrrrrrrrrrdddddddddlluuuuuulldlddllllldddllLrrruuurrrrrDuuulDrururrdddddldllldddlllllulluurrruuurrrRdrUluurrurrdddddldlllUUruLdddrUldllUdrrdddlllllulluuuuRRlluuuuuluurDDDDuuuurrrrrrrrrrrrrdddddddddllllluluuLLrrddddddlllllulldddLruulldDrruLruurrdLulDlddrrULuurDrrrrrruuurrrrrruLdlllluluuuurrurrddddDrdLLLrruuuuuulldllddrrRllluurrurrddDDDuulllldddRldddlllllulluuuurrDLdlddrrdrrrrruuuuuullLrrrddddddlllllulluurDDuuurrdRRuRldllulldddrdrrrrruuuUUUrrrruuulldllDDDDlldllulldldddddlllllluuuuuurrDullluurrrDDllddddddrrrrrruuuruuurrdrrurruurrrrddlUruuuulldllddrrRllluurrurrddDllllddrUluuurrurrdddllLrrruuulldlldDrddlllLLLulDDurrrrrrruullllDurrrrddllldlluRRRllllulluUUUUddrrDDuulldddrdrrruuruRurDldururrurrdddDuuuulldllldldlddllldlddrrdLulDrrrrrrrdddrddlllUrdrruuluuulllllulluuruulDDuuuuurrdLulDDDD
+
 },
 #endif
 
@@ -702,300 +662,604 @@
 {
 /*
 ############ 
-# ...   #  # 
-# # #   #$ ####### 
-# $ $   #  #..   ###### 
-# # #####    .........# 
-# $    $  $# #...###### 
-# # ####   . #####.## 
-#    #######$##@   ## 
-#### ###     ##$$$ # 
-  ## ###   $  . .  # 
-  #.  #  $ ############ 
-  #. $#  $ #####     ## 
-  ##  ## #    .  ### ## 
-   #  $  #####.$ ###  ## 
-   #    $   $ . ##  $ .# 
-   ## $ #..#..# ##   $$# 
-    # $ $  $  # ####   # 
-    #    $$ $$$$..   $ # 
-    #  ##    $         # 
-    #######    # ####### 
-          ####   # 
-             #####
+#   .......######### 
+#   *......#       # 
+#  # ##....  # $ $ # 
+#  $ ......#   @$$ # 
+#####$  #########  # 
+#     ##   #    #$## 
+#   $  $ $ # #  $  # 
+##$#$##$   $ # $   # 
+# $ $    ##$$$  $$ # 
+#     ##     #  #  # 
+####################
 */
 
-37767,
-24,22,537,2300,
-"12#=|# 3.3 #2 #=|# # #3 #$ 7#=|# $ $3 #2 #2.3 6#=|# # 5#4 9.#=|# $4 $2 $# #3.6#=|# # 4#3 . 5#.2#=|#4 7#$2#@3 2#=|4# 3#5 2#3$ #=|2=2# 3#3 $2 . .2 #=|2=#.2 #2 $ 12#=|2=#. $#2 $ 5#5 2#=|2=2#2 2# #4 .2 3# 2#=|3=#2 $2 5#.$ 3#2 2#=|3=#4 $3 $ . 2#2 $ .#=|3=2# $ #2.#2.# 2#3 2$#=|4=# $ $2 $2 # 4#3 #=|4=#4 2$ 4$2.3 $ #=|4=#2 2#4 $9 #=|4=7#4 # 7#=|10=4#3 #=|13=5#",
+38020,
+20,12,640,2465,
+"12#=|#3 7.9#=|#3 *6.#7 #=|#2 # 2#4.2 # $ $ #=|#2 $ 6.#3 @2$ #=|5#$2 9#2 #=|#5 2#3 #4 #$2#=|#3 $2 $ $ # #2 $2 #=|2#$#$2#$3 $ # $3 #=|# $ $4 2#3$2 2$ #=|#5 2#5 #2 #2 #=|20#",
+
+// solution: luurrrrdddlDDrdLuLLulllddLLrruurrrdDurrrdddlUUUllulllddlluulldLrurrddrruurrrddRurDlllddrUluRRululllddlluullddddrrrrUUdRRurrurrdLulldldlldlllluuRRlluRldddrrrrurrururrrdddlUruullldldlldllllullldlluRRlldlluRUUrurrUddRRRllluurruuullLLulDrrrrrrrrdrrurrrrdLrurrdLLrrddlUruLullllldllullllllddRRdrUUruulldRRRurDldRllldlldddrrrdddrrrrurrururrUUUdddlldldlldlllluuullluuuluulllddrRRRRdrUUruulldRRurDlllllddllUluRRRRRRurDlddlldddrrrdddrrrrurrururruuruuulllllldLrurrrrrrddldddlldldlldlllluuullluurrurrrUUddlUruLLLLLLLrddlluUrrddrddlldRRlllluRRRdrUUrruuulllddRRdrUUdrruulLLLLLrrrrrrrdrrurrrrrrddldddlldldlldlllluuulLLLruurruuRRRllldllllluluRRRRRRRurDllddllddlllddddrruUUdddlluuuurRdrUUrruuulllddRRdrUUruulldRurDlddlldddrrrddlLLdlUUUdddlluuuurRdrUUrruuulllddRRdrUUUluRRllllldlluRRRRRRdddllddllldRldddrruuUluRdrUUrruuulllddRRdrUUdrrruullLLLLLulDrrddrddllldddRdrUUUluRdrUUrruuulllddRRdrUUdrrruullLLLrrddllluUluRRldddrdddrrDrdLLLdlUUUluRdrUUrruuulllddRRdrUUdrrruullLLLrrddllluUruLLrdddrdddrrrdddrrrruuLLLLulDrdLLLdlUUUluRdrUUrruuulllddRRdrUUdrrruullLLLrrddllluUluRdddrdddrrrdddrrrUruLLLLulDrdLLLdlUUUluRdrUUrruuulllddRRdrUUdrrruullLLLLddllluurRurDrrrddlldddrrrurDldddrrruulLLulDrdLLLdlUUUluRdrUUrruuullllllddrrrRRdrUUdrrruullLLLLLrrrrddlldddrrrrdrrrdrrururruuruuulllllldLrurrrrrrddldddlldldllulllulllluuulllluuuRRdrrrrddlldddrrrrurDlldddrrruuLLLulDrdLLLdlUUUluRdrUUrruuullllulldddrrrRRdrUUdlllllluuurrdrrrRRRllddlldddrrrrrdrrdrruruulllDDuurrrddldlLdlUruLLLLulDrdLLLdlUUUluRdrUUrruuullllulldddrrrRRdrUUdlllllluuurrdrrrRRlddlldddrrrrrdrrdrrdrUllluuurrrdrrrddlLLLLLdlUruLLLLulDrdLLLdlUUUluRdrUUrruuullllulldddrrrRRdrUUdlllllluuurrdrrrRddlllUdllluuurrdRRllulldRRRddrdddrrrrrdrruurrDDurrrrddlllLLLdlUruLLLLulDrdLLLdlUUUluRdrUUruLLuulllddrRRRRRRRlllldddrrrrrdrruurrrdDurrrddllLLLLdlUruLLLLulDrdLLLdlUUUluRdrUUruLLuulllddrRRRRRRllldddrrrrrdrruurrrdrruuuLLLrrrdddlDurrddlLLLLLdlUruLLLLulDrdLLLdlUUUluRdrUUruLLuulllddrRRRRdrUUUddlldddrrrrrdrrdrrrruurDrdLLLLLLdlUruLLLLulDrdLLLdlUUUluRdrUUruLLuulllddrRRRRdrUUdlldddrrrrrdrrdrrrrruuuuruuulDDDDDDrdLLLLLLdlUruLLLLulDrdLLLdlUUUluRdrUUruLLuulllddrRRRRdrUlldddrrrrrdrrdrrrrruuuuuuulllllddRRRRlllluurrrrrdDDDDDrdLLLLLLdlUruLLLLulDrdLLLdlUUUluRdrUUruLLuulllddrRRRRRlldddrrrrrdrrdrrrrruuuuuuulllDullddrRRRlluurrrdDDDDDrdLLLLLLdlUruLLLLulDrdLLLdlUUUluRdrUUruLLuulllddrRRRRldddrrrrrdrrdrrrrruuuuuuullDldRRluurrdDDDDDrdLLLLLLdlUruLLLLulDrdLLLdlUUUluRdrUUruLLuulllddrRRRlllUluRRlddrrrdddrrrrrdrrdrrrrruuuuulluRurDDDDDDrdLLLLLLdlUruLLLLulDrdLLLdlUUUluRdrUU
+
 },
 #endif
 
 #if 0
 {
 /*
-       ##### ##### 
-    ####   ###   # 
-#####  #  $  $$$ # 
-#   #$ ###   $   # 
-#    $ $ #$$## # # 
-# $# #   #    $# # 
-#  # # ####### # # 
-####  $   .....# # 
-   ##$####.#.#.# # 
-    #   ...#...  # 
-    #$ #.#.#.##### 
-    #@ #.....    # 
-    ####$#$#$### # 
-      # $ $ $ $  # 
-      #          # 
-      ############
+   ####### 
+####.....######## 
+#..#.*...$      # 
+#..#..*..$$#$#$ # 
+#.*#.*.*..$ $   # 
+#*.###*.#.....#### 
+#.......#.*.#*   # 
+# $#$#.###....$$ # 
+#  $    $  $   $ # 
+#### $#$#$ $$$ $ # 
+  # $ $    $   $ # 
+  #      ######  # 
+ #####$###       # 
+ # $    $  $  $$ # 
+ #   # $#$ $$$ $ # 
+ ##$$$     $  @$ # 
+  #      ######### 
+  ########
 */
 
-37768,
-18,16,334,2302,
-"7=5#=5#=|4=4#3 3#3 #=|5#2 #2 $2 3$ #=|#3 #$ 3#3 $3 #=|#4 $ $ #2$2# # #=|# $# #3 #4 $# #=|#2 # # 7# # #=|4#2 $3 5.# #=|3=2#$4#.#.#.# #=|4=#3 3.#3.2 #=|4=#$ #.#.#.5#=|4=#@ #5.4 #=|4=4#$#$#$3# #=|6=# $ $ $ $2 #=|6=#10 #=|6=12#",
+38021,
+18,18,843,2466,
+"3=7#=|4#5.8#=|#2.#.*3.$6 #=|#2.#2.*2.2$#$#$ #=|#.*#.*.*2.$ $3 #=|#*.3#*.#5.4#=|#7.#.*.#*3 #=|# $#$#.3#4.2$ #=|#2 $4 $2 $3 $ #=|4# $#$#$ 3$ $ #=|2=# $ $4 $3 $ #=|2=#6 6#2 #=|=5#$3#7 #=|=# $4 $2 $2 2$ #=|=#3 # $#$ 3$ $ #=|=2#3$5 $2 @$ #=|2=#6 9#=|2=8#",
+
+// solution: llLLLLrruuurrrrrruuuuuullDlllldddRRlluuurrrrurrdddLruuulldllluullululLLruulldDrrdDDlllluUddlUUUdrUldddddrUUUUddrrrruuulluRurDDDDrdLLLLLdlUUUrddrrrruuurrdLulDDrdLLLLLdlUUrdrrrrruurrdrruLLLLulDDrdLLLLLdlUrrrrrruurrrrdrruLLLLLLulDDrdLLLLLrrrrruurrrrdddrrrurrdddlDruuuulldllluuulllllddllDDuurrruuruuRRRRllllllddddllddrrUUUUUluRRurDDldRRRRdrruLdllullllddllllddRRuurrruurrrdrddlUruLdlUruLLLulDDrdLLLLrddlluUUdrrrrruuruurDDrddlUruLLLulDDrdLLLLrddlluUrrrrruurruurDDlddrruLdlUruLLLulDDrdLLLLrrrruurrruurrDDrdLLLdlUruLLLulDDrdLLLrrruurrrddddddrrUUruLLrdddlluuUUUUllllddddrRRllluuruurrrdrddrdddlluUUUruLdlUruLLLulDDDllddRRRRRllllluurrruurrrdrddrdddlluUUUruLdlUruLLLulDDrdLruurrrdrrrDrdLLLrdddlluuUUruLdlUruLLLulDDrurrrdrddrdLrddlluUUUruLdlUruLLLdlUUUruLdlrrrrddrUddrruuulLLLLLLdlUrrrrrrrrddLruulldDDDrdrrrurrdLLLLdlUUUruLLLLLdlUruLLrrrrrdrdddrdddlUUUUUruLLLLLdlUruLrrrrdrrrddrrrdddlUruLLLLdlUUUruLLdlUUruLLdlUrrrrrddrddrrddLLLdlUUUUruLLLLulDDurrrrrrddrrddddlUUruLLLdlUUUruLLLLLulDrrrrrrrddrdddLLdlUUUUUruLLdlUUruLLLdlUrrrrrrddrrruulDrdLLLLruulldDDrrrdrrrddddddlUUUUruLLLLdlUUUruLLLLulDrrrrdddrdddRRurrddlUUUruLLLLdlUUUruLLulDDrrdddlddllldlluRRRRRRRRRurrddlUUUruLLLLdlUUUruLLdlUruLLLrrrdrddddllllDurrrddlldlluRRRRRRRRurrddlUUUruLLLLdlUUUruLLdlUruLLrrdrrrddrrddddddllllldddlldlluuuUUluRRRRRRRRRurrddlUUUruLLLLdlUUUruLLdlUUruLdlUrrddrddddllllddlldlluRRRRRRRRRRRurrddlUUUruLLLLdlUUUruLLdlUruLrdrddddllllddlddddddrruLdlUUUUUluRRRRRRRRRurrddlUUUruLLLLdlUUUruLLLLLrrrrddddlllllllDurrrddlldlluRRRdrUUdllluurrRRRRdrUUUdrruulLLrdddlddlUdlluurRRdrUUUUruLLLLrrrddddllllddllUluRRRRRRdrUUUUruLLLrrrrddrrddddddllllldlLLrrrddlllluUUUruLdlUUluRRRRRRdrUUUUruLLrrrruuLLLLLLLLLrrrrrddrddddllllddldddlldlluRRRRddrrrruullLrrrddlllluUUUruLdlUUluRRRRRRdrUUUUruLdlUUdrruulLLLLLrrrrddrddddllllddlddddddllUUluRRldddrruuUUUruLdlUUluRRRRRRdrUUUUruLdlUUdrruulLLLLrrrddrddddllllddldddrDlddrruLdlUUUUUruLdlUUluRRRRRRdrUUUUruLdlUUdrruulLLLrrrrddrddrrddddddlldDrdLLLLLLLdlUUUUUruLdlUUluRRRRRRdrUUUUruLdlUUdrruulLLrrrddrddrrrddddddddLLrruullldDrdLLLLLLLdlUUUUUruLdlUUluRRRRRRdrUrrrrrddddddlUUUUUUUruLLdlUUluuurrddLruulldDrdLulDrrdrrddddddlldRdrUUUUUUUruLLdlUUluuurrddLruulldDrdLrdrrddddddllllldRRRRdrUUUUUUUruLLdlUUluuurrddLLLruulldDrrrddrrddddddlldddlUUluRRRdrUUUUUUruLLdlUUluuurrddLruulldDrdddldlllllddldddllddRdrUUUUUruLdlUUluRRRRRRRdrUrrrddddllllldddlUruLLLdlUUUruLLdlUUUUdrddrdddrrrrdRRRdrUUluRdrUUUUUUruLLdlUddllllllddldddlldddlUUluRRRRRRRRRRRRdrUUUUUUUruLLdlrrrddddddddLLLLLLLLdlUUluRRRRRRRRdrUUUUUUruLLdl
+
 },
 #endif
 
 #if 0
 {
 /*
-####################### 
-##  ##############   ## 
-##      $ #   $      ## 
-# ******..#@#..****** # 
-#       $   # $       # 
-##   ##############  ## 
-#######################
+             ##### 
+ #############   # 
+ #   #   #       # 
+ #          ## ### 
+### ## #..  .#  # 
+#   #  ..###..  # 
+#     #......## ## 
+## ####.# #####. # 
+ #.  @#.         # 
+ #  #    ######  # 
+### ############## 
+#        $ $ $ $ # 
+#   $          $ # 
+##$ $$$ $$#$$$$$ # 
+ #  # #          # 
+ ##     ########## 
+  #######
 */
 
-37769,
-23,7,336,2302,
-"23#=|2#2 14#3 2#=|2#6 $ #3 $6 2#=|# 6*2.#@#2.6* #=|#7 $3 # $7 #=|2#3 14#2 2#=|23#",
+38022,
+18,17,636,2468,
+"13=5#=|=13#3 #=|=#3 #3 #7 #=|=#10 2# 3#=|3# 2# #2.2 .#2 #=|#3 #2 2.3#2.2 #=|#5 #6.2# 2#=|2# 4#.# 5#. #=|=#.2 @#.9 #=|=#2 #4 6#2 #=|3# 14#=|#8 $ $ $ $ #=|#3 $10 $ #=|2#$ 3$ 2$#5$ #=|=#2 # #10 #=|=2#5 10#=|2=7#",
+
+// solution: lldddddddrruUUruLLLdlluRdrUUUluuurrrurrddddllulLdlUUUluRdrUUddrruruullulldRRRRRurDDDldRRRllldddllulldddrrrrrdrruLLLLLLLdlluRdrUUUluuurrrurrddddllulLdlUUUluRdrUUddrruruullulldRRRRRurDDDldRRlldddllulldddrrrrrrrdrruLLLLLLLLLdlluRdrUUUluuurrrurrddddllulLdlUUUluRdrUUddrruruullulldRRRRRurDDDldRldddllulldddrrrrrrrrrdrruLLLLLLLLLLLdlluRdrUUUluuurrrurrddddllulLdlUUUluRdrUUddrruruullulldRRRRRRRRdrUluRRRRurrdLulDDDuulllddrdrRurDDDrdLLLLLLLLdlUUddllulldddrrdLrdddlluuUUUUluuurrrurrrurrrrdrrrdddlllllllldllulLdlUUUluRdrUUddrruruullulldRRRRRRRRdrUluRRRRurrdLulDDDuulllddrdrRurDDDrdLLLLLLLLdlUdllullddddddlUUluRdrUUUluuurrrurrrurrrrdrrrdddlllllllldllulLdlUUUluRdrUUddrruruullulldRRRRRRRRdrUluRRRRurrdLulDDDuulllddrdrRurDDDrdLLLLLLLLdlllulldddrrddLrddlluUUUUUluuurrrurrrurrrrdrrrdddllllllldlllulLdlUUUluRdrUUddrruruullulldRRRRRRRRdrUluRRRRurrdLulDDDrdLLruuulllddrDulllldllldlllddrdddrrrrddLLLrddlluUUUUUluuurrrurrrurrrrdrrrdddllllllldlllulLdlUUUluRdrUUddrruruullulldRRRRRRRRdrUluRRRRlllldlllllllddldddrdddrrrrdddrUUruLLLLLdlUUUluuurrrurrrurrrrdrrrdddllllllldlllulLdlUUUluRdrUUddrruruullulldRRRRRRRRdrUdrdrruuuurrdLulDDDrddddllllllldlllullluurrrurrrurrrrdrRurDDDuulllululuRRRRurrdLulDlllldlllllllddldddrdddrrrrrdddrUUruLLLLLLdlUUUluRluurrrurrrurrrrdrrrddrddlUUUddllllllldllluLLdlUUUluRdrUUddrruruullulldRRRRRRRRdrUluRRRRlllldlllllllddldddrdddrrrrrrdddrrUUruLLLLLLLLdlUUUluRluurrrurrrurrrrdrrurDDDrddlUUUddllllllldllluLLdlUUUluRdrUUddrruruullulldRRRRRRRllllllddldddrdddrrrrrrrrdddrUUruLLLLLLLLLdlUUUluRluurrrurrrurrrrdrrurDDDrddlUUUddllllllldllluLLdlUUUluRdrUUddrruruullulldRRRRRRlllllddldddrdddrrrrrrrrrdddrrrruuuLLLLLLLLLLLLdlUUUluRluurrrurrrurrrrdrrurDDDrddlUUUddllllllldllluLLdlUUUluRdrUUddrruruullulldRRRRlllddldddrdddrrrrrrrrrdddrUUruLLLLLLLLLLdlUUUluRluurrrurrrurrrrdrrurDDDrddlUUUddllllllldllluLLdlUUUrrrurrrurrrrdrrurDDDuulllulllldllldlllluRdrUUddrruruullulldRRRlldddrrurrruuullDlllddldddrdddrrrrrrrrrrrrrdLLLLLLLLLLLLdlUUUUluRluurrrurrrurrrrdrrrddrddlUUUddllllllldllluLLdlUUUluRdrUUddrrurrruuulldDuurrdLulDllulldRRRRlllddldddrdddrrrrrrrrrrdddrUUruLLLLLLLLLLLdlUUUluRluuruuurrrurrddrrrrdrrurDDDrddlUUUddllllllldllluLLdlUUUrrruRRlldlluuurrrurrddDllldlllluRdrUUddrrurrruuulldRlllulldRRRRlllddldddrdddrrrrrrrrrrrdddrUUruLLLLLLLLLLLLdlUUUluRluurrrurrrurrrrdrrurDDDrddlUUUddllllllldllluLLdlUUUruuurrrurrDDrrruulDrdLLrrrdrrurDDDrddlUllllllldlllullluuruuurrrurrdRdrruulDrdLruurrrDDrdLLruuuurrdLulDDDrdLuuulllldllulldRRRRurDldRulllllDullldddrruRldlllluRdrrruruullldDuurrrddldlLulDD
+
 },
 #endif
 
 #if 0
 {
 /*
-            ####### 
-            #     # 
-      ####### **$ # 
-########...#  * * # 
-#      #...#  * * # 
-# **$  #...#  * * # 
-# * *  # . #  * * # 
-# * *         * * # 
-# * *     **$ * * # 
-# * *     * * $ * # 
-# $ * **$ * * * * ##### 
-# * * * * $ * * *     # 
-# * * * * * * * * **$ # 
-# * * $ * * * * * $ * # 
-# * * * * * * * * * * # 
-# *   *   *   *   *  @# 
-#######################
+####### #### ############# 
+#     ###. ###...........# 
+# $ $   #    #.#   #    .# 
+#  $ $  # $$$#. # # # # .# 
+# $ $ $ #$   #.  $   $  .# 
+#  $ $  #    #. # # # # .# 
+# $ $ $ #    #.         .# 
+#  $ $     #    # # # # .# 
+# $ $ $ $ $#     $   $  .# 
+#  $ $ $ $ #  # # # # # .# 
+# $ $ $ $ $#            .# 
+#  $ $ $   $     #   #  .# 
+#@       ###.............# 
+########## ###############
 */
 
-37770,
-23,17,389,2302,
-"12=7#=|12=#5 #=|6=7# 2*$ #=|8#3.#2 * * #=|#6 #3.#2 * * #=|# 2*$2 #3.#2 * * #=|# * *2 # . #2 * * #=|# * *9 * * #=|# * *5 2*$ * * #=|# * *5 * * $ * #=|# $ * 2*$ * * * * 5#=|# * * * * $ * * *5 #=|# * * * * * * * * 2*$ #=|# * * $ * * * * * $ * #=|# * * * * * * * * * * #=|# *3 *3 *3 *3 *2 @#=|23#",
+38023,
+26,14,982,2468,
+"7#=4#=13#=|#5 3#. 3#11.#=|# $ $3 #4 #.#3 #4 .#=|#2 $ $2 # 3$#. # # # # .#=|# $ $ $ #$3 #.2 $3 $2 .#=|#2 $ $2 #4 #. # # # # .#=|# $ $ $ #4 #.9 .#=|#2 $ $5 #4 # # # # .#=|# $ $ $ $ $#5 $3 $2 .#=|#2 $ $ $ $ #2 # # # # # .#=|# $ $ $ $ $#12 .#=|#2 $ $ $3 $5 #3 #2 .#=|#@7 3#13.#=|10#=15#",
+
+// solution: uuuuuuuuuuurrrrdrrdddddrrruuuUluurDDDDrdLulDrdLLLrrrurrdrrrurrrruulLLLulDDDDrdLulDDDDuuuulullldlluuuuullullllddddddddddrdrrrrrrurrRRRurDuluuululllddDDuuulluuuuullullllddddddddddrdrrrrrruRRRRRRRurDldRulllllllldlluRRRRRRRRRdrUluRRRllluuuurrrrdddDDrdLuulllluuulllullldlldDDurrddldlluRRRRRRRRurrddlUUUUUUUdrruulLdlUUddddllddddlllllldlluRRRRRRRRRRurrddlUUUUUUUdrruulLdlUdddllddddlllllllldlluRRRRRRRRRRRRurrddlUruLLdlUUUluRdrUUdlluuullulDDDDDDDullddrRRRRRRurrddlUUUUUluRuurrddLLrrrruurRRluurrdDDDDDDDDrdLLLLulrurrruulLLruulldDDDldRurDullllluuullluuulluurDDDrdLLulDDDDDullddrRRRRRRRdrUluRRRRRRRluurrdDDrdLLuulllllllllldllluurDldRRRRRRdrUluRRRRRRRdrUUUUUUUUUruLLLLLLLLLrrdddrrddddddlluUUUUUUUruLLrdddlldddlllulldDDDldRRRRRurrddlUUUdlluurRRlddrruUUUUUUUruLdddlldddlllullldddlDldRRRRRurrdLulDlluuuullDDDldRRRRRRRRdrUluRRRRRRRdrUUUUUUUUUruLLLLLrrdddlllllldddlllullldllddlDldRRRRRRRRRRdrUluRRRRRRRdrUUUUUUUUUruLLLLrdddlllllldddlllddddllllllllluRRRRRRurDldRRRRRRdrUluRRRRRRRdrUUUUUUUUUruLLLdddlllllldddlllullldllddldlluRRRRRurDDldRRRRRRdrUluRRRRRRRdrUUUUUUUUUruLdllddlllllldddlllddddllllllllllluurRRRRRRRurDDldRRRRRRdrUluRRRRRRRRdrUUUUUUUUUlllddlllllldddllluuuluurDDDDDDDDuuuulldddddrRRRRdrUluRRRRRRRRdrUUUUUUUllllllllldddlllullldllddlluRRRRurDDDldRRRRRRdrUluRRRRRRRRdrUUUUUllllllllldlllullldlldlldlluRRRRRRurDDDldRRRRRRdrUluRRRRRRRRdrUUUlllllllllulllullldlldlllldlDldRRRRRRRRRRRRRRdrUluRRRRRRRRdrUUldllllllllllldlluullllllllluRRRRRRRRurDDDldRRRRRRdrUluRRRRRRRdrUUUUdlluurRlllllllldlllullldlldllllluluurDDDDDldRRRRRRRRRRRRRRdrUluRRRRRRRRdrUlllllllllllldlluuulllllllluuuluurDDDDldRRRRRRRdrUUUUUUUdddddlldllllluurDDDDldRRRRRRRRRRRRurrddlUUUUUUUdrruulLdddlllullldlldlllululuurDDDDDDldRRRRRRRRRRRRurrddlUUUdlluurRRlddrruUUUUUUUddlldddlllullldlluulLLLulDDDDDDldRRRRRRRRRRRRRRdrUluRRRRRRRluurrdDDrdLuuuullllllllulllullldlluuuuullDDurrddlLLLulDDDDDDldRRRRRRRRRRRRRRdrUluRRRRRRRluurrdDldRurDuluullllllllulllullldlluulldRurDDDDDldRRRRRRRRRdrUluRRRRRRRRuullllllllulllullldllulDDDDldRRRRRRRRRRdrUluRRRRRRRdrUUUUUUdlluurRlllllllldddlllullldllullDDDDldRRRRRRRRRRRdrUluRRRdrUUUUUUdlluurRRlddrruUUUddlllllldddlllullldlluuuulDDDDDDDldRRRRRRRRRRdrUluRRRRRRRluurrdDDuuullllllllulllullldlluulllDDDDDldRRRRRRRRRRRRdrUluRRRRRRRluurrdDldRuuullllllllulllullldlluuuulllDDDDDDDldRRRRRRRRRRRRdrUluRRRRRRRdrUUUUUUUUdlluurRllddlllllldddlllullldlluuuuullulDDDDDDDDDldRRRRRRRRRRRRdrUluRRRRRRRdrUUUUUUUUUllddlllllldddlllullldlluuuuullulllDDDDDDDDDldRRRRRRRRRRRRRurDllllluuuullluuuuullllDDDDDDDDldRRRRRRRRRRRRRurD
+
 },
 #endif
 
 #if 0
 {
 /*
-        ########## 
- #####  #   #    # 
-##...## # # $  $$# 
-#.....###   #    # 
-#.....##   ##### # 
-#.....## $$    #$# 
-#.....#  $  $$   # 
-#.....# # # $  # # 
-##   ## #@#$# ## ## 
- #   ## #$$  $$   # 
- #   ## $ $$# # $ # 
- # # ### $  # #$$ # 
- # #     ##  $    # 
- #    #  $ $   $### 
- ###### $    $  # 
-      #   ####### 
+    ####### 
+   #   #   # 
+  ##   $    # 
+ #  # #$  #.## 
+ #$ $ #  #...# 
+#   # #$#.....# 
+# $ $ # #. . .# 
+ #$ $#   #...# 
+ #   #  $ #. # 
+ # $  # $    # 
+  #$ $ #### # 
+  #  $  $   # 
+   #   @   # 
+    #######
+*/
+
+38025,
+15,14,446,2471,
+"4=7#=|3=#3 #3 #=|2=2#3 $4 #=|=#2 # #$2 #.2#=|=#$ $ #2 #3.#=|#3 # #$#5.#=|# $ $ # #. . .#=|=#$ $#3 #3.#=|=#3 #2 $ #. #=|=# $2 # $4 #=|2=#$ $ 4# #=|2=#2 $2 $3 #=|3=#3 @3 #=|4=7#",
+
+// solution: rrruruuuuuuuuulllLLulldRRRRurrdrdddddddlluLrdrruuuuuuululldddlUruLLrrurrdrdddddddllululldRuuUUdddddRRuLuluuuruuurrdrdddddddddlldlluRlldlluRRlluuulldRurDrDululuuulldRurDDDrdrdrddrrrruruuuuuuuuululldllulldRddddLLuuRlddrruUllddddrdrdrddrrrruruuuuuuuuululldlLulldRDDllddddrdrdrddrrrruruuuuuuuuululldddldddrdrdRlululuuuruuurrdrddddddDuuuuuuululldlLulldRddllddddrdrdrddrrrrurUUUUUluRRlddddllululldRurDldRRRlululuuuruuurrdrddddddDuuuuuuululldlLulldRddllddddrdrdrddrrrrurUUUUUluRuuululldlDDDDDuuuruuurrdLulDrdLulLulldRRRRddldddldRurDldRRRlululuuuruulllddllddddrdrdrddrrrruruUUUUUluRuululldlDDDDDldRurDldRRRlululuuuuullddllddddrdrdrddrrrruruUUUruLdlUUruuulLulDrdLulDDDDDldRurDldRRRlululuuuuullddllddddrdrdrddrrrruruUUUruLdlUruLruuullllllddllddrrUUUdllddddrdrdrddrrrruruuuuuuuuulllllulldRRRdrruulDrdLulDDDDDldRurDldRRRlululuuuuullddllddddrdrdrddrrrruruUUUruLdlUruuuullllllddllddddldRuuuulldRurDrruuuurrrrrrdddddddddldlllluuluLrdrddrrrruruuuuuuuuullllllddllulDDrurruurrrrrrdddddddddldlllluulululUUUluRRlddrruUUdllddddrdrdrddrrrruruuuuuuuuulllllulldRRRdrruulDrdLulDDDDDldRurDldRRRlululuuuuullddllddddrdrdrddrrrruruUUUluRRluuuullllllddllldldRururruurrrrrrdddddddddldlllluulululuUUluRRlddrruUUdllddddrdrdrddrrrruruuuuuuuuulllllulldRRRdrruulDrdLulDDDDDldRurDldRRRlululuuuuullddllddddrdrdrddrrrruruUUruulldRurDlddddldlllluululuUluuurrddLdlUUluRRlddrruUUdddldddrdrddrrrruruuuuuuuuulllllulldRRRdrruulDrdLulDDDDDldRurDldRRRlululuuuuullddddldddrdrddrrrruruUUdllululuuurururrddddrdLddddldlllluululullUUluRdrUluRRlddrruUUdddldddrdrddrrrruruuuuuuuuulllllulldRRRdrruulDrdLulDDDDDldRurDldRRRlululuuuuullddddldddrdrddrrrruruUUUUUUdddddddldlllllluUUUUluuurrddLdlUUluRRlddrruUUdddldddrdrddrrrruruullululuuuuululldRRRdrruulDrdLulDDDDDldRurDldRRRlululuuuuullddddldddrdrddrrrruruUUUUUddddddldlllluulululldRurDrdrddlluUUUUluuurrddLdlUUluRRlddrruUUdddldddrdrddrrrruruullululuuuuululldRRRdrruulDrdLulDDDDDldRurDldRRRlululuuuuullddddldddrdrddrrrruruUUUUdddddldllllllulUUUUUUluRRlddrruUUdddldddrdrddrrrruruullululuuuuululldRRRdrruulDrdLulDDDDDldRurDldRRRlululuuuuullddddldddrdrddrrrruruUUUruLLrdddrUldddldlllllUruLLdlUUUUUUluRRlddrruUUdddldddrdrddrrrruruullululuuuuululldRRRdrruulDrdLulDDDDDldRurDldRRRlululuuuuullddddldddrdrddrrrruruUUUddddldlluLLLdlUUruLdlUUUUUluRRlddrruUUdddldddrdrdrrdrruruullululuuuuululldRRRdrruulDrdLulDDDDDldRurDldRRRlululuuuuullddddldddrdrdrrdrruruUUdddlLLLLLdlUUruLdlUUUUUluRRlddrruUUdddldddrdrdrrrrruullululuuuuululldRRRdrruulDrdLulDDDDDldRurDldRRRlululuuuuullddddldddrdrdrrrrruU
+
+},
+#endif
+
+#if 0
+{
+/*
+#################### 
+#  #    #  #   #   # 
+#...  $ $  #$#  $# # 
+#  ##$##      $    # 
+##$#   #$####### $ # 
+#. ###           # # 
+#. .#   # ##$$## # # 
+#...# ###      $   # 
+##..# $   #$######## 
+ ##.#####   # 
+ #..   ####$## 
+ # .         # 
+ ###     ## @# 
+   # # #  #### 
+   #       # 
+   #########
+*/
+
+38026,
+20,16,482,2471,
+"20#=|#2 #4 #2 #3 #3 #=|#3.2 $ $2 #$#2 $# #=|#2 2#$2#6 $4 #=|2#$#3 #$7# $ #=|#. 3#11 # #=|#. .#3 # 2#2$2# # #=|#3.# 3#6 $3 #=|2#2.# $3 #$8#=|=2#.5#3 #=|=#2.3 4#$2#=|=# .9 #=|=3#5 2# @#=|3=# # #2 4#=|3=#7 #=|3=9#",
+
+// solution: ullllllullluuuuluUUluurDDDDDldRurDDDDldRRRurDldRRurDullullluuuuluuuurrrurrdRRdrrrrRRRddddLLLLLrrrrrrruuuuuullDDDDlllllllddRRlluurrrrrrruullllllluurDldRRRRRllllulllulldRRRRdrrrrrurrurrddddddllUUlllllllddrrRRlllluulUUruLLrdddrddrrrUdllluuluurrrrrrurrurrddddddlluulllLLrddlllddrrUdlluuuuluurrrrrrurrurrddddddlluullllddLddlluuuuluuulullldllddddrddddrrrdrrrrrUUlluuuuluuulLLLLrrrrrdddrddddrrddlllllullluuuuluuuluurDDDDDldRurDDDDldRRRurDDrrurrruulluuuulllulUdrdrruuullLLLrrrrrdddrddddrrddlllllullluuuuluuuluurDDDDDldRurDDDDldRRRurDldRurrrrruulluuuuluurrrrrrurrdLLLLLLLullllddrdrruUruLLLLLLrrrrrdddrddddrrddlllllullluuuuluuuluurDDDDDldRurDDDDldRRuluuuuluuuurrrrrrrdrrrrrrruurrddLLLLLLLLLullllddrdrruUruLLLLLLrrrrrdddrddddrrddlllllullluuuuluuuluurDDDDDldRurDDDDldRurrrddllUluRluuuuluuuurrrrrrrdrrrrrrrrrddddlluuUdddrruuuulLLLLLLLLullllddrdrruUruLLLLLLrrrrrdddrddddrrddllllldlluuluuuuluuuluurDDDDDldRurDDDDrddrrurrrrruulluuuuRRRRRRllllllluurrrrrrrrrrddddlluUUdddrruuuulLLLLLLLLullllddrdrruUruLLLLLLrrrrrdddrddddrrddllllldlluuluuuuluuuluurDDDDlddrruLdlUruuuurrrrrrdddrrrrddlLrruulllluuullllllddddrddddrddrrurrrrruulluUUdrrruurrrruullllllllddRRRRRRRllllllluurrrrrrrrrrddddlluUUdddrruuuulLLLLLLLLullllddrdrruUruLLLLLLrrrrrdddrddddrrddllllldlluuluuuuluuuluurDDDDDuuuurrrrrrrurDldRRRRRurrdLLLLLLLullllddrdrruUruLLLLLLrrrrrdddrddddrrddllllldlluuluuuuluuuluurDDurrrrrrdddrddddrrddllllldlluuluuuulldRurDDuuluUUluurDDDDDrddlUruLuuuurrrrrrdddrddddrrddllllldlluulUUddrddddrrrrUUddlllluurrurRlldlluulldRurDDuuluuluuuuuurrrrrrdddrddddrrddlLLrrruulluuuuluuullllllddddddrddrddrruuLLLuuluuuuuurrrrrrdddrddddrrddllldddllllUUUluRluuUluuuuurrrrrrrrdrrrruullDurrddlLLLLullllddrdrruUruLLLLLLrrrrrdddrddddrrddllldddlllluuuuluuuluuuuluurDDDDDDuuuuurrrrrrrrdrrrrrrrrdLrdddlluuUruLLLLLLLLullllddrdrruUruLLLLLLrrrrrdddrddddrrddllldddlllluuuuluuuluuuuluurDDDDDuuuurrrrrrdddrddddrrddllldddlllluuuuluuuLuuuuurrrrrrdddrrrrddrUluRRRllllllluurrrrrrrrrrddddlluUUruLLLLLLLLullllddrdrruUruLLLLLLrrrrrdddrddddrrddllldddlllluuuuluuuluuuuluurDDDDDuuuurrrrrrdddrddddrrddllldddlllluurruuLLdlUUUddrddddrrrruuurrruulluurrrrRRRlllllllddrrUdlluuuurrrddLLrddlluUUdrrrrrrruuuullllllllddRRRRRRRllddrrruUUruLLLLLLLLullllddrdrruUruLLLLLLLrrrddrddlddRRRllluurrurrddrrddllUUUddlllluurrurRRRRRRRllddrrruUUruLLLLLLLLullllddrdrruUruLLLLLLrrrrrrrdrrrrrrrrddddLLLLLLLLrddlluUUddlllluurrurRRRRRRRllddrrruUUruLLLLLLLLullllddrdrruUruLLLLLrrrrdddrddrrddddllldddlllluurUruLLdlUUdrddddrrrruuuLLLdlUruLdlUrrrdrrdLLLrrrddlllluUUruLddddrrUUruLLL
+
+},
+#endif
+
+#if 0
+{
+/*
+#####  ############ 
+#   ## #    $.....# 
+# $  # #  $  .....# 
+# $$ # ##### .....# 
+#   $###   # #....# 
+# $ $  $ # # #....# 
+#  $$#@$   # ##...# 
+###$ # $ $ # ###### 
+  #  #  #  #$#### 
+  # $#######    # 
+  # $         $ # 
+  # ## ######$  # 
+ ##  $$$  # #  ## 
+ #   $ $  # #### 
+ #     $  # 
+ #######  # 
+       ####
+*/
+
+38027,
+19,17,907,2471,
+"5#2=12#=|#3 2#=#4 $5.#=|# $2 #=#2 $2 5.#=|# 2$ #=5# 5.#=|#3 $3#3 # #4.#=|# $ $2 $ # # #4.#=|#2 2$#@$3 # 2#3.#=|3#$ # $ $ # 6#=|2=#2 #2 #2 #$4#=|2=# $7#4 #=|2=# $9 $ #=|2=# 2# 6#$2 #=|=2#2 3$2 #=#2 2#=|=#3 $ $2 #=4#=|=#5 $2 #=|=7#2 #=|7=4#",
+
+// solution: ulLrrdRRllullDLruUddlDDDDDDDuuuRRRRRRRRRuUUUUUUruuLrddldddddddllllllllluuuuruulUdrdrrdrruurrddLruulldDlluRllldlddddddrddrrRllluuluuuuuuruullluuurrDulldddrrrddlddddrrrrrrrrrurrrddlULLLLLLLLdDLDurRDuluurrrrrrrrruLdllllllllddldlluuuuuuuruullluuurrdrDululldddddRluurrUdllddrURRRRlldLddrUldddrUlddddrruruuLLulDuuurDuluurDlddddrrrrrrrrruuuuuuuruulDDDDDDDDuuuuuuulLulldRRRRRurDDDullddddddRdLLLLLLLddldlluUUUUUUruUddldddddddrruruurrrrrrrrruLLdlUUUUUUUruLLLulldRRRRRRurDDDulllddddddrrdddlUUruLdlUUUUUUUruLLLulldRRRRRRRurDDDulllldddddddllllllddldlluuurRRRRRRRRRdrUruLLdlUUUUUUUruLLLulldRRRRRRRRurDDDllDurDurDuullllldddddddllllllllluurDldRRRRRRRRRRdrUruLLdlUUUUUUUruLLLulldRRRRRRurDDDullldddddddlllllllluuluurDDDldRRRRRRRRRRdrUruLLdlUUUUUUUruLLLulldRRRRRRRurDDDulllldddddddlllllllluuuuuulDDDDrddrrrrrrrruuuuuuuulluRdrddddddddllllllddrdLuuulluuuuullldRurrddlUruLdlluuuuurrDDDDuuuulldddddrRuuuurDlddddrdddlUUUUUUUddrDDDDldRRRRRRRRRRdrUruLLdlUUUUUUUruLLulldRRRRRRRurDDDuulllllluRRRRRlllldddddddddlllllllluuuuuluurDDDDDDldRRRRRRRRRRdrUruLLdlUUUUUUUruulldRRRRurDDldRulllldddddddlllllllluuuullluRRurDDDDDldRRRRRRRRRRdrUruLLdlUUUUUUUruulldRRRRurDDlllldddddddllllllddlLdlUUUUUUUluRurDDDDDldRRRRRRRRRRdrUruLLdlUUUUUUUruulldRRRurDDllldddddddllllllddrdrruLLdlUUdllluurrRRRRRRRRdrUruLLdlUUUUUUUruulldRRurDDlldddddddllllllddrrrdddlUUruLLdlUUdllluurrRRRRRRRRdrUruLLdlUUUUUUUruulldRRRRurDldRlllldddddddllllllddlldRRRurrddlUruLLdlUUdllluurrRRRRRRRRdrUruLLdlUUUUUUUruulldRRRRurDllllddddddddllllllddddRurrddlUUruLLdlUUdllluurrRRRRRRRRdrUruLLdlUUUUUUUruulldRRRurDlllddddddddllllllddllddRRRurrddlUUruLLdlUUdllluurrRRRRRRRRdrUruLLdlUUUUUUUruulldRRurDllddddddddlllllllluuuuullluRRurDDDDDDldRRRRRRRRRRdrUruLLdlUUUUUUUruulldRRRRRllllddddddddlllllllluuuuuullluuurrDDDDldRurDDDDldRRRRRRRRRRdrUruLLdlUUUUUUUruulldRRRRlllddddddddllllllllldddldRRRRRurrddlUUruLLdlUUdllluurrRRRRRRRRdrUruLLdlUUUUUUUruulldRRRllddddddddlllllllluuuuuullluRRurDDDDDDDldRRRRRRRRRRdrUruLLdlUUUUUUUruulldRRlddddddddlllllllluuuuurrdrrrruullDLLLLulDldRurDDDDldRRRRRRRRRRdrUruLLdlUUUUUUUruLLLrrddddddddlllllllluuuuuuuululDDDDldRRurDDDDldRRRRRRRRRRdrUruLLdlUUUUUUUruulldRurDullllldRRRRddddddddlllllllluuuuurrrdRllddrUUruLLLLulDldRurDDDDldRRRRRRRRRRdrUruLLdlUUUUUUUUluRRRRllldddddddddlllllllluuuuurrrrurrddLLLdlUruLLLulDldRurDDDDldRRRRRRRRRRdrUruLLdlUUUUUUUUluRRRlldddddddddlllllllluuuuurrrrdrrddlUruLLLdlUruLLLulDldRurDDDDldRRRRRRRRRRdrUruLLdlUUUUUUUUluRRldddddddddlllllllluuuuurrrrdrdLLdlUUruLLLulDldRurDDDDldRRRRRRRRRRdrUruLLdlUUUUUUUUluR
+
+},
+#endif
+
+#if 0
+{
+/*
+ ############## ############## 
+##            # #            ## 
+# $********** # # **********$ # 
+# *         * # # *         * # 
+# *         * ### *         * # 
+# *   ****  *  #  *  ****   * # 
+# *** *  *  ** # **  *  * *** # 
+#   * *  *   * # *   *@ * *   # 
+##  * *  *   *   *   *  * *  ## 
+ ## *  * * .** # **. * *  * ## 
+  # **** ****  #  **** **** # 
+  ##          ###          ## 
+   ############ ############
+*/
+
+38028,
+31,13,324,2473,
+"=14#=14#=|2#12 #=#12 2#=|# $10* #=# 10*$ #=|# *9 * #=# *9 * #=|# *9 * 3# *9 * #=|# *3 4*2 *2 #2 *2 4*3 * #=|# 3* *2 *2 2* # 2*2 *2 * 3* #=|#3 * *2 *3 * # *3 *@ * *3 #=|2#2 * *2 *3 *3 *3 *2 * *2 2#=|=2# *2 * * .2* # 2*. * *2 * 2#=|2=# 4* 4*2 #2 4* 4* #=|2=2#10 3#10 2#=|3=12#=12#",
+
+// solution: ddddllllluluullddldllllllllUUUUUUUluRRRllllddDDuurrddddddrrrrrrrruruurrddrdrrrrrrrrUUUUUUruLLLrrrrdDDuullddddddlllllllluluullddldlllllllluuLrddrrrrrrrruruurrddrdrrrrrrrruuRlddlllllllluluuRRurrddlUUldllddrdrrrrruuurRdrUUUUUruLLLrrdddddllldddllllluluuuuuruuuurrrDDDDuuuulllddddldddlluuuluuuulllDDldlllldddddddrrruuuRRdrUruLdllldddrrrrruruurrddrdrrrrruuuLLulldllllddldlllUUddlluuurRlldddllluuuuuuurrrrurrddddDuuuuuluulllllllDurrrrDurrrddrdddddllluuRlddrrdddrrruruurrddrdrrrrrrrUUddlluuurRdrUUUUruulldRurDlddddlllllulldlllluuuluuuulllddldlDDuururuullllllDDrddlluRdrUluRldldddlluuuuuRRurrrrrrrrrrddddrdddrrrrurrdrrrrruuuurrdddrruuuuLLLdlddddlllllulldlluuuruuuurrrrrrrrrrrDulllllllllllddddldddlluuulLLddrUluuulldlllllldddRluurrurrrddlddrdddllluuuUUUddddddrrruuuluuruullLulDrrrrruruurrrddddrdddrrrrurrdrrdLLrrddllUdrrrruuLLullulldllllddldllllluRdrUdrrruruurruuuruuuurrDulldRldddldddrrurrdrrrrruLdlluurDDrruuuurrdddLLddrUluuuurrdddLruuullddDrdLLrdddrUUUluuuurrdddLruuullddDDrdLruurrdLullddrUddrUluluuuurrdddrdLdlldldllllllluluullddldlllllllluulUrdddlUruuuuuulldddldRuuuurrddddddllUUddrrurRllddrrUdlluRRRlluluuuuurrrddrRlluururrddDllluulllddRRRRluulllllddRRddddlluululuRRlddrUdddrruuuLLdlUrrruuulldDDrrdddlluUluRdddrrrrrdrrrrruruurruuuruuururrdLrddlUruulllddddldddllddldlllllullllluRluuuuurrddddDldRRuluuuuurrrddlddLruuruullldddDDldRdrrrrrrrruruurrddrdrrrrrrrruuulLulDllLLrrrrrrrddldllllllluluulluuuluuuulllllldDuurrrddldlLLLdddddlluuuuuRurDDDDDrdLruruuruuruLdlUrrruurrrddddrdddrrddrdrrrrrrrrruruuLruuuulldddDDrddlluRuulDrddlllllllluluullddldllllllllulluRdrUUUUUddddlluuuuurRRRllddddrruuruUluRldllllddddRluuuurrdddDrdLulDrddrrruUddrrrrruruuuuuluuuulllddrdddrddlllLLLruuruullldddDrdLrurrrrrruulLDurrddlLLLLrdddrrrrruruurrddrdrrruUddrrrrruuullllLulldRRRRRRdrrruuuuulldddDldRddlllllllluluullddldllllluuurrDulldddrrrrruruurruuuruuuurrrddddDDldRRRRllldddllluluullddldllllluuuluuruurRurDDulllddlddrrruuRuulllllllldRldddrruuUluRRRurDrruuurrrddddrdddrrddrdrrrrrrrruuuuuuululLLrrrdrrrdddrruuuuululllllllldDDDDDDDuuuuururrrdrrrdLulDDDDDuuuuululllluulllddddldddlluuuluuuulllllllllldDDDDDldRuuurrurruLLLdldddlluuuuurrDDDrrurrruRlllllluurrrrrrrdDrdLLLLLulDDDDDDuuuuurrrrruuurrrddddrdddrruuuruuuurrrddrdRRRRRurDDDDrdLuuuulllllllldDrddlluRdrUUUluRRRRRRRurDDulllulllluulllddddldddllddldllllluuurruuUUUdddddlldddrrrrruruurrddrdrrrrruUUlluuuurrrrrruLLLLLdlUdddddrrdddllllluluullddldllllluuuluurDldRdddrrrrruruurrddrdrrrrruuuruulDrdLdddllllluluulluuuluuuullllllllllddrrrrrrrdddddrruLdlUUUUruLLLLLLLdlU
+
+},
+#endif
+
+#if 0
+{
+/*
+        ##### 
+       ##   ## 
+      ##  #  ## 
+     ##  * *  ## 
+     #  * $ *  # 
+   ### * $.$ * ### 
+  ##  * * $ # *  ## 
+ ##  * . * # . *  ## 
+##  * * . ##. * *  ## 
+#  * $ # . . * $ *  # 
+# # $.$ * @## $.$ # # 
+#  * $ * . . * $ *  # 
+##  * * . * . * *  ## 
+ ##  * . * * . *  ## 
+  ### * * $ * *  ## 
+    ## * $.$ * ### 
+     #  * $ * ## 
+     ##  # *  # 
+      ##  #  ## 
+       ##   ## 
+        #####
+*/
+
+38029,
+21,21,352,2473,
+"8=5#=|7=2#3 2#=|6=2#2 #2 2#=|5=2#2 * *2 2#=|5=#2 * $ *2 #=|3=3# * $.$ * 3#=|2=2#2 * * $ # *2 2#=|=2#2 * . * # . *2 2#=|2#2 * * . 2#. * *2 2#=|#2 * $ # . . * $ *2 #=|# # $.$ * @2# $.$ # #=|#2 * $ * . . * $ *2 #=|2#2 * * . * . * *2 2#=|=2#2 * . * * . *2 2#=|2=3# * * $ * *2 2#=|4=2# * $.$ * 3#=|5=#2 * $ * 2#=|5=2#2 # *2 #=|6=2#2 #2 2#=|7=2#3 2#=|8=5#",
+
+// solution: ldldldlLuUddrrrururrrdrddDlLrruuululluurrurRdDuulldllddrrdrdddlldDuurruuulullllddRuuruurrurrddrRlluulldllluluUrUrRlldllddLrrrddddddDuuuuuuuluururUdldDlddrddldldlluulLrrddrrrruuruurrurrddrrdDuulluulldlllddddddRRlluuuuuuluullUlldldDuururrrrdddrddldldlluurUUUrrdrrrruruuRldlddllddrrdrdddrUluululllddddlLrruuuuruurrurrddrrddlLrruulluulldlllddddddrruUUruLLulDlddrUUruurrurrddrrddrruruulululDDDlluuuuuulDDrddlldllddlldldlldRurrrddllUdrruulLrrddrrddlUruuuuullddddRluuuurrdddDuuuuluurrurruuuululululldldldDDDrddrrddlldlddlluuuruuuRldddldddrrurruuruullUdrrddrrddrdLuuulllddddrrUUUdddllllddrUluulluuuruuuruurrdDldRRluuulluuurururrdrdrdrddddddrruLdlUUUUluuulululldldldddddrdDDrddlluRuuuruuuurrdLulDDDldddrruuLulDDDuuuluuuRRdrruulDrdLulDDDuuulluurDlddrruLrdddlddlDruuuruuuluuururrdrdrdddrdddrrurrdLLdlluuuuluuululDDlddrUUUrrddLLulDrdLLuluuururrDDDldRulLUdddddlluuRRdrUUldddlUluRRdrUluuulldDDDrdddlluuRlddrruUUUluRldllldlddrRlluururrrrrrruuurrdddrddddlUruuuluuulldddllllddlDurrdddrruuLrddlluUUlldllUdrrurrrururuuurrdddrdddllLLLrddlluUruuullddRdrUUruLdddrrrrrdrruLLLLLLLulDrrrrrrrrrrrddldllUUUruulDrdLLLLLrrrrrrrddlLdlUUUruulDrdLdlluuuuluuulldddlldddrddllUldlldddrrurrddrruruuuLLLruululluulllDurrruulDrdddldllluururRlldlddrrruruUluRdddrruuLrddlluUluurDDuuurrdLulDlddrrUdrddllldllUdrrurrrdrddrrdRRRRurrdLLLLLdlluurDrrrruullulluuRlddrruLrddrruuuuLLrrddddddllllulluuluururuuurrddDDuuuulldddllllluururrRllldlddrrrdddrddrrdrrrruuuuuullluuululullDldRlldlddrrrdddrddrrdrddrrrUruLLLrrddllllluurDldRRRllldlddrrrUUruLuluulluulullldlDDuururrrdrddlUlldlluururrrururuuUdddllllluururrdLddrrruuuLrdLrddllluuuururrDulldlddddrddllldlddrruLrrrrdrdddRldlddrrruuUluuullulllluurrruulllllDDldRuuurrrrrddllldddlllUUddrrrrurrUUUruLLLLrruuuururrdrdrdddrDDDldRuuuurrddddddllUUUUddddrruuuuuullluuulululldlddddDrdddllluurRllddrrruUdrddrddddRurDllldLuuRRurDrdLLullddrdrUdrrUdllulluuuRdrruuullullUruLrdrddrrdddllulllUUluRRurrddlUdDurrrdddlluUluRullldRldddlluRdrUUUdddddlUruuuururrddrrRRRllllluulluuuuuuuururrdrdrdddrrrdrddDuuulullluuulululldlddddddddrrddrrrruuuuRldlUUUddrdRRlldddlllluulldldRRRddrruuLrddlluUllldddddrdrdrrUdllululuuuururrrrddrrUUUUluurrdLuluurDDDDDDllddrrUUUUUrrddLruulldDDllddrrUdllllldLrdrrUdlluurRluulluuuuuulluuRurDDDrrruulLrrddllllluururururrdrdrdDDrrrdrdrdrddldldldLrurururuulululullluuulululldldldlddrrrrruRldlllDDDDDldRRRRllluuuuuurrruullDurrddlLulDDDDDDurrDulldllllluuruulDrdDldRRRlluuuuuRRRluururururrdrdrdrDululululldldldlddlldldldlddRdrdRRRlllululuururrdddrruuuUdLrRldddlluuRlddrruUdRldlD
+
+},
+#endif
+
+#if 0
+{
+/*
+     ####### #### 
+######     ###  ## 
+#     $#   # $   ### 
+# $ ## #$$     $   # 
+##$      $$ $ $ $  # 
+ #  $#### #### ##  # 
+ #$  #    #..# ##### 
+ # $## ####..#   # 
+ #$ #........### ### 
+ #   ........# $ $ # 
+ ###### ####   $$  # 
+      #@     ###  ## 
+      ######## #  # 
+               ####
+*/
+
+38030,
+20,14,496,2473,
+"5=7#=4#=|6#5 3#2 2#=|#5 $#3 # $3 3#=|# $ 2# #2$5 $3 #=|2#$6 2$ $ $ $2 #=|=#2 $4# 4# 2#2 #=|=#$2 #4 #2.# 5#=|=# $2# 4#2.#3 #=|=#$ #8.3# 3#=|=#3 8.# $ $ #=|=6# 4#3 2$2 #=|6=#@5 3#2 2#=|6=8#=#2 #=|15=4#",
+
+// solution: uulllluUUUUrrrrrURRRRuRRdRdRlululldlllldllllldddddrrruuurrruUUruullllDDuurrrrddldddlllddldlluuuuurrRRRllllldddddrrruuurrruUllluuurrrrddrdLLLrrrururrdLLLdlUrrrdLrurrdLdddrrddDuuulluuuuuurDldddddrrdddLLLrrruuulluuuulllldlddlllddrdddrrrrrUUUUdddrruRdrUlldlluulllllluurrruuluRRRRllldddlllddldlluuuuurrrRRllllldddddrrruuurrruUddlllddrrrrrrddrrrrrruLLdlllluulllllluurrruururrurrdddddrrDDrdLLLLrrruuulluuuuulldlldlddlllddrdddrrrrrUUUddrruRdrUlldlluulllllluurrruururrurrdddddrrDDrdLLLLrrruuulluuuuulldlldlddlllddrdddrrrrrUUdrrrrrddlUUUlldllulullllluurrruururrurrrrDulldddddrrDDrdLLLLrrruuulluuuuulldlldlddlllddrdddrrrrrUrrrruuulluuuuurrdrrddlULLruulllldlldlddlllddrdddrrrrrurrrruuulluuUUdrruulLdddddrrddlldlldllllluuuluurrruururrdLLLLuRRdrrRllllddlllddrdddrrrrrurrrruuulluuUUdlllllddlllddldlluuuuurrruuurrrDDldRRRRlllddlllddrdddrrrrrurrrruuulluuuLLLLulDrrrrrrruululDrrddlllllluluullldddRRRRRRllllllllldddddrrrrddrrrrrurrrruuulluuuLLLLuluullldlllDDDurrrrrurrdLLLLrrrrrrrrdddrrddlldlldllllluuuluurrrUUUldlluulllddrRRRRurrdrrrrdddrrddlldlldllllluuuluurrruUllluullllldRurrrrddlllUluRdddlUruulldRurDldRRRRRRRRRRlllddlllddldlluuUUluRRRRllldddlUUUUrddddddlUrdrrruuurrruulLLLLrrrrrddlllddldlluuuuluurDDDDDldRRRllulUUUrddddrrurrdddrrrrrurrrruuulluuuLLLLLLLLrrrddlllddldRuuurrruurrrrrdddrrddlldlldllllluUluRRRRdrUUdlllllldlluuuuuulDDDrdddrrruuurrruulllLLrrrrrddlllddldlluuuuluurDDDDDldRRRRuuurrruurrrrrdddrrddlldlldllllluUluRRRRdrUlllllldlluuurUlddddrrruuurrruullllLdlluurDDDDDldRRRRuuurrruurrrrrdddrrddlldlldllllluUluRRRRlllluurrruullluuurrDDuulldddllldddddrrruuurrruuLLLLLdlluurDDDDDldRRRRuuurrruurrrrrdddrrddlldlldllllluUluRRRlllldlluuuuuuuRRllddrrrrruuullDDuurrdddlLLLdlluurDDDDDldRRRRuuurrruurrrrrdddrrddlldlldllllluUluRRllldlluuuuuulluRRRRllddrrrrruuullDDuurrdddlLLLdlluurDDDDDldRRRRuuurrruurrrrrdddrrddlldlldllllluUruLLdlllulUUUUruulldRurDDDDDDldRRRRuuurrruurrrrrdddrrddlldlldllllluUruLdlUdllluuuruurrrrrruLdllluuurrdDrdLLLLLdlluurDDDDDldRRRRllluuuruurrrrrrrrrrdddrrddlldlldllllluUluRldllluuuruurrrrrddlllDurrruuuluurDDrdLLLLLLdlluurDDDDDldRRRRRRRRllllllluuuruurrrrrrrruLLLulDrdLLLLLdlluurDDDDDldRRRRRRRlllllluuuruurrrrruuurDDrdLLLLLLLdlluurDDDDDldRRRRllluuuruurrrrrrrrrrdddrrddlldlldllllluUddrrrrrurrrruuulluuurruullDurrddlLLLLLLLLLLLdlluurDDDDDldRRRRRRllllluuuruurrrrrrrruuRRddrruuLulDDurrddlLLLLLLLLLLLdlluurDDDDDldRRRRRlllluuuruurrrrrrrruurDrdLLLLLLLLLLdlluurDDDDDldRRRRllluuuruurrrrrrrrrruurDrdLLLLLLLLLLLLdlluurDDDDDldRRRlluuuruurrrrrrrrrrrrrruLLLLLLLLLulDrdLLLLLdlluurDDDDDldRR
+
+},
+#endif
+
+#if 0
+{
+/*
+    ######### 
+    #   .   # 
+  ###$#$ $#$### 
+  # . . . . . # 
+###$#$#$ $#$#$## 
+# . . . * . . .# 
+# #$#$#$#$#$#$## 
+# . . .   . . .# 
+###$#$##@##$#$### 
+ #. . .   . . . # 
+ ##$#$#$#$#$#$# # 
+ #. . . * . . . # 
+ ##$#$#$ $#$#$### 
+  # . . . . . # 
+  ###$#$ $#$### 
+    #   .   # 
+    #########
+*/
+
+38031,
+17,17,302,2474,
+"4=9#=|4=#3 .3 #=|2=3#$#$ $#$3#=|2=# . . . . . #=|3#$#$#$ $#$#$2#=|# . . . * . . .#=|# #$#$#$#$#$#$2#=|# . . .3 . . .#=|3#$#$2#@2#$#$3#=|=#. . .3 . . . #=|=2#$#$#$#$#$#$# #=|=#. . . * . . . #=|=2#$#$#$ $#$#$3#=|2=# . . . . . #=|2=3#$#$ $#$3#=|4=#3 .3 #=|4=9#",
+
+// solution: ullllllluurrrrrrRRRRRRllllllllllllddrrrrrrrddrrrrrrrddllllllLLLLLLrrrrrrrrrrrruullUdllllluurrrrRddrrddllllllllllllUdrrrrrrrrrrrruulllllllllllLrrrrruullllllluurrrrrrrrrrrrDDDulllllddlllllddrrrrrrrrrrrruulLLLLLrrrruuuullllluulllllDurrrrrddrrrrrddlllllllllllluurRRRRRRRRRllluuuulllDurrrddddllllluurRRRllllddrrrrruUlllllddllddrrrrUdlllluurrrRddrrrrrrrrddrrddlllllllllllluuUdddrrrrrrrrrrrruulluulllllllluullllddrRddddrrrrrddrrrrrUdllllluullllluuuulluurrrrddrrrrrrrrddrrddlLLLLrrrddllllluullllluurrDulluulluurrrrddrrrrrrrrddrrddllddllllluullLrrrddrrrrruullDurrrruulluulllllllluullllddrrddrrddrrrddrrRuurrrruullDuuulllllllluullllddrrddrrddrrrddrrruurRuuuulllllllluulluurrrrrrrrrrDDDDlllllllluuUdddrrrrrrrruuuulllllllLrrrddrrrUdllluulllddddrrrrrrrruuuulLLLLrrrrrddddllUUUdllluurrRddddllUdrruuuulllddRddlllluullllddrrddrrddrrrddlllllUdrrrrruullluuUUddlluulluurrrruurRRddlUrdrddllUdllddlluulluurrrruuuurrrDDDuuulllddrRdrUlllddllllddrrddrruurrrrrruuuulLLrrrddddlluuUdddllllddlluulluurrrrDDuullllddrrddrrrrRRRRlllllllluuUdddrrrrruullluulLddddrrddrrrddllllluUUUUUddrrddDuuullddddrRRluuuurrruulllDDDDuurrrrrrDDuullllllllddddrrUUUdddlluuuurRddrrrddLLLuuuuuurrrddrrrddrrddLLLLLrrrrruullDuuullluulllddddrrrddrrRllluullluuRRlllluulluuRRllddrrddrrddrrrddrrruuuullLrrrddddlllddrUluuullluuuurrrddrrrddddlLdlUrrruulLDDrruuuullDurrddrruurrddLLLLuullluurrrrrDDDuuulllllddrrrddrRuuuullllllllddrRlluuuuLLrrddrrrrrrrrddddlluullLrrrRlddrruUllllluurrrDulllddrrRuullllllddrRlllluulluuRRllddrrddrrrrRRlllllluuRRlllluurrDullddrRddrruuuuLLrrddddrrruulLrrddllluUrrrrrrddLLrruulluuuluLrdrdddllllddlluuuurruuuurrrDDldRuuulllddRRdrUlllddllddddrruurrrrrruuuulLLrrrddddlllluULLuurRRlllddrrddrruuLLruulDrdrddllllUUddddlluuuuuuRRRluurrrDDDuuulllddrRdrUlllllddddddrruurrrrrruuuulLLrrrddddlluuUluRddddllllddlluuuuuurrrRdrrdddlllluuUdddrrrruuullulLrrdrruLrddddrruuuuLrddddddllLuulllddlluuRRRRRRlddLLLrrrrrrddrruuLLLLLrrrddddlluURRuullluulllddddddrRRRlllluurrRRlllluuuurrrddLruulllddddddrrUdrruulLddlluuuuuurrrddlDDDurrddlLuuuuruuluUddrruuuluLrRddddlddlddddrUdddrrrUUddllluuuluuurrrruurrDullddrRlllllldddrdddrrruuUUUdddddllluuuluuurrrRddddLLulDuluuuruuruuuullDDDuurrdddlLLLLLrrrrrddrDDDldRuuuuluullluuuuuurrrDulllddddddrrrddrrrddddddllllllUUUUUUUdddddddrrrrrruuuuuullluullLrrrddrrruuLLLLrrrrddddddddlllllluuuuuuuuuuuuuurrrrrrDDDDDDlllddrrrUdllluurrRuuuuuullDDDDDuulldddrRuuulluUdddddrddrrrddddddlllllluuuuuuuuuuuuuurRllddddddddddddddrrrUdlUUUrruuulldDDDDuuuuuruuluuuuuullddddddddddddddrRuuurruuurrddddddllUUUUUddlluuurR
+
+},
+#endif
+
+#if 0
+{
+/*
+#################### 
+###...#@ $.        # 
+#   ..##########   # 
+#    .##  ##   ### # 
+#....$ # $     ###$# 
+#...#     ######## # 
+#..#  $   #.....##.# 
+#.#  $ $$ #......# # 
+##  $ #   #  $  ## # 
+#  $ # $  # $ $### # 
+# $ # $ # #  $ #   # 
+#  # $   ## $ $#$  # 
+# # $    #   $ # $ # 
+## $  #..#  $ # $  # 
+# $  #...# $ # $   # 
+#   #....## # $   ## 
+#  #######   $   ### 
+# $ $ $ $ $ $   #### 
+#              ##### 
+####################
+*/
+
+38032,
+20,20,743,2474,
+"20#=|3#3.#@ $.8 #=|#3 2.10#3 #=|#4 .2#2 2#3 3# #=|#4.$ # $5 3#$#=|#3.#5 8# #=|#2.#2 $3 #5.2#.#=|#.#2 $ 2$ #6.# #=|2#2 $ #3 #2 $2 2# #=|#2 $ # $2 # $ $3# #=|# $ # $ # #2 $ #3 #=|#2 # $3 2# $ $#$2 #=|# # $4 #3 $ # $ #=|2# $2 #2.#2 $ # $2 #=|# $2 #3.# $ # $3 #=|#3 #4.2# # $3 2#=|#2 7#3 $3 3#=|# $ $ $ $ $ $3 4#=|#14 5#=|20#",
+
+// solution: rRRRRRRRRdrrdDDDDDDDDDulDlDlDlDDrdLdllluuuUUUUUUUUdddddddddddlllllllllluurururururruuUrruuuullluLLLLulDDDrururrrdrrrdddldlddldldldldlldddrrrrrrrrrruuuuuurUrUdlldddddddlllllllllluurururururruuurruuuuluRRRRurrdLLLLLulDrddddldllDrddlldldldlldddrrrrrrrrrruuuurUldddddrrrurururuUUldldlddLLrrddllluUUUUUUUUUddddddddddrUdrruulLdlUUUluururrurUUruulldRRllldlddddlddrrurUrUUUUUlldRllddddlddrrururuuuUluRdrUldddlUUluRRdddddldldlddddlluRuruururuUUUUUldlddddRdrUUUUUruLdlUdlddddldRdrUUluRdrUUUUllddddddddrddlUUUUUluRRdrUUlldddddldldlluRRRdrUUUUUluRRdrUllddddldllldlluRRRRRdrUUUUddldllllldlluRRRRRRRurrrrrruruuuruullDDrdddlLulDrddldllllllllllllluurururururruuurruuulDLDDDDDDDrdLLruuuuuuuuuulldRurDDDDDDDDDrdLuuuuuurruuuuLLLdlUruLLLdlUUluRRdrUrddrdrddddrUUUruLLLdlUruLLLLulDDrrurrrdrdddddddlldldldlldddrrrrrrrrrrrrruruuuuRlddrruUluuurrddLdlDrdLruuuruulldDDldldldllldllllllldlluurururururruullDlDlDlDDuururRRluurrdrddlUUUUUUUruLLdlUruLLullddrUUUrrddrdrddddldldRdrUUUUUUruLLdlUruLLLdlUUluRRdrrdrdrddddldldldldldldddRRRRRRRRlllllllluurDuuururrrruuuuuullldldldlddrUrUrUrUUUruLLLulDDrurrdddRRdrUUruLLLdlUruLLLulDrrrddddldldlluRuRuRRRRdrUUruLLLdlUUUUddddldldlddrUrUdlluRuRRRRdrUUruLLLdlUruLLulDrrddldlddrUluRdrUUUUUdrdrddddldldldldlddrUrUdlllddddrUUluuruRuRRRurDDrdLuullllddrUluRRRurDDDuulllldldlddrUluRdrUluRdrUluRRRurDDulllldlddddrrrrrrrdrrruuluuUluRddddrddlUUUUdddLLLLLLLLrrrrrrrruuuluurDDDDuuuuurDrdLruruuuuuLrddddLLrruuulllddDrdddlluuRRurUUUdddlddrUUldddlUluRRdrUllddddldllllllldlUUUluRdrUluRdrUluRdrUluRRdrUUUUUUruLLdlUruLLLLulDrrrrrdrddddldldldldlddddrrrrrrrrurrdLLLLLLLLLdlUUUluRdrUluRdrUluRdrUluRRdrUUUUUUruLLdlUruLLLLrrrrdrddddldldldldlddddrrrrrrrrrrdrruruLLLdlUUUruulDDDDrdLLLLLLLLLdlUUUluRdrUluRdrUluRdrUluRRdrUUUUUUruLLdlUruLLLrrrdrddddldldldldlddddrrrrrrrrruuuuuuuuRRllddrdrruuUUlllddddddddrrruurDrdLLLLdlUUUruulDDDDrdLLLLLLLLLdlUUUluRdrUluRdrUluRdrUluRRdrUUUUUUruLLdlUruLLrrdrddddldldldldlddddrrrrrrrrrrurrrruruLulDDrdLLLLdlUUUruulDDDDrdLLLLLLLLLdlUUUluRdrUluRdrUluRdrUluRRdrUUUUUUruLLdlUruLrdrddddldldldldlddddrrrrrrrrruuurururuLLrruullldDDDDDDrdLLLLLLLLLdlUUUluRdrUluRdrUluRRRurDlllldlddddrrrrrrrrruuuuuuuurDDDrdLulDDDDrdLLLLLLLLLdlUUUluRdrUluRdrUluRRRRurDDDuullllldlddddrrrrrrrrruuurururuuLLulDDDDDDDrdLLLLLLLLLdlUUUluRdrUluRdrUluRRRRurDDullllldlddddrrrrrrrrrrurrrruruuuruuuuuuuuuuuLLLLLLLrrrrrrrdddddddddddlddrUUUUUUUdddlDDDrdLLulDDrdLLLLdlUUUruulDDDDrdLLLLLLLLLdlUUUluRdrUluRdrUluRdrUluRRdrUUUUUUruLLdlUUrdrddddldldldldlddddrrrrrrrrrrurrdLLLLLLLLLLLdlUUUluRdrUluRdrUluRRRRurD
+
+},
+#endif
+
+#if 0
+{
+/*
+      ##### 
+      # @ # 
+      # $ # 
+     ## $ ## 
+    ##  *  ## 
+   ##  * *  ## 
+  ##  * * *  ## 
+ ##  * * * *  ## 
+##  * * * * *  ## 
+#  * * * * * *  # 
+#.* # * $ * # *.# 
+#  * * * * * *  # 
+##  * * * * *  ## 
+ ##  * * * *  ## 
+  ##  * * *  ## 
+   ##  * *  ## 
+    ##  *  ## 
+     ## . ## 
       #####
 */
 
-37771,
-19,17,742,2303,
-"8=10#=|=5#2=#3 #4 #=|2#3.2#=# # $2 2$#=|#5.3#3 #4 #=|#5.2#3 5# #=|#5.2# 2$4 #$#=|#5.#2 $2 2$3 #=|#5.# # # $2 # #=|2#3 2# #@#$# 2# 2#=|=#3 2# #2$2 2$3 #=|=#3 2# $ 2$# # $ #=|=# # 3# $2 # #2$ #=|=# #5 2#2 $4 #=|=#4 #2 $ $3 $3#=|=6# $4 $2 #=|6=#3 7#=|6=5#",
+38033,
+17,19,194,2476,
+"6=5#=|6=# @ #=|6=# $ #=|5=2# $ 2#=|4=2#2 *2 2#=|3=2#2 * *2 2#=|2=2#2 * * *2 2#=|=2#2 * * * *2 2#=|2#2 * * * * *2 2#=|#2 * * * * * *2 #=|#.* # * $ * # *.#=|#2 * * * * * *2 #=|2#2 * * * * *2 2#=|=2#2 * * * *2 2#=|2=2#2 * * *2 2#=|3=2#2 * *2 2#=|4=2#2 *2 2#=|5=2# . 2#=|6=5#",
+
+// solution: rdddrdrdrdrdrdrddldldldlLuUlLuUlLuUrUrRlldlddrrddrrrUdllldLrurrddddldllululululuUddrdrdrdrdrruruuuulluulluururrdRlulldlddrrddrrddrrurururuululDrrddldldldlluulluulluururUdldlddrrddrrddddldllululululuulluururRlldlddrrrDullluururruurururuuurrdddrdrdrdrdrdrddldldldllddldlluUddrruruuuulluulluururrdrdRlululldlddrrddrrddrrururuLddldlluulUdrrDldddldlluurDrruuurrrururuululululLrrdrdrdrddllddllullululluururrdrUllldRllddrrdrdrrdrruuURldddlluuLdlluulluurrurrddDDrddldddllullluUddrrrdrruuuruuluuuullldlddrrdddlDuruuulluurrurrddddrdLuuuuullldlddrrdRlulluurrurrdddDllulUdrdrrrddldddllllululUluulluururruurururuuurrddLrdrdrdrdrdrddldddllldddlllluluulluulluururruurururUrrdrdrdrdrdrddldddlluulllddlLLrrruuulldDuurrdrrrddrruruuuululululululldldldldldldlddrrrRlllluururruururururrdrdrdrdrdrddldddlluulllullDurrdrruuuulllDDururrddddlluLrdrrrddrruruuuululululululldldldldddRRurrurrddddllulUlllulldRuruururururrdrdrdrdrdrddldddlluulllululuLrdrdrdrrrddrruruuuululululululldldldDuurururrdrdrdrdrdrddldddlluuluuuulldLddrdrrrddrruruuuululLrrdrddldddlluulllLDDruurrrddrruruuuululululululldldldldldldlddrrrrRllllluurruurruurururrdrdrdrdrdrddldddllldddlllluluuUdddrdrrrruuurrruruuuululululululldldldldldldlddrrrRddddrdrrrruuurrruruuuulDrddlddlluuluurRRurDllllddrddrruuUdddllldddlllluluuuulllluurruurruurururrdrdrdrdrdrdLuullLruulDDrrrddddddlluullluluuruuRldldddrdrrrddrruuuuuululululDuulldRurDrdrdrdrddddddlluullluluuruuUUdddRluuurrdLulDulldRurrrdrdrdrddddddlluullluluururUdlldddrdrrrddldddlllluluuuullULuururruurrDuurrrdrdrdrddddddlluullluluururuRuulllddRRlddldllUUlldlddrdrrUUrrdDuuuruuluurruuullDurrdddllddrrUruLLrddlddlddrdrrrddrruuuuuullLLrrrrddddddlluulllulLrrdrrrddrruuuuuullllullDDDuuurrdrrrrddddddlluullluLrdrrrddldddlluUUUddddrruuurrruuuuuullllulldddddRuluuuuuRldddddrddddddlluRdrUdrruuurrruuuuuullllullddrUluRdrrrrrddddddllldddllullluuuulluluururrRllldlddrdrrddddrrrdrruuurrruuuuuullllldlUlllldDDuuurrrrddllLrrruulllldlddrUrrrrururrrrrddddddlluuluLLrrdrddrruuuuuullllllddllllldddrUrrddddrrrdrruuuruululldddlDDldRuuuruuRlddlddlluuuullluurrrrrururrDDuurrrddddddlllddLLLuuruulUUdrdddlddrrruurrruuuuuullllldDlddrruLdlLLLLdlUrrrrrrddRUUluuuurrrrrddddddlluuLLrrddrruuuuuullllldddDuuuurrddLruurrrddddddlluullluUrrrRllllddrrrddrruuuUddddlluuRlllddDuuurrddrdLuuullddRluullllddRRRllluurrruurDldlDullllddRluurrrrrururrDulllddlllllddrdrdRlululuurrrrruulllllDurrDurrDrruruulluuuruuulldRDDDlluRUrrdrdDDlllUUrRurDlllddllllDurrrrDurrDullllDurruullDurrddrrrrDulllluurrDuuuluurDDDullDDDuuuruulDDDurrdrdrDrdrD
+
 },
 #endif
 
 #if 0
 {
 /*
-  ########## 
-  #        # 
-  #.$$$$$$ ###### 
-  #.$.......... # 
-  #.$.$$$$$$$$$ # 
-###.$.$.......$ # 
-#  .$.$.$$$$$.$ # 
-# $.$.$*.*..$.$ # 
-# $.$.$.*.$.$.$ # 
-# $.$..*.*$.$.$ # 
-# $.$$$$$.$.$.  # 
-# $.......$.$.### 
-# $$$$$$$$$.$.# 
-# ..........$.# 
-###### $$$$$$.# 
-     #       @# 
-     ##########
+###   #################### 
+#@#####  $ $  $   $ ....*# 
+# # $.#  $ $  $ $ $ .....# 
+# # $.# $     $ $ $ ..*..# 
+# # $.# $   $ $ $ $ ...*.# 
+# # $.# $ $  $  $ $......# 
+# # $.# $ $  $ $  $...**.# 
+# # $.. $  $ $  $ $ ..*..# 
+#  $  . $  $  $ $ $......# 
+### $ . $ $ $  $ $    ...# 
+#  $ $.  $ $  $  $  .....# 
+# ##### $   $  $  $. ....# 
+#       $ $ $  $ $ ......# 
+##########################
 */
 
-37772,
-17,17,210,2304,
-"2=10#=|2=#8 #=|2=#.6$ 6#=|2=#.$10. #=|2=#.$.9$ #=|3#.$.$7.$ #=|#2 .$.$.5$.$ #=|# $.$.$*.*2.$.$ #=|# $.$.$.*.$.$.$ #=|# $.$2.*.*$.$.$ #=|# $.5$.$.$.2 #=|# $7.$.$.3#=|# 9$.$.#=|# 10.$.#=|6# 6$.#=|5=#7 @#=|5=10#",
+38034,
+26,14,929,2477,
+"3#3=20#=|#@5#2 $ $2 $3 $ 4.*#=|# # $.#2 $ $2 $ $ $ 5.#=|# # $.# $5 $ $ $ 2.*2.#=|# # $.# $3 $ $ $ $ 3.*.#=|# # $.# $ $2 $2 $ $6.#=|# # $.# $ $2 $ $2 $3.2*.#=|# # $2. $2 $ $2 $ $ 2.*2.#=|#2 $2 . $2 $2 $ $ $6.#=|3# $ . $ $ $2 $ $4 3.#=|#2 $ $.2 $ $2 $2 $2 5.#=|# 5# $3 $2 $2 $. 4.#=|#7 $ $ $2 $ $ 6.#=|26#",
+
+// solution: dddddddrRRRRurDDldRuuuuuuRRlldddlldlluuuuuuRlddddddrrrruuuurrdddddRuuluuuurrddrdddrdrRuuluuruuuurrRRRRRdrdLLulDDDDDuuuuuulllllddddlddrdddrddRRRRRRRuruuuuuuuLLulDDDDlldddddllululullddrdRRRRRRRRlllllulululluluuuluurruuRRRRRRRRdrrrdddddlUruLLLulDDuuuuullllllllddlllddddrddddrdRRRRRRRRRRllllulululluluuuluuluuRRRRRRRRRRdrddddRRdrUUUlllllddddddddllllllllulldRRRRRRRRRRRllllllllluluuuuluuulluuruRRRRRRRRRRRdrrrrddddddlUruLLLuuuululllllllllllldddddddddddRRRRRRRRRRRlululuuuluuruuuurrddddRRRRurDDDDDDrdLuuuuuullllluuuRurDDDuulldddrRRRRRurDDDuullllllluuRRRRRurDDDDuuulllllDldRRRRRRurDDlldddlllddLdlluRRlluluuuluurRRRRRRRurDlddddllllddlluRRRRRurrddlUUUUUluRRurDllddddlllldlUUUUluRRRRRRRlddddllluLdlUUUluRRRRRRddddllluuLdlUUluRRRRRdrUluRRlllllldddrUUluRRRRRllllldlllddrdRRdrUUUUUluRRRRRulllulllldRRRurDldRRRulllllldRRRRRurDDDldRurDDuullllllluRRRRRurDDDullllllldRRRurDDDldRRRRRdrUllllulllUUUUUluRRRRRRRRllllllddddddddlUUUUUUUluRRRRRRRllllllddddddddddlUUUUUUluRRRRRRdrUUUluRlllllldddddddlluRRRRRlllllddddlluluuuRRRRRRRdrUUUluRRRRurDDulllllllldddlllllLLulldRRRRRRRRRRRRdrUUUluRRRurDllllllldddllllllllllldRRRdrUluRRRRRRRRRRRdrUUUluRRRRurDlllllllldddllllllllllddRRururrrdddldlluUUluRRRRRRRRRRRdrUUUUUUluRRRllllldddldddllllllllllluRRRdrrruuuullddDldRRRRRRRRRRRurDDldRRRRurDullllullllllllllluRluuurrddDldRRRRRRRRRdrUUUluRRRRllllllldddllllldLLdlUluRRRRRRRRRRRRdrUUUluRRRlllllldddllllullluRluurrdDDldRRRRRRRRRurDDldRRRRRurDlllllllldlldlllllllllllluurRRRRurrrrddldlluUUluRRRRRRRRRRRdrUUUluRRurDlllllldddllllullllluuuuLulDDDDDDDrrrrdddlllllluurRRRRurrrrddldlluUUluRRRRRRRRRRRdrUUUluRlllldddllllullllllluuuRurDDDDldRRRRRRRRRRRRRurDDldRRRRRRurDullllllullllllllullllllluuRurDDullddrRuulDDldRRRRRRRRRRRRRRdrUUUUluRRRRlllllldldddlllldddlUUluRRRRRRRRRdrUUUUUluRRRlllllddldddlllllllddRRdrUUluRRRRRRRRurDDldRRRRRRlllllllldlldlllllUUUluRRRRRRRRRRdrUUUUluRRurDuululllllllllddldlDDDldRRRRRRRRRRurDDldRRRRRullllulllllluulLLulDDldRRRRRRRRRRurDDldRRRRulllulllllluLLLLulDrdLrrrrrrddlLLLLdlUruLLdlUUdrrrrrdrUluRRRRRRRdrUUUUluRRRuululllllldRRRRRurDDldRuuullllllllllldDDDDDldRRRRRRRRRRurDDldRRRulluuuuuuullllldRRRRurDDDDDDldRRRRRRllllluuuuuullllDDDDDldRRRRRRRRRllllulllllluuulLLLulDDDDrdLLLdlUUUluRddrdrrrrrrurrruuuLLLLLLulDDDDrdLLLdlUUUUluRdddrdrrrrrruruuRRRRRdrUUUluRRllllldddddldLLLLLLLLdlUUUUUluRddddrdrrrrrrrrdRRRRdrUluRRRRllluuuullllllluLLLulDDDDDrdLLLdlUUUUUUluRdddddrdrrrrrrrruUUUUUluRRRRRRRlllllldddddddddLLLLLdlUUruLruuuuuuuurDDDDDDDDrdLLLrrruuuuuuuuRRRRRRRurDDDDDDDDldRRurDDuulluuuuuullllllDDDDDDldRRRRRRRR
+
 },
 #endif
 
 #if 0
 {
 /*
-    ########### 
-    #         # 
-    # ####* * # 
-##### #### #* ##### 
-#     ## $  *     # 
-# ###### . #  *** # 
-# ####### ***# #  # 
-# ##     *      * # 
-# ##$..$###$..$#* # 
-# *      *      * # 
-# ####*** ***# #  # 
-# ###  # . #  *## # 
-#     *  $  *     # 
-##### ####### ##### 
-    # ####### # 
-    #    @    # 
-    ###########
+################### 
+#        $ ..   $ # 
+# ...      ..$### # 
+#$#.#     $..   $ # 
+# ...  ####.. $ # # 
+#$#.#  #  ##### # # 
+#....  # $$ $ # # # 
+#.######      # # # 
+#.## $   $  $ # # # 
+#.##    $  $  # # # 
+#.##   $ $ $  # # # 
+#.##   ######## # # 
+#.###$## $ $    # # 
+#.#          #  $ # 
+### $ $ $ $  ##   # 
+#@  ###   ######### 
+##### #####
 */
 
-37773,
-19,17,346,2305,
-"4=11#=|4=#9 #=|4=# 4#* * #=|5# 4# #* 5#=|#5 2# $2 *5 #=|# 6# . #2 3* #=|# 7# 3*# #2 #=|# 2#5 *6 * #=|# 2#$2.$3#$2.$#* #=|# *6 *6 * #=|# 4#3* 3*# #2 #=|# 3#2 # . #2 *2# #=|#5 *2 $2 *5 #=|5# 7# 5#=|4=# 7# #=|4=#4 @4 #=|4=11#",
+38035,
+19,17,824,2478,
+"19#=|#8 $ 2.3 $ #=|# 3.6 2.$3# #=|#$#.#5 $2.3 $ #=|# 3.2 4#2. $ # #=|#$#.#2 #2 5# # #=|#4.2 # 2$ $ # # #=|#.6#6 # # #=|#.2# $3 $2 $ # # #=|#.2#4 $2 $2 # # #=|#.2#3 $ $ $2 # # #=|#.2#3 8# # #=|#.3#$2# $ $4 # #=|#.#10 #2 $ #=|3# $ $ $ $2 2#3 #=|#@2 3#3 9#=|5#=5#",
+
+// solution: rruurrUUUdddrrrrrrrurrrddrruuuuuuuuuuuuuLLLLrrrrdddddddddddddlluuuuuuuuuuulllulllluRRllllllldddllDDDDDDDDuuuuuurrrrruuurrrurrrdrrrdddddddddddrruuuuuuuuuuuLLLLLdlUruLLLLLLulDDDDrdLLLLruulldDDDDDDuuuuurrrrruuurrrurrrdrrrdddddddddllldlluRRRRdrUUUUUUUUUddddddddddrruuuuuuuuuuulLLLLdlUruLLLLLLulDDDDrdLLLLruulldDDDDDuuuurrrrruuurrrurrrdrrrdddddddddllllldllllldRurrrddllUluRRRRRdrUluRRRdrUUUUUUUUUddddddddddrruuuuuuuuuuulLLLLdlUruLLLLLLulDDDDrdLLLLruulldDDDDuuurrrrruuurrrurrrdrrrdddddddddllllldllllllldRRRurrrddllUluRRRRRdrUluRRRdrUUUUUUUUUddddddddddrruuuuuuuuuuulLLLLdlUruLLLLLLulDDDDrdLLLLruulldDDDuurrrrruuurrrurrdLLLLLulDDDrdLLLLruulldDDurrrrruuurrrrrrrrrrruullllDurrrrddlllLLLLLLLLulDDDrdLLLLruulldDrrrrruuurrrrrrrrrdLLLrrrurrddddddddddLdlUUUUUUUUUUluluurrrrddlLLLdlUruLrdrrdddddddddllllldlluRRRRRRdrUUUUUUUUUluluurrrrddlLLLLLLLLLLulDrdLLLrrrurrrrrrrrrdddddddddllllllldldRdrUUluRRRRRRdrUUUUUUUUUluluurrrrddlLLLdlUrrrdddddddddllllddLullddrUUluRRRRRRdrUUUUUUUUUluluurrrrddlLLrrruulllldDrdLrrddddddddllllllldllluuruurRlldldddrrrrrrrurrruuuuuuuuulllllulllllllllDDDuuurrrrrrrrrdrrrrrdddddddddllllllldllluuuluRRurrddLLulDDDDldRRRRdrUUluRRRRRRdrUUUUUUUUUluluurrrrddlLLLLLLLLLLulDrdLrurrrrrrrrrdddddddddllllllldllluururruuurrdddLLLLulDDDDldRRRRdrUUluRRRRRRdrUUUUUUUUUluluurrrrddlLLLLLLLLLLdlUruLLulDDDuurrrrrrrdrrrrrdddddddddllllllldllluururruuuuurDlddddrruuuLulDDDuurrdddlLLLulDDDDldRRRRdrUUluRRRRRRdrUUUUUUUUUluluurrrrddlLLLLLLLLLLdlUruLLulDDurrrrrrrdrrrrrdddddddddllllllldllluururrrruuruuLLulDDDDuurrdddlLLLulDDDDldRRRRdrUUluRRRRRRdrUUUUUUUUUluluurrrrddlLLLLLLLLLLdlUruLLulDrrrrrrrdrrrrrdddddddddllllllldllluuruuurDrdLLulDDDDldRRRRdrUUluRRRRRRdrUUUUUUUUUluluurrrrddlLLLLLLLLLLdlUruLLLrrrrrrrdrrrrrdddddddddllllllldllluururrrruLLLulDrdLulDDDDldRRRRdrUUluRRRRRRdrUUUUUUUUUluluurrrrddlLLLLLLLLLLdlUruLLrrrrrrdrrrrrdddddddddllllllldllluururruuurDDrdLLLLulDDDDldRRRRdrUUluRRRRRRdrUUUUUUUUUluluurrrrddlLLLLLLLLLLdlUruLrrrrrdrrrrrdddddddddllllllldllluururrrruururrddldLLLLLLulDDDDldRRRRdrUUluRRRRRRdrUUUUUUUUUluluurrrrddlLLLLLLLLLLulDDDrdLLLrrruuurrrrrrrrrdddddddddllllllldllluuuuluRRRRurDDrdLLLLulDDDDldRRRRdrUUluRRRRRRdrUUUUUUUUUluluurrrrddlLLLLLLLLLLulDDDrdLLrruuurrrrrrrrrdddddddddllllllldllluururrrrrrruuuuLLLLulDDDDrdLLLulDDDDldRRRRdrUUluRRRRRRdrUUUUUUUUUluluurrrrddlLLLLLLLLLLulDDDrdLruuurrrrrrrrrdddddddddllllllldllluururrrruururDDrdLLLLLLLulDDDDldRRRRdrUUluRRRRRRdrUUUUUUUUUluluurrrrddlLLLLrrrdddddddddllllllldllluururrrrrruLLLLLLulDDDDDldRRRRdrUUluRRRRRRdrUUUUUUUUUluluurrrrddlLLL
+
 },
 #endif
 
 #if 0
 {
 /*
-############### 
-#             # 
-# # # # # # # # 
-#  * * * * *  # 
-# # # # # # # # 
-# #* * * * *  # 
-# # # # # # # # 
-#  * *$@.* *  # 
-# # # # # # # # 
-#  * * * * *# # 
-# # # # # # # # 
-#  * * * * *  # 
-# # # ### # # # 
-#     # #     # 
-####### #######
+     ############ 
+     #          ## 
+     #           # 
+####### #######  # 
+#@     $$ #   #..# 
+#   $ $$  #$   ..# 
+#  $ $$ $ #   #  # 
+##$ $$ $  #$#### ## 
+#  $$ $   #...#.. # 
+#  $ $ $  #...... # 
+#       #  ...... # 
+###################
 */
 
-37774,
-15,15,372,2305,
-"15#=|#13 #=|# # # # # # # #=|#2 * * * * *2 #=|# # # # # # # #=|# #* * * * *2 #=|# # # # # # # #=|#2 * *$@.* *2 #=|# # # # # # # #=|#2 * * * * *# #=|# # # # # # # #=|#2 * * * * *2 #=|# # # 3# # # #=|#5 #=#5 #=|7#=7#",
+38036,
+19,12,477,2480,
+"5=12#=|5=#10 2#=|5=#11 #=|7# 7#2 #=|#@5 2$ #3 #2.#=|#3 $ 2$2 #$3 2.#=|#2 $ 2$ $ #3 #2 #=|2#$ 2$ $2 #$4# 2#=|#2 2$ $3 #3.#2. #=|#2 $ $ $2 #6. #=|#7 #2 6. #=|19#",
+
+// solution: rddDDlddrUUUUUdddddrrrruRurrddrrrrrrruuuuulllldlDDrddllluulldldlllluRUddrrrruurruuulDrddlldldllluuRURURldldlddrrrruurUdldldllluurururUdldldlddrrrruurruuulLUUddrrdddddrrrrrrruuuuuuuulullllllllldRRRRRRRRurDDDrddddldllulluurrurRurDDDDDrdLLLulldllluulldldllluuluuururrRllldldddrddrrrruurruuullUUddrrdddddrrrurrrruuuuuuulullllllllldRRRRRRRRurDDDrddddldllulluurrurRurDDDDrdLLLLrrruuuuuuullllllllldddrrdddddrrrUrrrruuuulllldlddRddllluuuuuuLdlUUdrrddddddrrrurrrruuuuuuulullllllllldRRRRRRRRurDDDrddddldllluluurrurRurDDDDrdLLLLrrruuuuuuulllllllllddrrddddddrrrUrrrruuuulllldlddDuuurrurruuullllllllddrrddddddrRlluulldldllluurururUdldldlluuururrRdrUUdrrddddddrruuuurrurruuuullllllllldRRRRRRRRurDDDrddddldlllluuurrurRurDDDDrdLLLLrrruuuuuuulllllllllddlddlUddldlluuururRRdrUUdrrddddddrruuuurrurruuuullllllllldRRRRRRRRurDDDuullllllllddrrddddddrruuuurrurRurDDDDDrdLLruuuuulllldlddddlluuulUUruLdlUUdrrddddddrruuuurrurruuuullllllllldRRRRRRRRurDDDuullllllllddrrddddddrruuuurrurRurDDDDrdLLLrruuuuuuulllllllllddlddRurrddlUUruLdlUUdrrddddddrruuuurrurruuuullllllllldRRRRRRRRurDDDuullllllllddrrddddddrruuuurrurRurDDDDDrdLuuuuulllldlddddlluullUUUUUdrrddddddrruuuurrurruuuullllllllldRRRRRRRRurDDDuullllllllddrrddddddrruuuurrurRurDDDDrdLLruuuuuuulllllllllddlllldRRRdrUUUdrrddddddrruuuurrurruuuullllllllldRRRRRRRRurDDDuullllllllddrrddddddrruuuurrurRurDDDDrddlUruLuuuuuulllllllllddlldddRurrddlUUUUUdrrddddddrruuuurrurruuuullllllllldRRRRRRRRurDDDuullllllllddrrddddddrruuuurrurRurDDDDDuuuuuuulllllllllddlllldlluRRRRRdrUUdrrddddddrruuuurrurruuuullllllllldRRRRRRRRurDDDuullllllllddrrddddddrruuuurrurRurDDDDrdLuuuuuuulllllllllddlldddlUUluRRRdrUUdrrddddddrruuuurrurruuuullllllllldRRRRRRRRurDDDuullllllllddrrddddddrruuuurrurRurDDDDuuulllldlddddlluulldlUUUUluRdrUUdrrddddddrruuuurrurruuuullllllllldRRRRRRRRurDDDrdLLLrruuullllllllddlllllddRRRRdrUUUUdrrddddddrruuuurrurruuuullllllllldRRRRRRRRurDDDuullllllllddrrddddddrruuuurrurRuuullllllllddlllddddRRdrUUUUUUdrrddddddrruuuurrurruuuullllllllldRRRRRRRRurDllllllllddrrdddddLullddrUUUUUUUdrrddddddrruuuurrurruruulullllllllldRRRRRRRllllllddllllldddRRRRdrUUUUUdrrddddddrruuuurrurruruulullllllllldRRRRRllllddlddddddllUUUUUluRRRdrUUdrrddddddrruuuurrurruruulullllllllldRRRurrrrrrdrddlddrUUldlldllddddlluuuuuulluurrurrrrrrdDDuuulllllllldddrrddddddrruuuurrurRurDDDuullldllddddllullldlUUUUUluRRdrUUdrrddddddrruuuurrurruuuullllllllldRurrrrrrrrddddllullDDDDDuuurruLulDDDDuurrurruuuulldRurDDDrdLLLLulDDDurrurruuuulllldRRRurDDDrdLLLulldRRRRuuuulllllldRRRRRurDDDuuulllllllldRRRRRRRurDDurD
+
 },
 #endif
 
 #if 0
 {
 /*
-#####   ############# 
-#   #   #   #   #   # 
-# # ##### # # # # # # 
-# $*. $ .*$ . $ .*$ # 
-# . $ . $ .*$ . $ . # 
-# # # # # # # # # # # 
-#   #   #   #   #   # 
-######$### ###$###### 
-#   #  .#   #.  #   # 
-# # # ### # ### # # # 
-# $*. $ . $*. $ .*$ # 
-# . $ . $*. $ . $ . # 
-# # # # # # # # # # # 
-#   #   #   #   #   # 
-######$### ###$###### 
-#   #.  #   #  .#   # 
-# # ### # # # ### # # 
-# . $ . $*. $ . $ . # 
-# $*. $ . $*. $ .*$ # 
-# # # # # # # # # # # 
-#   #   #   #   #   # 
-#####################
+ ################## 
+ #...  .  . .  .  # 
+ ##$$ .$. # * .$. # 
+###.. # * #.$ # * # 
+# $$* * * #$. * * # 
+# ..*#$.$## *#$.$ # 
+# $$$  $ @$ $  $  # 
+# .. # . #.  #. . # 
+# #$. .$. #. #* * # 
+# #.$ #.* #$. * * # 
+# #$. #$* # $.* $ # 
+# #.$ * * #  $* . # 
+# $$  $ $ $   $ $ # 
+###     ###     ### 
+  ####### #######
 */
 
-37775,
-21,22,357,2306,
-"5#3=13#=|#3 #3=#3 #3 #3 #=|# # 5# # # # # # #=|# $*. $ .*$ . $ .*$ #=|# . $ . $ .*$ . $ . #=|# # # # # # # # # # #=|#3 #3 #3 #3 #3 #=|6#$3# 3#$6#=|#3 #2 .#3 #.2 #3 #=|# # # 3# # 3# # # #=|# $*. $ . $*. $ .*$ #=|# . $ . $*. $ . $ . #=|# # # # # # # # # # #=|#3 #3 #3 #3 #3 #=|6#$3# 3#$6#=|#3 #.2 #3 #2 .#3 #=|# # 3# # # # 3# # #=|# . $ . $*. $ . $ . #=|# $*. $ . $*. $ .*$ #=|# # # # # # # # # # #=|#3 #3 #3 #3 #3 #=|21#",
+38037,
+19,15,380,2481,
+"=18#=|=#3.2 .2 . .2 .2 #=|=2#2$ .$. # * .$. #=|3#2. # * #.$ # * #=|# 2$* * * #$. * * #=|# 2.*#$.$2# *#$.$ #=|# 3$2 $ @$ $2 $2 #=|# 2. # . #.2 #. . #=|# #$. .$. #. #* * #=|# #.$ #.* #$. * * #=|# #$. #$* # $.* $ #=|# #.$ * * #2 $* . #=|# 2$2 $ $ $3 $ $ #=|3#5 3#5 3#=|2=7#=7#",
+
+// solution: lddrddddRRdrUluuUUruLdddddrrdrruuuuuuluRdrruuuuuullllllllllldRurrrrrrrrrrddddddllddddddllulllluuuululldlddlDruuulDrddddrruuUdddlluuuuururrdrddddrrrrdrruurruuuuuuuuuullllllllllllddllUdrruulLrrrrrrrrrrrrrrddddddddLrddlluUrruuuuuuuulllldddRluururrrddddddlluuUlluuullddDDDDrddrdRlulldddrrdrruurruullDDulluluuluuuuuulllllllldRRurrrrrrrrdddrDDuullldddrddldddlluuuululldllullluurrUdllddrrrdrrurrdrddddrruuurrdrruLrrruulluuulllldddrddldddrrURururruuuuLLdlUruLLuuullllllddddDuuuuurrdddLruuullddDrruuurrrrrrrrdddddddddLullddldlllluuuuluullddldddddrruRRRRdrruuruurrruuuuuLruulDuullllldddddRluuuuurrdddrdrrDulluluuulldddddrRRRllldddldddlluuuuluurRRRluuuuulldddlDuruuurrdddddrdddldddlllldlluuuuuruurRRlddrddddlluRlddlluuuuuruurrddrddDuuuluuuuruuurrdddddrdddldddlLuuuulLLrDuruLruuulDDuuuuulldddRluuurrddDrddddrdddllddlluuuuluullluurruRRlldllddrrUdlluuuRRlldddrrrddrddddrruurruuuluulllLrrrrddllLrrruuuuluuulldddLruuurrdddrddllllUUdddllluurRDullddrRuuluRdddlUluRdrrrrrruulDrdLLLLLrrrruuuuulldddRluuurrddDrddllllldlluururRRuuurrdddrddddrdddllLrrruuullllddDuuurrdDuurrdddlLrruuLulDruuullllldlluRRRRRRllllluurrruuurrdddrdDDDllldllUUddrrurrruullllLdddrrddllUUrrdLruurrruullllldlluurDrrrrrrddllldllUUddrrurrruuuuluuulldddlllddRRRRRllllluurrruuurrdddrdDDuuuruuurrdddddrdddldddlluuuuLLruuuuruuurrdddddLLrrrdddldddlluuuuluUllllldddrrddRRRllluulluuurrrrrrrrrdddldddllUUdlllluuuLrdddrrrrdrruuuruuullllllllllldRurrDurrrrrrruuuuurrdLulDDDDuuurrddrdrrrddddlllddlddlluuuuruuuLLLLLLLLLrrrrrrrruuuuulllllldddlllldddrUrrrrrrrrruuuurrrurrdLLLrrrrdddddddllldRurrddlUruuuuullldLrrurrdddddllldlddllullullddlllUUrrrrrdrrdrruururrruuuuulUUUruLLLLLLLLLLLLLrrrrrrrdddddlllddldDDlllddrrrUdllluurrRuuuruulllldLrurrrrddldddlluullUdrrddrruuuruurrruuuuurrdddrRdrruulDrdLrdddddllldRllddllullLrrruuuruululllddldddlllddrrrUdllUluRddrruLLrrrrrruuuruululllddrDDDuuuluurrrdrddldddlLLLrrrruuuruuluuuuuulllldddLLrrrruuurrrrdddrrUUruLLLLLLLLLLLrrrrrrddRluurrrrdddllUUruLLLLLLrrrdddddlllddrddddlldlluuuuuRRlldddddrrurrrrdrruurrurruuuuulLdlUrddDDuuuurrdddddlLdllddlluuuurRlldddllllUUddrrrrdrruurrurruuuuLrddddlluuuUUUUUruLLLLLdddddRRRurrrdddddlluuuUUUUUruLLLddlldddrdddlddRRddrrUUUUUUUUUUruLdddddddddddlluRdrUUUUUUUluRdrUUUldddddddddllulUUUUluRRRurrrdddddlluuuUluRdrUUldldllllllllDurrrrrrdddldddRRRdrUUUUUUUUUUUdddldllllllllUdrrrrrrdddldddlllldlluullUdrrddrrurrrrruuuuuullllUdrrrrdddldddlllldllllUdrruRRRRRRRRRdrUUUUUUUluRdrUlldlldddldddlllllldlluRRRRRRRRdrUUUUUUluRRRurrdLLLLdlUUUddllllllllllddddddRRRRRRRRRRRRRdrUUUUUUUrrddddddLLLLdlUUU
+
 },
 #endif
 
 #if 0
 {
 /*
-####### 
-#  #  #     #### 
-# $  $#######  #### 
-#  #  ....... $#  # 
-## #  ### ###   $ # 
- # #    # #@#$##  # 
-## ###$ # # #  # ## 
-# $    $# # #     # 
-#   ##$ #$#.. $#$ # 
-######  * ..#  #  # 
-     ## #*#.####### 
-      #     # 
-      #######
+######### ######### 
+#   #   ###   #   # 
+# $$$ $..$..$ $$$ # 
+# .. $. $$$ .$ .. # 
+# $.$.$  $  $.$.$ # 
+# $#.  $ $ $  .#$ # 
+# .#.$.#$$$#.$.#. # 
+# .#.. . $ . ..#. # 
+# .#.$.#$$$#.$.#. # 
+# .#.$ $ $ $ $.#. # 
+# .#..$  $  $..#. # 
+# #  $.$.$.$.$  # # 
+#   $ .  $  . $   # 
+#  $ # . $ . # $  # 
+# $ # .#.$.#. # $ # 
+#@ #  #  .  #  #  # 
+###################
 */
 
-37776,
-19,13,413,2306,
-"7#=|#2 #2 #5=4#=|# $2 $7#2 4#=|#2 #2 7. $#2 #=|2# #2 3# 3#3 $ #=|=# #4 # #@#$2#2 #=|2# 3#$ # # #2 # 2#=|# $4 $# # #5 #=|#3 2#$ #$#2. $#$ #=|6#2 * 2.#2 #2 #=|5=2# #*#.7#=|6=#5 #=|6=7#",
+38038,
+19,17,399,2481,
+"9#=9#=|#3 #3 3#3 #3 #=|# 3$ $2.$2.$ 3$ #=|# 2. $. 3$ .$ 2. #=|# $.$.$2 $2 $.$.$ #=|# $#.2 $ $ $2 .#$ #=|# .#.$.#3$#.$.#. #=|# .#2. . $ . 2.#. #=|# .#.$.#3$#.$.#. #=|# .#.$ $ $ $ $.#. #=|# .#2.$2 $2 $2.#. #=|# #2 $.$.$.$.$2 # #=|#3 $ .2 $2 . $3 #=|#2 $ # . $ . # $2 #=|# $ # .#.$.#. # $ #=|#@ #2 #2 .2 #2 #2 #=|19#",
+
+// solution: uurururuuuurrddDDDDrrddrruurruuUrruuulldDDDDDuuurrdrdrrdddlUruulluluuuuuuluUlluurrDDDurrrrdddddddddllululllldddddlluuuuulluuuuuluUrruullDDDullllddddddddddddrUluurrRRRdrruLdlUUdrruulLLruuullddDrrrrdddddrruurruuurrdrdLLLdlluRdrUUdlluurRRluuurrddDlllldddddlluuuuuuLdllluuurrdDDrrddllllllluuuuuuuuRuluurrDullddrRRRllldDDDDDldddrrrrrrrdddrruurrurrrrruuuuuuuuuuullDurrddlLLLrrrrdLrddddddddllllllldddlluuullllllluuuuuuuuuuurDDDDDDDuuuuurrruurrddLLLLulDDDDDuuuurrruurDrdLLLLulDDDDlddddddrrrrrrrdddrruurrurrrrruuuuuuuuulllluulldlLLLLulDrdLLLulDDDuurrrrrdrUllllllldddddddddrrrrrrrdddrruurrurrrrruuuuuuuuulllluulldllLLLulDrdLLLullddrUldddddddddrrrrrrruuulluurrUUUUddddllddrrddddddrruurrurrrrruuuuuuuuulllluulldllLLLulDrdLLLrrrrrurrrddlUruLLLLLulDrdLLrrrrurrrurrddrrrrdddddddddddllUdrruulLrruuuuuuuuulllluulldllldddddllddrrddddddrruurruuuuuullUUUUruLLLLrdddddllddrrUUUUUUddddddddddddrruurruuuuuulluuuuulLrrdddddrrdddlluUUUUUUruLdddddddddddddlluuullUdrruuuuulllldddrRurruuuuuullluurrDrdddddddddddddrruuuuuuuuuuuruuurrddLruulldldddddddddddddlluuuuuuuuuuuuululldddRdddrrddddddddrruuuuuuuuuuuuururrdddLdddrruuUluRRuurrddLLLdlldddlluuuuururrdDrdLulDDDDDDuurrdddlLrruuuuuuurrdLulllddddrruuUruLdlldddllddddddddlluuulluulluRRdddrrdddrruurruuurruuuuuurrrddddddddlDruuuuuuuuullllldddllddddddddlluuuuuuuulluuuuluRdddddrruuuuLrddddlluuuUrrddddddddddddrruurrurRRllllldLLulldRurDrrddlUruLLulldRRRRurrdLulDuuRlddlluuLrddrruuuuuurruuuuRRllddddllddddddlluuuuuuuuuuuRldddddddddddrruuuuuuuuuuLulDllddddrruuUUrrddddddddLruuuurrdddrDuruuuuuurrrdddddddddllulLLLdlUrrrrUluluuulluuuullllddddlldRurrrddLLLdlUrrrruuuuuurrddddrrdddrddllldllulllUdrrrdrrrruruuluRluRuluRldlluuuullllllDrrddLruuurrrrddddrruuRlddlluuuulllldddlUruurrrrRuurrdLrddldddlldddRRlddldllullllUUdrdrrrdrrruuuluRdrUlluuuuRlddrrruuulDlluullddLruulldDrrdddddRRurDDDuulllulDDurrrrddldlllluRuurrdDrdLLrruruururuuuuurrrDDDDDuuuuulllldlluullddddRRRRRuullluullllluurDDDurrddddllluuRRluurrdDDulllddrrRRRRRllddrrruUUUluRRRlldddddlldddrrrrdrruuuuuuuuuulDDDDDuuuulllldllddlldRlddrruUluRRRllllddldddlllllluuuuuuuuuuurrdRRurDDDurrddddllluuRRluurrdDDuuurrddddlLLLLrrrrruLruuullddDrdLLLrrrdDldRRurDDullddrRRRurrddrruuuuuuuuuuuulDDDDDDuuulluluRRurDDDDDuulllldlluRRRRRluurrdDDulllllullldRRRRRRRluurrrdddlUllllllddlUluRRRRRRlllullllldRRRRRRlllldddddldddllllllddrUluRRRRlllluuuuuuuuuuurrdrrrdrrrrddddddrdddrrurrdLLLLLdlUUUUUluRRuuuullllulllulldddddddddddrddrUluRdrUUldlluuuuuuuuuuRRRRurDDrddlUrrdddddldddRdrUUUUUruLLrrddrdddrrrrdrruLLLLLLLruulldDDDururrrrrrrdddlUUruLLLL
+
 },
 #endif
 
 #if 0
 {
 /*
-############# 
-#           # 
-# $.$.$.$.$ # 
-# $.$.$.$.$ # 
-# .$.*.$.$. # 
-# $.$.$.$.$ # 
-# $..$.$.$. # 
-# $*.$.*.$. # 
-# ..$.*.$.$ # 
-# $$$*.$$.. # 
-# .$..$..$$ # 
-# $.$.$.$.. # 
-# .$.$.$$$$ # 
-# $.$$$..$. # 
-# $..$.$$.. # 
-#           # 
-#############
+     ######### 
+  ####.......# 
+  #. $**.*.*.# 
+  #    ..###.# 
+  # ###.#  #.# 
+### ###.$$ #.# 
+#   ## .$  #.##### 
+# ###  #   #.    # 
+# ###$ ##@#### # # 
+# $          # $ # 
+###$## $#$$ $$$$## 
+ #   # $  #     # 
+ # $ $ #$  # #### 
+ # $ #    $  # 
+ ##    ####### 
+  ######
 */
 
-37777,
-13,17,275,2307,
-"13#=|#11 #=|# $.$.$.$.$ #=|# $.$.$.$.$ #=|# .$.*.$.$. #=|# $.$.$.$.$ #=|# $2.$.$.$. #=|# $*.$.*.$. #=|# 2.$.*.$.$ #=|# 3$*.2$2. #=|# .$2.$2.2$ #=|# $.$.$.$2. #=|# .$.$.4$ #=|# $.3$2.$. #=|# $2.$.2$2. #=|#11 #=|13#",
+38039,
+18,16,431,2483,
+"5=9#=|2=4#7.#=|2=#. $2*.*.*.#=|2=#4 2.3#.#=|2=# 3#.#2 #.#=|3# 3#.2$ #.#=|#3 2# .$2 #.5#=|# 3#2 #3 #.4 #=|# 3#$ 2#@4# # #=|# $10 # $ #=|3#$2# $#2$ 4$2#=|=#3 # $2 #5 #=|=# $ $ #$2 # 4#=|=# $ #4 $2 #=|=2#4 7#=|2=6#",
+
+// solution: dlllddRluuuuurRllddddddddlluuRlddrruUUUUrrruululuuulllldddlldddRRRRRRldddllulldRurDrruuulllDDuulluuurruuurrrrdddldlDururuuulllldddlldddrrddrdrruuuLuururuuuruullDurrddlLuLLrrurrrrdLulllddrrUdlluurRddlUddddldlddrddddrrruuLLrrddllluUdlluluulluuurruuururrrddddldlddrrDulluururuuuullldldddlldddrrddrdrruRuulluururrdrddLLrruuruLruulDrddlddllddldlluluulluuurruuururrrdddRldldlddLLddrdrruruurruuruuLLrrddlddllddldlluluurruururUUUddrrrddllUluRluululldldddlldddRRddrdrruruurrrrddrrrUdllluulluuruLdddllddlddrrruuUUUUddllddldlluluulluuurruuururrdrdddldlddRRddldlluluuRRllddrdrrdrrruuuuuulUdrddddddllluuruuRlddldlluluurruururrdrdDuululuuururrurrddddddrrdDuulluuuuuulldlldldddrdrruLruulDLrrddlddllddldlluluurruururUrrrddlUdddllddlddrrruuUUUUddllddldlluluurrRRddlddrrruuuuuulUlldlddrrRllluururrdrdDrrddrrrUdllluullllddlddrrruuUUrrddrddlLrruuluurDDrruLLullldddrdrrUUddlluluuulllllllluuurruuururrdrrurrurrddddddrrdDuurrddLruulllluuuuuulldlldllulldldddlldddrrrrrrrrdddrdrruurrrUdlllddlluluuurrrDDlUruLLLLLrrdddrdrrUUruLulllllddlddrrRlllulluluurruururrdrDDrrrddlUruLLLrrrdrdrruLLLullluululldlddlllluuurruuururrdrrurrurrddddddrrdDuurrddLruulllluuuuuulldRurDDDDuuulllldlluRRRRRurDDDuulllllllldldddlldddrrrruururuUUluRRRRRurDDulllllllldRRllldddlldddrrrruururuuUluRRRRRurDlllllddddldlddllddrdrruruuLLuururrdrddLLrruuruLruulDrddlddllddldlluluulluuurruuurrrrddRldldlddLLddrdrruruurruuruuLLrrddlddllddldlluluurruururUUUluRRRRllldddrrrddllUdrruulLdlUUUlllldddlldddRRlluuurruuurrrrdddldlddRRddldlluluuRRuururrdrUllldlddllddrdrrdrrruuUUUUddddddllluuruuRlddldlluluurruururrdrdDuululldlddRRlluururrdrruuLLdlUrddrUllldlddrrddlddrrruuUUUUlulldlddrrRllluururrdrdDlllllllluuurruuurrrrruLLrrrrRllluLrRRRlllldldllldddlldddrrrruururuUUluRdrUluRRRlllddddrddrruuLLdlUUUluRRRRllldddrddrUruLLdlUUUluRRRlldddrrddddllddlddrrruuUUUUUruLLdlUUUluRdrUluRRllddddrrddddrrrddlUruLLLddddllluuruuRlddlddrrruuuUUUUruLLdlUUUluRdrUluRlddddrrddddrrrdrdrruLLLdlUruLLLddddllluuruuRlddlddrrruuuUUUUruLLdlUUUluRdrUldddrrddddrrrdrrruruulldDrdLLLdlUruLLLddddllluuruuRlddlddrrruuuUUUUruLLdlUUUluRRldddrrddddllddRllddrrruUUUUUUruLLdlUUUluRldlluRdrrdddldDldRRRlddrruUUUUruLLdlUUUUddddldddrddlUUluurDldRRRlddrruUUUUruLLdlUUUddrrdddddRRRRdrUUUdrruulLLrdddllulllllllllddldRRRluluurrrrrrddddlllUUUUluurDldRRRlddrruUUUUruLLdlUUddldlddlllluuurruuurrrRddrrddddddddlUdlluurRdrUUUUUUruLLdlUUddlddddddddlllUluRRRllddrrruUUUUluurDldRRRlddrruUUUUruLLdlUdlddddddddllUluRRlddrruUUUUluurDldRRRlddrruUUUUruLLrddddrrrddddlLLLLruulldllddrrUUUUUluurDldRRRlddrruUUUruLL
+
+},
+#endif
+
+#if 0
+{
+/*
+########## 
+#        # 
+#* * ### # 
+# #.* #  # 
+#  * * * # 
+# * * *  # 
+#  # * * ####### 
+# ### # *      # 
+#     ** * * # # 
+####### # * #  # 
+      #  # * * # 
+      # * * *  # 
+      #  # * * ####### 
+      # # * * *      # 
+      #     ** * * * # 
+      ####### # # #  # 
+            #  * * * # 
+            # # # #  # 
+            #  * *$* # 
+            # # # # ## 
+            #       @# 
+            ##########
+*/
+
+38040,
+22,22,386,2484,
+"10#=|#8 #=|#* * 3# #=|# #.* #2 #=|#2 * * * #=|# * * *2 #=|#2 # * * 7#=|# 3# # *6 #=|#5 2* * * # #=|7# # * #2 #=|6=#2 # * * #=|6=# * * *2 #=|6=#2 # * * 7#=|6=# # * * *6 #=|6=#5 2* * * * #=|6=7# # # #2 #=|12=#2 * * * #=|12=# # # #2 #=|12=#2 * *$* #=|12=# # # # 2#=|12=#7 @#=|12=10#",
+
+// solution: llluUddlllluuuuuULLLLrrrrrRlllluUlUlLrrdrrUrruuuulllldLrurrrrddddlldllulluluUddrdrrdrddrrrrurrrrrddddlDruuuuulllllddDllddddrrrruulLLrddlluUUUrruullDDDDuurrrRlluulllluururruuuulldLrurrddddlldlddrrrrddrruUrurrddddldLLLLrrrrruuuuulldlddlluulllluurRllddrrrrddrruururrddlDruuulldlddlluulllluululluluuLLLLrruUrUrruuuulllldLdDuururrrrddddlldlddrrddrdrrdrddrrrrddDDuuuulllluurrDDrrddllUdrruulLuulllulluluulluururruuuulllllllDurrdddrUluurrrrrddddlldllUdrddrrddrdrrdrrruruulDDDDDrruLdlUUUrDDuuuulDDldRdrrdRRluRRlllllulldRRRRllulllulluluulluurRllddrrddrdrrRRdrUruulDDruuuulllddDDldRdrUluRluuuullddRluurrdDDDldRddlUruuuulluRdrddllluluuRRlllluurrDullddrRddrdrrruulluLLuuuruulDDDDDrruLdlUUUrDDuuuulDDldRdrrddrrddllldlddRRurruuuulluurrDDDDuuuulllluurDldRRRllulllluRRRurDuuuulllllddrrDulluurrrrrddlddldlluRRdrdrUUUUdddlluluRRurDDulllulldRdrrdrUllluurDDldRuullllddrUluRRuuulldDDrrurrdrdrddrrddrrddllldlddrrurrrrrUUddllllldlluururrruulluulluuruLdddrUdrddrrddllldlddrrurrrrruuUUddddllllldlluururrrrRllllldlddrrurrrrruUddldRRddrruuuLLdllulllldlluururrrrrrdDrdddddrrddllUUUUUUddrruuulLLuulllllldlddrrurrrRRRluuluurDldllllldlddrrurrrrrrdddddrrrrruuuuuLDrddddllllluuuuulllllldlluururrruulluuluUllluLrddRurrddlUruLLLdlUrrruurDlddrdrddrrddlllulUUUruLulldddRluuurrddDurrddrrddllldlddrrurrrrrrdddrruuuRldddDDuulluuuluUluurDDlllllldlddrrurrrrUUddrrdddrrddrrruuuulLulDDDllllUUUrrdLulDrrddddddllUUddrruuuuuuRRllulllllldlluururrrrrrDulllllldlddrrurrrrdrruLrdddddddlluuRlddrruUUUrruullDDDDrrrrruulLLLruulldDuuuluulllllldlddrrurrdRRRurDuluuuulDrdddrdrruLdllllullldlluururrrrDulllldlddrrurrdrrrrrrddrrruulLrrddllluUllllllulldlluururrruuururrDDDDDDuuuuuulldldddllldlddrrurrdrrRRRRRlllluuuLruuuulldldlluululLrrdrddrrddlllulUUUruLrdrdLulDrrdrrddllldlddrrurUdrdrrruuuuuuulldldddLrDuuuuruLLLdlluurDrrrrrrddlddLdlUUUUdlluurRRlddddlUruuullddRluurrdDDuuulllldRurrrddllUdrruulLLdlUruUluurDDDDldRurrrddllUluRRlluullluulluurrrrrDDDDDDuullluRdrrddldlluUddrruUddlluuluUruLdddrddrrurrrDldRuulluuuuuullllllldRurrrrrrdddddlddRurrddddddldlluuruulUUlluuUdddrrruuuuuuullllllldddrddlddRRRRlllluuruuluururrrrrrddddddrrdddrRlluuullulLrruuuuullllllldddrddlddrrrruUluLrdrddlllluuUUUdddddrrrruurrrddlddDDuuuuUrrrdrruLLLLrrdddrUluulluLLrrdrrddddLrdrUrrrdddllUUluRdddlUUluuuuulluuuuuullllDurrrrdddddlluLrdrrddlUruuLrddrrdddddrrddrruLLdlUlldllUUUUUdddddrrRRurrrdrruLLLLLdlUUUUdddrruuLrddrrrrdrruLLLLLLLrrrrrrdddrrruuLLulllluuLruuuuLLLLLrrrrrddddddrrrrdrrddlllllllUUruLdddrrUdrrrrruuuLLLLLrrrrrdddlUrdddlllllllUUUdddrrUdrrUdrrUdllllllddrrUdrrUdrrU
+
 },
 #endif
 
@@ -1005,254 +1269,89 @@
 ################### 
 #  .  .   .  .    # 
 # ############# #.# 
-#     .  . .  . # # 
-#.#$# #########$#.# 
-# #.# $ $ $ $   # # 
-#.# # $ $ $ $ #.# # 
-# # # $ $ $ $ # #.# 
-# #.# $ $ $ $ # # # 
-#*# #$$ $ $ $$#.#.# 
-# #   $  @    $   # 
-#.# # ## ######## # 
-# #   *  .  .  *  # 
-#.# ############# # 
+#    .  .  .  $ # # 
+# # ######### #$#.# 
+#.#$  $ $ $ $ #.# # 
+# # # $ $ $ $ # # # 
+#.#.# $ $ $ $ #.#.# 
+# # # $ $ $ $ # # # 
+# # #$$ $ $ $$* #.# 
+#.#.# $  @        # 
+# # # ########### # 
+#.#   .  .   .  * # 
+# # ############# # 
 #    .  .   .  .  # 
 ###################
 */
 
-37778,
-19,16,541,2307,
-"19#=|#2 .2 .3 .2 .4 #=|# 13# #.#=|#5 .2 . .2 . # #=|#.#$# 9#$#.#=|# #.# $ $ $ $3 # #=|#.# # $ $ $ $ #.# #=|# # # $ $ $ $ # #.#=|# #.# $ $ $ $ # # #=|#*# #2$ $ $ 2$#.#.#=|# #3 $2 @4 $3 #=|#.# # 2# 8# #=|# #3 *2 .2 .2 *2 #=|#.# 13# #=|#4 .2 .3 .2 .2 #=|19#",
+38041,
+19,16,428,2485,
+"19#=|#2 .2 .3 .2 .4 #=|# 13# #.#=|#4 .2 .2 .2 $ # #=|# # 9# #$#.#=|#.#$2 $ $ $ $ #.# #=|# # # $ $ $ $ # # #=|#.#.# $ $ $ $ #.#.#=|# # # $ $ $ $ # # #=|# # #2$ $ $ 2$* #.#=|#.#.# $2 @8 #=|# # # 11# #=|#.#3 .2 .3 .2 * #=|# # 13# #=|#4 .2 .3 .2 .2 #=|19#",
+
+// solution: rrrrrrrruuuuuuuuullllllllllllllllddrrdDDDDDDDDDuuuuuuuuuulldddddddddddrRRRRRRRRRRRRllllllllllluuuuuuuuuuulluurrrrrrrrrrrrrrrrdddddddddddLLLLLLLLLLLLLrrrrrrrrrrrrruuuuuuuuuuullllllllllllllllddrrddddddddDDuuuuuuuuuulldddddddddddrRRRRRRRRRlllllllluuuuuuuuurrdddDDDuuuuuulluulluurrrrrrrrrrrrrrrrdddddddddddlllllllllllLLruuuuuuullddddddDDuuuuuuuuuulldddddddddddrRRRRRlllluurrrrrrrrrrrrrruullllllllllLrrrrrrrrrrrddlllllllllllllluuuuuuurrddddDDurrrrrrrrrrrrddlllllllllllLLruuuuuuullddddddDDuuuuuuuuuulldddddddddddrRRluuuuuuuuuuurrrrrrrrrrdddddDuuuuuullllllllllddrrdddddddrrrrrrrrrrrruulllLLLLLLLLrrrrrrruuuuuuullllllllllddrrddddDDurrrrrrrrrrrrddlllllllllllLLruuuuuuulluulldddddddddddrruUUUUUUUUUdrrdddddrrrrrrrruuuuuuulllllllllLLrrrrrrrrrrrdddddddrrrruuuuuuuuulllllllllllllllldDDDDDDDDDuuuuuuuurrddrrdddddrruuuuuLLLrdddddddlluuuuuuUUdrrrrdddddrrrrrruuuuuuulllllllllLLrrrrrrrrrrrdddddddrrrruuuuuuuuulllllllllllllllldDDDDDDDuuuuuuuurrrrrrrrrrrrrrddDDDDDDuuuuuuuurrdddddddddlLLLLLLLLLLruuuuulllldddddddrruUUUUUddddrruuuuulLLrdddddddlluuuuuuUUdrrrrdddddrrrrrruuuuuuulllllllllLLrrrrrrrrrrrdddddddrruuuuuuuuulllllllllllllldDDDDuuurrddrrrrdddddrrrruRldlllluuuuulllluurrrrrrrrrrdddddDlldllllllddrrrrrrrrrrrruulllLLLLLLLLruuuuulllldddddddrruUUUUUddddrruuuuulLLrdddddddlluuuuuuUUdrrrrdddddrrrrrruuuuuuulllllllllLLrrrrrrrrrrrdddddddrruuuuuuuuulllllllllllllldDDurrrrrrrrrrrrRldddddddrruuuuuuUUddddddddrruuuuuuuuulLLLLLLLLLLLLrrrrrrrrrrrddllddddddlluuuuRlddddrruuuUUdlldddddlllluuuuulllluurrrrrrrrrRRldddddddrruuuuuuUUddddddddrruuuuuuuuulLLLLLLLLLrrrrrrrrddllddlldddddlluuuuuRRRlddddrruuuUUdlllldddddlluuuuulllluurrrrrrrrrRRldddddddrruuuuuuUUddddddddrruuuuuuuuulLLLLLrrrrddllddddddRdrUUUUUUUUddddddddrruuuuuuuuulLLrddllddlldddRluuurrddDDldRRRRlllllllllllddrrrrrrrrrrrruUUUUUUUUdddddddllullulluRluurrdDDDldRRRRlllllllllllddrrrrrrrrrrrruUUUUUUdddddlllllllluRRRurDldRRRRlllllllllllddrrrrrrrrrrrruUUUddllulluuuulDDDDldRRRRRlllllllllllddrrrrrrrrrrrruUllullullLruuullddDDrdLLLLruuuuullddddDDuuuuuulldddddddrRRRRRRRRRRRlllllllllluurruLruuuulldddDDDuuuuuulldddddddrRRRRRRRRllllllluurruuuuLulDDDDDDuuuuuulldddddddrRRRRllluurrrruuuRRurDDDrdLLLLLLLulDDuuuuuulldddddddrRuurruuLdlUUUruLLrrrdddddrrrrrruuuuuuulllllllllldDDDDDuuuurrrrdddddrruLLLdlUUUUruLLrrrddddrrrrrruuuuuulllllllllldDDurrrrddRlddrruUlluuRlddrrrruulDDldRRRdrUUUUUdddddrruuuuuulLLLLLLLLrrrrrrrddlllddllluurRRRRdrUUdddddrruuuuuulLLLLLrrrrddlllddllUluRRRRRdrUUdddddrruuuuuulLLrddllllDldRRRRurDDldRRdrUUUUdddlluuulllllllDDldRRRRRRRRRdrUUdlluulllllDldRRRRRR
+
 },
 #endif
 
 #if 0
 {
 /*
-      ########### 
-      #         # 
-  ##### ####### ### 
-  #   $ $     $ $ # 
-### ### ##### # # ### 
-#     $ $     $ $   # 
-# #$#$# #####.# #$# # 
-# #     ......#   # # 
-# #$#$# #####.# #$# # 
-#   #   ...@#.# #   # 
-# #$#$###.###.###$# # 
-# #     #......   # # 
-# #$#$# #.##### #$# # 
-#       .......     # 
-### # # # ##### # # # 
-  # # $ $     $ $ # # 
-  # ### ##### # ### # 
-  #   $ $     $ $   # 
-  ##### ####### ##### 
-      #         # 
-      ###########
-*/
-
-37779,
-21,21,551,2308,
-"6=11#=|6=#9 #=|2=5# 7# 3#=|2=#3 $ $5 $ $ #=|3# 3# 5# # # 3#=|#5 $ $5 $ $3 #=|# #$#$# 5#.# #$# #=|# #5 6.#3 # #=|# #$#$# 5#.# #$# #=|#3 #3 3.@#.# #3 #=|# #$#$3#.3#.3#$# #=|# #5 #6.3 # #=|# #$#$# #.5# #$# #=|#7 7.5 #=|3# # # # 5# # # #=|2=# # $ $5 $ $ # #=|2=# 3# 5# # 3# #=|2=#3 $ $5 $ $3 #=|2=5# 7# 5#=|6=#9 #=|6=11#",
-},
-#endif
-
-#if 0
-{
-/*
-##### 
-#@  ############# 
-# # $ $ $ $ $ $ ## 
-# #              ## 
-# #  $ $ $ $ $ $  # 
-# # $ $ $ $ $ $ $ # 
-# $ # # # # # # # # 
-# # $ $ $ $ $ $ $ # 
-# $ # # # # # # # # 
-# # ############### 
-### $ $ $ $   $ $ # 
- #                # 
- # ....#####......# 
- # .#$.......###### 
- # ....#### ......# 
- # .        ......# 
- ##################
-*/
-
-37780,
-19,17,851,2308,
-"5#=|#@2 13#=|# # $ $ $ $ $ $ 2#=|# #14 2#=|# #2 $ $ $ $ $ $2 #=|# # $ $ $ $ $ $ $ #=|# $ # # # # # # # #=|# # $ $ $ $ $ $ $ #=|# $ # # # # # # # #=|# # 15#=|3# $ $ $ $3 $ $ #=|=#16 #=|=# 4.5#6.#=|=# .#$7.6#=|=# 4.4# 6.#=|=# .8 6.#=|=18#",
-},
-#endif
-
-#if 0
-{
-/*
-######################### 
-# #                   # # 
-#   $ # $ # @ # $ # $   # 
-# #  ### ### ### ###  # # 
-# ##$   $   $   $   $## # 
-# #  ###$### ###$###  # # 
-#  $  #   #   #   #  $  # 
-# #     $   $   $     # # 
-# ##$ #   #   #   # $## # 
-# #  ###$### ###$###  # # 
-#. $    $   $   $    $ .# 
-#.#  ###$### ###$###  #.# 
-#.##$ #   #   #   # $##.# 
-#.#     $   $   $     #.# 
-#.    #   #   #   #    .# 
-#.#.$###$###$###$###$.#.# 
-#.......................# 
-#########################
-*/
-
-37781,
-25,18,541,2309,
-"25#=|# #19 # #=|#3 $ # $ # @ # $ # $3 #=|# #2 3# 3# 3# 3#2 # #=|# 2#$3 $3 $3 $3 $2# #=|# #2 3#$3# 3#$3#2 # #=|#2 $2 #3 #3 #3 #2 $2 #=|# #5 $3 $3 $5 # #=|# 2#$ #3 #3 #3 # $2# #=|# #2 3#$3# 3#$3#2 # #=|#. $4 $3 $3 $4 $ .#=|#.#2 3#$3# 3#$3#2 #.#=|#.2#$ #3 #3 #3 # $2#.#=|#.#5 $3 $3 $5 #.#=|#.4 #3 #3 #3 #4 .#=|#.#.$3#$3#$3#$3#$.#.#=|#23.#=|25#",
-},
-#endif
-
-#if 0
-{
-/*
-#### 
-#  ##### 
-# $$   # 
-# $  $ # 
-#   $ .########## 
-## .## #.....#### 
- # ..# #. $ ..#.# 
- # $$# #. $ # . # 
- # $ $ ###$$ #. # 
- #   $$     .#.## 
- #### $$$#..#..### 
-    # $    ##.   # 
-    #@$.. . .  $ # 
-    #$$ ##. .  $ # 
-    # $ ### $$$$ # 
-    #   #       ## 
-    #############
-*/
-
-37782,
-18,17,627,2309,
-"4#=|#2 5#=|# 2$3 #=|# $2 $ #=|#3 $ .10#=|2# .2# #5.4#=|=# 2.# #. $ 2.#.#=|=# 2$# #. $ # . #=|=# $ $ 3#2$ #. #=|=#3 2$5 .#.2#=|=4# 3$#2.#2.3#=|4=# $4 2#.3 #=|4=#@$2. . .2 $ #=|4=#2$ 2#. .2 $ #=|4=# $ 3# 4$ #=|4=#3 #7 2#=|4=13#",
-},
-#endif
-
-#if 0
-{
-/*
-################## 
-#                ## 
-#  $ $ $ $  $  $  # 
-# $ $ ##   ## $   # 
-#  $ ## ##$## ##$ # 
-# $ ##   #    ##  # 
-#   #  $$$ ####  ## 
-# ### $       $ ## 
-# #    ##@# $   # 
-# #   #    # $  # 
-#    #      # $ ### 
-#  ### ###   #  $ # 
-# #......    #    # 
-##.....   #   # $ # 
-#......       ##  # 
-#......       ##  # 
+########### 
+#.......#@####### 
+#......# $ ##   # 
+#.....# $ $ # # # 
+#.....#$ $ $  $ ### 
+#.....# $ $ # #   # 
+#  ####  $  # $ # # 
+#       ### ### # # 
+#   #  $###     $ # 
+# #### $  $  ### ## 
+# $   $#   # #    # 
+#  #$#  #$## #  $ # 
+# ##  #      #$$  # 
+#### $     #  $ $ # 
+#     $ #  # #$$  # 
+#   ##   #   #    # 
 ###################
 */
 
-37783,
-19,17,700,2309,
-"18#=|#16 2#=|#2 $ $ $ $2 $2 $2 #=|# $ $ 2#3 2# $3 #=|#2 $ 2# 2#$2# 2#$ #=|# $ 2#3 #4 2#2 #=|#3 #2 3$ 4#2 2#=|# 3# $7 $ 2#=|# #4 2#@# $3 #=|# #3 #4 # $2 #=|#4 #6 # $ 3#=|#2 3# 3#3 #2 $ #=|# #6.4 #4 #=|2#5.3 #3 # $ #=|#6.7 2#2 #=|#6.7 2#2 #=|19#",
+38042,
+19,17,742,2485,
+"11#=|#7.#@7#=|#6.# $ 2#3 #=|#5.# $ $ # # #=|#5.#$ $ $2 $ 3#=|#5.# $ $ # #3 #=|#2 4#2 $2 # $ # #=|#7 3# 3# # #=|#3 #2 $3#5 $ #=|# 4# $2 $2 3# 2#=|# $3 $#3 # #4 #=|#2 #$#2 #$2# #2 $ #=|# 2#2 #6 #2$2 #=|4# $5 #2 $ $ #=|#5 $ #2 # #2$2 #=|#3 2#3 #3 #4 #=|19#",
+
+// solution: DlDurrDrDrruurrddddddlllldLdlluRRRurDDDDDullllldlLulDrdLLrrurrrrrurruuuuluulLrrddrddddlllllulUUddrdrrrrruuullldDDldRdrUluRllluluuRRlldlllLdlUUUrrurrrDulllldlddrrrrrdrddddlUluRRurruururrddddrRUdlluuuulldlddllulullllluurrurrrruRRlldllllldlddrrrDDuullluuUrrrrrrDulllllldddrrrrrUUruLLLLdlUUUluRurDldddrrrrddddrdrruuluLrdrddlluluUUruLLLLdlUUUluRRurDlldddldddrrrddrddlUUUdrdrruuluuuullllldddrrRRlddrdrruulUUUruLLLLdlUUUluRRRurDllldddrrrrrddrdrrurrurrruuuuuullddllululldlDDDDDldddrdrruuluLrdrddlluluUUruLLLLdlUUUluRRRlldddrrrrrddrdrruLLLrrdddlluluUUruLLLLdlUUUluRRldddrrrrrurruLdldddrrrrrurrruuuuuullddllululldldDDDDldRRdrruLLLrrdddlluluUUruLLLLdlUUUluRdddrrrrddddrddRurrddlUUUUruLLLrrdddlluluUUruLLLLdlUUUUluRRRllddddrrrrruuuururrdrdDDDDrdLLLLLrrdddlluluUUruLLLLdlUUUUluRRlddddrrrrrddrrrrrurrruuurrdddLLLLLrrruuuuuullddlldddDrdLLLLLrrdddlluluUUruLLLLdlUUUUluRddddrrrrruuuurDDrdLulDDDldRRdrruLLLrrdddlluluUUruLLLLdlUUUUUluRRRRllldddddrrrrrurrRluluuurrdrddDDDrdLLLLLrrdddlluluUUruLLLLdlUUUUUluRRRlldddddrrrrrurrrruLLLulDDDDldRRdrruLLLrrdddlluluUUruLLLLdlUUUUUluRRldddddrrrrrddrrrrrdddLLdlUUUruLLLrrdddlluluUUruLLLLdlUUUUUluRdddddrrrrruruuuurrdLulDDDldRRRurDDDrdLLLLLrrdddlluluUUruLLLLdlUUUUUUluRRRRRllllddddddrrrrruruuurDDldRRurDDDrdLLLLLrrdddlluluUUruLLLLdlUUUUUUluRRRRlllddddddrrrrrurruuRurDDDDDrdLLLLLrrdddlluluUUruLLLLdlUUUUUUluRRRllddddddldddrrrddddldlluRRRRRdrUluRRurrddlUUUUruLLLrrdddlluluUUruLLLLdlUUUUUUluRRlddddddrrrrrddrrdddrdddrrUUUUUUluRRRRuuurrdddLLLLLdlUUUluurDDDDrdLLLLLrrdddlluluUUruLLLLdlUUUUUUluRddddddrrrrrurrrruurruurrddLLLLulDDldRurDDDrdLLLLLrrdddlluluUUruLLLLdlUUUUUUdddddrrrrrurrrruurrddRluurrdDDuurrdddlLLLLdlUUUluurDDDDrdLLLLLrrdddlluluUUruLLLLdlUUUUUlddDDDrrurrrrddrrrrrurrrrddrddlDLLLrrrruuuluullllddddlldddrruUUUUUluuuuurrrrddddllLdlUUUluurDDDDrdLLLLLrrdddlluluUUruLLLLdlUUUUdddrrrrrddrrrrrddddrrrruUUUddddlllluuuuurrruuurrdddLLLLLdlUUUluurDDDDrdLLLLLrrdddlluluUUruLLLLdlUUUddrrrrrddrrrrrddddrrrrrddlllUdrrruullLLrrruuuuullllddddlldddrruUUUUUluuuuurrrrddddllLdlUUUluurDDDDrdLLLLLrrdddlluluUUruLLLLdlUUdrrrrdddlllllUUUUUUUUddddrdrrrrrddrrrrrddddrruRdrUUUUdlddldlluuuuurrruuurrdddLLLLLdlUUUluurDDDDrdLLLLLrrdddlluluUUruLLLLLdlUUUUUdddrdrrrrrddrrrrrurrrrddllDDrdLLrrruuuuullllddddlldddrruUUUUUluuuuurrrrddddllLdlUUUluurDDDDrdLLLLLrrdddlluluUUruLLLLLdlUUUUddrdrrrrrddrrrrrddddrrddrUUUUluRdrUUdlldddlluuuuurrruuurrdddLLLLLdlUUUluurDDDDrdLLLLLrrdddlluluUUruLLLLLdlUUUdrdrrrrrddrrrrrddddrrrddrUUUUUUdlldddlluuuuurrruuurrdddLLLLLdlUUUluurDDDDrdLLLLLrrdddlluluUUruLLLLLdlUU
+
 },
 #endif
 
 #if 0
 {
 /*
-              #### 
-  #############  # 
-  #   $  $ $ $ $ # 
-  #  #$#       # # 
-  # $  @  #### $ # 
-  #  ##$# #### # # 
-  # $# $  #  # $ # 
-  #  # $ # $ # # # 
-  # ## ## $ .#.# # 
-  #$    #$ #.#.# # 
-### ### $   ...  # 
-#  ...###### ###$# 
-# #.#.        ...## 
-#  .#.##### ####* # 
-##        $   ... # 
- #  ############### 
- ####
+################### 
+#...           ...# 
+#.#.# #.   .# #.#.# 
+#.$ $ #.....# $ $.# 
+# $  $ #...# $  $ # 
+# $ $ $ #.# $ $ $ # 
+# $ #  $ . $  # $ # 
+# $ # $ $ $ $ # $ # 
+# . # $  @  $ # . # 
+# $ # $ $ $ $ # $ # 
+# $ #  $ . $  # $ # 
+# $ $ $ #.# $ $ $ # 
+# $  $ #...# $  $ # 
+#.$ $ #.....# $ $.# 
+#.#.# #.   .# #.#.# 
+#...           ...# 
+###################
 */
 
-37784,
-19,17,451,2310,
-"14=4#=|2=13#2 #=|2=#3 $2 $ $ $ $ #=|2=#2 #$#7 # #=|2=# $2 @2 4# $ #=|2=#2 2#$# 4# # #=|2=# $# $2 #2 # $ #=|2=#2 # $ # $ # # #=|2=# 2# 2# $ .#.# #=|2=#$4 #$ #.#.# #=|3# 3# $3 3.2 #=|#2 3.6# 3#$#=|# #.#.8 3.2#=|#2 .#.5# 4#* #=|2#8 $3 3. #=|=#2 15#=|=4#",
-},
-#endif
+38043,
+19,17,790,2486,
+"19#=|#3.11 3.#=|#.#.# #.3 .# #.#.#=|#.$ $ #5.# $ $.#=|# $2 $ #3.# $2 $ #=|# $ $ $ #.# $ $ $ #=|# $ #2 $ . $2 # $ #=|# $ # $ $ $ $ # $ #=|# . # $2 @2 $ # . #=|# $ # $ $ $ $ # $ #=|# $ #2 $ . $2 # $ #=|# $ $ $ #.# $ $ $ #=|# $2 $ #3.# $2 $ #=|#.$ $ #5.# $ $.#=|#.#.# #.3 .# #.#.#=|#3.11 3.#=|19#",
 
-#if 0
-{
-/*
-     ###### 
-  ####    ## 
-  #     *  ## 
-###    * *  ##    #### 
-#   $ * * *  ##  ##  ## 
-#  $ * * * *  ## #    # 
-# $ * * * * *  # # .. # 
-#  * * $ $ * * ### .. # 
-#@# # * $ * * *   ... # 
-#  * * $ $ * ##### ..## 
-# $ * * ### *#   ##..# 
-#  $ * ## ## #    #### 
-#   $ ## ##  # 
-###   # ##  ## 
-  ### ###  ## 
-    #     ## 
-    #######
-*/
+// solution: lluLrdrrrruRldllddlLrrrRlllldLrurrrrdRluuulllluluRRlddrruUUUruulDDDDDDDDDDDrdLLruuuurruuuruLLrddlluUUUruulDDDDDDDDDDrdLdlUruuuuulluRurDDDDDDDldRRuuluurruuuLulDDDDDDDldRdrUUluuulluRurDDDDDrdLdlUruLruuurruLulDDDDDrdLdlUruuuuuuuulllluUUUddlluuurRRRRllldddrDldRurDldRRurDDDDDDDrddlluRdrUluRluuuuuuullulullldRRurDldRurDldRRurDDDDDDDrddlluRdrUluuuuuuuullulullluRluurrdDDldRurDldRurDldRRurDDDDDDuuuuuuuuuululllllllddRRRluurrdDDldRurDldRurDldRRurDDDDDuuuuullulllldddlluRdrUUUUdddlluuuurRRluurrdDDldRurDldRRRdrUUUluRurDldddllullllddllddRlddddddrruuuuuUUUUUUdddlluuuurRRluurrdDDldRurDldRRRdrUUUluurrdLulDuulllllllddddddddddddRlddrruUUUUUUUUUUdddlluuuurRRluurrdDDldRurDldRRRdrUUUUluRdrruulDldulullllllldddRRRurDldRurDldRRRdrUUUUluRRurDlllullllllldddddRdrUUruulldRRurDldRurDldRRRdrUUUUdddllullllddddddddddrrrrrrrrrrrruuuuuuuuuuuuuullllldLdlluurDullllllldddddddddRldddrruuUUUUUUruulldRRurDldRurDldRRRdrUUUUdddllullllddddddddddrrrrrrrrrrrruuuuuuuuuuuuuullllldLLulDulllllldddddddddddRdrUUUUUUUUruulldRRurDldRurDldRRRdrUUUUdddllululuuurrrdRRllulllllllddddRRRRurDldRRRdrUUUUdddllullllddddddddddrrrrrrrrrrrruuuuuuuuuuuuuullllldLLullllldddddddddddlUUUUUUluRRRRurDldRRRdrUUUddllullllddddddddddrruuLrddlluUUUUUUUUluRRRurDldRRRdrUUdlldddddldLLdlUUUUUUUluRRRurDldRurDldRRurDDDDullLUUruulldRRRdrUlldddddlUUUUruulldRurDDDDldRRlllDrdLLdlUUUUUUUluRRRurDldRRRllddddldLdlUUUUUUUUUrruurrrdrrurrrrrrrddLrdddddlluuuuUrruullllllldllullldddrddddlDDrdLLLLdlUUUUUUUUUrrrruurrrdrruLLLLLLLLrrrdddrdrdrdrrrruruUUUddrrurruulllLLLLLLLLLLLrrrrrrrrrrdddrruLdlUUdrrrruulllLLLLdlluRRRRRRRllddrrrrddddLdlUUUUdddrruuuulLLdlUUddddllldllulululuuurrrrrrrRRlddrrddddddRlddddddrruuuuuUUUUUUUUdlllldlDrdLulDrdLLLLLdlUUruLLLLLdlUUrrrruuurrrrrrrrddrrrrdddLruuullddDDDDDDDDDuuuuurrddddddlLLLLLLLLLLLLLLrrrrrrrrrrrrrrruuuuuLulDDDDDuuuurrdddddlLLLLLLLLLLLLLrrrrrrrrrrrrrruuuuuuuuuuLruulldDDDDDDDDDDuuuurrdddddlLLLLLLLLLLLLrrrrrrrrrrruuuuuuuuuuuurDDDDuulLLulDrdLulDrdLLLLLdlUUruLdlUUUUddrdrdrdrrrruruuuuulllllllLLrrrrrrrrrddrrddddddddddRlddrruUUUUUUUUUUUdddddddddLdlUUUUUUUruLLLulDrdLulDrdLLLLLdlUUruLLLLulDDDruurrrrdrdrrrrururrddddddRdrUUUUUUUUlldddddddddddlluuRlddrruUUUUUUUUruLLLulDrdLulDrdLLLLLulDDDDrdLulDrdLLulDDrrururururrrddrdRRdrruulDDullluluuRUUUluRRRurDDDDDDDDrdLLulDDurrrrddlllLLLLulldRRRRRRRlluuuluUUUUUluRRRurDDDDDDDDrdLLulDDuuluuulllllllddddddrrrrrrrRRluuuluurDldRRdrUUUUUUUruLLLulDrdLulDDDrdLLLLLLulDDDrdLLLLulDDrrrrururururrrrdrdRRRurDDDDuuulllluluurDDDldRRRRurDDuulllluuulullllulllDDDDDrdLLLLulDrrrrrurururrrruuurDDDDDldRRRRurD
 
-37785,
-23,17,485,2310,
-"5=6#=|2=4#4 2#=|2=#5 *2 2#=|3#4 * *2 2#4=4#=|#3 $ * * *2 2#2=2#2 2#=|#2 $ * * * *2 2#=#4 #=|# $ * * * * *2 #=# 2. #=|#2 * * $ $ * * 3# 2. #=|#@# # * $ * * *3 3. #=|#2 * * $ $ * 5# 2.2#=|# $ * * 3# *#3=2#2.#=|#2 $ * 2# 2# #4=4#=|#3 $ 2# 2#2 #=|3#3 # 2#2 2#=|2=3# 3#2 2#=|4=#5 2#=|4=7#",
-},
-#endif
-
-#if 0
-{
-/*
-######### 
-#       #       ####### 
-# $$$$$ #####   #.....# 
-# $   $ #   #   #. ##.# 
-# $   $$$$$ #   #.   .# 
-# $$$ $   $ #   #. ...# 
-#     $ # $ #   #. #### 
-##### $ #   #   #. # 
-    # $ #########. # 
-    # $   #######. # 
-    # $ # #######. # 
-    # $ #   #####. # 
-    # $ ### ...... ## 
-    # $     .### .  # 
-    # $ #### ### .  # 
-    # $        # . ## 
-    # @ ######     # 
-    ################
-*/
-
-37786,
-23,18,767,2310,
-"9#=|#7 #7=7#=|# 5$ 5#3=#5.#=|# $3 $ #3 #3=#. 2#.#=|# $3 5$ #3=#.3 .#=|# 3$ $3 $ #3=#. 3.#=|#5 $ # $ #3=#. 4#=|5# $ #3 #3=#. #=|4=# $ 9#. #=|4=# $3 7#. #=|4=# $ # 7#. #=|4=# $ #3 5#. #=|4=# $ 3# 6. 2#=|4=# $5 .3# .2 #=|4=# $ 4# 3# .2 #=|4=# $8 # . 2#=|4=# @ 6#5 #=|4=16#",
 },
 #endif
 

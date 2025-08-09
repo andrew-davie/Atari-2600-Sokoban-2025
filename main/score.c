@@ -159,11 +159,10 @@ void doubleSizeScore(int x, int y, int letter, int col) {
 	drawBigDigit(0x81, x + 1, y + DIGIT_SIZE, /*0x40 | */ col);
 }
 
-unsigned char *drawDecimal2(unsigned char *buffer, unsigned char *colour_buffer,
-                            unsigned int colour, int cvt) {
+char *drawDecimal2(char *buffer, unsigned char *colour_buffer, unsigned int colour, int cvt) {
 
 	int forced = 0;
-	for (int digit = 3; digit >= 0; digit--) {
+	for (int digit = 5; digit >= 0; digit--) {
 
 		int displayDigit = 0;
 		while (cvt >= pwr[digit]) {
@@ -197,7 +196,7 @@ void drawMoves() {
 void drawStatus() {
 
 	for (int i = 0; i < 10; i++) {
-		scoreLineNew[i] = LETTER('A'); // LETTER("  STATS   "[i]);
+		scoreLineNew[i] = LETTER("  STATS   "[i]);
 		scoreLineColour[i] = 1;
 	}
 }
@@ -300,14 +299,12 @@ void drawScore() {
 
 	case SCORELINE_UNDO: {
 
-		int p = 2;
+		int p = 3;
 		char *undo = "UNDO";
 		for (char *c = undo; *c; c++) {
 			scoreLineNew[p] = LETTER(*c);
-			scoreLineColour[p++] = RGB_RED;
+			scoreLineColour[p++] = (gameFrame & 8) ? RGB_RED : RGB_YELLOW;
 		}
-
-		drawDecimal2(scoreLineNew + 7, scoreLineColour + 7, RGB_RED, undoTop);
 
 	} break;
 

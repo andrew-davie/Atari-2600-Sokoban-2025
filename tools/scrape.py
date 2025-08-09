@@ -2,8 +2,7 @@ from bs4 import BeautifulSoup
 from bs4.element import NavigableString
 
 import requests
-import time
-
+import re
 
 def get_value(s, key):
     for line in s.splitlines():
@@ -43,19 +42,13 @@ def process_url(part, id, response):
     with open(f'soko_{part}.c', 'w') as f:
 
         if response.status_code == 200:
+
             html = response.text
-            #    print(html)
-
-            # Load the HTML file
-            # with open("scrape.html", "r", encoding="utf-8") as f:
-            #     html = f.read()
-
             soup = BeautifulSoup(html, "html.parser")
-
-            # Find all <div class="searchresult">
             results = soup.find_all("div", class_="searchresult")
 
             for div in results:
+
                 # Replace <img> tags based on filename
                 for img in div.find_all("img"):
                     src = img.get("src", "")
@@ -77,7 +70,6 @@ def process_url(part, id, response):
                     elif "with_man.png" in src:
                         replacement = "@"
 
-                    #        if replacement != "X":
                     img.replace_with(replacement)
 
                 # Conditionally replace <br> with "|" only if preceded by a "#"
@@ -89,9 +81,9 @@ def process_url(part, id, response):
                         br.decompose()  # Remove the <br> entirely
 
                 # Get final text output and insert carriage return before 'collection/set'
-                output = div.get_text()
-                output = output.replace("#=", "#|")
-                output = output.replace("Collection/Set", "\nCollection/Set")
+                # output = div.get_text()
+                # output = output.replace("#=", "#|")
+                # output = output.replace("Collection/Set", "\nCollection/Set")
                 # Print cleaned result
                 # print(output)
                 # print("-" * 40)
@@ -119,11 +111,57 @@ def process_url(part, id, response):
                     print('#if 0\n{\n/*\n' + visual + '\n*/\n', file=f)
 
                     print(f"{id},", file=f)
-                    id = id + 1
-                    count = count+1
 
                     print(f'{width},{height},{pushes},{moves},', file=f)
-                    print('"' + compress_repeats(clean) + '",\n},\n#endif\n', file=f)
+                    print('"' + compress_repeats(clean) + '",\n', file=f)
+
+                    # now grab the solution
+
+                    solution_url = None
+                    for solution in div.find_all("a"):
+                        if solution and solution.has_attr('href'):
+                            solution_url = f"https://sokoban-solver.com{solution['href']}"
+                            print(f"Solution URL {solution_url}")
+                    try:
+                        response = requests.get(solution_url) #.format(id))
+                        response.raise_for_status()  # Raise an error for HTTP 4xx/5xx
+                        if response.status_code == 200:
+
+                            html = response.text
+                            match = re.search(r'let\s+gId\s*=\s*(\d+)', html)
+                            if match:
+                                gid = int(match.group(1))
+                                print("Found gid:", gid)
+
+
+                                # the webservicegrid delivers the solution string...
+                                solution_url2 = f"https://sokoban-solver.com/webservicegrid.php?ID={gid}"
+                                response = requests.get(solution_url2)
+                                response.raise_for_status()
+
+                                if response.status_code == 200:
+                                    import xml.etree.ElementTree as ET
+                                    print(f'writing solution string')
+
+                                    # Load the XML (from string or file)
+                                    root = ET.fromstring(response.text)  # or ET.fromstring(xml_string) for a string
+                                    solution = root.find('.//SolverSolution')  # .// means look anywhere in the tree
+
+                                    if solution is not None:
+                                        print(f"// solution: {solution.text}\n", file=f)
+
+                                    print('},\n#endif\n', file=f, flush=True)
+
+                                else:
+                                    print('ERROR in solution searching')
+
+                    except requests.exceptions.RequestException as e:
+                        print(f"Stopping at {e}")
+                        break
+
+                id = id + 1
+                print(f'id={id}')
+                count = count+1
 
                     # print(len(compress_repeats(s)) * 100 / len(s))
                     # print(meta_data)
@@ -141,11 +179,9 @@ while True:
         response.raise_for_status()  # Raise an error for HTTP 4xx/5xx
         id = id + process_url(part, id, response)
         print(f'{part} complete: id={id}')
-        #time.sleep(10)
         part = part + 1
 
-
     except requests.exceptions.RequestException as e:
-        print(f"Stopping at page {i}: {e}")
+        print(f"Stopping at page: {e}")
         break
 

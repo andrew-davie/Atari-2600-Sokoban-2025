@@ -863,7 +863,7 @@ static const unsigned char char_box_correct[CHAR_HEIGHT] = {
     0b00011111,
 };
 
-static unsigned char char_box_locked2[CHAR_HEIGHT] = {
+static const unsigned char char_box_locked2[CHAR_HEIGHT] = {
 
     0b11111,     /*0*/
     0b11111,

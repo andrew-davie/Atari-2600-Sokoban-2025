@@ -55,10 +55,6 @@ bool triggerNextLife;
 int pushingMoves;
 int moves;
 
-int showRoomCounter;
-
-// int trig;
-
 unsigned char *boxLocation;
 
 bool lifeInit;
@@ -280,8 +276,6 @@ void roomUnpack(int roomNumber, int center) {
 	// Decode the room data
 	// First dummy-unpack to get dimensions of room, then center and unpack
 
-	showRoomCounter = 100;
-
 	unpackRoom(roomNumber);
 }
 
@@ -387,16 +381,21 @@ void checkExitWarning() {
 
 			if (!waitRelease) {
 
-				if (scoreCycle != SCORELINE_UNDO) {
-					scoreCycle = SCORELINE_UNDO;
-					displayMode = DISPLAY_NORMAL;
-					startAnimation(animationList[ANIM_PLAYER], ID_Undo);
+				if (findBox(0, 0)) {
 
-				} else {
+					if (scoreCycle != SCORELINE_UNDO) {
+						scoreCycle = SCORELINE_UNDO;
+						displayMode = DISPLAY_NORMAL;
+						startAnimation(animationList[ANIM_PLAYER], ID_Undo);
 
-					scoreCycle = SCORELINE_TIME;
-					hackStartAnimation(animationList[ANIM_PLAYER], ID_Stand);
-				}
+					} else {
+
+						scoreCycle = SCORELINE_TIME;
+						hackStartAnimation(animationList[ANIM_PLAYER], ID_Stand);
+					}
+
+				} else
+					showNotification("NO UNDO", 50);
 
 				waitRelease = true;
 				triggerPressCounter = 0;
@@ -519,24 +518,24 @@ void initGameDataStreams() {
 #endif
 }
 
-void bigStuff2(int amount) {
+// void bigStuff2(int amount) {
 
-	unsigned char decimalString[6];
-	*drawDecimal2(decimalString, 0, 0, amount) = 0xFF;
+// 	unsigned char decimalString[6];
+// 	*drawDecimal2(decimalString, 0, 0, amount) = 0xFF;
 
-	int digitPos = 2;
-	for (int digit = 0; decimalString[digit] <= 9; digit++, digitPos -= 2) {
+// 	int digitPos = 2;
+// 	for (int digit = 0; decimalString[digit] <= 9; digit++, digitPos -= 2) {
 
-		int y = 129;
-		doubleSizeScore(digitPos, y - 3, decimalString[digit], 7);
-		doubleSizeScore(digitPos, y + 3, decimalString[digit], 0);
-		doubleSizeScore(digitPos, y, decimalString[digit], 6);
-	}
-}
+// 		int y = 129;
+// 		doubleSizeScore(digitPos, y - 3, decimalString[digit], 7);
+// 		doubleSizeScore(digitPos, y + 3, decimalString[digit], 0);
+// 		doubleSizeScore(digitPos, y, decimalString[digit], 6);
+// 	}
+// }
 
 void bigStuff(int amount) {
 
-	unsigned char decimalString[6];
+	char decimalString[6];
 	*drawDecimal2(decimalString, 0, 0, amount) = 0xFF;
 
 	int digitPos = amount >= 10 ? amount >= 100 ? amount >= 1000 ? 7 : 6 : 5 : 4;
@@ -839,37 +838,34 @@ void drawComplete() { // 32k
 	switch (completePhase) {
 
 	case 0:
-		drawWord("LEGEND", 42, true, 6);
+		drawWord("COMPLETE", 42, true, 6);
 
 		if (!roomStats[Room - 1].pushCount || pushingMoves < roomStats[Room - 1].pushCount) {
-			roomStats[Room - 1] = (struct stats){12345, pushingMoves, moves};
+			roomStats[Room - 1] = (struct stats){pushingMoves, moves};
 		}
-		drawWord("BEST", 80, true, 6);
+		drawWord("NEW BEST", 80, true, 6);
 
 		break;
 
 	default:
 	case 1: {
 
-		drawWord("1:23:12", 40, false, 1);
+		char rm[] = "ROOM     ";
+		binaryToDecimalPrint(rm + 5, Room);
+		drawWord(rm, 30, false, 2);
 
-		char moveCount[] = "         ";
-		binaryToDecimalPrint(moveCount + 4, pushingMoves);
-		removeLeadingZero(moveCount + 4);
-		drawWord(moveCount, 80 - 5, true, 1);
-		drawWord("WALK    ", 80, false, 6);
+		char sroom[] = "ID     ";
+		binaryToDecimalPrint(sroom + 3, room[Room - 1].id);
+		drawWord(sroom, 55, false, 2);
 
-		char pushCount[] = "         ";
-		binaryToDecimalPrint(pushCount + 4, 123);
-		removeLeadingZero(pushCount + 4);
-		drawWord(pushCount, 110 - 5, true, 1);
-		drawWord("PUSH    ", 110, false, 6);
+		char swk[] = "WALK       ";
+		binaryToDecimalPrint(swk + 5, moves);
+		drawWord(swk, 125, false, 6);
 
-		char roomCount[] = "         ";
-		binaryToDecimalPrint(roomCount + 4, Room - 1);
-		removeLeadingZero(roomCount + 4);
-		drawWord(roomCount, 160 - 5, true, 1);
-		drawWord("ROOM    ", 160, false, 6);
+		char sps[] = "PUSH       ";
+		binaryToDecimalPrint(sps + 5, pushingMoves);
+		drawWord(sps, 100, false, 6);
+
 	} break;
 	}
 
@@ -928,20 +924,10 @@ void GameVerticalBlank() { // ~7500
 					time60ths -= 0xC4; // magic!  - (-256+60)
 			}
 
-			if (displayMode == DISPLAY_NORMAL) {
-				if (showRoomCounter) {
-					drawWord("ROOM", 40, true, 6);
-					bigStuff(Room);
-					showRoomCounter--;
-				}
-
-			}
-
-			else {
+			if (displayMode != DISPLAY_NORMAL)
 				drawHalfScreen(1);
-			}
 
-			//			drawScore();
+			drawScore();
 		}
 
 		if (!pillCount) {
@@ -974,6 +960,10 @@ void GameVerticalBlank() { // ~7500
 			fireworks[i].y += fireworks[i].dY;
 
 			if (displayMode == DISPLAY_NORMAL) {
+
+				// if (fireworks[i].y < 0)
+				// 	FLASH(0x44, 2); // tmp
+
 				int x = (fireworks[i].x >> 8) - (scrollX[DISPLAY_NORMAL] >> SHIFT_SCROLLX);
 				int y = (fireworks[i].y >> 8) - (scrollY[DISPLAY_NORMAL] >> SHIFT_SCROLLY);
 
@@ -1023,16 +1013,20 @@ int addFirework(int x, int y) {
 	return -1;
 }
 
+void setLocalPixel(int x, int y, int colour, int age, int pos) {
+	fireworks[pos].x = x << 8;
+	fireworks[pos].y = y << 8;
+	fireworks[pos].dX = 0;
+	fireworks[pos].dY = 0;
+	fireworks[pos].age = age;
+	fireworks[pos].colour = colour;
+}
+
 int addLocalPixel(int x, int y, int colour, int age) {
 
 	for (int i = 0; i < SPLATS; i++)
 		if (!fireworks[i].age) {
-			fireworks[i].x = x << 8;
-			fireworks[i].y = y << 8;
-			fireworks[i].dX = 0;
-			fireworks[i].dY = 0;
-			fireworks[i].age = age;
-			fireworks[i].colour = colour;
+			setLocalPixel(x, y, colour, age, i);
 			return i;
 		}
 	return -1;
@@ -1065,8 +1059,8 @@ void pulse(unsigned char *cell, int baseChar) {
 void drawNotification() {
 	if (notifyVisible) {
 		notifyVisible--;
-		if (displayMode != DISPLAY_OVERVIEW)
-			drawWord(notifyString, notifyY, true, 6);
+		//		if (displayMode != DISPLAY_OVERVIEW)
+		drawWord(notifyString, notifyY, true, 6);
 	}
 }
 
@@ -1081,27 +1075,22 @@ bool processType() {
 	switch (type) {
 
 	case TYPE_BOX_UNDO:
-		if (!*(Animate[TYPE_BOX_UNDO] + 1))
+		if (!AnimCount[TYPE_BOX_UNDO])
 			*me = CH_BOX;
 		break;
 
-	case TYPE_BOX_UNDO_CORRECT:
-		if (!*(Animate[TYPE_BOX_UNDO_CORRECT] + 1)) {
+	case TYPE_BOX_UNDO_CORRECT: //
+		if (!AnimCount[TYPE_BOX_UNDO_CORRECT])
 			*me = CH_BOX_LOCKED;
-		}
-
-		//		for (int i = 0; i < 3; i++)
-		addFirework(boardCol, boardRow);
 		break;
 
 	case TYPE_BOX_CORRECT: {
 
-		if (!*(Animate[TYPE_BOX_CORRECT] + 1)) {
+		if (!AnimCount[TYPE_BOX_CORRECT])
 			*me = CH_BOX_LOCKED;
-		}
 
 		//		for (int i = 0; i < 3; i++)
-		addFirework(boardCol, boardRow);
+		// addFirework(boardCol, boardRow);
 
 		// if (selectResetDelay > DEAD_RESTART_COUCH ||
 		//     (selectResetDelay > DEAD_RESTART && GAME_RESET_PRESSED &&

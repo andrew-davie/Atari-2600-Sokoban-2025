@@ -41,6 +41,8 @@ bool findBox(int *x, int *y) {
 
 		if (found) {
 
+			//			FLASH(0xD2, 2);
+
 			*x += 2 * offX[dir]; //((m >> 10) & 0x3F) + 2 * offX[dir];
 			*y += 2 * offY[dir]; //((m >> 3) & 0x7F) + 2 *offY[dir];
 		}
@@ -51,12 +53,13 @@ bool findBox(int *x, int *y) {
 
 void highlightUndo() {
 
-	if (scoreCycle == SCORELINE_UNDO) {
+	if (!undoing && scoreCycle == SCORELINE_UNDO) {
 
 		frameAdjustX += 2 * ((frameAdjustX < 0) - (frameAdjustX > 0));
 		frameAdjustY += ((frameAdjustY < 0) - (frameAdjustY > 0)) * 3;
 
 		int boxX, boxY;
+
 		if (findBox(&boxX, &boxY)) {
 
 			typedef struct {
@@ -64,7 +67,7 @@ void highlightUndo() {
 				signed char y;
 			} Point;
 
-			const Point circlePoints[] = {
+			static const Point circlePoints[] = {
 			    {4, 0},   {4, 1},   {4, 2},   {4, 3},   {3, 4},   {3, 5},   {3, 6},   {2, 6},
 			    {2, 7},   {1, 8},   {0, 8},   {-1, 8},  {-2, 7},  {-2, 6},  {-3, 6},  {-3, 5},
 			    {-3, 4},  {-4, 3},  {-4, 2},  {-4, 1},  {-4, 0},  {-4, -1}, {-4, -2}, {-4, -3},
@@ -73,18 +76,57 @@ void highlightUndo() {
 			};
 
 			// Calculate trixel coordinates
-			// x: (char blocks * pixels per char block) + centering + (direction * pixel offset) / 4
-			// pixels per PF y: char blocks * trixels per char + centering + pixel offset converted
-			// to trixels (i.e. /3)
+			// x: (char blocks * pixels per char block) + centering + (direction * pixel offset)
+			// / 4 pixels per PF y: char blocks * tr8xels per char + centering + pixel offset
+			// converted to trixels (i.e. /3)
 
-			int x = (boxX * PIXELS_PER_CHAR + 2 + ((manFaceDirection * frameAdjustX) >> 2));
-			int y = ((boxY * (CHAR_HEIGHT / 3) + 4 - ((frameAdjustY * (0X100 / 3)) >> 8)));
+			int x = (boxX * PIXELS_PER_CHAR + 2); // + ((manFaceDirection * frameAdjustX) >> 2));
+			int y = ((boxY * (CHAR_HEIGHT / 3) + 4)); // - ((frameAdjustY * (0X100 / 3)) >> 8)));
 
-			static int cp = 0;
-			if (++cp >= (int)(sizeof(circlePoints) / sizeof(circlePoints[0])))
-				cp = 0;
+			// if (y < 0)
+			// 	FLASH(0x99, 9);
 
-			addLocalPixel(x + circlePoints[cp].x, y + circlePoints[cp].y, 6, 12);
+			for (int i = 1; i < SPLATS; i++)
+				fireworks[i].age = 0;
+
+			// 			static int cp = 0;
+			// 			static int cpc = 1;
+			// 			static int cpcFrac = 0;
+			// 			static int cpCount = 0;
+
+			// #define SPEED_CPC 192
+
+			// 			static int cpBase = 1;
+
+			// 			cpcFrac += SPEED_CPC;
+			// 			if (cpcFrac >= 256) {
+			// 				cpcFrac = 0;
+			// 				if (++cpCount >= 8) {
+			// 					cpCount = 0;
+			// 					if (++cpBase >= 5)
+			// 						cpBase = 0;
+			// 				}
+			// 			}
+
+			// 			for (int i = 0; i < 40; i++) {
+
+			// 				if (++cpCount >= 8) {
+			// 					cpCount = 0;
+			// 					if (++cpBase >= 5)
+			// 						cpBase = 0;
+			// 				}
+
+			// 				addLocalPixel(x + circlePoints[i].x, y + circlePoints[i].y, cpBase, 2);
+			// 			}
+
+			static const char cplay[] = {7, 7, 7, 7, 7, 7, 0, 0, 0, 7, 7, 7, 7, 7, 7, 0, 0, 0,
+			                             7, 7, 7, 7, 7, 7, 6, 6, 6, 6, 6, 6, 0, 0, 0, 0, 0, 0};
+			static char col = 0;
+			if (++col >= sizeof(cplay) / sizeof(cplay[0]))
+				col = 0;
+
+			for (int i = 0; i < 39; i++)
+				setLocalPixel(x + circlePoints[i].x, y + circlePoints[i].y, cplay[col], 2, i);
 		}
 	}
 }
@@ -132,8 +174,8 @@ bool undoLastMove() {
 		static const unsigned char mfd[] = {-1, 1, 1, 1};
 		manFaceDirection = mfd[dir];
 
-		frameAdjustX = manFaceDirection * (oldX - manX) * PIXELS_PER_CHAR * 4;
-		frameAdjustY = (manY - oldY) * CHAR_HEIGHT;
+		// frameAdjustX = manFaceDirection * (oldX - manX) * PIXELS_PER_CHAR * 4;
+		// frameAdjustY = (manY - oldY) * CHAR_HEIGHT;
 
 		unsigned char *from = ADDRESS_OF(manY) + manX + dirOffset[dir];
 		unsigned char *to = from + dirOffset[dir];
@@ -169,10 +211,10 @@ bool undoLastMove() {
 			if (Attribute[typeFrom] & ATT_TARGETLIKE) {
 				pillCount--;
 				*from = CH_BOX_UNDO_CORRECT;
-				startCharAnimation(TYPE_BOX_UNDO_CORRECT, AnimateBase[TYPE_BOX_UNDO_CORRECT]);
+				startCharAnimation(TYPE_BOX_UNDO_CORRECT, AnimateBase[TYPE_BOX_UNDO_CORRECT] + 2);
 			} else {
 				*from = CH_BOX_UNDO;
-				startCharAnimation(TYPE_BOX_UNDO, AnimateBase[TYPE_BOX_UNDO]);
+				startCharAnimation(TYPE_BOX_UNDO, AnimateBase[TYPE_BOX_UNDO] + 2);
 			}
 		}
 

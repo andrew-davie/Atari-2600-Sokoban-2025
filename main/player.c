@@ -2122,8 +2122,11 @@ void adjustBoxPosition(int xOffset, int yOffset) {
 		if (!pillCount) {
 
 			FLASH(0xD4, 10);
-			if (Room < getRoomCount())
+			if (Room < getRoomCount()) {
 				Room++;
+				extern int triggerRemote;
+				triggerRemote = 30;
+			}
 		}
 	}
 

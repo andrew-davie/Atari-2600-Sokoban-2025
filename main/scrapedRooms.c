@@ -1,5 +1,10 @@
 // clang-format off
 
+
+const struct roomDef room[] = {
+
+// The room string may be compressed or uncompressed. Use tools/compressroom.py to compress
+
 #include "../tools/soko_1.c"
 #include "../tools/soko_2.c"
 #include "../tools/soko_3.c"
@@ -299,7 +304,7 @@
 #include "../tools/soko_297.c"
 #include "../tools/soko_298.c"
 #include "../tools/soko_299.c"
-#include "../tools/soko_300.c"
+//#include "../tools/soko_300.c"
 #include "../tools/soko_301.c"
 #include "../tools/soko_302.c"
 #include "../tools/soko_303.c"
@@ -815,6 +820,7 @@
 #include "../tools/soko_813.c"
 #include "../tools/soko_814.c"
 
+};
 // clang-format on
 
 // EOF

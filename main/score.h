@@ -6,7 +6,7 @@
 	200 /* # frames to show changed scoreline item before reverting to defaults                    \
 	     */
 
-#define DIGIT_SPACE (DIGIT_ALPHABET + 26)
+#define DIGIT_SPACE 10
 // #define DIGIT_LIVES     10
 #define DIGIT_EXCLAMATION 11
 #define DIGIT_PLUS 12
@@ -47,7 +47,7 @@ int getScoreCycle();
 void setScore(int score);
 void drawTime2(int value);
 void doubleSizeScore(int x, int y, int letter, int col);
-unsigned char *drawDecimal2(unsigned char *buffer, unsigned char *colour_buffer,
+char *drawDecimal2(char *buffer, unsigned char *colour_buffer,
                             unsigned int colour, int cvt);
 void initScore();
 

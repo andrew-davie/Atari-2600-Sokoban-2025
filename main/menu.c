@@ -1,8 +1,6 @@
-// clang-format off
 
 #include <limits.h>
 
-#include "attribute.h"
 #include "defines.h"
 #include "defines_cdfj.h"
 
@@ -10,55 +8,41 @@
 #include "menu.h"
 
 #include "animations.h"
-#include "atarivox.h"
 #include "bitpatterns.h"
-#include "characterset.h"
 #include "colour.h"
 #include "drawscreen.h"
 #include "joystick.h"
-#include "player.h"
-#include "random.h"
 #include "man.h"
+#include "random.h"
+#include "rooms.h"
 #include "score.h"
 #include "sound.h"
-#include "rooms.h"
-
 
 #if ENABLE_SERIAL_NUMBER
 int halfSize(int x, int y, int letter, bool render);
 #endif
 
-#define LUMSHIFT 1              /* speed of title pulsing -- 0 = fast, 1 is slower, etc. */
+#define LUMSHIFT 1 /* speed of title pulsing -- 0 = fast, 1 is slower, etc. */
 
 unsigned char palicc[8][3] = {
 
-{0xf8, 0x78, 0x38},
-{0x28, 0xa8, 0x18},
-{0x38, 0x18, 0x78},
-{0x58, 0x98, 0xe8},
-{0x78, 0xb8, 0x18},
-{0x28, 0x98, 0xc8},
-{0x68, 0x98, 0xe8},
-{0x08, 0xa8, 0xf8},
+    {0xf8, 0x78, 0x38}, {0x28, 0xa8, 0x18}, {0x38, 0x18, 0x78}, {0x58, 0x98, 0xe8},
+    {0x78, 0xb8, 0x18}, {0x28, 0x98, 0xc8}, {0x68, 0x98, 0xe8}, {0x08, 0xa8, 0xf8},
 };
 
 int staticx = 0;
-int staticy;
+int wave;
 
 void initCopyrightScreen();
 void resetMode();
 int triggerRemote = 0;
+bool displayRoomInfo;
 
-// static int sin = 0;
 int lastRoom = -1;
 
-#include "../iCC_title.c"
-#include "../iCC_title2.c"
-
-const unsigned char iCC_title_colour[] = {
-
-    0x36, 0x96, 0xD8,
-};
+#include "iCC_title.c"
+#include "iCC_title2.c"
+#include "iCC_title_arm1.c"
 
 // clang-format on
 
@@ -402,34 +386,67 @@ void setTitleMarqueeColours() {
 	}
 }
 
-// int showAuthor;
-
-void proportionalText(char *s, int x, int y) {
+int proportionalText(char *s, int x, int y, bool render) {
 	char ch;
 	while ((ch = *s++)) {
 		if (ch == ' ')
 			x += 2;
 		else
-			x += halfSize(x, y, ch, true);
+			x += halfSize(x, y, ch, render);
 	}
+	return x;
 }
 
 void binaryToDecimalPrint(char *dest, int value) {
 
 #define DIG 4
+	bool leading0 = true;
 	for (int digit = DIG; digit >= 0; digit--) {
-		dest[DIG - digit] = '0';
-		while (value >= pwr[digit]) {
-			dest[DIG - digit]++;
-			value -= pwr[digit];
+
+		*dest = '0';
+		*(dest + 1) = 0;
+
+		if (value >= pwr[digit]) {
+			leading0 = false;
+			while (value >= pwr[digit]) {
+				(*dest)++;
+				value -= pwr[digit];
+			}
 		}
+
+		if (!leading0)
+			dest++;
 	}
 }
-
 void removeLeadingZero(char *p) {
 
 	while (*p == '0' && *(p + 1))
 		*p++ = ' ';
+}
+
+void centerText(char *text, int y) {
+	int width = proportionalText(text, 0, 0, false);
+	proportionalText(text, 24 - (width >> 1), y, true);
+}
+
+void displayStats(int push, int move) {
+
+	char pno[] = "     ";
+
+	centerText("PUSHES", 125 - 8);
+	binaryToDecimalPrint(pno, push);
+	centerText(pno, 137 - 8);
+
+	centerText("MOVES", 150 - 8);
+	binaryToDecimalPrint(pno, move);
+	centerText(pno, 162 - 8);
+}
+
+void clearStatusBar() {
+	unsigned char *info = RAM + _BUF_MENU_GRP0A + 58;
+	for (int i = 0; i < 6; i++)
+		for (int j = 0; j < 22; j++)
+			*(info + i * _ARENA_SCANLINES + j) = 0;
 }
 
 void handleMenuScreen() {
@@ -439,46 +456,80 @@ void handleMenuScreen() {
 
 	//		drawSmallString(y, smallWord[sline], sline == menuLine ? 0x8 : 0x98);
 
-	proportionalText("VERSION", 8, 58);
+	// 	if (startup > 250) {
 
-#include "date2.txt"
+	// #define ZEROPAGE_HOMEBREW 1
 
-	proportionalText((char *)name, 5, 70);
+	// #if ZEROPAGE_HOMEBREW
 
-	if (!startup) {
+	// 		// centerText("ZEROPAGE", 58);
+	// 		// centerText("HOMEBREW", 70);
 
-		binaryToDecimalPrint(showRoom, room[Room].id);
-		proportionalText(showRoom, 3, 112);
+	// #else
 
-		if (roomStats[Room].moveCount && (frame & (24 * 4))) {
+	// 		centerText("VERSION", 58);
 
-			// Index = extra pushes, Value = score %
-			const unsigned char score_table[21] = {100, 95, 90, 85, 80, 75, 70, 65, 60, 55, 50,
-			                                       45,  40, 35, 30, 25, 20, 15, 10, 5,  0};
+	// #include "date2.txt"
 
-			int over = pushingMoves - room[Room].pushes;
-			over = (over <= 0) ? 100 : (over >= 20) ? 0 : score_table[over];
-			char overt[] = "     @";
-			binaryToDecimalPrint(overt, over);
-			removeLeadingZero(overt);
-			proportionalText(overt, 28, 112);
+	// 		centerText((char *)name, 70);
+	// #endif
+	// 	}
 
-			proportionalText("21?23?45", 8, 112 + 12 + 4);
+	// 	else
 
-			char wno[] = "     ";
-			binaryToDecimalPrint(wno, roomStats[Room].moveCount);
-			removeLeadingZero(wno);
-			proportionalText(wno, 27, 112 + 24 + 12 + 8);
-			proportionalText("WALK", 3, 112 + 24 + 12 + 8);
+	// if (startup) {
 
-			char pno[] = "     ";
-			binaryToDecimalPrint(pno, roomStats[Room].pushCount);
-			removeLeadingZero(pno);
-			proportionalText(pno, 27, 112 + 24 + 8);
-			proportionalText("PUSH", 3, 112 + 24 + 8);
+	// 	clearStatusBar();
+	// 	// if (frame & 4) {
+	// 	centerText("EASY PEASY", 58);
+	// 	centerText("VERSION", 70);
+	// 	// }
 
-			// char overt2[] = "100@";
-			// drawString(1, 140, overt2, 7);
+	if (startup == 1) {
+		triggerRemote = 50;
+		//		wave = 0;
+	}
+
+	if (startup)
+		startup--;
+
+	else {
+
+		if (triggerRemote > -50) {
+			char channel[] = "    ";
+			binaryToDecimalPrint(channel, Room + 1);
+			proportionalText(channel, 3, 112, true);
+		}
+
+		extern int wave;
+
+		if (displayRoomInfo /*&& wave < 0*/) {
+
+			displayRoomInfo = false;
+
+			clearStatusBar();
+
+			char sroom[] = "ROOM@    ";
+			binaryToDecimalPrint(sroom + 6, Room + 1);
+			centerText(sroom, 58);
+
+			char rid[] = "ID@      ";
+			binaryToDecimalPrint(rid + 4, room[Room].id);
+			centerText(rid, 70);
+		}
+
+		int negJoy = (SWCHA >> 4) ^ 0xF;
+		int dir = yInc[negJoy];
+		if (dir) {
+			displayStats(room[Room].pushes, room[Room].moves);
+			triggerRemote = -50;
+			//			wave = 0;
+		}
+
+		else {
+
+			if (roomStats[Room].moveCount && (frame & (24 * 2)))
+				displayStats(pushingMoves, moves);
 		}
 	}
 	// bigStuff2(23);
@@ -552,6 +603,8 @@ void initKernel(int kernel) {
 			RGB[i] = 0x46;
 
 		lastRoom = -1;
+		wave = 150;
+		//		displayRoomInfo = true;
 
 		// if (rageQuit) {
 
@@ -639,15 +692,13 @@ void MenuOverscan() {
 
 		if (lastRoom != Room) {
 			lastRoom = Room;
-			staticx = 6000;
 			roomUnpack(Room, true);
+			displayRoomInfo = true;
 		}
-
-		staticy = !rangeRandom(staticx >> 9);
 
 		initIconPalette();
 
-		drawIconScreen(0, 12, staticy);
+		drawIconScreen(0, 12);
 		// handleMenuScreen();
 
 		break;
@@ -689,7 +740,7 @@ void drawICCScreen(const unsigned char *icc) {
 	//	static int col = 0;
 	static int cdelay = 0;
 
-	if (--cdelay < 0) {
+	if (!roller && --cdelay < 0) {
 		micp = menuIconPalette;
 		menuIconPalette = rangeRandom(sizeof(palicc) / sizeof(palicc[0]));
 		initIconPalette();
@@ -736,13 +787,13 @@ void blink() {
 		}
 	}
 }
-void drawRemoteArm(const unsigned char (*icc)[2][51]) {
+void drawRemoteArm(const unsigned char (*icc)[51]) {
 
 	for (int col = 0; col < 2; col++) {
 
 		int roll = roller;
 
-		const unsigned char(*iccp) = (*icc)[col];
+		const unsigned char *iccp = icc[col];
 		unsigned char *pf =
 		    RAM + _BUF_MENU_PF1_LEFT + (col * _ARENA_SCANLINES) + (37 * 3); // * col + 37 * 3;
 
@@ -757,7 +808,24 @@ void drawRemoteArm(const unsigned char (*icc)[2][51]) {
 	}
 }
 
+void drawArmWaving(int wave) {
+
+	int roll = roller;
+
+	unsigned char *pf = RAM + _BUF_MENU_PF1_LEFT + _ARENA_SCANLINES + (26 * 3);
+
+	for (int line = 0; line < 25; line++) {
+		for (int i = 0; i < 3; i++) {
+			*pf++ = line < 4 ? iCC_Hand[wave][line * 3 + roll] : iCC_Arm[line * 3 + roll];
+			if (++roll > 2)
+				roll = 0;
+		}
+	}
+}
+
 void handleMenuVB() {
+
+	static int whatToSay = 0;
 
 	if (!startup && !waitRelease && !(INPT4 & 0x80)) {
 
@@ -775,17 +843,72 @@ void handleMenuVB() {
 		waitRelease = true;
 	}
 
-	if (triggerRemote)
-		--triggerRemote;
-
 	drawICCScreen(iCC_title);
-	drawRemoteArm(&iCC_remoteArm[triggerRemote ? 0 : 1]);
+	if (--triggerRemote > 0) {
+		wave = 0;
+		drawRemoteArm(iCC_remoteArm);
+	}
+
+	// if (!roller)
+	// 	--wave;
+
+	// static struct words {
+	// 	char *line1;
+	// 	char *line2;
+	// } wts[] = {
+	//     {"HELLO", "EVERYONE>"},
+
+	// {"STRATEGY?", "ADORABLE>"},
+	// // {"SHOW THE ROOM", "WHO IS BOSS"},
+	// {"CALM CLEAR", "CLEVER"},
+	// {"TRUST YOUR", "THINKING"},
+	// {"OVERTHINK", "EVERYTHING"},
+	// // {"SOLVED IT?", "JUST KIDDING"},
+	// {"SMART PLAN", "SAID NO ONE"},
+	// {"WALKED IN", "BRAIN LEFT"},
+	// {"PLAN WORSE", "THAN LAST"},
+	// {"WALLS LOVE", "YOUR FACE"},
+	// {"WOW STILL", "NOT SOLVED"},
+	// {"EPIC NOPE", "MOMENT"},
+	// {"TRIED HARD", "DID WORSE"},
+	// {"SKILL", "NOT FOUND"},
+	// {"TRY HARD", "FAIL HARD"},
+	// {"LOGIC LEFT", "YOU STAYED"},
+	// {"THIS IS", "YOUR BEST?"},
+	// {"MAYBE", "THINK FIRST"},
+	// {"TRY AGAIN", "AMUSE ME"},
+	// {"TOO HARD", "FOR YOU"},
+	// {"THINK PLAN", "PUSH WIN"},
+	// {"ONE BOX", "AT A TIME"},
+	// {"YOU GOT", "THIS"},
+	// {"THINK FIRST", "THEN PUSH"},
+	// };
+
+	if (startup && !wave)
+		clearStatusBar();
+
+	if ((triggerRemote < -20 && --wave > 0)) {
+		drawArmWaving((wave >> 4) & 1);
+
+		if (startup && wave) {
+			centerText("HELLO", 58);     // wts[whatToSay].line1, 58);
+			centerText("EVERYONE>", 70); // wts[whatToSay].line2, 70);
+		}
+	}
+
+	if (wave < -20 && !rangeRandom(1500)) {
+		wave = 150;
+		// 	whatToSay++;
+		// 	if (whatToSay >= (sizeof(wts) / sizeof(wts[0])))
+		// 		whatToSay = 0;
+	}
+
 	blink();
 
 	setTitleMarqueeColours();
 
 	roller--;
-	drawIconScreen(12, 22, staticy);
+	drawIconScreen(12, 22);
 	handleMenuScreen();
 
 	// #if ENABLE_SERIAL_NUMBER
@@ -807,30 +930,34 @@ void handleMenuVB() {
 	// Pulse/colour-change SOKOBAN marquee
 
 	static int lum = 0;
-	static const unsigned char lumOffset[] = {
-	    0, 0, 2, 4, 6, 8, 8, 8, 8, 8, 8, 8, 6, 4, 2, 0, 2, 4, 6, 6, 4, 2, 0, 2, 4, 6, 6, 4, 2,
-	};
+	static const signed char lumOffset[] = {-1, 0, 2, 4, 6, 8, 8, 8, 8, 6, 4, 2, 0};
 
 	static int lumDelay = 0;
 
-	for (int i = 0; i < 6; i++) {
-		//		if (!roller)
-		if (((i >= 3) && !rangeRandom(100)) || (!lumOffset[lum >> LUMSHIFT]) || !lumDelay)
-			/*!rangeRandom(20)*/ // lumOffset[lum] == 8)
-			RGB[i] = (RGB[i] & 0xF) | (getRandom32() << 4);
+	if (--lumDelay < 0) {
 
-		if (i < 3)
-			RGB[i] = lumOffset[(lum >> LUMSHIFT)] | (RGB[i] & 0xF0);
-	}
-
-	if (!lumDelay) {
-		lumDelay = 1;
 		if ((++lum >> LUMSHIFT) >= (int)(sizeof(lumOffset) / sizeof(lumOffset[0])))
 			lum = 0;
 
-		lumDelay = (lumOffset[lum >> LUMSHIFT] == 8 /*|| !lumOffset[lum >> LUMSHIFT]*/) ? 30 : 1;
-	} else
-		lumDelay--;
+		if (lumOffset[lum >> LUMSHIFT] >= 0) {
+
+			lumDelay = 2;
+			if (lumOffset[lum >> LUMSHIFT] == 8) {
+				lumDelay = 40;
+				for (int i = 0; i < 3; i++)
+					RGB[i] = getRandom32();
+			}
+
+			for (int i = 0; i < 3; i++)
+				RGB[i] = (RGB[i] & 0xF0) | lumOffset[lum >> LUMSHIFT];
+		}
+
+		else {
+			lumDelay = 5;
+			for (int i = 0; i < 3; i++)
+				RGB[i] = 0;
+		}
+	}
 
 	int negJoy = (SWCHA >> 4) ^ 0xF;
 
@@ -839,16 +966,17 @@ void handleMenuVB() {
 		int dir = xInc[negJoy];
 		if (dir) {
 
-			startup = 0;
-
 			ADDAUDIO(SFX_SCORE);
 
-			if (!startup)
-				Room = setBounds(Room + dir, getRoomCount() - 1);
-			// else
-			// 	startup = 1000;
+			Room = setBounds(Room + dir, getRoomCount() - 1);
+
+			if (startup) {
+				Room = 0;
+				startup = 0;
+			}
 
 			triggerRemote = 30;
+			//			wave = 0;
 
 			resetMode();
 			mustWatchDelay = MUSTWATCH_MENU;
@@ -936,7 +1064,7 @@ int halfSize(int x, int y, int letter, bool render) {
 	for (int line = 0; line < LETTER_HEIGHT; line++)
 		merged |= gfx[line];
 
-	while (merged && !(merged & 128)) {
+	while (merged && !(merged & 0xC0)) {
 		merged <<= 2;
 		shift++;
 	}
@@ -953,12 +1081,12 @@ int halfSize(int x, int y, int letter, bool render) {
 			unsigned int c = gfx[line];
 
 			// clang-format off
-            unsigned int half = (
+            unsigned int half =
 
                 (c >> 7 << 31 >> 24 |    // 128
                  c >> 5 << 31 >> 25 |    // 32
                  c >> 3 << 31 >> 26 |    // 8
-                 c >> 1 << 31 >> 27 ))   // 2
+                 c >> 1 << 31 >> 27)     // 2
 
                 << shift;
 			// clang-format on
