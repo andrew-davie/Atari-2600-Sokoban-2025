@@ -20,8 +20,8 @@ int undoing;
 
 bool findBox(int *x, int *y) {
 
-	const unsigned char offX[] = {-1, 1, 0, 0};
-	const unsigned char offY[] = {0, 0, -1, 1};
+	static const signed char offX[] = {-1, 1, 0, 0};
+	static const signed char offY[] = {0, 0, -1, 1};
 
 	bool found = false;
 	int localTop = undoTop;
@@ -36,16 +36,8 @@ bool findBox(int *x, int *y) {
 		int dir = (m >> 1) & 3;
 		found = (m & 1) > 0;
 
-		*x -= offX[dir];
-		*y -= offY[dir];
-
-		if (found) {
-
-			//			FLASH(0xD2, 2);
-
-			*x += 2 * offX[dir]; //((m >> 10) & 0x3F) + 2 * offX[dir];
-			*y += 2 * offY[dir]; //((m >> 3) & 0x7F) + 2 *offY[dir];
-		}
+		*x += (found ? 1 : -1) * offX[dir];
+		*y += (found ? 1 : -1) * offY[dir];
 	}
 
 	return found;
@@ -83,41 +75,8 @@ void highlightUndo() {
 			int x = (boxX * PIXELS_PER_CHAR + 2); // + ((manFaceDirection * frameAdjustX) >> 2));
 			int y = ((boxY * (CHAR_HEIGHT / 3) + 4)); // - ((frameAdjustY * (0X100 / 3)) >> 8)));
 
-			// if (y < 0)
-			// 	FLASH(0x99, 9);
-
-			for (int i = 1; i < SPLATS; i++)
-				fireworks[i].age = 0;
-
-			// 			static int cp = 0;
-			// 			static int cpc = 1;
-			// 			static int cpcFrac = 0;
-			// 			static int cpCount = 0;
-
-			// #define SPEED_CPC 192
-
-			// 			static int cpBase = 1;
-
-			// 			cpcFrac += SPEED_CPC;
-			// 			if (cpcFrac >= 256) {
-			// 				cpcFrac = 0;
-			// 				if (++cpCount >= 8) {
-			// 					cpCount = 0;
-			// 					if (++cpBase >= 5)
-			// 						cpBase = 0;
-			// 				}
-			// 			}
-
-			// 			for (int i = 0; i < 40; i++) {
-
-			// 				if (++cpCount >= 8) {
-			// 					cpCount = 0;
-			// 					if (++cpBase >= 5)
-			// 						cpBase = 0;
-			// 				}
-
-			// 				addLocalPixel(x + circlePoints[i].x, y + circlePoints[i].y, cpBase, 2);
-			// 			}
+			if (y < 0)
+				FLASH(0x99, 9);
 
 			static const char cplay[] = {7, 7, 7, 7, 7, 7, 0, 0, 0, 7, 7, 7, 7, 7, 7, 0, 0, 0,
 			                             7, 7, 7, 7, 7, 7, 6, 6, 6, 6, 6, 6, 0, 0, 0, 0, 0, 0};
@@ -125,8 +84,8 @@ void highlightUndo() {
 			if (++col >= sizeof(cplay) / sizeof(cplay[0]))
 				col = 0;
 
-			for (int i = 0; i < 39; i++)
-				setLocalPixel(x + circlePoints[i].x, y + circlePoints[i].y, cplay[col], 2, i);
+			for (int i = 0; i < sizeof(circlePoints) / sizeof(circlePoints[0]); i++)
+				addLocalPixel(x + circlePoints[i].x, y + circlePoints[i].y, cplay[col], 1);
 		}
 	}
 }
@@ -156,14 +115,15 @@ bool undoLastMove() {
 	// allowing iteration until box pushed
 
 	bool repeat = false;
-	if (undoTop && findBox(0, 0)) {
+	bool boxMoved = false;
+	while (undoTop && findBox(0, 0) && !boxMoved) {
 
 		ADDAUDIO(SFX_SPACE);
 
 		unsigned short m = undoStack[--undoTop];
 
 		int dir = (m >> 1) & 3;
-		bool boxMoved = (m & 1) > 0;
+		boxMoved = (m & 1) > 0;
 
 		int oldX = manX;
 		int oldY = manY;
@@ -219,8 +179,8 @@ bool undoLastMove() {
 		}
 
 		else {
-			repeat = true;
-			undoing = UNDO_SPEED;
+			// repeat = true;
+			// undoing = UNDO_SPEED;
 		}
 	}
 
